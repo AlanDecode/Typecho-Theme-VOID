@@ -39,7 +39,7 @@ if(!Utils::isPjax()){
                         <span><?php $this->author(); ?></span>&nbsp;•&nbsp;   <!-- author -->
                         <span><?php echo date('Y-m-d', $this->created); ?></span>   <!-- date -->
                     </p>
-                    <p><?php $this->excerpt(100); ?></p>
+                    <p><?php $this->excerpt(90); ?></p>
                     <div class="btn btn-normal">READ MORE </div>
                 </div>
                 <?php $lazyID = rand(1,10000); ?>
@@ -75,9 +75,9 @@ if(!Utils::isPjax()){
                         <span><?php echo date('Y-m-d', $this->created); ?></span>   <!-- date -->
                         <span>  <!-- statics -->
                             <?php if(Utils::isPluginAvailable('TePostViews') && !$this->is('archive')): ?>
-                                <?php $this->viewsNum(); ?>&nbsp;Views&nbsp;•&nbsp;
+                                <?php $this->viewsNum(); ?>&nbsp;阅读&nbsp;•&nbsp;
                             <?php endif;?>
-                            <?php $this->commentsNum(); ?>&nbsp;Comments
+                            <?php $this->commentsNum(); ?>&nbsp;评论
                         </span>
                     </p>
                 </div>
