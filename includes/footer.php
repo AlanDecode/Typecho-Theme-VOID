@@ -66,7 +66,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </section>
             </div>
             <div class="container footer-info">
-                Powered by Typecho • <a href="https://github.com/AlanDecode/Typecho-Theme-RAW">Theme VOID</a>
+                Powered by Typecho
+                <a href="https://github.com/AlanDecode/Typecho-Theme-VOID">Theme VOID</a>
                 <div><?php echo $this->options->footer; ?></div>
             </div>
         </footer>
