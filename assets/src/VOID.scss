@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+/**
+* author: 熊猫小A
+* version: 2019-01-15 0.1
+*/
+
+@import "parts/normalize";
+@import "parts/var";
+
+// 缺省定义
+html{
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0,0,0,.15);
+}
+::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.15);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+a, a:hover{
+    text-decoration: none;
+    border: none;
+    color: $textColor;
+    outline: none;
+}
+
+body,header,main,footer{
+    width: 100%;
+}
+
+body{
+    background: #eee;
+    &.modal-open{
+        position: fixed;
+        width: 100%;
+    }
+}
+
+.container{
+    width: $mainWidth;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    @media screen and (max-width: 767px) {
+        padding: 0 0.5rem;
+    }
+}
+
+.btn{
+    display: block;
+    font-weight: 300;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(0,0,0,0.1);
+    max-width: 10rem;
+    max-width: max-content;
+    text-align: center;
+    border-radius: 5rem;
+    color: $fadeColor;
+    background: white;
+    transition: 0.3s ease all;
+    cursor: pointer;
+    &:hover,&.done{
+        color: white!important;
+        border-color: $darkColor;
+        background: $darkColor;
+    }
+}
+
+.toggle{
+    position: relative;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+    >span{
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin-top: -2px;
+        background-color: #eee;
+        border-radius: 3px;
+        &::before,&::after{
+            content: "";
+            background: #eee;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        &::before{
+            transform: translateY(-8px);
+        }
+        &::after{
+            transform: translateY(8px);
+        }
+    }
+    &.pushed{
+        transform: rotate(45deg);
+        >span{
+            background: #e74c3c;
+        }
+        >span::before{
+            background: #e74c3c;
+            transform: rotate(90deg);
+        }
+        >span::after{
+            background: #e74c3c;
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.avatar{
+    display: inline-block;
+    border-radius: 50%;
+    transition: 0.3s ease all;
+    &:hover{
+        transform: scale(1.05);
+    }
+    padding: 1.2px;
+    background: #eee;
+}
+
+.pager{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 1rem auto;
+    margin-bottom: 3rem;
+    padding: 0 20px;
+    justify-content: center;
+    max-width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    li{
+        height: 2.6rem;
+        a,>span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            padding: 0.8rem;
+            width: 2.6rem;
+            height: 2.6rem;
+            transition: 0.3s ease all;
+        }
+        &.current a, a:hover{
+            background: $darkColor;
+            color: white;
+        }
+    }
+}
+
+@import "parts/header";
+@import "parts/index";
+@import "parts/article";
+@import "parts/comments";
+@import "parts/footer";

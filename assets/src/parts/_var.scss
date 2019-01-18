@@ -1,0 +1,15 @@
+$textColor: #333;
+$fadeColor: #666;
+$darkColor: #111;
+$mainWidth: 960px;
+$bannerHeight: 400px;
+$bannerHeight_mobile: 300px;
+
+@mixin bg {
+    background: {
+        size: cover;
+        repeat: no-repeat;
+        position: center;
+        color: #12121c;
+    }
+}
