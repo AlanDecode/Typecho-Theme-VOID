@@ -25,7 +25,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->header('commentReply=&description=&'); ?>
 
     <!--CSS-->
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.min.css');?>">
+    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.20190119.min.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/hljs/styles/atom-one-dark.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/owo/owo.min.css'); ?>" />
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/fancybox/jquery.fancybox.min.css');?>">
