@@ -54,7 +54,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <div class="avatar-list">
                         <?php 
                             $recentComments=null;
-                            $this->widget('Widget_Comments_Recent','ignoreAuthor=true')->to($recentComments);
+                            $this->widget('Widget_Comments_Recent','ignoreAuthor=true&pageSize=14')->to($recentComments);
                             while($recentComments->next()): ?>
                         <a href="<?php $recentComments->permalink(); ?>"><?php $recentComments->gravatar(64, ''); ?></a>
                         <?php endwhile; ?>
