@@ -33,7 +33,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <script src="<?php Utils::indexTheme('/assets/pjax/np.js'); ?>"></script>
         <script src="<?php Utils::indexTheme('/assets/hljs/highlight.pack.js'); ?>"></script>
         <script src="<?php Utils::indexTheme('/assets/fancybox/jquery.fancybox.min.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID.2019011803.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID.20190119.js'); ?>"></script>
         <script src="<?php Utils::indexTheme('/assets/scrollTo/jquery.scrollTo.min.js'); ?>"></script>
         <script src='<?php Utils::indexTheme('/assets/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">

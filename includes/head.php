@@ -25,7 +25,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->header('commentReply=&description=&'); ?>
 
     <!--CSS-->
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.20190119.min.css');?>">
+    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.2019011901.min.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/hljs/styles/atom-one-dark.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/owo/owo.min.css'); ?>" />
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/fancybox/jquery.fancybox.min.css');?>">
@@ -87,5 +87,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     </script>
     <script src="<?php Utils::indexTheme('/assets/owo/owo.js'); ?>"></script>
     <?php echo $this->options->head; ?>
+    <style>
+    <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !=''): ?>
+    @media screen and (min-width: 768px){
+        main>.lazy-wrap{height: <?php echo $this->options->desktopBannerHeight ?>vh;}
+        main{margin-top: calc(<?php echo $this->options->desktopBannerHeight ?>vh - 150px)}
+    }
+    <?php endif; ?>
+    <?php if($this->options->mobileBannerHeight && $this->options->mobileBannerHeight !=''): ?>
+    @media screen and (max-width: 768px){
+        main>.lazy-wrap{height: <?php echo $this->options->mobileBannerHeight ?>vh;}
+        main{margin-top: calc(<?php echo $this->options->mobileBannerHeight ?>vh - 100px)}
+    }
+    <?php endif; ?>
+    </style>
     </head>
     <body>

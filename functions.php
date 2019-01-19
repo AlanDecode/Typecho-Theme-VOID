@@ -37,6 +37,10 @@ function themeConfig($form) {
     $form->addInput($buildTime);
     $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认头图'), _t('可以填写随机图 API。'));
     $form->addInput($defaultBanner);
+    $desktopBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('desktopBannerHeight', NULL, NULL, _t('桌面端顶部大图高度'), _t('填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。'));
+    $form->addInput($desktopBannerHeight);
+    $mobileBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('mobileBannerHeight', NULL, NULL, _t('移动端顶部大图高度'), _t('填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。'));
+    $form->addInput($mobileBannerHeight);
     
     // 高级设置
     $head=new Typecho_Widget_Helper_Form_Element_Textarea('head', NULL, '', _t('head 标签输出内容'), _t('统计代码等'));
