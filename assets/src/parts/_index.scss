@@ -129,6 +129,17 @@ main{
                                 color: $fadeColor;
                             }
                         }
+                        @media screen and (min-width: 768px) {
+                            p:not(.post-meta){
+                                max-height: 7.5rem;
+                                overflow: hidden;
+                            }
+                            div.btn{
+                                position: absolute;
+                                left: 1rem;
+                                bottom: 1rem;
+                            }
+                        }
                     }
                 }
             }
