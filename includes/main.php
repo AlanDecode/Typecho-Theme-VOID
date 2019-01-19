@@ -25,13 +25,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <p class="post-meta">
                     <?php $this->author(); ?>&nbsp;•&nbsp;
                     <?php echo date('Y-m-d', $this->created); ?>&nbsp;•&nbsp;
-                    <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;Comments</a>
+                    <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
                     <?php 
                         if(Utils::isPluginAvailable('TePostViews'))
                         {
                             echo '&nbsp;•&nbsp;';
                             $this->viewsNum();
-                            echo '&nbsp;Views';
+                            echo '&nbsp;阅读';
                         }
                     ?>
                 </p>
