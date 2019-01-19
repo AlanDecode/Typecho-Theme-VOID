@@ -44,12 +44,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php if(Utils::isPluginAvailable('Like')):?>
                         <a href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
                     <?php endif; ?>
-                    <!--link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
-                    <div class="social-button" data-twitter="AlanDecode"
-                        data-facebook="lepture" data-weibo="熊猫小A"
-                        data-count="true" data-text="<?php Contents::title($this); ?>"
-                        data-url="<?php $this->permalink(); ?>"></div>
-                    <script src="https://lab.lepture.com/social/dist/widget.js"></script-->
                 </div>
             </article>
             <!--目录，可选-->

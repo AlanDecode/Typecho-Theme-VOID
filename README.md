@@ -15,7 +15,6 @@
 * PJAX
 * 响应式设计
 * 卡片式
-* 简洁易用
 * 代码高亮
 * MathJax 公式
 * 表情解析
@@ -37,6 +36,32 @@
 8. 后台启用主题
 
 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，以启用 Service Worker 缓存。
+
+## 添加归档页面
+
+新建独立页面，自定义模板选择 `Archives`，内容留空。
+
+## 添加友情链接
+
+新建独立页面，然后如此书写：
+
+```
+<div class="board-list link-list">
+[熊猫小A](https://www.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=200&r=G&d=)
+[熊猫小A的博客](https://blog.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=)
+</div>
+```
+
+在某些 Typecho 版本中，你需要使用 `!!!` 包裹以上代码，例如：
+
+```
+!!!
+<div class="board-list link-list">
+[熊猫小A](https://www.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=200&r=G&d=)
+[熊猫小A的博客](https://blog.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=)
+</div>
+!!!
+```
 
 ## 更新
 
