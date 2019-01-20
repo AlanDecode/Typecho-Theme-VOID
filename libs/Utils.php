@@ -161,4 +161,19 @@ class Utils
             }
         }</style>';
     }
+
+    /**
+     * 判定内容是否过时
+     * 
+     * @return array
+     */
+    public static function isOutdated($archive){
+        date_default_timezone_set("Asia/Shanghai");
+        $created = round((time()- $archive->created) / 3600 / 24);
+        $updated = round((time()- $archive->modified) / 3600 / 24);
+
+        return array("is" => $created > 90,
+                    "created" => $created,
+                    "updated" => $updated);
+    }
 }
