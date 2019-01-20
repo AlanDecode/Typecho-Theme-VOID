@@ -326,18 +326,13 @@ article.post{
 }
 #social{
     .post-like{
+        margin: 0 auto;
+        display: block;
         font-weight: bold!important;
         color: $fadeColor!important;
         &:hover,&.done{
             color: white!important;
             border: 2px solid $darkColor!important;
         }
-        display: inline-block;
-    }
-    .social-button{
-        display: inline-block;
-    }
-    .social-button-count{
-        white-space: nowrap;
     }
 }
