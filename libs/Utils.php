@@ -80,6 +80,40 @@ class Utils
     }
 
     /**
+     * 移动端判定
+     * 
+     * @return bool
+     */
+    public static function isMobile(){ 
+        if (isset ($_SERVER['HTTP_X_WAP_PROFILE'])){
+            return TRUE;
+        }
+        
+        if (isset ($_SERVER['HTTP_USER_AGENT'])) {
+            $clientkeywords = array ('mobile','nokia','sony','ericsson','mot','samsung','htc','sgh','lg','sharp','sie-','philips','panasonic','alcatel','lenovo','iphone','ipod','blackberry','meizu','android','netfront','symbian','ucweb','windowsce','palm','operamini','operamobi','openwave','nexusone','cldc','midp','wap'
+                ); 
+            if (preg_match("/(" . implode('|', $clientkeywords) . ")/i", strtolower($_SERVER['HTTP_USER_AGENT']))){
+                return TRUE;
+            }
+        }
+        if (isset ($_SERVER['HTTP_ACCEPT'])){
+            if ((strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') !== FALSE) && (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') === FALSE || (strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') < strpos($_SERVER['HTTP_ACCEPT'], 'text/html')))){
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
+
+    /**
+     * 电脑微信判定
+     * 
+     * @return bool
+     */
+    public static function isWeixin() {
+        return  !self::isMobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false; 
+    }
+
+    /**
      * 编辑界面添加Button
      * 
      * @return void
