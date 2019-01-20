@@ -36,7 +36,7 @@ if(!Utils::isPjax()){
         <?php if(!$this->is('archive')): ?>
         <?php $this->next(); ?>
         <section id="new">
-            <div class="section-title">NEWEST</div>
+            <div class="section-title">LATEST</div>
             <a class="item" href="<?php $this->permalink(); ?>">
                 <div class="item-content">
                     <h1><?php $this->title(); ?></h1>
