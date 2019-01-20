@@ -7,7 +7,6 @@ console.log(` %c Theme VOID %c https://blog.imalan.cn/ `, `color: #fadfa3; backg
 VOID = {
     // 初始化单页应用
     init : function(){
-        NProgress.configure({ showSpinner: false });
         VOID.parsedPhotos();
         VOID.parseUrl();
         hljs.initHighlightingOnLoad();
