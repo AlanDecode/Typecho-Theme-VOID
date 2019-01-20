@@ -33,7 +33,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <script>
     VOIDConfig = {
         PJAX : <?php echo $this->options->pjax == '1' ? 'true' : 'false'; ?>,
-        buildTime : "<?php if($this->options->buildTime != '') echo $this->options->buildTime; else  echo '2019-01-18 12:00'; ?>"
+        buildTime : "<?php if($this->options->buildTime != '') echo $this->options->buildTime; else  echo '2019-01-18 12:00'; ?>",
+        tocOffset : 0,
+        bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
+    }
+    if(VOIDConfig.bannerHeightType == "percentage"){
+        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 88;
+    }else{
+        VOIDConfig.tocOffset = 488;
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function startSearch(item) {

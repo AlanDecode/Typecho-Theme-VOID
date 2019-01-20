@@ -269,7 +269,7 @@ article.post{
         &.show{
             display: block;
             position: fixed;
-            width: calc(100vw - 4rem - 39px);
+            width: max-content;
             max-width: calc(100vw - 4rem - 39px);
             max-height: calc(100vh - 1.5rem - 60px);
             bottom: 1.5rem;
@@ -314,7 +314,7 @@ article.post{
     }
 }
 .toggle-toc{
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1366px) {
         display: none;
     }
     position: fixed;

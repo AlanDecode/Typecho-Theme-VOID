@@ -188,7 +188,8 @@ setInterval(function(){
 $(document).scroll(function(){
     if(window.innerWidth <= 768) return;
     if($(".TOC").length<1) return;
-    if($(document).scrollTop() > 400){
+
+    if($(document).scrollTop() > VOIDConfig.tocOffset - 20.1){
         $(".TOC").addClass("fixed");
     }
     else{
