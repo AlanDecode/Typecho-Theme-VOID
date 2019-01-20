@@ -53,9 +53,7 @@ main{
         top: 0;
         width: 100%;
         height: 100%;
-        filter: brightness(0.6);
         @include bg;
-        background-position: top;
     }
     .wrapper{
         position: relative;
