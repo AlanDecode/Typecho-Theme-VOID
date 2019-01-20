@@ -132,7 +132,7 @@
             }
         }
         .comment-body{
-            max-width: calc(100% - 56px);
+            max-width: calc(100% - 56px - 1rem);
             .comment-content{
                 word-break: break-word;
                 color: $textColor;
