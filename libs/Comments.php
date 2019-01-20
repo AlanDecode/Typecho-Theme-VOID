@@ -127,7 +127,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 </div>
                 <div class="comment-body">
                     <span class="comment-meta"><b><?php $this->author(); echo'</b>'; echo date(' Y-m-d',$this->created);?></span>
-                    <div class="comment-content"><?php echo $this->getParent(); echo Contents::parseBiaoQing($this->content); ?></div>
+                    <div class="comment-content yue"><?php echo $this->getParent(); echo Contents::parseBiaoQing($this->content); ?></div>
                 </div>
             </div>
             </div>

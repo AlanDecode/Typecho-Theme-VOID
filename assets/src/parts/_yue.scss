@@ -9,7 +9,6 @@
 .yue {
   font: 400 17px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #444443;
-  text-align: justify;
   letter-spacing: 0.04em;
   word-break: break-word;
 }
@@ -62,6 +61,7 @@
 .yue p {
   margin-top: 0;
   margin-bottom: 1.24em;
+  text-align: justify;
 }
 .yue a {
   color: #111;
@@ -136,6 +136,7 @@
   border-left: 3px solid #dadada;
   padding-left: 12px;
   color: #666664;
+  text-align: justify;
 }
 .yue blockquote a {
   color: #666664;
