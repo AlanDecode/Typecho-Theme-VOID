@@ -27,7 +27,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <section id="post">
             <div class="section-title"><?php if($this->is('post')) echo 'POST'; else echo 'PAGE'; ?></div>
             <article class="post yue">
-                <h1 class="post-title"><?php $this->title(); ?></h1>
+                <h1 class="post-title"><?php $this->title(); ?>
+                    <?php if($this->user->hasLogin()): ?>
+                        <sup>
+                            <?php if($this->is('post')): ?>
+                            <a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
+                            <?php else: ?>
+                            <a target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
+                            <?php endif;?>
+                        </sup>    
+                    <?php endif;?>
+                </h1>
                 <p class="post-meta">
                     <?php $this->author(); ?>&nbsp;•&nbsp;
                     <?php echo date('Y-m-d', $this->created); ?>&nbsp;•&nbsp;

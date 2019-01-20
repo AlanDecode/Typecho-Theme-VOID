@@ -44,6 +44,13 @@ article.post{
         text-align: center;
         font-weight: 600;
         word-break: break-word;
+        sup{ // edit button
+            width: unset;
+            a{
+                padding: 0.5em;
+                display: block;
+            }
+        }
     }
     .post-meta{
         text-align: center;
