@@ -185,7 +185,7 @@ setInterval(function(){
 }, 1000);
 
 $(document).scroll(function(){
-    if(window.innerWidth <= 768) return;
+    if(window.outerWidth < 1366) return;
     if($(".TOC").length<1) return;
 
     if($(document).scrollTop() > VOIDConfig.tocOffset - 20.1){
