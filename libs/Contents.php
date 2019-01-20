@@ -125,7 +125,7 @@ EOF;
     static public function parseAll($content, $parseTOC = false)
     {
         $result = array();
-        $newContent = self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content))));
+        $newContent = self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content)))));
         if($parseTOC)
         {
             global $toc;
@@ -142,6 +142,18 @@ EOF;
         }
         
         return $result;
+    }
+
+    /**
+     * 解析提示块
+     * 
+     * @return string
+     */
+    static public function parseNotice($content){
+        $reg='/\[notice.*?\](.*?)\[\/notice\]/s';
+        $rp='<p class="notice">${1}</p>';
+        $new=preg_replace($reg,$rp,$content);
+        return $new;
     }
 
     /**

@@ -51,7 +51,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         }
                     ?>
                 </p>
-                <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"]): ?>
+                <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                 <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                 <?php endif; ?>
                 <?php 
