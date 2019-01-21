@@ -32,9 +32,6 @@ function themeInit(){
  * 主题设置
  */
 function themeConfig($form) {
-    date_default_timezone_set("Asia/Shanghai");
-    $buildTime=new Typecho_Widget_Helper_Form_Element_Text('buildTime', NULL, date('Y-m-d H:i'), _t('建站时间'), _t('建站时间，用于页脚显示。'));
-    $form->addInput($buildTime);
     $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认顶部大图'), _t('可以填写随机图 API。'));
     $form->addInput($defaultBanner);
     $defaultCover=new Typecho_Widget_Helper_Form_Element_Text('defaultCover', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认首页文章封面图'), _t('可以填写随机图 API。'));

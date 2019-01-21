@@ -176,4 +176,20 @@ class Utils
                     "created" => $created,
                     "updated" => $updated);
     }
+
+    /**
+     * 输出建站时间（最早一篇文章的写作时间）
+     * 
+     * @return array
+     */
+    public static function getBuildTime(){
+        date_default_timezone_set("Asia/Shanghai");
+        $db = Typecho_Db::get();
+        $content = $db->fetchRow($db->select()->from('table.contents')
+        ->where('table.contents.status = ?', 'publish')
+        ->where('table.contents.password IS NULL')
+        ->order('table.contents.created', Typecho_Db::SORT_ASC)
+        ->limit(1));
+        echo date('Y-m-d\TH:i', $content['created']);
+    }
 }
