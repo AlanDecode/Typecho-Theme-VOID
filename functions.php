@@ -35,8 +35,10 @@ function themeConfig($form) {
     date_default_timezone_set("Asia/Shanghai");
     $buildTime=new Typecho_Widget_Helper_Form_Element_Text('buildTime', NULL, date('Y-m-d H:i'), _t('建站时间'), _t('建站时间，用于页脚显示。'));
     $form->addInput($buildTime);
-    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认头图'), _t('可以填写随机图 API。'));
+    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认顶部大图'), _t('可以填写随机图 API。'));
     $form->addInput($defaultBanner);
+    $defaultCover=new Typecho_Widget_Helper_Form_Element_Text('defaultCover', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认首页文章封面图'), _t('可以填写随机图 API。'));
+    $form->addInput($defaultCover);
     $desktopBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('desktopBannerHeight', NULL, NULL, _t('桌面端顶部大图高度'), _t('填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。'));
     $form->addInput($desktopBannerHeight);
     $mobileBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('mobileBannerHeight', NULL, NULL, _t('移动端顶部大图高度'), _t('填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。'));

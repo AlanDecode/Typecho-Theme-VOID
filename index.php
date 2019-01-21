@@ -19,6 +19,12 @@ if(!Utils::isPjax()){
 } 
 ?>
 
+<?php 
+// load banner and cover
+$defaultBanner = $this->options->defaultBanner;
+$defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCover : $defaultBanner;
+?>
+
 <main id="pjax-container">
     <title hidden>
         <?php Contents::title($this); ?>
@@ -27,9 +33,9 @@ if(!Utils::isPjax()){
     <?php if(!Utils::isWeixin()): ?>
         <?php $lazyID = rand(1,10000); ?>
         <div class="lazy-wrap loading"><div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div></div>
-        <?php Utils::registerLazyImg($this->options->defaultBanner.'?v='.rand(), $lazyID); ?>
+        <?php Utils::registerLazyImg($defaultBanner.'?v='.rand(), $lazyID); ?>
     <?php else: ?>
-        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $this->options->defaultBanner; ?>)" class="lazy loaded"></div></div>
+        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $defaultBanner; ?>)" class="lazy loaded"></div></div>
     <?php endif; ?>
 
     <div class="wrapper container">
@@ -50,9 +56,9 @@ if(!Utils::isPjax()){
                 <?php if(!Utils::isWeixin()): ?>
                     <?php $lazyID = rand(1,10000); ?>
                     <div class="lazy-wrap loading"><div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>></div></div>
-                    <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $this->options->defaultBanner.'?v='.rand(), $lazyID); ?>
+                    <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
                 <?php else: ?>
-                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $this->options->defaultBanner.'?v='.rand(); ?>)"></div></div>
+                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)"></div></div>
                 <?php endif; ?>
             </a>
         </section>
@@ -73,7 +79,7 @@ if(!Utils::isPjax()){
                 <?php if(!Utils::isWeixin()): ?>
                     <div class="lazy-wrap loading">
                         <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
-                        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $this->options->defaultBanner.'?v='.rand(), $lazyID); ?>
+                        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
                             <div class="item-meta">
                             <span><?php $this->excerpt(120); ?></span>
                             </div>
@@ -81,7 +87,7 @@ if(!Utils::isPjax()){
                     </div>
                 <?php else: ?>
                     <div class="lazy-wrap">
-                        <div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $this->options->defaultBanner.'?v='.rand(); ?>)">
+                        <div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)">
                             <div class="item-meta">
                             <span><?php $this->excerpt(120); ?></span>
                             </div>
