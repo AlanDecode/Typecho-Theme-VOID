@@ -131,7 +131,7 @@ class Utils
         self::indexTheme('/assets/owo/owo.min.css');
         echo '" />';
        
-        echo '<style>#custom-field textarea{width:100%}
+        echo '<style>#custom-field textarea,#custom-field input{width:100%}
         .OwO span{background:none!important;width:unset!important;height:unset!important}
         .OwO .OwO-logo{
             z-index: unset!important;
