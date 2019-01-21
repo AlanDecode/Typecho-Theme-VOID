@@ -33,7 +33,6 @@ if(!Utils::isPjax()){
 
     <div class="wrapper container">
         <section id="post">
-            <div class="section-title"><?php if($this->is('post')) echo 'POST'; else echo 'PAGE'; ?></div>
             <article class="post yue">
                 <h1 class="post-title"><?php $this->title(); ?></h1>
                 <p class="post-meta">
