@@ -237,15 +237,21 @@ article.post{
     padding-top: 1em;
     .board-item {
         position: relative;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        background: white;
+        box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
         transition: all 0.3s;
         overflow: hidden;
         display: flex;flex-flow: column nowrap;
         justify-content: flex-start;
-        border: none;
-        &:hover{
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border: none;
+        border: none!important;
+        &.hover{
+            transform: scale(0.95);
+        }
+        @media screen and (min-width: 768px) {
+            &:hover{
+                transform: scale(0.97);
+                border: none!important;
+            }
         }
         .board-thumb {
             width: 100%;

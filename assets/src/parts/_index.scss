@@ -79,12 +79,14 @@ main{
                 }
             }
             &:first-of-type{
-                background: white;
-                box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
                 .section-title{
                     color: #fafafa;
                 }
                 margin-bottom: 7rem;
+            }
+            &#post{
+                background: white;
+                box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
             }
             &#new{
                 height: 300px;
@@ -96,6 +98,17 @@ main{
                     position: relative;
                     height: 100%;
                     display: flex;
+                    transition: 0.3s ease all;
+                    background: white;
+                    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
+                    &.hover{
+                        transform: scale(0.95);
+                    }
+                    @media screen and (min-width: 768px) {
+                        &:hover{
+                            transform: scale(0.98);
+                        }
+                    }
                     .lazy-wrap{
                         flex: 0.55;
                         height: 100%;
@@ -159,10 +172,16 @@ main{
                     display: flex;
                     flex-direction: column;
                     height: 250px;
+                    background-color: white;
                     margin-bottom: 40px;
                     width: calc((100% - 60px) / 3.001);
+                    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
+                    transition: 0.3s ease all;
                     &:nth-of-type(3n + 2){
                         margin: 0 30px;
+                    }
+                    &.hover{ // for mobile devices
+                        transform: scale(0.95);
                     }
                     @media screen and (max-width: 767px){
                         width: 100%;
@@ -170,9 +189,7 @@ main{
                     }
                     @media screen and (min-width: 768px){
                         &:hover{
-                            .lazy-wrap{
-                                transform: scale(0.98);
-                            }
+                            transform: scale(0.98);
                         }
                     }
                     .lazy-wrap{
@@ -218,6 +235,7 @@ main{
                         flex: 1;
                         display: flex;
                         flex-direction: column;
+                        padding:0 1rem 0.5rem;
                         h1{
                             font-size: 1.3rem;
                             overflow: hidden;
@@ -231,13 +249,11 @@ main{
                         p{
                             flex: 1;
                             margin: 0;
-                            margin-top: 10px;
-                            font-weight: 300;
                             line-height: 1.5;
                             word-break: break-all;
                             color: $fadeColor;
                             display: flex;
-                            font-size: 0.95rem;
+                            font-size: 0.9rem;
                             justify-content: space-between;
                             align-items: flex-end;
                         }

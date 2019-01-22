@@ -21,6 +21,13 @@ VOID = {
                 $(this).addClass("done");
             })
         }
+        // 初始化 touch 事件，移动端设备
+        $(".item,.board-item").on('touchstart',function(){
+            $(this).addClass("hover");
+        })
+        $(".item,.board-item").on('touchend',function(){
+            $(this).removeClass("hover");
+        })
     },
 
     // 解析照片集
@@ -139,6 +146,13 @@ VOID = {
                 if (-1 !== cookies.indexOf("," + id + ","))  $(item).addClass("done");
             })
         }
+        // 重新绑定 touch 事件，移动端设备
+        $(".item,.board-item").on('touchstart',function(){
+            $(this).addClass("hover");
+        })
+        $(".item,.board-item").on('touchend',function(){
+            $(this).removeClass("hover");
+        })
     },
 
     scrollTop : 0,
