@@ -36,9 +36,9 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     <?php if($this->user->hasLogin()): ?>
                         <sup>
                             <?php if($this->is('post')): ?>
-                            <a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
+                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
                             <?php else: ?>
-                            <a target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
+                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
                             <?php endif;?>
                         </sup>    
                     <?php endif;?>

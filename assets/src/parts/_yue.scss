@@ -64,15 +64,14 @@
   text-align: justify;
 }
 .yue a {
-  color: #111;
   word-wrap: break-word;
-  -webkit-text-decoration-color: rgba(0, 0, 0, 0.4);
-          text-decoration-color: rgba(0, 0, 0, 0.4);
+  &:not([data-fancybox=gallery]):not(.post-like):not(.edit-button){
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
 }
-.yue a:hover {
+.yue a:not([data-fancybox=gallery],.post-meta,.post-like):hover {
   color: #555;
-  -webkit-text-decoration-color: rgba(0, 0, 0, 0.6);
-          text-decoration-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.4);
 }
 .yue h1 a, .yue h2 a, .yue h3 a {
   text-decoration: none;
