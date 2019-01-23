@@ -28,18 +28,26 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </script>
         <script src="<?php Utils::indexTheme('/assets/jquery/jquery.min.js'); ?>"></script>
         <?php $this->footer(); ?>
-        <script src="<?php Utils::indexTheme('/assets/pjax/jquery.pjax.js'); ?>"></script>
-        <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/pjax/np.css');?>">
-        <script src="<?php Utils::indexTheme('/assets/pjax/np.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/hljs/highlight.pack.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/fancybox/jquery.fancybox.min.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID.20190122.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/scrollTo/jquery.scrollTo.min.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/bundle-edfc93f7bb.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID-22af8b9821.js'); ?>"></script>
         <script src='<?php Utils::indexTheme('/assets/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             });
+        </script>
+        <script>
+        if($(".OwO").length > 0){
+            new OwO({
+                logo: 'OωO表情',
+                container: document.getElementsByClassName('OwO')[0],
+                target: document.getElementsByClassName('input-area')[0],
+                api: '<?php Utils::indexTheme('/assets/owo/OwO.json'); ?>',
+                position: 'down',
+                width: '400px',
+                maxHeight: '250px'
+            });
+        }
         </script>
         <?php if($this->options->pjax=='1'): ?>
         <script>

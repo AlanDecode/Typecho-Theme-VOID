@@ -25,14 +25,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->header('commentReply=&description=&'); ?>
 
     <!--CSS-->
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.2019012204.min.css');?>">
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/hljs/styles/atom-one-light.css');?>">
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/owo/owo.min.css'); ?>" />
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/fancybox/jquery.fancybox.min.css');?>">
+    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle-84083e4c24.css');?>">
+    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID-c8346d7a34.css');?>">
     
     <script>
     VOIDConfig = {
         PJAX : <?php echo $this->options->pjax == '1' ? 'true' : 'false'; ?>,
+        searchBase : "<?php Utils::index("/search/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         tocOffset : 0,
         bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
@@ -43,44 +42,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         VOIDConfig.tocOffset = 488;
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
-    function startSearch(item) {
-        var searchBase = "<?php Utils::index('/search/'); ?>";
-        var c = $(item).val();
-        if(!c || c==""){
-            $("item").attr("placeholder","你还没有输入任何信息");
-            return;
-        }
-        var t = searchBase + c;
-        if(VOIDConfig.PJAX){
-            $.pjax({url: t, 
-                container: '#pjax-container',
-                fragment: '#pjax-container',
-                timeout: 8000, })
-        }else{
-            window.open(t,"_self");
-        }
-    }
-    function enterSearch(item){
-        var event = window.event || arguments.callee.caller.arguments[0];  
-        if (event.keyCode == 13)  {  
-            startSearch(item);
-        }
-    }
-    function toggleNav(item){
-        $(item).toggleClass("pushed");
-        if($(item).hasClass("pushed")){
-            $("#nav-mobile").fadeIn(200);
-            VOID.openModal();
-        }
-        else{
-            VOID.closeModal();
-            $("#nav-mobile").fadeOut(200);
-        }
-    }
-    function toggleToc(item) {
-        $(".TOC").toggleClass("show");
-        $(item).toggleClass("pushed");
-    }
     function registerLazyLoadImg(url, target){
         let background = new Image();
         background.src = url;
@@ -92,7 +53,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         }
     }
     </script>
-    <script src="<?php Utils::indexTheme('/assets/owo/owo.js'); ?>"></script>
     <?php echo $this->options->head; ?>
     <style>
     <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !=''): ?>
