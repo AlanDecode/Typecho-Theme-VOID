@@ -4,8 +4,12 @@
   "description": "A Typecho theme by AlanDecode.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
   },
+  "pre-commit": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlanDecode/Typecho-Theme-VOID.git"
@@ -32,6 +36,7 @@
     "gulp-rev-collector": "^1.3.1",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.1",
-    "jsonfile": "^5.0.0"
+    "jsonfile": "^5.0.0",
+    "pre-commit": "^1.2.2"
   }
 }
