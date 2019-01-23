@@ -80,3 +80,10 @@ gulp.task('move', function(){
 });
 
 gulp.task('build', gulp.series('clean', gulp.parallel('pack:css:main', 'pack:css:dep', 'pack:js:main', 'pack:js:dep'), 'md5', 'move'));
+
+// 开发过程，监视改动
+gulp.task('dev', function(){
+    gulp.watch('src/**/*.scss', gulp.series('pack:css:main', 'md5'));
+    gulp.watch('src/**/*.js', gulp.series('pack:js:main', 'md5'));
+    return gulp.watch('src/**/*.php', gulp.series('build'));
+});

@@ -26,7 +26,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
     <!--CSS-->
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle-84083e4c24.css');?>">
-    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID-c8346d7a34.css');?>">
+    <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID-2b07ad12c9.css');?>">
     
     <script>
     VOIDConfig = {

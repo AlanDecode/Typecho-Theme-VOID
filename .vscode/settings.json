@@ -1,12 +1,4 @@
 {
-    "liveSassCompile.settings.formats":[
-        {
-            "format": "compressed",
-            "extensionName": ".css",
-            "savePath": "~/../"
-        }
-    ],
-    "liveSassCompile.settings.generateMap": false,
     "editor.tabSize": 4,
     "editor.insertSpaces": true
 }
