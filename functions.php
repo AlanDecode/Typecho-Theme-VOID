@@ -42,6 +42,8 @@ function themeConfig($form) {
     $form->addInput($mobileBannerHeight);
     
     // 高级设置
+    $enableMath=new Typecho_Widget_Helper_Form_Element_Select('enableMath',array('0'=>'不启用','1'=>'启用'),'0','启用数学公式解析','是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
+    $form->addInput($enableMath);
     $head=new Typecho_Widget_Helper_Form_Element_Textarea('head', NULL, '', _t('head 标签输出内容'), _t('统计代码等'));
     $form->addInput($head);
     $footer=new Typecho_Widget_Helper_Form_Element_Textarea('footer', NULL, '', _t('footer 标签输出内容'), _t('备案号等'));

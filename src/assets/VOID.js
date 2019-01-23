@@ -13,16 +13,7 @@ var VOID = {
         VOID.parseUrl();
         hljs.initHighlightingOnLoad();
         VOID.hitokoto();
-        if($('.post-like').length > 0){
-            var cookies = $.macaroon('_syan_like') || '';
-            $.each($('.post-like'),function(i,item){
-                var id = $(item).attr('data-pid');
-                if (-1 !== cookies.indexOf(',' + id + ','))  $(item).addClass('done');
-            });
-            $('.post-like').click(function(){
-                $(this).addClass('done');
-            });
-        }
+        VOID.handleLike();
         // 初始化 touch 事件，移动端设备
         $('.item,.board-item').on('touchstart',function(){
             $(this).addClass('hover');
@@ -101,27 +92,20 @@ var VOID = {
         $('#nav-mobile').fadeOut(200);
     },
 
-    // PJAX 结束后
-    afterPjax : function(){
-        NProgress.done();
-        VOID.parsedPhotos();
-        VOID.parseUrl();
-        VOID.reload();
-    },
-
-    // 重载与事件绑定
-    reload : function(){
-        // 重载代码高亮
-        $('pre code').each(function(i, block) {hljs.highlightBlock(block);});   
-        // 重载 MathJax
-        if (typeof MathJax !== 'undefined'){
-            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
-        } 
-        // 重载百度统计
-        if (typeof _hmt !== 'undefined'){
-            _hmt.push(['_trackPageview', location.pathname + location.search]);
+    // 点赞事件处理
+    handleLike : function(){
+        // 已点赞高亮
+        if($('.post-like').length > 0){
+            var cookies = $.macaroon('_syan_like') || '';
+            $.each($('.post-like'),function(i,item){
+                var id = $(item).attr('data-pid');
+                if (-1 !== cookies.indexOf(',' + id + ','))  $(item).addClass('done');
+            });
+            $('.post-like').click(function(){
+                $(this).addClass('done');
+            });
         }
-        // 重新绑定文章点赞事件
+        // 点赞事件绑定
         if($('.post-like').length > 0){
             $('.post-like').click(function(){
                 $(this).addClass('done');
@@ -137,12 +121,29 @@ var VOID = {
                     th.find('.like-num').text(parseInt(zan) + 1);
                 },'json');
             });
-            // 已点赞按钮高亮
-            var cookies = $.macaroon('_syan_like') || '';
-            $.each($('.post-like'),function(i,item){
-                var id = $(item).attr('data-pid');
-                if (-1 !== cookies.indexOf(',' + id + ','))  $(item).addClass('done');
-            });
+        }
+    },
+
+    // PJAX 结束后
+    afterPjax : function(){
+        NProgress.done();
+        VOID.parsedPhotos();
+        VOID.parseUrl();
+        VOID.reload();
+        VOID.handleLike();
+    },
+
+    // 重载与事件绑定
+    reload : function(){
+        // 重载代码高亮
+        $('pre code').each(function(i, block) {hljs.highlightBlock(block);});   
+        // 重载 MathJax
+        if (typeof MathJax !== 'undefined'){
+            MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
+        } 
+        // 重载百度统计
+        if (typeof _hmt !== 'undefined'){
+            _hmt.push(['_trackPageview', location.pathname + location.search]);
         }
         // 重新绑定 touch 事件，移动端设备
         $('.item,.board-item').on('touchstart',function(){

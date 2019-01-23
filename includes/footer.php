@@ -29,13 +29,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <script src="<?php Utils::indexTheme('/assets/jquery/jquery.min.js'); ?>"></script>
         <?php $this->footer(); ?>
         <script src="<?php Utils::indexTheme('/assets/bundle-edfc93f7bb.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID-22af8b9821.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID-093843bbfd.js'); ?>"></script>
+
+        <?php if($this->options->enableMath=='1'): ?>
         <script src='<?php Utils::indexTheme('/assets/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             });
         </script>
+        <?php endif; ?>
         <script>
         if($(".OwO").length > 0){
             new OwO({

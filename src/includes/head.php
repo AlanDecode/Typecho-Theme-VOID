@@ -33,6 +33,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         PJAX : <?php echo $this->options->pjax == '1' ? 'true' : 'false'; ?>,
         searchBase : "<?php Utils::index("/search/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
+        enableMath : <?php echo $this->options->enableMath == '1' ? 'true' : 'false'; ?>,
         tocOffset : 0,
         bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
     }
