@@ -14,6 +14,8 @@ var VOID = {
         hljs.initHighlightingOnLoad();
         VOID.hitokoto();
         VOID.handleLike();
+        // 初始化注脚
+        $.bigfoot({actionOriginalFN: "ignore"});
         // 初始化 touch 事件，移动端设备
         $('.item,.board-item').on('touchstart',function(){
             $(this).addClass('hover');
@@ -152,6 +154,8 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
+        // 重载注脚
+        $.bigfoot({actionOriginalFN: "ignore"});
         // 重载表情
         if($('.OwO').length > 0){
             new OwO({

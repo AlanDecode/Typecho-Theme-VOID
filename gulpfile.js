@@ -50,7 +50,8 @@ gulp.task('pack:js:dep', function(){
         './assets/libs/pjax/np.js',
         './assets/libs/fancybox/jquery.fancybox.min.js',
         './assets/libs/owo/owo.js',
-        './assets/libs/scrollTo/jquery.scrollTo.min.js'])
+        './assets/libs/scrollTo/jquery.scrollTo.min.js',
+        './assets/libs/bigfoot/bigfoot.js'])
         .pipe(concat('bundle.js'))
         .pipe(uglify())
         .pipe(rev())
@@ -102,7 +103,8 @@ gulp.task('dev', function(){
         './assets/libs/pjax/np.js',
         './assets/libs/fancybox/jquery.fancybox.min.js',
         './assets/libs/owo/owo.js',
-        './assets/libs/scrollTo/jquery.scrollTo.min.js'])
+        './assets/libs/scrollTo/jquery.scrollTo.min.js',
+        './assets/libs/bigfoot/bigfoot.js'])
         .pipe(concat('bundle.js'))
         .pipe(gulp.dest('./assets/'));
     return gulp.watch(['./assets/VOID.scss'], function(){
