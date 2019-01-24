@@ -54,6 +54,7 @@ git clone git@github.com:AlanDecode/Typecho-Theme-VOID.git ./VOID && cd ./VOID
 然后安装依赖：
 
 ```bash
+npm install -g gulp
 npm install
 ```
 
