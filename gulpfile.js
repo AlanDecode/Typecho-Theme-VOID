@@ -43,7 +43,7 @@ gulp.task('pack:css:main', function(){
 
 // 依赖 JS 压缩混淆，除 Mathjax
 gulp.task('pack:js:dep', function(){
-    return gulp.src(['./assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
+    return gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
         .pipe(uglify())
         .pipe(rev())
@@ -88,7 +88,7 @@ gulp.task('dev', function(){
     gulp.src(['./assets/libs/**/*.css', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('./assets/'));
-    gulp.src(['./assets/libs/**/*', '!./assets/libs/mathjax/**/*'])
+    gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
         .pipe(gulp.dest('./assets/'));
     return gulp.watch(['./assets/VOID.scss'], function(){
