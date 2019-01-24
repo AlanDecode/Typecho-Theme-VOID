@@ -26,13 +26,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 console.log('Service workers are not supported in the current browser.');
             }
         </script>
-        <script src="<?php Utils::indexTheme('/assets/jquery/jquery.min.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/bundle.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
         <?php $this->footer(); ?>
-        <script src="<?php Utils::indexTheme('/assets/bundle-edfc93f7bb.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID-287b9cae59.js'); ?>"></script>
 
         <?php if($this->options->enableMath=='1'): ?>
-        <script src='<?php Utils::indexTheme('/assets/mathjax/2.7.4/MathJax.js'); ?>' async></script>
+        <script src='<?php Utils::indexTheme('/assets/libs/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
@@ -45,7 +44,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('input-area')[0],
-                api: '<?php Utils::indexTheme('/assets/owo/OwO.json'); ?>',
+                api: '<?php Utils::indexTheme('/assets/libs/owo/OwO.json'); ?>',
                 position: 'down',
                 width: '400px',
                 maxHeight: '250px'

@@ -120,15 +120,15 @@ class Utils
      */
     public static function addButton(){
         echo '<script src="';
-        self::indexTheme('/assets/owo/owo.js');
+        self::indexTheme('/assets/libs/owo/owo.js');
         echo '"></script>';
 
         echo '<script src="';
-        self::indexTheme('/assets/editor-ddc55de5c2.js');
+        self::indexTheme('/assets/editor.js');
         echo '"></script>';
 
         echo '<link rel="stylesheet" href="';
-        self::indexTheme('/assets/owo/owo.min.css');
+        self::indexTheme('/assets/libs/owo/owo.min.css');
         echo '" />';
        
         echo '<style>#custom-field textarea,#custom-field input{width:100%}
