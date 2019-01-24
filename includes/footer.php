@@ -29,7 +29,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <script src="<?php Utils::indexTheme('/assets/jquery/jquery.min.js'); ?>"></script>
         <?php $this->footer(); ?>
         <script src="<?php Utils::indexTheme('/assets/bundle-edfc93f7bb.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID-093843bbfd.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID-287b9cae59.js'); ?>"></script>
 
         <?php if($this->options->enableMath=='1'): ?>
         <script src='<?php Utils::indexTheme('/assets/mathjax/2.7.4/MathJax.js'); ?>' async></script>
@@ -42,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <script>
         if($(".OwO").length > 0){
             new OwO({
-                logo: 'OωO表情',
+                logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('input-area')[0],
                 api: '<?php Utils::indexTheme('/assets/owo/OwO.json'); ?>',
@@ -78,7 +78,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </div>
             <div class="container footer-info">
                 Powered by Typecho
-                <a href="https://github.com/AlanDecode/Typecho-Theme-VOID">Theme VOID</a>
+                <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a>
                 <div><?php echo $this->options->footer; ?></div>
             </div>
         </footer>

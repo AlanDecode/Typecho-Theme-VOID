@@ -155,7 +155,7 @@ var VOID = {
         // 重载表情
         if($('.OwO').length > 0){
             new OwO({
-                logo: 'OωO表情',
+                logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('input-area')[0],
                 api: '/usr/themes/VOID/assets/owo/OwO.json',
