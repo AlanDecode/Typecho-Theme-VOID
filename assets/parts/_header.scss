@@ -6,8 +6,6 @@ header{
     transition: 0.3s ease all;
     position: relative;
     background-image: linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.1));
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     .container{
         height: 58px;
@@ -17,7 +15,7 @@ header{
         display: flex;
         align-items: center;
     }
-    a{
+    a,span.dropdown{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -46,6 +44,39 @@ header{
                 display: block;
                 position: absolute;
                 left: 1rem;
+            }
+        }
+    }
+    span.dropdown{
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s ease all;
+        ul{
+            transition: 0.3s ease all;
+            position: absolute;
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            color: #eee;
+            left: 0;
+            min-width: 100%;
+            li{
+                text-align: left;
+                padding: 0.5em;
+                transition: 0.3s all;
+                white-space: nowrap;
+                &:hover{
+                    background: rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+        &:hover{
+            background: rgba(0, 0, 0, 0.25);
+            ul{
+                background: rgba(0, 0, 0, 0.25);
+                display: block;
             }
         }
     }
@@ -98,6 +129,7 @@ header{
     display: none;
     flex-direction: column;
     padding: 0 1rem;
+    padding-bottom: 5rem;
     .search{
         margin-top: calc(60px + 1rem);
         display: flex;
@@ -123,6 +155,7 @@ header{
         margin-top: 30px;
         padding-top: 1.5rem;
         position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.34);
         &,& *{
             color: #ddd;
         }

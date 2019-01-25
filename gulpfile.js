@@ -15,7 +15,7 @@ var prefixerOptions = {
 
 // 删除旧版与临时文件
 gulp.task('clean', function(){
-    return del(['build', './assets/VOID.css', './assets/bundle.js', './assets/bundle.css']);
+    return del(['build']);
 });
 
 // 依赖 CSS minify、打包，除 MathJax
@@ -88,9 +88,13 @@ gulp.task('dev', function(){
     gulp.src(['./assets/libs/**/*.css', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('./assets/'));
-    gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
+    return gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
         .pipe(gulp.dest('./assets/'));
+});
+
+// 开发过程，监视 SCSS
+gulp.task('sass', function(){
     return gulp.watch(['./assets/VOID.scss'], function(){
         gulp.src('./assets/VOID.scss')
             .pipe(sass())
