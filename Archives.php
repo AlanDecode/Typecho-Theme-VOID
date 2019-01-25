@@ -53,7 +53,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                             <li data-date="<?php echo date('m-d', $created); ?>"><a data-words="<?php echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
                     <?php endforeach; ?>
                         </ul>
-                        <a class="toggle-archive" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
+                        <a class="toggle-archive" target="_self" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
                     </section>
                 <?php $index = $index + 1; endforeach; ?>
             </article>
