@@ -64,14 +64,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
         </section>
         <?php endif; ?>
         <section id="post-list" <?php if($this->is('archive')) echo 'class="archive-list"'; ?>>
-            <div class="section-title">
-            <?php if($this->is('index')) echo 'RECENT'; else $this->archiveTitle(array(
-                        'category'  =>  _t('"%s"'),
-                        'search'    =>  _t('"%s"'),
-                        'tag'       =>  _t('Tag: "%s"'),
-                        'author'    =>  _t('By: %s')
-                    ), '', ''); ?>    
-            </div>
+            <div class="section-title">RECENT</div>
             <?php if($this->have()): ?>
             <?php while($this->next()): ?>
             <a class="item" href="<?php $this->permalink(); ?>">

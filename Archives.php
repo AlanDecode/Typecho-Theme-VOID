@@ -46,15 +46,16 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                         echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × ".Utils::getWordCount()." 字";
                     ?>
                 </p>
-                <?php $archives = Utils::archives(); foreach ($archives as $year => $posts): ?>
-                    <section class="year archives" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
+                <?php $archives = Utils::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
+                    <section  class="year archives <?php if($index > 0) echo 'shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                         <ul>
                     <?php foreach($posts as $created => $post): ?>
-                            <li data-date="<?php echo date('m-d', $created); ?>" data-words="<?php echo $post['words']; ?>"><a href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
+                            <li data-date="<?php echo date('m-d', $created); ?>"><a data-words="<?php echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
                     <?php endforeach; ?>
                         </ul>
+                        <a class="toggle-archive" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
                     </section>
-                <?php endforeach; ?>
+                <?php $index = $index + 1; endforeach; ?>
             </article>
         </section>
 

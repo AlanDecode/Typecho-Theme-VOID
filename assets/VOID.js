@@ -15,7 +15,7 @@ var VOID = {
         VOID.hitokoto();
         VOID.handleLike();
         // 初始化注脚
-        $.bigfoot({actionOriginalFN: "ignore"});
+        $.bigfoot({actionOriginalFN: 'ignore'});
         // 初始化 touch 事件，移动端设备
         $('.item,.board-item').on('touchstart',function(){
             $(this).addClass('hover');
@@ -155,7 +155,7 @@ var VOID = {
             $(this).removeClass('hover');
         });
         // 重载注脚
-        $.bigfoot({actionOriginalFN: "ignore"});
+        $.bigfoot({actionOriginalFN: 'ignore'});
         // 重载表情
         if($('.OwO').length > 0){
             new OwO({
@@ -183,6 +183,17 @@ var VOID = {
     closeModal : function () {
         document.body.classList.remove('modal-open');
         document.scrollingElement.scrollTop = VOID.scrollTop;
+    },
+
+    toggleArchive : function (item) {
+        if($(item).parent().hasClass('shrink')){
+            $(item).html('-');
+            $(item).parent().removeClass('shrink');
+        }
+        else{
+            $(item).html('+');
+            $(item).parent().addClass('shrink');
+        }
     }
 };
 

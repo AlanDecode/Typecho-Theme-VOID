@@ -177,6 +177,13 @@ article.post{
         padding-top: 3rem;
         padding-left: 5rem;
         margin-bottom: 1rem;
+        &.shrink{
+            overflow-y: hidden;
+            max-height: 3rem;
+        }
+        &:first-of-type{
+            margin-top: 2rem;
+        }
         &::before{
             content: attr(data-year);
             position: absolute;
@@ -196,6 +203,15 @@ article.post{
             font-size: 0.9rem;
             color: $fadeColor;
         }
+        &.detail{
+            padding-top: 0;
+            &::after{
+                display: none;
+            }
+            li{
+                margin-bottom: 1.5rem;
+            }
+        }
         ul{
             list-style: none;
             padding: 0;
@@ -205,11 +221,19 @@ article.post{
                 position: relative;
                 a{
                     border: none!important;
+                    h4{
+                        display: inline;
+                    }
+                    &::after{
+                        content: " ＋ " attr(data-words) " 字";
+                        font-size: 0.9rem;
+                        color: rgba(0,0,0,0.3);
+                    }
                 }
-                &::after{
-                    content: " ＋ " attr(data-words) " 字";
-                    font-size: 0.9rem;
-                    color: rgba(0,0,0,0.3);
+                p{
+                    line-height: 1.8;
+                    font-size: 0.95rem;
+                    color: #666;
                 }
                 &::before{
                     content: attr(data-date);
@@ -222,6 +246,28 @@ article.post{
                     left: -4rem;
                     top: 0.75rem;
                 }
+            }
+        }
+        a.toggle-archive{
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            font-size: 0.9rem;
+            display: block;
+            background: #eee;
+            display: inline-block;
+            line-height: 1;
+            left: 8.5rem;
+            border: none!important;
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            width: 1.5rem;
+            text-align: center;
+            transition: 0.3s ease all;
+            color: $textColor;
+            &:hover{
+                background: $darkColor;
+                color: #dddddd;
             }
         }
     }
