@@ -172,58 +172,55 @@ article.post{
         }
     }
     
-    #archives{
-        ol{
+    section.archives{
+        position: relative;
+        padding-top: 3rem;
+        padding-left: 5rem;
+        margin-bottom: 1rem;
+        &::before{
+            content: attr(data-year);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+            width: 4rem;
+            text-align: right;
+        }
+        &::after{
+            content: attr(data-num) " 篇";
+            position: absolute;
+            top: 0.6rem;
+            left: 5rem;
+            font-size: 0.9rem;
+            color: $fadeColor;
+        }
+        ul{
             list-style: none;
             padding: 0;
-            margin-top: 3rem;
+            margin: 0;
             li{
-                display: block;
-                margin-bottom: 1rem;
-                display: flex;
-                flex-direction: row;
-                >div{
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
+                line-height: 2.5;
+                position: relative;
+                a{
+                    border: none!important;
                 }
-                >div:first-child{
-                    margin-right: 3rem;
-                    align-items: flex-end;
-                    width: 11rem;
-                    @media screen and (max-width:767px) {
-                        width: 5rem;
-                        span span{
-                            display: none;
-                        }
-                    }
-                    &::after{
-                        content: "";
-                        position: absolute;
-                        right: calc(-1.5rem - 1.5px);
-                        top: 0;
-                        width: 3px;
-                        height: calc(100% + 1rem);
-                        background: #e6e6e6;
-                    }
+                &::after{
+                    content: " ＋ " attr(data-words) " 字";
+                    font-size: 0.9rem;
+                    color: rgba(0,0,0,0.3);
                 }
-                >div:last-child{
-                    flex: 1;
-                    justify-content: center;
-                    &::before{
-                        content: "";
-                        position: absolute;
-                        left: calc(-1.5rem - 4.5px);
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background: $fadeColor;
-                    }
-                    &:hover::before{
-                        background: #ffe324;
-                    }
+                &::before{
+                    content: attr(data-date);
+                    font-size: 0.9rem;
+                    color: rgba(0, 0, 0, 0.3);
+                    position: absolute;
+                    display: inline-block;
+                    width: 4rem;
+                    line-height: 1;
+                    left: -4rem;
+                    top: 0.75rem;
                 }
             }
         }

@@ -192,4 +192,87 @@ class Utils
         ->limit(1));
         echo date('Y-m-d\TH:i', $content['created']);
     }
+
+    /**
+     * 已发布文章数量
+     * 
+     * @return int
+     */
+    public static function getPostNum(){
+        $db = Typecho_Db::get();
+        return $db->fetchObject($db->select(array('COUNT(cid)' => 'num'))
+                    ->from('table.contents')
+                    ->where('table.contents.type = ?', 'post')
+                    ->where('table.contents.status = ?', 'publish'))->num;
+    }
+
+    /**
+     * 分类数量
+     * 
+     * @return int
+     */
+    public static function getCatNum(){
+        $db = Typecho_Db::get();
+        return $db->fetchObject($db->select(array('COUNT(mid)' => 'num'))
+                    ->from('table.metas')
+                    ->where('table.metas.type = ?', 'category'))->num;
+    }
+
+    /**
+     * 标签数量
+     * 
+     * @return int
+     */
+    public static function getTagNum(){
+        $db = Typecho_Db::get();
+        return $db->fetchObject($db->select(array('COUNT(mid)' => 'num'))
+                    ->from('table.metas')
+                    ->where('table.metas.type = ?', 'tag'))->num;
+    }
+
+    /**
+     * 总字数
+     * 
+     * @return int
+     */
+    public static function getWordCount(){
+        $db = Typecho_Db::get();
+        $posts = $db->fetchAll($db->select('table.contents.text')
+                    ->from('table.contents')
+                    ->where('table.contents.type = ?', 'post')
+                    ->where('table.contents.status = ?', 'publish'));
+        $total = 0;
+        foreach ($posts as $post) {
+            $total = $total + mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $post['text']), 'UTF-8');
+        }
+        return $total;
+    }
+
+    /**
+     * 内容归档
+     * 
+     * @return array
+     */
+    public static function archives($excerpt = false){
+        error_reporting(E_ALL & ~E_NOTICE);
+        $db = Typecho_Db::get();
+        $cids = $db->fetchAll($db->select('table.contents.cid')
+                    ->from('table.contents')
+                    ->order('table.contents.created', Typecho_Db::SORT_DESC)
+                    ->where('table.contents.type = ?', 'post')
+                    ->where('table.contents.status = ?', 'publish'));
+        $stat = array();
+        foreach ($cids as $cid) {
+            $post = Helper::widgetById('contents', $cid);
+            $arr = array(
+                'title' => $post->title,
+                'permalink' => $post->permalink,
+                'words' => mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $post->content), 'UTF-8'));
+            if($excerpt){
+                $arr['excerpt'] = substr($post->content, 30);
+            }
+            $stat[date('Y', $post->created)][$post->created] = $arr;
+        }
+        return $stat;
+    }
 }

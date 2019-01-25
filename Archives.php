@@ -42,34 +42,19 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             <article class="post yue">
                 <h1 class="post-title"><?php $this->title(); ?></h1>
                 <p class="post-meta">
-                    <?php $this->author(); ?>&nbsp;•&nbsp;
-                    <?php echo date('Y-m-d', $this->created); ?>&nbsp;•&nbsp;
-                    <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
                     <?php 
-                        if(Utils::isPluginAvailable('TePostViews'))
-                        {
-                            echo '&nbsp;•&nbsp;';
-                            $this->viewsNum();
-                            echo '&nbsp;阅读';
-                        }
+                        echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × ".Utils::getWordCount()." 字";
                     ?>
                 </p>
-                <div id="archives">
-                    <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archives);?>
-                    <ol>
-                    <?php while($archives->next()): ?>
-                    <li>
-                        <div class="meta">
-                            <span class="date"><?php echo date('M d\<\s\p\a\n\> l\<\/\s\p\a\n\>',$archives->created); ?></span>
-                            <span class="year"><?php echo date('Y',$archives->created); ?></span>
-                        </div>
-                        <div class="content">
-                            <span class="title"><a href="<?php $archives->permalink(); ?>"><?php $archives->title(); ?></a></span>
-                        </div>
-                    </li>
-                    <?php endwhile; ?>
-                    </ol>
-                </div>
+                <?php $archives = Utils::archives(); foreach ($archives as $year => $posts): ?>
+                    <section class="year archives" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
+                        <ul>
+                    <?php foreach($posts as $created => $post): ?>
+                            <li data-date="<?php echo date('m-d', $created); ?>" data-words="<?php echo $post['words']; ?>"><a href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
+                    <?php endforeach; ?>
+                        </ul>
+                    </section>
+                <?php endforeach; ?>
             </article>
         </section>
 
