@@ -77,7 +77,7 @@ gulp.task('move', function(){
         .pipe(gulp.dest('./build/assets/libs/'));
     gulp.src(['./assets/sw-toolbox.js', './assets/VOIDCacheRule.js'])
         .pipe(gulp.dest('./build/assets/'));
-    return  gulp.src(['./LICENSE', './README.md', './screenshot.png'])
+    return  gulp.src(['./LICENSE', './README.md', './screenshot.png', './advanceSetting.sample.json'])
         .pipe(gulp.dest('./build/'));
 });
 

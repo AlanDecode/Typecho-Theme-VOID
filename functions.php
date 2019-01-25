@@ -52,6 +52,10 @@ function themeConfig($form) {
     $form->addInput($pjax);
     $pjaxreload=new Typecho_Widget_Helper_Form_Element_Textarea('pjaxreload', NULL, NULL, _t('PJAX 重载函数'), _t('输入要重载的 JS，如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭 PJAX 并留空此项。'));
     $form->addInput($pjaxreload);
+
+    // 超高级设置
+    $advance=new Typecho_Widget_Helper_Form_Element_Textarea('advance', NULL, NULL, _t('超高级设置'), _t('主题中包含一份 advanceSetting.sample.json，自己仿照着写吧。'));
+    $form->addInput($advance);
 }
 
 /**

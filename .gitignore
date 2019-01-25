@@ -3,7 +3,6 @@ package-lock.json
 temp/*
 build/*
 build.zip
-includes/header.json
 assets/bundle.js
 assets/bundle.css
 assets/VOID.css

@@ -1,0 +1,44 @@
+{
+    "verySimpleIndex" : false,
+    "name" : "A Panda.",
+    "nav" : [
+        {
+            "name" : "捉迷藏",
+            "items" : [
+                {
+                    "link" : "http:\/\/t.me\/imalanblog",
+                    "title" : "Telegram 群"
+                },
+                {
+                    "link" : "https:\/\/shang.qq.com\/wpa\/qunwpa?idkey=4ed2406c1d84b70c319c8ee79752d1704702b770aa0da405ca0f274e4d4db5f8",
+                    "title" : "QQ 群组"
+                },
+                {
+                    "link" : "https:\/\/weibo.com\/5245109677",
+                    "title" : "新浪微博"
+                }, 
+                {
+                    "link" : "https:\/\/twitter.com\/AlanDecode",
+                    "title" : "Twitter"
+                },
+                {
+                    "link" : "https:\/\/github.com\/AlanDecode",
+                    "title" : "GitHub"
+                }
+            ]
+        },
+        {
+            "name" : "秘密花园",
+            "items" : [
+                {
+                    "link" : "https:\/\/www.imalan.cn",
+                    "title" : "引导页"
+                },
+                {
+                    "link" : "https:\/\/api.imalan.cn",
+                    "title" : "熊猫 API"
+                }
+            ]
+        }
+    ]
+}

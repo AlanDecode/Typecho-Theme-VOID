@@ -247,4 +247,27 @@ class Utils
         }
         return $total;
     }
+
+    /**
+     * 超高级设置
+     * 
+     * @return array
+     */
+    public static function getAdvanceSettings(){
+        $output = array(
+            'verySimpleIndex' => false,
+            'nav' => false,
+            'name' => false
+        );
+        if(!Helper::options()->advance || Helper::options()->advance == '') return $output;
+
+        $settings = json_decode(Helper::options()->advance);
+
+        if(property_exists($settings, 'name')) $output['name'] = $settings->name;
+        if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
+        if(property_exists($settings, 'verySimpleIndex')) $output['verySimpleIndex'] = $settings->verySimpleIndex;
+
+        return $output;
+    }
+
 }

@@ -11,21 +11,21 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
 <body>
-    <?php $extConfig = false; if(file_exists(__DIR__.'/header.json'))  $extConfig = json_decode(file_get_contents(__DIR__.'/header.json')); ?>
+    <?php $advance = Utils::getAdvanceSettings(); ?>
     <header>
         <div class="container">
             <a class="toggle" href="javascript:void(0);" onclick="toggleNav(this);">
                 <span></span>
             </a>
             <nav>
-                <a class="brand" href="<?php Utils::index(''); ?>"><?php if($extConfig && $extConfig->name) echo $extConfig->name; else echo $this->options->title; ?></a>
+                <a class="brand" href="<?php Utils::index(''); ?>"><?php if($advance['name']) echo $advance['name']; else echo $this->options->title; ?></a>
                 <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>
                 <span class="dropdown">分类
                     <ul>
                         <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a></li>'); ?>
                     </ul>
                 </span>
-                <?php if($extConfig && property_exists($extConfig, 'nav')){ foreach ($extConfig->nav as $listItem): ?>
+                <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
                 <span class="dropdown"><?php echo $listItem->name; ?>
                     <ul>
                         <?php foreach ($listItem->items as $item) {
@@ -52,7 +52,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php $this->widget('Widget_Metas_Category_List')->parse('<a href="{permalink}">{name}</a>'); ?>
             </nav>
         </section>
-        <?php if($extConfig && property_exists($extConfig, 'nav')){ foreach ($extConfig->nav as $listItem): ?>
+        <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
         <section data-title="<?php echo $listItem->name; ?>">
             <nav>
                 <?php foreach ($listItem->items as $item) {

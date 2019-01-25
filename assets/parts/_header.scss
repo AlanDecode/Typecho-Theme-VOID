@@ -5,7 +5,7 @@ header{
     width: 100%;
     transition: 0.3s ease all;
     position: relative;
-    background-image: linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.1));
+    background-image: linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
     border-bottom: 1px solid rgba(255,255,255,0.1);
     .container{
         height: 58px;
@@ -60,8 +60,6 @@ header{
             margin: 0;
             top: 100%;
             color: #eee;
-            left: 50%;
-            transform: translateX(-50%);
             min-width: 100%;
             li{
                 text-align: left;
@@ -74,9 +72,9 @@ header{
             }
         }
         &:hover{
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.4);
             ul{
-                background: rgba(0, 0, 0, 0.25);
+                background: rgba(0, 0, 0, 0.4);
                 display: block;
             }
         }
