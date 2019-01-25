@@ -276,4 +276,32 @@ EOF;
             echo '<span>没有啦~</span>';
         }
     }
+
+    /**
+     * 内容归档
+     * 
+     * @return array
+     */
+    public static function archives($excerpt = false){
+        error_reporting(E_ALL & ~E_NOTICE);
+        $db = Typecho_Db::get();
+        $cids = $db->fetchAll($db->select('table.contents.cid')
+                    ->from('table.contents')
+                    ->order('table.contents.created', Typecho_Db::SORT_DESC)
+                    ->where('table.contents.type = ?', 'post')
+                    ->where('table.contents.status = ?', 'publish'));
+        $stat = array();
+        foreach ($cids as $cid) {
+            $post = Helper::widgetById('contents', $cid);
+            $arr = array(
+                'title' => $post->title,
+                'permalink' => $post->permalink,
+                'words' => mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $post->content), 'UTF-8'));
+            if($excerpt){
+                $arr['excerpt'] = substr($post->content, 30);
+            }
+            $stat[date('Y', $post->created)][$post->created] = $arr;
+        }
+        return $stat;
+    }
 }

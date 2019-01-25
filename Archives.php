@@ -46,7 +46,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                         echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × ".Utils::getWordCount()." 字";
                     ?>
                 </p>
-                <?php $archives = Utils::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
+                <?php $archives = Contents::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
                     <section  class="year archives <?php if($index > 0) echo 'shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                         <ul>
                     <?php foreach($posts as $created => $post): ?>
