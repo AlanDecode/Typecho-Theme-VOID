@@ -291,7 +291,15 @@ EOF;
                     ->where('table.contents.status = ?', 'publish'));
         $stat = array();
         foreach ($cids as $cid) {
-            $post = Helper::widgetById('contents', $cid);
+            
+            // Typecho 1.2 版本以下 Helper::widgetById 方法有 bug
+            //$post = Helper::widgetById('contents', $cid['cid']);
+            
+            $post = new Widget_Abstract_Contents(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+            $db->fetchRow($post->select()
+                ->where("cid = ?", $cid)
+                ->limit(1),
+                array($post, 'push'));
             $arr = array(
                 'title' => $post->title,
                 'permalink' => $post->permalink,
