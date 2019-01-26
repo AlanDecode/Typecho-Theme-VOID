@@ -60,6 +60,8 @@ header{
             margin: 0;
             top: 100%;
             color: #eee;
+            left: 50%;
+            transform: translateX(-50%);
             min-width: 100%;
             li{
                 text-align: left;

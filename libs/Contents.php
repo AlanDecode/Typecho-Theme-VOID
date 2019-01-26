@@ -49,10 +49,10 @@ Class Contents
     public static function title(Widget_Archive $archive)
     {
         $archive->archiveTitle(array(
-            'category'  =>  _t('分类 %s 下的文章'),
-            'search'    =>  _t('包含关键字 %s 的文章'),
-            'tag'       =>  _t('标签 %s 下的文章'),
-            'author'    =>  _t('%s 发布的文章')
+            'category'  =>  '分类 %s 下的文章',
+            'search'    =>  '包含关键字 %s 的文章',
+            'tag'       =>  '标签 %s 下的文章',
+            'author'    =>  '%s 发布的文章'
         ), '', ' - ');
         Helper::options()->title();
     }
@@ -283,7 +283,6 @@ EOF;
      * @return array
      */
     public static function archives($excerpt = false){
-        error_reporting(E_ALL & ~E_NOTICE);
         $db = Typecho_Db::get();
         $cids = $db->fetchAll($db->select('table.contents.cid')
                     ->from('table.contents')

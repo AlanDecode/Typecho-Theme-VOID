@@ -47,14 +47,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <input name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
                     <label for="receiveMail"><strong>接收</strong>邮件通知</label>
                 </span>
-                <button id="comment-submit-button" type="submit" class="submit btn btn-normal"><?php _e('提交评论'); ?></button>
+                <button id="comment-submit-button" type="submit" class="submit btn btn-normal"><?php '提交评论'; ?></button>
             </p>
         </form>
     </div>
     <?php if ($comments->have()): ?>
         <h3 class="comment-separator">
             <div class="comment-tab-current">
-                <span class="comment-num"><?php $this->commentsNum(_t('评论列表'), _t('已有 1 条评论'), _t('已有 %d 条评论')); ?></span>
+                <span class="comment-num"><?php $this->commentsNum('评论列表', '已有 1 条评论', '已有 %d 条评论'); ?></span>
             </div>
         </h3>
         <?php $comments->listComments(array(

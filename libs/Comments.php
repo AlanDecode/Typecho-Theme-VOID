@@ -431,8 +431,8 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             'beforeDate'    =>  '',
             'afterDate'     =>  '',
             'dateFormat'    =>  $this->options->commentDateFormat,
-            'replyWord'     =>  _t('回复'),
-            'commentStatus' =>  _t('您的评论正等待审核!'),
+            'replyWord'     =>  '回复',
+            'commentStatus' =>  '您的评论正等待审核!',
             'avatarSize'    =>  32,
             'defaultAvatar' =>  NULL
         ));
@@ -493,7 +493,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
     public function reply($word = '')
     {
         if ($this->options->commentsThreaded && $this->parameter->allowComment) {
-            $word = empty($word) ? _t('回复') : $word;
+            $word = empty($word) ? '回复' : $word;
             $this->pluginHandle()->trigger($plugged)->reply($word, $this);
             
             if (!$plugged) {
@@ -514,7 +514,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
     public function cancelReply($word = '')
     {
         if ($this->options->commentsThreaded) {
-            $word = empty($word) ? _t('取消回复') : $word;
+            $word = empty($word) ? '取消回复' : $word;
             $this->pluginHandle()->trigger($plugged)->cancelReply($word, $this);
             
             if (!$plugged) {
