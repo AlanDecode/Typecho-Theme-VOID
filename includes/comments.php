@@ -47,7 +47,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <input name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
                     <label for="receiveMail"><strong>接收</strong>邮件通知</label>
                 </span>
-                <button id="comment-submit-button" type="submit" class="submit btn btn-normal"><?php '提交评论'; ?></button>
+                <button id="comment-submit-button" type="submit" class="submit btn btn-normal">提交评论</button>
             </p>
         </form>
     </div>
