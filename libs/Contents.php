@@ -188,7 +188,7 @@ EOF;
      * @return string
      */
     private static function parsePaopaoBiaoqingCallback($match){
-        return '<img class="biaoqing" src="/usr/themes/VOID/assets/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
@@ -197,7 +197,7 @@ EOF;
      * @return string
      */
     private static function parseAruBiaoqingCallback($match){
-        return '<img class="biaoqing" src="/usr/themes/VOID/assets/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+        return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
     /**
