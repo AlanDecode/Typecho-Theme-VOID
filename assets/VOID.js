@@ -262,6 +262,7 @@ function enterSearch(item){
 // eslint-disable-next-line no-unused-vars
 function toggleNav(item){
     $(item).toggleClass('pushed');
+    $('header').toggleClass('opened');
     if($(item).hasClass('pushed')){
         $('#nav-mobile').fadeIn(200);
         VOID.openModal();
