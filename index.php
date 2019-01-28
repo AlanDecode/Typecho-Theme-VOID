@@ -41,7 +41,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
     <?php endif; ?>
 
     <div class="wrapper container">
-        <?php if(!$this->is('archive')): ?>
         <?php $this->next(); ?>
         <section id="new">
             <div class="section-title">LATEST</div>
@@ -64,10 +63,8 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <?php endif; ?>
             </a>
         </section>
-        <?php endif; ?>
-        <section id="post-list" <?php if($this->is('archive')) echo 'class="archive-list"'; ?>>
+        <section id="post-list">
             <div class="section-title">RECENT</div>
-            <?php if($this->have()): ?>
             <?php while($this->next()): ?>
             <a class="item" href="<?php $this->permalink(); ?>">
                 <?php $lazyID = rand(1,10000); ?>
@@ -103,13 +100,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 </div>
             </a>
             <?php endwhile;?>
-            <?php else: ?>
-            <div class="not-found">
-                <h1>糟糕！是 404 的感觉</h1>
-                <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search_404" class="text" required placeholder="Try search..." />
-                <p><a href="<?php Utils::indexHome('/'); ?>">← 返回首页</a></p>
-            </div>
-            <?php endif; ?>
         </section>
         <?php $this->pageNav('←', '→', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>

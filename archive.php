@@ -2,7 +2,7 @@
 /** 
  * archives
  *  
- * @author      熊猫小A
+ * @author      熊猫尝A
  * @version     2019-01-17 0.1
  * 
 */ 
@@ -16,7 +16,13 @@ if(!Utils::isPjax()){
 } 
 ?>
 
-<?php $this->need('includes/archives.php'); ?>
+<?php 
+if($this->have()){
+    $this->need('includes/archives.php');
+}else{
+    $this->need('includes/404.php');
+}
+?>
 
 <?php 
 if(!Utils::isPjax()){
