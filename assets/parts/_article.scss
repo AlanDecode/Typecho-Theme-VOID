@@ -375,6 +375,9 @@ article.post{
         padding: 0 1rem;
         margin: 0;
         li{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             line-height: 1.5;
             font-size: 0.9rem;
             &,& *{
