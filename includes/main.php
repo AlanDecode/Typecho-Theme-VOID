@@ -73,7 +73,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             <!--目录，可选-->
             <?php if($this->fields->showTOC == '1'): ?>
                     <div class="TOC"><?php echo $content['toc']; ?></div>
-                    <div class="toggle-toc"><a class="toggle" href="javascript:void(0);" onclick="toggleToc(this);"><span></span></a>
+                    <div class="toggle-toc"><a target="_self" class="toggle" href="javascript:void(0);" onclick="toggleToc(this);"><span></span></a>
                     </div>
             <?php endif; ?>
             <!--分页-->

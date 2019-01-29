@@ -14,7 +14,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $advance = Utils::getAdvanceSettings(); ?>
     <header>
         <div class="container">
-            <a class="toggle" href="javascript:void(0);" onclick="toggleNav(this);">
+            <a class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
                 <span></span>
             </a>
             <nav>
