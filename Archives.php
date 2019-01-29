@@ -32,9 +32,9 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
     <?php if(!Utils::isWeixin()): ?>
         <?php $lazyID = rand(1,10000); ?>
         <div class="lazy-wrap loading"><div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div></div>
-        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultBanner.'?v='.rand(), $lazyID); ?>
+        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultBanner, $lazyID); ?>
     <?php else: ?>
-        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultBanner.'?v='.rand(); ?>)" class="lazy loaded"></div></div>
+        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultBanner; ?>)" class="lazy loaded"></div></div>
     <?php endif; ?>
 
     <div class="wrapper container">
