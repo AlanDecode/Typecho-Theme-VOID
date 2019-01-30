@@ -27,25 +27,18 @@ var VOID = {
 
     // 解析照片集
     parsedPhotos : function(){
-        var nPhotos=$('article .photos img').length;
-        var parsedPhotos=0;
-        $.each($('article .photos'),function(i,item){
-            var MinHeight=10000000000000;
-            $.each($(item).find('img'),function(ii,iitem){
-                var theImage = new Image();
-                theImage.onload=function(){
-                    $(iitem).parent().attr('data-height',String(theImage.height));
-                    $(iitem).parent().attr('data-width',String(theImage.width));
-                    MinHeight=MinHeight<theImage.height?MinHeight:theImage.height;
-                    $(item).attr('data-min-h',String(MinHeight));
-                    parsedPhotos++;
-                    if(parsedPhotos>=nPhotos){
-                        $.each($('article .photos a'),function(i,item){
-                            $(item).css('flex',String(parseFloat($(item).parent().attr('data-min-h'))/parseFloat($(item).attr('data-height'))));
-                        });
-                    }
+        var base = 50;
+        $.each($('.photos'), function(i, photoSet){
+            $.each($(photoSet).children(), function(j, item){
+                var img = new Image();
+                img.src = $(item).find('img').attr('src');
+                img.onload = function(){
+                    var w = parseFloat(img.width);
+                    var h = parseFloat(img.height);
+                    $(item).css('width', w*base/h +'px');
+                    $(item).css('flex-grow', w*base/h);
+                    $(item).find('a').css('padding-top', h/w*100+'%');
                 };
-                theImage.src = $(iitem).attr('src');
             });
         });
     },

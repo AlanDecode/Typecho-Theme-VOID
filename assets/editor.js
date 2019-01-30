@@ -18,21 +18,21 @@ $(function() {
         if (document.selection) {
             myField.focus();
             sel = document.selection.createRange();
-            sel.text = '[photos des=""]\n\n'+sel.text+'[/photos]';
+            sel.text = '\n\n[photos]\n\n'+sel.text+'[/photos]\n\n';
             myField.focus();
         }
         else if (myField.selectionStart || myField.selectionStart == '0') {
             var startPos = myField.selectionStart;
             var endPos = myField.selectionEnd;
             myField.value = myField.value.substring(0, startPos)
-            + '[photos des=""]\n\n[/photos]'
+            + '\n\n[photos]\n\n[/photos]\n\n'
             + myField.value.substring(endPos, myField.value.length);
             myField.focus();
-            myField.selectionStart=startPos+'[photos des=""]'.length+1;
-            myField.selectionEnd=startPos+'[photos des=""]'.length+1;
+            myField.selectionStart=startPos+'[photos]'.length+3;
+            myField.selectionEnd=startPos+'[photos]'.length+3;
         }
         else{
-            myField.value +='[photos des=""]\n\n[/photos]';
+            myField.value +='\n\n[photos]\n\n[/photos]\n\n';
             myField.focus();
         }
     });

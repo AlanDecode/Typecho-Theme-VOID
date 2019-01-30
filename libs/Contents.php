@@ -168,10 +168,22 @@ EOF;
      * @return string
      */
     static public function parsePhotoSet($content){
-        $reg='/\[photos.*?des="(.*?)"\](.*?)\[\/photos\]/s';
-        $rp='<div class="photos" data-des="${1}">${2}</div>';
-        $new=preg_replace($reg,$rp,$content);
+        // 清除无用 tag
+        $reg = '/\[photos(.*?)\/photos\]/s';
+        $new = preg_replace_callback($reg, array('Contents', 'parsePhotoSetCallBack'), $content);
+        $reg='/<p>\[photos.*?\](.*?)\[\/photos\]<\/p>/s';
+        $rp='<div class="photos">${1}</div>';
+        $new=preg_replace($reg, $rp, $new);
         return $new;
+    }
+
+    /**
+     * 解析照片集回调函数
+     * 
+     * @return string
+     */
+    private static function parsePhotoSetCallBack($match){
+        return '[photos'. str_replace(['<br>', '<p>', '</p>'], '', $match[1]) .'/photos]';
     }
 
     /**
@@ -212,10 +224,21 @@ EOF;
      * @return string
      */
     static public function parseFancyBox($content){
-        $reg='/<img(.*?)src="(.*?)"(.*?)>/s';
-        $rp='<a data-fancybox="gallery" href="${2}"><img${1}src="${2}"${3}></a>';
-        $new=preg_replace($reg,$rp,$content);
+        $reg = '/<img.*?src="(.*?)".*?alt="(.*?)".*?>/s';
+        $new = preg_replace_callback($reg, array('Contents', 'parseFancyBoxCallback'), $content);
         return $new;
+    }
+
+    /**
+     * 解析图片
+     * 
+     * @return string
+     */
+    private static function parseFancyBoxCallback($match){
+        if($match[2] == '')
+            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img src="'.$match[1].'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
+        else
+            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img src="'.$match[1].'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
     }
 
     /**

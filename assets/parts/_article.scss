@@ -76,50 +76,49 @@ article.post{
         }
     }
     .photos{
-        width: 100%;
-        max-width: 100%;
         display: flex;
-        position: relative;
-        padding-top: 10px!important;
-        &::before{
-            content: attr(data-des);
-            position: absolute;
-            font-size: 14px;
-            line-height: 1;
-            font-weight: 600;
-            color: rgba(255,112,121,0.6);
-            left: 2.5px;
-            top: -8px;
-        }
-        br{
-            display: none!important;
-        }
-        a{
-            display: block;
-            flex: 1;
-            border: none;
-            text-decoration: none;
-            margin: 0 5px;
-            &:first-of-type{
+        flex-wrap: wrap;
+        figure{
+            position: relative;
+            margin: 5px;
+            @media screen and (max-width: 767px){
+                margin: 5px 0;
+                min-width: 100%;
+                flex: 1;
+            }
+            &:first-child{
                 margin-left: 0;
             }
-            &::last-of-type{
+            &:last-child{
                 margin-right: 0;
             }
-        }
-        img{
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-            margin: 0;
-        }
-        @media screen and (max-width:767px) {
-            flex-direction: column;
-            width: 100%;
-            max-width: 100%;
-            margin-left: 0;
             a{
-                margin: 5px 0!important;
+                height: 0;
+                position: relative;
+                img{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                }
+            }
+            figcaption{
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: auto;
+                margin: 0;
+                padding: 60px 0 10px;
+                color: #fff;
+                background-image: linear-gradient(180deg,hsla(0,0%,100%,0) 0,rgba(0,0,0,.03) 26%,rgba(0,0,0,.4) 71%,rgba(0,0,0,.5));
+                opacity: .6;
+                transition: opacity .3s ease;
+            }
+            &:hover figcaption{
+                opacity: 1;
             }
         }
     }
