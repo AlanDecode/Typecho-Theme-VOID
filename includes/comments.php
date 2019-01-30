@@ -24,7 +24,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     ?>
     <?php $this->header('commentReply=1&description=0&keywords=0&generator=0&template=0&pingback=0&xmlrpc=0&wlw=0&rss2=0&rss1=0&antiSpam=0&atom'); ?>
     <div id="<?php $this->respondId(); ?>" class="respond">
-        <div class="cancel-comment-reply">
+        <div class="cancel-comment-reply" role=button aria-label="取消评论">
             <?php $comments->cancelReply(); ?>
         </div>
         <h3 id="response" class="widget-title text-left">添加新评论</h3>
@@ -33,23 +33,23 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <p id="logged-in" data-name="<?php $this->user->screenName(); ?>" data-url="<?php $this->user->url(); ?>" data-email="<?php $this->user->mail(); ?>" ><?php _e('登录身份: '); ?><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>. <a no-pjax href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></p>
             <?php else: ?>
                 <div class="comment-info-input">
-                <input type="text" name="author" id="author" placeholder="称呼(必填)" value="<?php $this->remember('author'); ?>" />
-                <input type="email" name="mail" id="mail" placeholder="电子邮件<?php echo Helper::options()->commentsRequireMail? '(必填，将保密)' : '(选填)' ?>" value="<?php $this->remember('mail'); ?>" />
-                <input type="url" name="url" id="url" placeholder="网站<?php echo Helper::options()->commentsRequireURL? '(必填)' : '(选填)' ?>"  value="<?php $this->remember('url'); ?>" />
+                <input aria-label="称呼(必填)" type="text" name="author" id="author" placeholder="称呼(必填)" value="<?php $this->remember('author'); ?>" />
+                <input aria-label="电子邮件<?php echo Helper::options()->commentsRequireMail? '(必填，将保密)' : '(选填)' ?>" type="email" name="mail" id="mail" placeholder="电子邮件<?php echo Helper::options()->commentsRequireMail? '(必填，将保密)' : '(选填)' ?>" value="<?php $this->remember('mail'); ?>" />
+                <input aria-label="网站(选填)" type="url" name="url" id="url" placeholder="网站<?php echo Helper::options()->commentsRequireURL? '(必填)' : '(选填)' ?>"  value="<?php $this->remember('url'); ?>" />
                 </div>
             <?php endif; ?>
             <p style="margin-top:0">
-                <textarea class="input-area" rows="5" name="text" id="textarea" placeholder="在这里输入你的评论..." style="resize:none;"><?php $this->remember('text'); ?></textarea>
+                <textarea aria-label="评论输入框" class="input-area" rows="5" name="text" id="textarea" placeholder="在这里输入你的评论..." style="resize:none;"><?php $this->remember('text'); ?></textarea>
             </p>
             <p class="comment-buttons">
-                <span class="OwO"></span>
+                <span class="OwO" aria-label="表情按钮"></span>
                 <?php if(Utils::isPluginAvailable('CommentToMail')): ?>
                 <span class="comment-mail-me">
-                    <input name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
+                    <input aria-label="接收邮件通知" name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
                     <label for="receiveMail"><strong>接收</strong>邮件通知</label>
                 </span>
                 <?php endif; ?>
-                <button id="comment-submit-button" type="submit" class="submit btn btn-normal">提交评论</button>
+                <button aria-label="提交评论" id="comment-submit-button" type="submit" class="submit btn btn-normal">提交评论</button>
             </p>
         </form>
     </div>
@@ -63,6 +63,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         'before'        =>  '<div class="comment-list">',
         'after'         =>  '</div>'
         )); ?>
-        <?php $comments->pageNav('←', '→', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
+        <?php $comments->pageNav('<span aria-label="评论上一页">←</span>', '<span aria-label="评论下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     <?php endif; ?>
 </section>

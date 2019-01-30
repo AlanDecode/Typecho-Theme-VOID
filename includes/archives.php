@@ -39,7 +39,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                         'author'    =>  _t('"%s" 发布的文章')
                     ), '', '');  ?></h1>
                 <section class="archives detail">
-                    <ul>
+                    <ul aria-label="文章列表">
                     <?php while($this->next()): ?>
                     <li data-date="<?php echo date('m-d', $this->created); ?>" >
                         <a href="<?php $this->permalink(); ?>"
@@ -53,6 +53,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 </section>
             </article>
         </section>
-        <?php $this->pageNav('←', '→', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
+        <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>

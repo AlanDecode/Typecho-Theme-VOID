@@ -64,7 +64,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     if($this->is('page')) $content = Contents::parseBoard($content);
                     echo $content['content'];
                 ?>
-                <div id="social">
+                <div role=button aria-lael="点赞" id="social">
                     <?php if(Utils::isPluginAvailable('Like')):?>
                         <a href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
                     <?php endif; ?>
@@ -72,8 +72,8 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             </article>
             <!--目录，可选-->
             <?php if($this->fields->showTOC == '1'): ?>
-                    <div class="TOC"><?php echo $content['toc']; ?></div>
-                    <div class="toggle-toc"><a target="_self" class="toggle" href="javascript:void(0);" onclick="toggleToc(this);"><span></span></a>
+                    <div aria-label="文章目录" class="TOC"><?php echo $content['toc']; ?></div>
+                    <div role=button aria-label="展开或关闭文章目录" class="toggle-toc"><a target="_self" class="toggle" href="javascript:void(0);" onclick="toggleToc(this);"><span></span></a>
                     </div>
             <?php endif; ?>
             <!--分页-->

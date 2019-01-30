@@ -47,13 +47,13 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     ?>
                 </p>
                 <?php $archives = Contents::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
-                    <section  class="year archives <?php if($index > 0) echo 'shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
+                    <section aria-label="<?php echo $year; ?>年归档列表"  class="year archives <?php if($index > 0) echo 'shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                         <ul>
                     <?php foreach($posts as $created => $post): ?>
                             <li data-date="<?php echo date('m-d', $created); ?>"><a data-words="<?php echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
                     <?php endforeach; ?>
                         </ul>
-                        <a class="toggle-archive" target="_self" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
+                        <a role=button aria-label="收起与展开列表" class="toggle-archive" target="_self" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
                     </section>
                 <?php $index = $index + 1; endforeach; ?>
             </article>

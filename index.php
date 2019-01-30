@@ -42,17 +42,17 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
 
     <div class="wrapper container">
         <?php $this->next(); ?>
-        <section id="new">
+        <section id="new" aria-label="最新文章">
             <div class="section-title">LATEST</div>
             <a class="item" href="<?php $this->permalink(); ?>">
                 <div class="item-content">
-                    <h1><?php $this->title(); ?></h1>
+                    <h1 aria-label="文章标题：<?php $this->title(); ?>"><?php $this->title(); ?></h1>
                     <p class=post-meta>
                         <span><?php $this->author(); ?></span>&nbsp;•&nbsp;   <!-- author -->
                         <span><?php echo date('Y-m-d', $this->created); ?></span>   <!-- date -->
                     </p>
                     <p><?php $this->excerpt(90); ?></p>
-                    <div class="btn btn-normal">READ MORE </div>
+                    <button aria-label="阅读全文" class="btn btn-normal">READ MORE </button>
                 </div>
                 <?php if(!Utils::isWeixin()): ?>
                     <?php $lazyID = rand(1,10000); ?>
@@ -63,10 +63,10 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <?php endif; ?>
             </a>
         </section>
-        <section id="post-list">
+        <section id="post-list" aria-label="最近文章列表">
             <div class="section-title">RECENT</div>
             <?php while($this->next()): ?>
-            <a class="item" href="<?php $this->permalink(); ?>">
+            <a class="item" href="<?php $this->permalink(); ?>" aria-label="最近文章">
                 <?php $lazyID = rand(1,10000); ?>
                 <?php if(!Utils::isWeixin()): ?>
                     <div class="lazy-wrap loading">
@@ -101,7 +101,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             </a>
             <?php endwhile;?>
         </section>
-        <?php $this->pageNav('←', '→', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
+        <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>
 

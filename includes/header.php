@@ -14,19 +14,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $advance = Utils::getAdvanceSettings(); ?>
     <header>
         <div class="container">
-            <a class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
+            <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
                 <span></span>
             </a>
-            <nav>
-                <a class="brand" href="<?php Utils::index(''); ?>"><?php if($advance['name']) echo $advance['name']; else echo $this->options->title; ?></a>
-                <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>
-                <span class="dropdown">分类
+            <nav aria-label="导航链接">
+                <a aria-label="返回主页" class="brand" href="<?php Utils::index(''); ?>"><?php if($advance['name']) echo $advance['name']; else echo $this->options->title; ?></a>
+                <?php $this->widget('Widget_Contents_Page_List')->parse('<a aria-label="独立页面链接" href="{permalink}">{title}</a>'); ?>
+                <span aria-label="分类下拉列表" class="dropdown">分类
                     <ul>
                         <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a></li>'); ?>
                     </ul>
                 </span>
                 <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
-                <span class="dropdown"><?php echo $listItem->name; ?>
+                <span aria-label="<?php echo $listItem->name; ?>下拉列表" class="dropdown"><?php echo $listItem->name; ?>
                     <ul>
                         <?php foreach ($listItem->items as $item) {
                             echo "<li><a href=\"{$item->link}\">{$item->title}</a></li>";
@@ -35,26 +35,26 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </span>
                 <?php endforeach; } ?>
             </nav>
-            <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required placeholder="Search..." />
+            <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required placeholder="Search..." />
         </div>
     </header>
     <div id="nav-mobile">
         <div class="search">
-            <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" class="text" required placeholder="Search..." />
+            <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" class="text" required placeholder="Search..." />
         </div>
         <section id="pages" data-title="PAGES">
-            <nav>
+            <nav aria-label="页面导航">
                 <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>
             </nav>
         </section>
         <section id="categories" data-title="CATEGORIES">
-            <nav>
+            <nav aria-label="分类导航">
             <?php $this->widget('Widget_Metas_Category_List')->parse('<a href="{permalink}">{name}</a>'); ?>
             </nav>
         </section>
         <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
         <section data-title="<?php echo $listItem->name; ?>">
-            <nav>
+            <nav aria-label="<?php echo $listItem->name; ?>导航">
                 <?php foreach ($listItem->items as $item) {
                     echo "<a href=\"{$item->link}\">{$item->title}</a>";
                 }?>

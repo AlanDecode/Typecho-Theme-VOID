@@ -123,7 +123,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         ?>">
                 <div class="comment-header">
                     <a class="avatar"><?php $this->gravatar(64, ''); ?></a>
-                    <span><?php $this->reply('回复'); ?></span>
+                    <span role=button aria-label="回复"><?php $this->reply('回复'); ?></span>
                 </div>
                 <div class="comment-body">
                     <span class="comment-meta"><b><?php $this->author(); echo'</b>'; echo date(' Y-m-d',$this->created);?></span>
