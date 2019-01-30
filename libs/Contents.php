@@ -28,7 +28,13 @@ Class Contents
      */
     public static function getPost($cid)
     {
-        return Helper::widgetById('contents', $cid);
+        $db = Typecho_Db::get();
+        $post = new Widget_Abstract_Contents(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $db->fetchRow($post->select()
+            ->where("cid = ?", $cid)
+            ->limit(1),
+            array($post, 'push'));
+        return $post;
     }
 
     /**
@@ -291,15 +297,7 @@ EOF;
                     ->where('table.contents.status = ?', 'publish'));
         $stat = array();
         foreach ($cids as $cid) {
-            
-            // Typecho 1.2 版本以下 Helper::widgetById 方法有 bug
-            //$post = Helper::widgetById('contents', $cid['cid']);
-            
-            $post = new Widget_Abstract_Contents(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
-            $db->fetchRow($post->select()
-                ->where("cid = ?", $cid)
-                ->limit(1),
-                array($post, 'push'));
+            $post = self::getPost($cid);
             $arr = array(
                 'title' => $post->title,
                 'permalink' => $post->permalink,
