@@ -43,10 +43,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </p>
             <p class="comment-buttons">
                 <span class="OwO"></span>
+                <?php if(Utils::isPluginAvailable('CommentToMail')): ?>
                 <span class="comment-mail-me">
                     <input name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
                     <label for="receiveMail"><strong>接收</strong>邮件通知</label>
                 </span>
+                <?php endif; ?>
                 <button id="comment-submit-button" type="submit" class="submit btn btn-normal">提交评论</button>
             </p>
         </form>
