@@ -90,6 +90,7 @@ var VOID = {
     beforePjax : function(){
         NProgress.start();
         $('.toggle').removeClass('pushed');
+        $('header').removeClass('opened');
         if($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
     },
