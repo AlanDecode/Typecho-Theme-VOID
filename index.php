@@ -105,7 +105,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <div class="item-content">
                     <h1 itemprop="name"><?php $this->title(); ?></h1>
                     <p>
-                        <span hidden itemprop="author"><?php $this->author(); ?>
+                        <span hidden itemprop="author"><?php $this->author(); ?></span>
                         <time datetime="<?php echo date('Y-m-d\TH:i:s\Z', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                         <span>  <!-- statics -->
                             <?php if(Utils::isPluginAvailable('TePostViews') && !$this->is('archive')): ?>
