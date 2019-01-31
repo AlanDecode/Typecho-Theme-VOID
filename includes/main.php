@@ -31,8 +31,8 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
 
     <div class="wrapper container">
         <section id="post">
-            <article class="post yue">
-                <h1 class="post-title"><?php $this->title(); ?>
+            <article class="post yue" itemscope itemtype="http://schema.org/Article">
+                <h1 itemprop="name" class="post-title"><?php $this->title(); ?>
                     <?php if($this->user->hasLogin()): ?>
                         <sup>
                             <?php if($this->is('post')): ?>
@@ -43,9 +43,11 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                         </sup>    
                     <?php endif;?>
                 </h1>
+                <p hidden itemprop="headline"><?php $this->excerpt(50); ?></p>
                 <p class="post-meta">
-                    <?php $this->author(); ?>&nbsp;•&nbsp;
-                    <?php echo date('Y-m-d', $this->created); ?>&nbsp;•&nbsp;
+                    <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
+                    <time datetime="<?php echo date('Y-m-d\TH:i:s\Z', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
+                    &nbsp;•&nbsp;
                     <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
                     <?php 
                         if(Utils::isPluginAvailable('TePostViews'))
@@ -59,12 +61,27 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                 <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                 <?php endif; ?>
+                <div itemprop="articleBody">
                 <?php 
                     $content = Contents::parseAll($this->content, $this->fields->showTOC == '1');
                     if($this->is('page')) $content = Contents::parseBoard($content);
                     echo $content['content'];
                 ?>
-                <div role=button aria-lael="点赞" id="social">
+                </div>
+                <?php if($this->fields->banner != ''): ?>
+                <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
+                </div>
+                <?php endif; ?>
+                <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="<?php echo $this->options->title; ?>">
+                    <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->email, 256, ''); ?>">
+                    </div>
+                </div>
+                <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
+                <meta itemprop="dateModified" content="<?php echo date('Y-m-d\TH:i:s\Z', $this->modified); ?>">
+                <div role=button aria-label="点赞" id="social">
                     <?php if(Utils::isPluginAvailable('Like')):?>
                         <a href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
                     <?php endif; ?>

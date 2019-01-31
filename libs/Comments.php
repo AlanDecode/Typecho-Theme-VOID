@@ -96,15 +96,15 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             return threadedComments($this, $singleCommentOptions);
         }
         ?>
-        <div class="comment-wrap">
+        <div itemscope itemtype="http://schema.org/UserComments" class="comment-wrap">
             <div id="<?php $this->theId(); ?>" class="
         <?php
             if ($this->levels > 0) {
-                echo ' comment-child';
+                echo ' comment-child" itemprop="discusses"';
             } else {
-                echo ' comment-parent';
+                echo ' comment-parent"';
             }
-        ?>">
+        ?>>
             <div class="comment-item 
         <?php
             $commentClass = '';
@@ -121,13 +121,17 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             $this->alt(' comment-odd', ' comment-even');
             echo $commentClass;
         ?>">
-                <div class="comment-header">
+                <div class="comment-header" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                    <cite hidden itemprop="name"><?php $this->author(); ?></cite>
                     <a class="avatar"><?php $this->gravatar(64, ''); ?></a>
+                    <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                        <meta itemprop="url" content="<?php Utils::gravatar($this->mail, 256, ''); ?>">
+                    </div>
                     <span role=button aria-label="回复"><?php $this->reply('回复'); ?></span>
                 </div>
                 <div class="comment-body">
-                    <span class="comment-meta"><b><?php $this->author(); echo'</b>'; echo date(' Y-m-d',$this->created);?></span>
-                    <div class="comment-content yue"><?php echo $this->getParent(); echo Contents::parseBiaoQing($this->content); ?></div>
+                    <span class="comment-meta"><b><?php $this->author(); echo'</b><time itemprop="commentTime" datetime="'.date('Y-m-d\TH:i:s\Z', $this->created).'">'; echo date(' Y-m-d',$this->created);?></time></span>
+                    <div class="comment-content yue" itemprop="commentText"><?php echo $this->getParent(); echo Contents::parseBiaoQing($this->content); ?></div>
                 </div>
             </div>
             </div>
