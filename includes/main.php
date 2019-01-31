@@ -76,7 +76,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
                     <meta itemprop="name" content="<?php echo $this->options->title; ?>">
                     <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->email, 256, ''); ?>">
+                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 256, ''); ?>">
                     </div>
                 </div>
                 <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
