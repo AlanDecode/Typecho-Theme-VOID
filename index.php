@@ -25,8 +25,6 @@ $defaultBanner = $this->options->defaultBanner;
 $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCover : $defaultBanner;
 ?>
 
-<?php $setting = Utils::getAdvanceSettings(); if($setting['verySimpleIndex']) $this->need('includes/archives.php'); else{ ?>
-
 <main id="pjax-container">
     <title hidden>
         <?php Contents::title($this); ?>
@@ -104,8 +102,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
         <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>
-
-<?php }; ?>
 
 <?php 
 if(!Utils::isPjax()){

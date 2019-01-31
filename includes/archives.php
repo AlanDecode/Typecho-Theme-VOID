@@ -32,7 +32,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
     <div class="wrapper container">
         <section id="post" class="archive-list">
             <article class="post yue">
-                <h1 class="post-title"><?php if($this->is('index')) echo '最近文章'; else $this->archiveTitle(array(
+                <h1 class="post-title"><?php $this->archiveTitle(array(
                         'category'  =>  _t('分类 "%s" 下的文章'),
                         'search'    =>  _t('包含关键字 "%s" 的文章'),
                         'tag'       =>  _t('包含标签 "%s" 的文章'),
