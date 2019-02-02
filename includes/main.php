@@ -46,7 +46,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <p hidden itemprop="headline"><?php $this->excerpt(50); ?></p>
                 <p class="post-meta">
                     <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
-                    <time datetime="<?php echo date('Y-m-d\TH:i:s\Z', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
+                    <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                     &nbsp;•&nbsp;
                     <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
                     <?php 
@@ -80,7 +80,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     </div>
                 </div>
                 <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                <meta itemprop="dateModified" content="<?php echo date('Y-m-d\TH:i:s\Z', $this->modified); ?>">
+                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                 <div role=button aria-label="点赞" id="social">
                     <?php if(Utils::isPluginAvailable('Like')):?>
                         <a href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>

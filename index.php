@@ -47,7 +47,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     <h1 itemprop="name" aria-label="文章标题：<?php $this->title(); ?>"><?php $this->title(); ?></h1>
                     <p class=post-meta>
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;   <!-- author -->
-                        <time datetime="<?php echo date('Y-m-d\TH:i:s\Z', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
+                        <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                     </p>
                     <p itemprop="headline"><?php $this->excerpt(90); ?></p>
                     <button aria-label="阅读全文" class="btn btn-normal">READ MORE </button>
@@ -76,7 +76,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     </div>
                 </div>
                 <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                <meta itemprop="dateModified" content="<?php echo date('Y-m-d\TH:i:s\Z', $this->modified); ?>">
+                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
             </a>
         </section>
         <section id="post-list" aria-label="最近文章列表">
@@ -106,7 +106,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     <h1 itemprop="name"><?php $this->title(); ?></h1>
                     <p>
                         <span hidden itemprop="author"><?php $this->author(); ?></span>
-                        <time datetime="<?php echo date('Y-m-d\TH:i:s\Z', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
+                        <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                         <span>  <!-- statics -->
                             <?php if(Utils::isPluginAvailable('TePostViews') && !$this->is('archive')): ?>
                                 <?php $this->viewsNum(); ?>&nbsp;阅读&nbsp;•&nbsp;
@@ -127,7 +127,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     </div>
                 </div>
                 <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                <meta itemprop="dateModified" content="<?php echo date('Y-m-d\TH:i:s\Z', $this->modified); ?>">
+                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
             </a>
             <?php endwhile;?>
         </section>
