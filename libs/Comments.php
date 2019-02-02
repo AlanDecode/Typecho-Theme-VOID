@@ -155,7 +155,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         if($parentID=='0') return '';
         else {
             $author=$db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $parentID));
-            return ' 回复 <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
+            return ' <span style="font-size: 0.9rem">回复</span> <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
         }
     }  
     
