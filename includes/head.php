@@ -28,13 +28,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.css');?>">
     
+    <?php $advance = Utils::getAdvanceSettings(); ?>
     <script>
     VOIDConfig = {
         PJAX : <?php echo $this->options->pjax == '1' ? 'true' : 'false'; ?>,
         searchBase : "<?php Utils::index("/search/"); ?>",
+        home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $this->options->enableMath == '1' ? 'true' : 'false'; ?>,
         tocOffset : 0,
+        customNotice : "<?php echo $advance['customNotice']; ?>",
+        welcomeWord : <?php echo $advance['welcomeWord'] ? 'true' : 'false'; ?>,
         bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
     }
     if(VOIDConfig.bannerHeightType == "percentage"){

@@ -256,7 +256,9 @@ class Utils
     public static function getAdvanceSettings(){
         $output = array(
             'nav' => false,
-            'name' => false
+            'name' => false,
+            'welcomeWord' => false,
+            'customNotice' => ''
         );
         if(!Helper::options()->advance || Helper::options()->advance == '') return $output;
 
@@ -264,6 +266,8 @@ class Utils
 
         if(property_exists($settings, 'name')) $output['name'] = $settings->name;
         if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
+        if(property_exists($settings, 'welcomeWord')) $output['welcomeWord'] = $settings->welcomeWord;
+        if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
 
         return $output;
     }

@@ -9,6 +9,7 @@ console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; backg
 var VOID = {
     // 初始化单页应用
     init : function(){
+        VOID.showWelcomeWord();
         VOID.parsedPhotos();
         VOID.parseUrl();
         hljs.initHighlightingOnLoad();
@@ -24,6 +25,56 @@ var VOID = {
             $(this).removeClass('hover');
         });
         AjaxComment.init();
+    },
+
+    showWelcomeWord : function(){
+        if(VOIDConfig.customNotice != ''){
+            setTimeout(function() {
+                alert(VOIDConfig.customNotice, 4000);
+            }, 200);
+        }
+        if(VOIDConfig.welcomeWord){
+            var text = '';
+            if (document.referrer !== '') {
+                var referrer = document.createElement('a');
+                referrer.href = document.referrer;
+                text = '嗨！来自 ' + referrer.hostname + ' 的朋友！';
+                var domain = referrer.hostname.split('.')[1];
+                if (domain == 'baidu') {
+                    text = '嗨！ 来自 百度搜索 的朋友！欢迎访问 ' + document.title.split(' - ')[0];
+                } else if (domain == 'so') {
+                    text = '嗨！ 来自 360搜索 的朋友！欢迎访问 ' + document.title.split(' - ')[0];
+                } else if (domain == 'google') {
+                    text = '嗨！ 来自 谷歌搜索 的朋友！欢迎访问 ' + document.title.split(' - ')[0];
+                }
+            } else {
+                if (window.location.href == VOIDConfig.home) {
+                    var now = (new Date()).getHours();
+                    if (now > 23 || now <= 5) {
+                        text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？'
+                    } else if (now > 5 && now <= 7) {
+                        text = '早上好！一日之计在于晨，美好的一天就要开始了！'
+                    } else if (now > 7 && now <= 11) {
+                        text = '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！'
+                    } else if (now > 11 && now <= 14) {
+                        text = '中午了，工作了一个上午，现在是午餐时间！'
+                    } else if (now > 14 && now <= 17) {
+                        text = '午后很容易犯困呢，今天的运动目标完成了吗？'
+                    } else if (now > 17 && now <= 19) {
+                        text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~'
+                    } else if (now > 19 && now <= 21) {
+                        text = '晚上好，今天过得怎么样？'
+                    } else if (now > 21 && now <= 23) {
+                        text = '已经这么晚了呀，早点休息吧，晚安~'
+                    } 
+                } else {
+                    text = '欢迎阅读 ' + document.title.split(' - ')[0];
+                }
+            }
+            setTimeout(function() {
+                alert(text);
+            }, 200);
+        }
     },
 
     // 解析照片集
@@ -90,17 +141,23 @@ var VOID = {
     },
 
     
-    alert : function(content){
+    alert : function(content, time){
         var errTemplate = '<div class="msg" id="msg{id}">{Text}</div>';
-        $.each($('.msg'), function(i,item){
-            $(item).css('top', $(item).offset().top - $(document).scrollTop() + $(item).outerHeight() + 20 + 'px');
-        });
         var id = new Date().getTime();
         $('body').prepend(errTemplate.replace('{Text}', content).replace('{id}', id));
+        $.each($('.msg'), function(i,item){
+            if($(item).attr('id') != 'msg' + id){
+                $(item).css('top', $(item).offset().top - $(document).scrollTop() + $('.msg#msg' + id).outerHeight() + 20 + 'px');
+            }
+        });
         $('.msg#msg' + id).addClass('show');
+        var t = time;
+        if(typeof(t) != 'number'){
+            t = 3000;
+        } 
         setTimeout(function(){
             $('.msg#msg' + id).addClass('hide');
-        }, 3000);
+        }, t);
     },
 
     // 点赞事件处理
@@ -333,6 +390,7 @@ var AjaxComment = {
                             if(AjaxComment.parentID == ''){
                                 // 无父 id，直接对文章评论，插入到第一个 comment-list 头部
                                 $('#comments>.comment-list').prepend(newCommentData);
+                                alert('评论成功！');
                                 AjaxComment.finish();
                                 AjaxComment.newID = '';
                                 return false;
@@ -352,6 +410,7 @@ var AjaxComment = {
                                     // 父评论是子评论，与父评论平级，并放在后面
                                     $('#'+AjaxComment.parentID).after(newCommentData);
                                 }
+                                alert('评论成功！');
                                 AjaxComment.finish();
                                 AjaxComment.parentID = '';
                                 AjaxComment.newID = '';
@@ -369,8 +428,8 @@ var AjaxComment = {
 };
 
 $(document).ready(function(){
-    VOID.init();
     window.alert = VOID.alert;
+    VOID.init();
 });
 
 if(VOIDConfig.PJAX){

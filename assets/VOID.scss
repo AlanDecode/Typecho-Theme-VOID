@@ -171,7 +171,7 @@ body{
 
 .msg{
     position: fixed;
-    top: 20px;
+    top: 70px;
     background: #f0f8e5;
     padding: 1rem;
     border-radius: 8px;
@@ -179,7 +179,11 @@ body{
     transition: 0.5s ease all;
     opacity: 0;
     right: 0;
+    line-height: 1.5;
     z-index: 20;
+    max-width: calc(100vw - 3rem);
+    overflow: hidden;
+    word-break: break-all;
     &.show{
         animation-fill-mode: forwards;
         animation: fade-in 0.5s;
