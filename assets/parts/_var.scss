@@ -13,3 +13,27 @@ $bannerHeight_mobile: 300px;
         color: #12121c;
     }
 }
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        right: 0;
+    }
+    100% {
+        opacity: 1;
+        right: 20px;
+    }
+}
+
+@keyframes fade-out{
+    0%{
+        right: 20px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100%{
+        right: 20px;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}

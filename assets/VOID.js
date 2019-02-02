@@ -89,6 +89,20 @@ var VOID = {
         $('#nav-mobile').fadeOut(200);
     },
 
+    
+    alert : function(content){
+        var errTemplate = '<div class="msg" id="msg{id}">{Text}</div>';
+        $.each($('.msg'), function(i,item){
+            $(item).css('top', $(item).offset().top - $(document).scrollTop() + $(item).outerHeight() + 20 + 'px');
+        });
+        var id = new Date().getTime();
+        $('body').prepend(errTemplate.replace('{Text}', content).replace('{id}', id));
+        $('.msg#msg' + id).addClass('show');
+        setTimeout(function(){
+            $('.msg#msg' + id).addClass('hide');
+        }, 3000);
+    },
+
     // 点赞事件处理
     handleLike : function(){
         // 已点赞高亮
@@ -104,6 +118,7 @@ var VOID = {
         }
         // 点赞事件绑定
         if($('.post-like').length > 0){
+            $('.post-like').unbind('click');
             $('.post-like').click(function(){
                 $(this).addClass('done');
                 var th = $(this);
@@ -355,6 +370,7 @@ var AjaxComment = {
 
 $(document).ready(function(){
     VOID.init();
+    window.alert = VOID.alert;
 });
 
 if(VOIDConfig.PJAX){

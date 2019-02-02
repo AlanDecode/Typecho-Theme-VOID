@@ -169,6 +169,31 @@ body{
     }
 }
 
+.msg{
+    position: fixed;
+    top: 20px;
+    background: #f0f8e5;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease all;
+    opacity: 0;
+    right: 0;
+    z-index: 20;
+    &.show{
+        animation-fill-mode: forwards;
+        animation: fade-in 0.5s;
+        animation-fill-mode: forwards;
+        animation-delay: 0.3;
+    }
+    &.hide{
+        animation-fill-mode: forwards;
+        animation: fade-out 0.5s;
+        animation-fill-mode: forwards;
+        animation-delay: 0.3;
+    }
+}
+
 @import "parts/header";
 @import "parts/index";
 @import "parts/article";
