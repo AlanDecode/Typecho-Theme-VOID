@@ -42,9 +42,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
     }
     if(VOIDConfig.bannerHeightType == "percentage"){
-        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 88;
+        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 28;
     }else{
-        VOIDConfig.tocOffset = 488;
+        VOIDConfig.tocOffset = 428;
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){

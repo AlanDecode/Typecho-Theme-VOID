@@ -1,7 +1,7 @@
 main{
-    margin-top: 250px;
+    margin-top: 310px;
     @media screen and (max-width: 767px) {
-        margin-top: 200px;
+        margin-top: 250px;
     }
     .lazy-wrap{
         @include bg;

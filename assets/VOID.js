@@ -24,6 +24,11 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
+        if($('main').offset().top - $(document).scrollTop() < 120){
+            $('header').addClass('dark');
+        }else{
+            $('header').removeClass('dark');
+        }
         AjaxComment.init();
     },
 
@@ -456,6 +461,11 @@ setInterval(function(){
 }, 1000);
 
 $(document).scroll(function(){
+    if($('main').offset().top - $(document).scrollTop() < 120){
+        $('header').addClass('dark');
+    }else{
+        $('header').removeClass('dark');
+    }
     if(window.outerWidth < 1366) return;
     if($('.TOC').length<1) return;
 

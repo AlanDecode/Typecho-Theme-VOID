@@ -3,12 +3,16 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    transition: 0.3s ease all;
-    position: relative;
+    position: fixed;
+    transition: 0.5s ease all;
     background-image: linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    &.dark{
+        transition: 0.5s ease all;
+        background: #1e2023;
+    }
     &.opened{
-        background: rgba(0,0,0,0.9);
+        background: rgba(0, 0, 0, 0.9);
     }
     .container{
         height: 58px;
@@ -72,14 +76,14 @@ header{
                 transition: 0.3s all;
                 white-space: nowrap;
                 &:hover{
-                    background: rgba(0, 0, 0, 0.4);
+                    background: rgba(0, 0, 0, 0.65);
                 }
             }
         }
         &:hover{
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.65);
             ul{
-                background: rgba(0, 0, 0, 0.4);
+                background: rgba(0, 0, 0, 0.65);
                 display: block;
             }
         }
