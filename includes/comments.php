@@ -56,12 +56,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php if ($comments->have()): ?>
         <h3 class="comment-separator">
             <div class="comment-tab-current">
-                <span class="comment-num"><?php $this->commentsNum('评论列表', '已有 1 条评论', '已有 %d 条评论'); ?></span>
+                <span class="comment-num"><?php $this->commentsNum('评论列表', '已有 1 条评论', '已有 <span class="num">%d</span> 条评论'); ?></span>
             </div>
         </h3>
         <?php $comments->listComments(array(
         'before'        =>  '<div class="comment-list">',
-        'after'         =>  '</div>'
+        'after'         =>  '</div>',
+        'avatarSize'    =>  64,
+        'dateFormat'    =>  'Y-m-d H:i'
         )); ?>
         <?php $comments->pageNav('<span aria-label="评论上一页">←</span>', '<span aria-label="评论下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     <?php endif; ?>

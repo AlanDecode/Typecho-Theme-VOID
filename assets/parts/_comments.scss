@@ -93,9 +93,6 @@
                     }
                     .OwO-items-image .OwO-item{
                         max-width:calc(20% - 10px);
-                        @media screen and (max-width:767px){
-                            max-width:calc(25% - 10px)
-                        }
                     }
                 } 
             }
@@ -107,33 +104,55 @@
             }  
         }
     }
-    .comment-item{
-        margin: 20px 0;
-        display: flex;
-        align-items: flex-start;
-        .comment-header{
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 3.5rem;
-            max-width: 3.5rem;
-            min-width: 3.5rem;
-            margin-right: 1rem;
-            .avatar{
-                width: 50px;
-                height: 50px;
-                margin-bottom: 5px;
-            }
-            span{
-                font-size: 0.9rem;
-                text-align: center;
-            }
+    >.comment-list>.comment-body{
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        margin-top: 1rem;
+        &:last-of-type{
+            border: none;
         }
+    }
+    .comment-list{
         .comment-body{
-            max-width: calc(100% - 56px - 1rem);
+            position: relative;
+            .comment-content-wrap{
+                margin-bottom: 1.5rem;
+                position: relative;
+                .comment-reply{
+                    position: absolute;
+                    left: calc(26px);
+                    transform: translateX(-50%);
+                    top: calc(52px + 0.5rem);
+                }
+            }
+            .comment-meta,.comment-content{
+                margin-left: calc(52px + 1rem);
+            }
+            .comment-meta{
+                position: relative;
+                .comment-avatar{
+                    display: block;
+                    position: absolute;
+                    left: calc(-52px - 1rem);
+                    top: 0;
+                    .avatar{
+                        width: 52px;
+                        height: 52px;
+                    }
+                }
+                .comment-author{
+                    margin-bottom: 0.3rem;
+                }
+                cite{
+                    font-style: normal;
+                    font-size: 0.9rem;
+                }
+                >span a{
+                    color: rgba(0,0,0,.3);
+                    font-size: 0.9rem;
+                }
+            }
             .comment-content{
+                max-width: calc(100% - 52px - 1rem);
                 word-break: break-word;
                 color: $textColor;
                 margin-top: 0.5rem;
@@ -142,6 +161,7 @@
                 border-radius: 6px;
                 line-height: 1.5;
                 position: relative;
+                width: max-content;
                 img.biaoqing{
                     display: inline-block;
                     height: 2em;
@@ -167,25 +187,17 @@
                     border-color: transparent rgba(0,0,0,0.05) transparent transparent;
                 }
             }
-            .comment-meta,.comment-meta a{
-                font-size: 0.9rem;
+            
+        }
+        >.comment-body{
+            >.comment-children{
+                margin-left: calc(52px + 1rem);
             }
-        }
-
-    }
-    >.comment-list>.comment-wrap{
-        margin: 20px 0;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        &:last-of-type{
-            border: none;
-        }
-    }
-    &>.comment-list>.comment-wrap>.comment-list{
-        padding-left: calc(52px + 1rem);
-    }
-    @media screen and (max-width:767px) {
-        &>.comment-list>.comment-wrap>.comment-list{
-            padding-left: 26px;
+            @media screen and (max-width: 767px){
+                >.comment-children{
+                    margin-left: calc(26px);
+                }
+            }
         }
     }
 }

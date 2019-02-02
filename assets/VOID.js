@@ -23,6 +23,7 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
+        AjaxComment.init();
     },
 
     // 解析照片集
@@ -127,6 +128,7 @@ var VOID = {
         VOID.parseUrl();
         VOID.reload();
         VOID.handleLike();
+        AjaxComment.init();
     },
 
     // 重载与事件绑定
@@ -188,6 +190,166 @@ var VOID = {
             $(item).html('+');
             $(item).parent().addClass('shrink');
         }
+    }
+};
+
+
+// eslint-disable-next-line no-unused-vars
+var AjaxComment = {
+    noName : '必须填写用户名',
+    noMail : '必须填写电子邮箱地址',
+    noContent : '必须填写评论内容',
+    invalidMail : '邮箱地址不合法',
+    commentsOrder : 'DESC',
+    commentList : '.comment-list',
+    comments : '#comments .comments-title',
+    commentReply : '.comment-reply',
+    commentForm : '#comment-form',
+    respond : '.respond',
+    textarea : '#textarea',
+    submitBtn : '#comment-submit-button',
+    newID : '',
+    parentID : '',
+
+    bindClick : function(){
+        $(AjaxComment.commentReply + ' a, #cancel-comment-reply-link').unbind('click');
+        $(AjaxComment.commentReply + ' a').click(function() { // 回复
+            AjaxComment.parentID = $(this).parent().parent().parent().attr('id');
+            $(AjaxComment.textarea).focus();
+        });
+        $('#cancel-comment-reply-link').click(function() { // 取消
+            AjaxComment.parentID = '';
+        });
+    },
+
+    err : function(){
+        $(AjaxComment.submitBtn).attr('disabled', false);
+        AjaxComment.newID = '';
+    },
+
+    finish : function(){
+        TypechoComment.cancelReply();
+        $(AjaxComment.submitBtn).html('提交评论');
+        $(AjaxComment.textarea).val('');
+        $(AjaxComment.submitBtn).attr('disabled', false);
+        if($('#comment-'+AjaxComment.newID).length > 0){
+            var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
+            $body.animate({scrollTop: $('#comment-' + AjaxComment.newID).offset().top - 50}, 500);
+            $('#comment-' + AjaxComment.newID).fadeTo(500 ,1);
+        }
+        $('.comment-num .num').html(parseInt($('.comment-num .num').html())+1);
+        AjaxComment.bindClick();
+    },
+
+    init : function(){
+        AjaxComment.bindClick();
+        $(AjaxComment.commentForm).submit(function() { // 提交事件
+            $(AjaxComment.submitBtn).attr('disabled', true);
+            
+            /* 检查 */
+            if ($(AjaxComment.commentForm).find('#author')[0]) {
+                if ($(AjaxComment.commentForm).find('#author').val() == '') {
+                    alert(AjaxComment.noName);
+                    AjaxComment.err();
+                    return false;
+                }
+    
+                if ($(AjaxComment.commentForm).find('#mail').val() == '') {
+                    alert(AjaxComment.noMail);
+                    AjaxComment.err();
+                    return false;
+                }
+    
+                var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+                if (!filter.test($(AjaxComment.commentForm).find('#mail').val())) {
+                    alert(AjaxComment.invalidMail);
+                    AjaxComment.err();
+                    return false;
+                }
+            }
+
+            var textValue = $(AjaxComment.commentForm).find(AjaxComment.textarea).val().replace(/(^\s*)|(\s*$)/g, '');//检查空格信息
+            if (textValue == null || textValue == '') {
+                alert(AjaxComment.noContent);
+                AjaxComment.err();
+                return false;
+            }
+            $(AjaxComment.submitBtn).html('提交中……');
+            $.ajax({
+                url: $(AjaxComment.commentForm).attr('action'),
+                type: $(AjaxComment.commentForm).attr('method'),
+                data: $(AjaxComment.commentForm).serializeArray(),
+                error: function() {
+                    alert('提交失败！请重试。');
+                    $(AjaxComment.submitBtn).html('提交评论');
+                    AjaxComment.err();
+                    return false;
+                },
+                success: function(data) { //成功取到数据
+                    try {
+                        if (!$(AjaxComment.commentList, data).length) {
+                            alert('提交失败,请重试!');
+                            $(AjaxComment.submitBtn).html('提交评论');
+                            AjaxComment.err();
+                            return false;
+                        } else {
+                            AjaxComment.newID = $(AjaxComment.commentList, data).html().match(/id="?comment-\d+/g).join().match(/\d+/g).sort(function(a, b) {
+                                return a - b;
+                            }).pop();
+
+                            if ($('.pager .prev').length && AjaxComment.parentID == ''){
+                                // 在分页对文章发表评论，无法取得最新评论内容
+                                alert('评论成功！请回到评论第一页查看。');
+                                AjaxComment.newID = '';
+                                AjaxComment.parentID = '';
+                                AjaxComment.finish();
+                                return false;
+                            }
+
+                            var newCommentType = AjaxComment.parentID == '' ? 'comment-parent' : 'comment-child';
+                            var newCommentData = '<div itemscope itemtype="http://schema.org/UserComments" id="comment-'+AjaxComment.newID+'" style="opacity:0" class="comment-body '+newCommentType+'">' + $(data).find('#comment-' + AjaxComment.newID).html() + '</div>';
+                            
+                            // 当页面无评论，先添加一个评论容器
+                            if($(AjaxComment.commentList).length <= 0){
+                                $('#comments').append('<h3 class="comment-separator"><div class="comment-tab-current"><span class="comment-num">已有 <span class="num">0</span> 条评论</span></div></h3>')
+                                    .append('<div class="comment-list"></div>');
+                            }
+
+                            if(AjaxComment.parentID == ''){
+                                // 无父 id，直接对文章评论，插入到第一个 comment-list 头部
+                                $('#comments>.comment-list').prepend(newCommentData);
+                                AjaxComment.finish();
+                                AjaxComment.newID = '';
+                                return false;
+                            } else{
+                                if($('#'+AjaxComment.parentID).hasClass('comment-parent')){
+                                    // 父评论是母评论
+                                    if($('#'+AjaxComment.parentID+' > .comment-children').length > 0){
+                                        // 父评论已有子评论，插入到子评论列表头部
+                                        $('#'+AjaxComment.parentID+' > .comment-children > .comment-list').prepend(newCommentData);
+                                    }
+                                    else{
+                                        // 父评论没有子评论，新建一层包裹
+                                        newCommentData = '<div class="comment-children"><div class="comment-list">'+ newCommentData +'</div></div>';
+                                        $('#'+AjaxComment.parentID).append(newCommentData);
+                                    }
+                                }else{
+                                    // 父评论是子评论，与父评论平级，并放在后面
+                                    $('#'+AjaxComment.parentID).after(newCommentData);
+                                }
+                                AjaxComment.finish();
+                                AjaxComment.parentID = '';
+                                AjaxComment.newID = '';
+                                return false;
+                            }
+                        }
+                    } catch(e) {
+                        window.location.reload();
+                    }
+                } // end success()
+            }); // end ajax()
+            return false;
+        }); // end submit()
     }
 };
 

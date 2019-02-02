@@ -90,58 +90,64 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
      * @return void
      */
     private function threadedCommentsCallback()
-	{
+    {
         $singleCommentOptions = $this->_singleCommentOptions;
-        if ($this->_customThreadedCommentsCallback) {
+        if (function_exists('threadedComments')) {
             return threadedComments($this, $singleCommentOptions);
         }
-        ?>
-        <div itemscope itemtype="http://schema.org/UserComments" class="comment-wrap">
-            <div id="<?php $this->theId(); ?>" class="
-        <?php
-            if ($this->levels > 0) {
-                echo ' comment-child" itemprop="discusses"';
-            } else {
-                echo ' comment-parent"';
-            }
-        ?>>
-            <div class="comment-item 
-        <?php
-            $commentClass = '';
-            if ($this->authorId) {
-                if ($this->authorId == $this->ownerId) {
-                    $commentClass .= ' comment-by-author';
-                } else {
-                    $commentClass .= ' comment-by-user';
-                }
-            }
-            if ($this->levels > 0) {
-                $this->levelsAlt(' comment-level-odd', ' comment-level-even');
-            }
-            $this->alt(' comment-odd', ' comment-even');
-            echo $commentClass;
-        ?>">
-                <div class="comment-header" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-                    <cite hidden itemprop="name"><?php $this->author(); ?></cite>
-                    <a class="avatar"><?php $this->gravatar(64, ''); ?></a>
-                    <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="<?php Utils::gravatar($this->mail, 256, ''); ?>">
-                    </div>
-                    <span role=button aria-label="回复"><?php $this->reply('回复'); ?></span>
-                </div>
-                <div class="comment-body">
-                    <span class="comment-meta"><b><?php $this->author(); echo'</b><time itemprop="commentTime" datetime="'.date('Y-m-d\TH:i:s\Z', $this->created).'">'; echo date(' Y-m-d',$this->created);?></time></span>
-                    <div class="comment-content yue" itemprop="commentText"><?php echo $this->getParent(); echo Contents::parseBiaoQing($this->content); ?></div>
-                </div>
-            </div>
-            </div>
-            <?php if ($this->children) { ?>
-            <?php $this->threadedComments(); ?>
-            <?php } ?>
-        </div>
-        <?php
-    }
         
+        $commentClass = '';
+        if ($this->authorId) {
+            if ($this->authorId == $this->ownerId) {
+                $commentClass .= ' comment-by-author';
+            } else {
+                $commentClass .= ' comment-by-user';
+            }
+        }
+?>
+<div itemscope itemtype="http://schema.org/UserComments" id="<?php $this->theId(); ?>" class="comment-body<?php
+    if ($this->levels > 0) {
+        echo ' comment-child';
+        $this->levelsAlt(' comment-level-odd', ' comment-level-even');
+    } else {
+        echo ' comment-parent';
+    }
+    $this->alt(' comment-odd', ' comment-even');
+    echo $commentClass;
+?>">
+    <div class="comment-content-wrap">
+        <div class="comment-meta">
+            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <span class="comment-avatar" itemprop="image"><?php $this->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
+                <b><cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
+                $this->author();
+                $singleCommentOptions->afterAuthor(); ?></cite></b><span><?php echo $this->getParent(); ?></span>
+            </div>
+            <span>
+                <a href="<?php $this->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $this->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
+                echo date('Y-m-d H:i', $this->created);
+                $singleCommentOptions->afterDate(); ?></time></a>
+                <?php if ('waiting' == $this->status) { ?>
+                <em class="comment-awaiting-moderation"><?php $singleCommentOptions->commentStatus(); ?></em>
+                <?php } ?>
+            </span>
+        </div>
+        <div class="comment-content yue" itemprop="commentText">
+            <?php echo Contents::parseBiaoQing($this->content); ?>
+        </div>
+        <div class="comment-reply">
+            <?php $this->reply($singleCommentOptions->replyWord); ?>
+        </div>
+    </div>
+    <?php if ($this->children) { ?>
+    <div class="comment-children" itemprop="discusses">
+        <?php $this->threadedComments(); ?>
+    </div>
+    <?php } ?>
+</div>
+<?php
+    }
+  
     private function getParent(){
         $db = Typecho_Db::get();
         $parentID = $db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $this->coid));
@@ -149,7 +155,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         if($parentID=='0') return '';
         else {
             $author=$db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $parentID));
-            return '<b style="font-size:0.85rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
+            return ' 回复 <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
         }
     }  
     
@@ -501,7 +507,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             $this->pluginHandle()->trigger($plugged)->reply($word, $this);
             
             if (!$plugged) {
-                echo '<a href="' . substr($this->permalink, 0, - strlen($this->theId) - 1) . '?replyTo=' . $this->coid .
+                echo '<a no-pjax href="' . substr($this->permalink, 0, - strlen($this->theId) - 1) . '?replyTo=' . $this->coid .
                     '#' . $this->parameter->respondId . '" rel="nofollow" onclick="return TypechoComment.reply(\'' .
                     $this->theId . '\', ' . $this->coid . ');">' . $word . '</a>';
             }
