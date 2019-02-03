@@ -63,13 +63,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !=''): ?>
     @media screen and (min-width: 768px){
         main>.lazy-wrap{height: <?php echo $this->options->desktopBannerHeight ?>vh;}
-        main{margin-top: calc(<?php echo $this->options->desktopBannerHeight ?>vh - 150px)}
+        main{margin-top: calc(<?php echo $this->options->desktopBannerHeight ?>vh - 90px)}
     }
     <?php endif; ?>
     <?php if($this->options->mobileBannerHeight && $this->options->mobileBannerHeight !=''): ?>
     @media screen and (max-width: 768px){
         main>.lazy-wrap{height: <?php echo $this->options->mobileBannerHeight ?>vh;}
-        main{margin-top: calc(<?php echo $this->options->mobileBannerHeight ?>vh - 100px)}
+        main{margin-top: calc(<?php echo $this->options->mobileBannerHeight ?>vh - 40px)}
     }
     <?php endif; ?>
     <?php if($advance['msgBg'] != ''): ?>
