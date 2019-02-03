@@ -258,7 +258,9 @@ class Utils
             'nav' => false,
             'name' => false,
             'welcomeWord' => false,
-            'customNotice' => ''
+            'customNotice' => '',
+            'msgColor' => '',
+            'msgBg' => ''
         );
         if(!Helper::options()->advance || Helper::options()->advance == '') return $output;
 
@@ -268,6 +270,8 @@ class Utils
         if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
         if(property_exists($settings, 'welcomeWord')) $output['welcomeWord'] = $settings->welcomeWord;
         if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
+        if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
+        if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
 
         return $output;
     }

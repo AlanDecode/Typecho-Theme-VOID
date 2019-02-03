@@ -72,5 +72,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         main{margin-top: calc(<?php echo $this->options->mobileBannerHeight ?>vh - 100px)}
     }
     <?php endif; ?>
+    <?php if($advance['msgBg'] != ''): ?>
+    .msg{
+        background: <?php echo $advance['msgBg']; ?>
+    }
+    <?php endif; ?>
+    <?php if($advance['msgColor'] != ''): ?>
+    .msg{
+        color: <?php echo $advance['msgColor']; ?>
+    }
+    <?php endif; ?>
     </style>
     </head>
