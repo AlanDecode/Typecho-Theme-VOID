@@ -206,6 +206,7 @@ var VOID = {
         VOID.reload();
         VOID.handleLike();
         AjaxComment.init();
+        alert('欢迎阅读 ' + document.title.split(' - ')[0]);
     },
 
     // 重载与事件绑定
