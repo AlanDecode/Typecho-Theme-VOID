@@ -30,6 +30,7 @@ var VOID = {
             $('header').removeClass('dark');
         }
         AjaxComment.init();
+        VOID.adjustHeaderBg();
     },
 
     showWelcomeWord : function(){
@@ -145,7 +146,6 @@ var VOID = {
         $('#nav-mobile').fadeOut(200);
     },
 
-    
     alert : function(content, time){
         var errTemplate = '<div class="msg" id="msg{id}">{Text}</div>';
         var id = new Date().getTime();
@@ -207,6 +207,7 @@ var VOID = {
         VOID.handleLike();
         AjaxComment.init();
         alert('欢迎阅读 ' + document.title.split(' - ')[0]);
+        VOID.adjustHeaderBg();
     },
 
     // 重载与事件绑定
@@ -268,6 +269,48 @@ var VOID = {
             $(item).html('+');
             $(item).parent().addClass('shrink');
         }
+    },
+
+    // 调整 header 背景
+    adjustHeaderBg : function(){
+        if(typeof(document.documentElement.style.setProperty) != 'function') return;
+        if(!VOIDConfig.adaptiveHeader) return;
+        if($('#banner').css('background').indexOf('url') != -1){
+            var imgEl = $('#banner').find('.bannerImg')[0];
+            var colorThief = new ColorThief();
+            try{
+                var colors = colorThief.getColor(imgEl);
+                var bannerDomColor = 'rgba(' + colors[0] + ',' + colors[1] + ',' + colors[2] +  ',0.4)';
+                document.documentElement.style.setProperty('--header-bg-color', bannerDomColor);
+
+                // （238,238,238） 与 （2,2,2） 中差别最大的作为文字色
+                var diff1 = 0, diff2 = 0;
+                for (var index = 0; index < 3; index++) {
+                    diff1 = diff1 + (colors[index]-238)*(colors[index]-238);
+                    diff2 = diff2 + (colors[index]-2)*(colors[index]-2);
+                }
+                if(diff1 > diff2) {
+                    document.documentElement.style.setProperty('--header-text-color', '#eee');
+                    $('header input').css('border-color', 'rgba(255,255,255,0.8)');
+                }
+                else{
+                    bannerTextColor = document.documentElement.style.setProperty('--header-text-color', '#222');
+                    $('header input').css('border-color', 'rgba(0,0,0,0.4)');
+                } 
+                
+                document.documentElement.style.setProperty('--dropdown-bg-hover-color', 'rgba(' + colors[0]*0.92 + ',' + colors[1]*0.92 + ',' + colors[2]*0.92 +  ',0.75)');
+            }catch(e){
+                console.log('主色计算失败：' + e);
+                // 恢复原色
+                document.documentElement.style.setProperty('--header-bg-color', 'linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15))');
+                document.documentElement.style.setProperty('--header-text-color', '#eee');
+                document.documentElement.style.setProperty('--dropdown-bg-hover-color', 'rgba(0, 0, 0, 0.65)');
+                $('header input').css('border-color', 'rgba(255,255,255,0.8)');
+            }
+            $('.colorthiefcanvas').remove();
+        }else{
+            setTimeout(VOID.adjustHeaderBg, 50);
+        }        
     }
 };
 
@@ -480,6 +523,7 @@ $(document).scroll(function(){
 
 function startSearch(item) {
     var c = $(item).val();
+    $(item).val('');
     if(!c || c==''){
         $(item).attr('placeholder','你还没有输入任何信息');
         return;

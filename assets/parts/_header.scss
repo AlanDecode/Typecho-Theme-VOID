@@ -1,3 +1,9 @@
+:root{
+    --header-bg-color: linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
+    --header-text-color: #eee;
+    --dropdown-bg-hover-color:  rgba(0, 0, 0, 0.65);
+}
+
 header{
     z-index: 3;
     top: 0;
@@ -5,14 +11,35 @@ header{
     width: 100%;
     position: fixed;
     transition: 0.5s ease all;
-    background-image: linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
+    background: rgba(0,0,0,.25);
+    background: var(--header-bg-color);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     &.dark{
         transition: 0.5s ease all;
-        background: #1e2023;
+        background: #1e2023!important;
+        a,span.dropdown{
+            color: #eee!important;
+        }
+        span.dropdown{
+            &:hover{
+                background: rgba(0, 0, 0, 0.65)!important;
+            }
+            ul{
+                background: rgba(0, 0, 0, 0.65)!important;
+            }
+            ul li:hover{
+                background: rgba(0, 0, 0, 0.65)!important;
+            }
+        }
+        label{
+            color: #eee!important;
+        }
+        input{
+            border-color: rgba(255,255,255,0.8)!important;
+        }
     }
     &.opened{
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.9)!important;
     }
     .container{
         height: 58px;
@@ -28,9 +55,11 @@ header{
         align-items: center;
         padding: 0.3rem 0.5rem;
         color: #eee;
+        color: var(--header-text-color);
         transition: 0.3s ease all;
         &:hover{
-            color: #fafafa;
+            color: #eee;
+            color: var(--header-text-color);
         }
         &.brand{
             font-weight: 600;
@@ -77,13 +106,18 @@ header{
                 white-space: nowrap;
                 &:hover{
                     background: rgba(0, 0, 0, 0.65);
+                    background: var(--dropdown-bg-hover-color);
+                    color: #eee;
+                    color: var(--header-text-color);
                 }
             }
         }
         &:hover{
             background: rgba(0, 0, 0, 0.65);
+            background: var(--dropdown-bg-hover-color);
             ul{
                 background: rgba(0, 0, 0, 0.65);
+                background: var(--dropdown-bg-hover-color);
                 display: block;
             }
         }
@@ -98,24 +132,37 @@ header{
             }
         }
     }
+    label{
+        color: #eee;
+        color: var(--header-text-color);
+        position: absolute;
+        display: block;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        left: 0.5rem;
+    }
     input{
         width: 7rem;
         transition: 0.3s ease all;
         &:focus{
-            width: 10rem;
+            width: 11rem;
         }
         &::-webkit-input-placeholder{
             color:#ddd;
             font-size: 1rem;
         }
-        color: #fafafa;
+        color: #eee;
+        color: var(--header-text-color);
         outline: none;
         height: 1.5rem;
         background: none;
         padding: 0.85rem;
+        padding-left: 3rem;
         border: {
             width: 1px;
-            radius: 1rem;
+            style: solid;
+            border-radius: 1rem;
             color: rgba(255,255,255,0.8);
         }
         @media screen and (max-width: 767px) {

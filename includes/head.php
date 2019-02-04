@@ -39,6 +39,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         tocOffset : 0,
         customNotice : "<?php echo $advance['customNotice']; ?>",
         welcomeWord : <?php echo $advance['welcomeWord'] ? 'true' : 'false'; ?>,
+        adaptiveHeader : <?php echo $advance['adaptiveHeader'] ? 'true' : 'false'; ?>,
         bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
     }
     if(VOIDConfig.bannerHeightType == "percentage"){
@@ -55,6 +56,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             el.style.backgroundImage = "url("+url+")";
             el.parentElement.classList.remove("loading");
             el.classList.add("loaded");
+            var img = document.createElement('img');
+            img.setAttribute('hidden', 'true');
+            img.src = url;
+            img.setAttribute('crossOrigin', '');
+            img.classList.add("bannerImg");
+            el.appendChild(img);
         }
     }
     </script>

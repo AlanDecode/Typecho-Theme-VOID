@@ -35,7 +35,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </span>
                 <?php endforeach; } ?>
             </nav>
-            <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required placeholder="Search..." />
+            <span style="position:relative">
+                <label for="search">搜索</label>
+                <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
+            </span>
         </div>
     </header>
     <div id="nav-mobile">
