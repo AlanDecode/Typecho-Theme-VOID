@@ -4,7 +4,6 @@
     "customNotice" : "欢迎来到我的博客！",
     "msgBg" : "#fff",
     "msgColor" : "#333",
-    "adaptiveHeader" : false,
     "nav" : [
         {
             "name" : "捉迷藏",

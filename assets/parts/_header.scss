@@ -1,9 +1,3 @@
-:root{
-    --header-bg-color: linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
-    --header-text-color: #eee;
-    --dropdown-bg-hover-color:  rgba(0, 0, 0, 0.65);
-}
-
 header{
     z-index: 3;
     top: 0;
@@ -12,7 +6,6 @@ header{
     position: fixed;
     transition: 0.5s ease all;
     background: rgba(0,0,0,.25);
-    background: var(--header-bg-color);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     &.dark{
         transition: 0.5s ease all;
@@ -55,11 +48,9 @@ header{
         align-items: center;
         padding: 0.3rem 0.5rem;
         color: #eee;
-        color: var(--header-text-color);
         transition: 0.3s ease all;
         &:hover{
             color: #eee;
-            color: var(--header-text-color);
         }
         &.brand{
             font-weight: 600;
@@ -106,18 +97,14 @@ header{
                 white-space: nowrap;
                 &:hover{
                     background: rgba(0, 0, 0, 0.65);
-                    background: var(--dropdown-bg-hover-color);
                     color: #eee;
-                    color: var(--header-text-color);
                 }
             }
         }
         &:hover{
             background: rgba(0, 0, 0, 0.65);
-            background: var(--dropdown-bg-hover-color);
             ul{
                 background: rgba(0, 0, 0, 0.65);
-                background: var(--dropdown-bg-hover-color);
                 display: block;
             }
         }
@@ -134,7 +121,6 @@ header{
     }
     label{
         color: #eee;
-        color: var(--header-text-color);
         position: absolute;
         display: block;
         height: 100%;
@@ -153,7 +139,6 @@ header{
             font-size: 1rem;
         }
         color: #eee;
-        color: var(--header-text-color);
         outline: none;
         height: 1.5rem;
         background: none;

@@ -260,8 +260,7 @@ class Utils
             'welcomeWord' => false,
             'customNotice' => '',
             'msgColor' => '',
-            'msgBg' => '',
-            'adaptiveHeader' => false
+            'msgBg' => ''
         );
         if(!Helper::options()->advance || Helper::options()->advance == '') return $output;
 
@@ -273,7 +272,6 @@ class Utils
         if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
         if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
         if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
-        if(property_exists($settings, 'adaptiveHeader')) $output['adaptiveHeader'] = $settings->adaptiveHeader;
 
         return $output;
     }

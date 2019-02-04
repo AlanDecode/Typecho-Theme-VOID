@@ -56,12 +56,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             el.style.backgroundImage = "url("+url+")";
             el.parentElement.classList.remove("loading");
             el.classList.add("loaded");
-            var img = document.createElement('img');
-            img.setAttribute('hidden', 'true');
-            img.src = url;
-            img.setAttribute('crossOrigin', '');
-            img.classList.add("bannerImg");
-            el.appendChild(img);
         }
     }
     </script>
