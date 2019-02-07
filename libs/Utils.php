@@ -120,7 +120,7 @@ class Utils
      */
     public static function addButton(){
         echo '<script src="';
-        self::indexTheme('/assets/libs/owo/owo.js');
+        self::indexTheme('/assets/libs/owo/owo_01.js');
         echo '"></script>';
 
         echo '<script src="';

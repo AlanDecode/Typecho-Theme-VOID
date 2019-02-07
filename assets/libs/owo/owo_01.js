@@ -12,7 +12,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _classCallCheck(this, OwO);
 
             var defaultOption = {
-                logo: 'OwOè¡¨æƒ…',
+                logo: 'OwO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByTagName('textarea')[0],
                 position: 'down',
@@ -142,6 +142,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     itemsShow.classList.remove('OwO-items-show');
                 }
                 this.container.getElementsByClassName('OwO-items')[index].classList.add('OwO-items-show');
+                
+                if(!this.container.getElementsByClassName('OwO-items')[index].classList.contains('OwO-image-items-load')
+                    &&this.container.getElementsByClassName('OwO-items')[index].classList.contains('OwO-items-image'))
+                {
+                    this.container.getElementsByClassName('OwO-items')[index].classList.add('OwO-image-items-load');
+                    var imgs = this.container.getElementsByClassName('OwO-items')[index].getElementsByTagName('img');
+                    for (var i = 0; i < imgs.length; i++) {
+                        imgs[i].setAttribute('src',imgs[i].dataset.src);
+                    }
+                }
 
                 var packageActive = this.container.getElementsByClassName('OwO-package-active')[0];
                 if (packageActive) {
