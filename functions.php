@@ -21,6 +21,8 @@ require_once("libs/Comments.php");
 
 Typecho_Plugin::factory('admin/write-post.php')->bottom = array('Utils', 'addButton');
 Typecho_Plugin::factory('admin/write-page.php')->bottom = array('Utils', 'addButton');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Contents','parseContent');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('Contents','parseContent');
 
 /**
  * 主题启用

@@ -62,11 +62,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                 <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                 <?php endif; ?>
                 <div itemprop="articleBody">
-                <?php 
-                    $content = Contents::parseAll($this->content, $this->fields->showTOC == '1');
-                    if($this->is('page')) $content = Contents::parseBoard($content);
-                    echo $content['content'];
-                ?>
+                <?php $this->content(); ?>
                 </div>
                 <?php if($this->fields->banner != ''): ?>
                 <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
@@ -89,7 +85,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             </article>
             <!--目录，可选-->
             <?php if($this->fields->showTOC == '1'): ?>
-                    <div aria-label="文章目录" class="TOC"><?php echo $content['toc']; ?></div>
+                    <div aria-label="文章目录" class="TOC"></div>
                     <div role=button aria-label="展开或关闭文章目录" class="toggle-toc"><a target="_self" class="toggle" href="javascript:void(0);" onclick="toggleToc(this);"><span></span></a>
                     </div>
             <?php endif; ?>
@@ -101,7 +97,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
             </div>
             <?php endif; ?>
         </section>
-
         <!--评论区，可选-->
         <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
     </div>

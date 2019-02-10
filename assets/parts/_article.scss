@@ -369,33 +369,6 @@ article.post{
         position: fixed;
         top: 80px;
     }
-    ul{
-        list-style: none;
-        padding: 0 1rem;
-        margin: 0;
-        li{
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.5;
-            font-size: 0.9rem;
-            &,& *{
-                color: $fadeColor;
-            }
-            .toc-level-2{
-                font-size: 0.95rem;
-            }
-            .toc-level-3{
-                padding-left: 1em;
-            }
-            .toc-level-4{
-                padding-left: 2em;
-            }
-            .toc-level-5{
-                padding-left: 3em;
-            }
-        }
-    }
 }
 .toggle-toc{
     @media screen and (min-width: 1366px) {

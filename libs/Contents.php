@@ -8,17 +8,6 @@
  * @version     2019-01-15 0.01
  */
 
-
-global $toc;
-global $curid;
-function parseTOC_callback($matchs){
-    $GLOBALS['curid']=$GLOBALS['curid']+1;
-    $GLOBALS['toc'].='<li><a href="#TOC-'.(string)$GLOBALS['curid'].'" onclick="$.scrollTo(`#TOC-'.(string)$GLOBALS['curid'].'`,500);" class="toc-item toc-level-'.$matchs[1].'">'.$matchs[2].'</a></li>';
-    return '<h'.$matchs[1].' id="TOC-'.(string)$GLOBALS['curid'].'">'.$matchs[2].'</h'.$matchs[1].'>';
-}
-function parseBoard_callback($matchs){
-    return '<a target="_blank" href="'.$matchs[2].'" class="board-item link-item"><div class="board-thumb" style="background-image:url('.$matchs[3].')"></div><div class="board-title">'.$matchs[1].'</div></a>';
-}
 Class Contents
 {
     /**
@@ -124,30 +113,38 @@ EOF;
     }
 
     /**
+     * 内容解析点钩子
+     * 目录解析移至前端完成
+     */
+    static public function parseContent($data, $widget, $last){
+        $text = empty($last)?$data:$last;
+        if ($widget instanceof Widget_Archive) {
+            $text = self::parseAll($text);
+        }
+        return $text;
+    }
+
+    /**
      * 解析器：文章内容
      * 
-     * @return array
+     * @return string
      */
-    static public function parseAll($content, $parseTOC = false)
+    static public function parseAll($content)
     {
-        $result = array();
-        $newContent = self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content)))));
-        if($parseTOC)
-        {
-            global $toc;
-            $GLOBALS['curid']=0;
-            $GLOBALS['toc']='<ul id="toc-ul">';
-            $result['content'] = preg_replace_callback('/<h([2-6]).*?>(.*?)<\/h.*?>/s', 'parseTOC_callback', $newContent);
-            $GLOBALS['toc'].='</ul>';
-            $result['toc'] = $toc;
-        }
-        else
-        {
-            $result['content'] = $newContent;
-            $result['toc'] = '';
-        }
-        
-        return $result;
+        return self::parseHeader(self::parseBoard(self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content)))))));
+    }
+
+    /**
+     * 解析文章内 h2 ~ h5 元素
+     * 
+     * @return string
+     */
+    static public function parseHeader($content)
+    {
+        $reg='/\<h([2-6])(.*?)\>(.*?)\<\/h.*?\>/s';
+        $rp='<h${1}${2} id="${3}">${3}</h${1}>';
+        $new=preg_replace($reg,$rp,$content);
+        return $new;
     }
 
     /**
@@ -248,8 +245,12 @@ EOF;
      */
     static public function parseBoard($string){
         $reg='/\[(.*?)\]\((.*?)\)\+\((.*?)\)/s';
-        $new=preg_replace_callback($reg, 'parseBoard_callback', $string);
+        $new=preg_replace_callback($reg, array('Contents', 'parseBoardCallback'), $string);
         return $new;
+    }
+
+    function parseBoardCallback($matchs){
+        return '<a target="_blank" href="'.$matchs[2].'" class="board-item link-item"><div class="board-thumb" style="background-image:url('.$matchs[3].')"></div><div class="board-title">'.$matchs[1].'</div></a>';
     }
 
     /**

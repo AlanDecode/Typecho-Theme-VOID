@@ -9,8 +9,9 @@ console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; backg
 var VOID = {
     // 初始化单页应用
     init : function(){
+        VOID.parseTOC();
         VOID.showWelcomeWord();
-        VOID.parsedPhotos();
+        VOID.parsePhotos();
         VOID.parseUrl();
         hljs.initHighlightingOnLoad();
         VOID.hitokoto();
@@ -83,7 +84,7 @@ var VOID = {
     },
 
     // 解析照片集
-    parsedPhotos : function(){
+    parsePhotos : function(){
         var base = 50;
         $.each($('.photos'), function(i, photoSet){
             $.each($(photoSet).children(), function(j, item){
@@ -143,6 +144,9 @@ var VOID = {
         $('header').removeClass('opened');
         if($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
+        if($('.TOC').length > 0){
+            tocbot.destroy();
+        }
     },
 
     alert : function(content, time){
@@ -200,7 +204,8 @@ var VOID = {
     // PJAX 结束后
     afterPjax : function(){
         NProgress.done();
-        VOID.parsedPhotos();
+        VOID.parseTOC();
+        VOID.parsePhotos();
         VOID.parseUrl();
         VOID.reload();
         VOID.handleLike();
@@ -266,6 +271,20 @@ var VOID = {
         else{
             $(item).html('+');
             $(item).parent().addClass('shrink');
+        }
+    },
+
+    // 解析文章目录
+    parseTOC : function(){
+        if($('.TOC').length > 0){
+            tocbot.init({
+                // Where to render the table of contents.
+                tocSelector: '.TOC',
+                // Where to grab the headings to build the table of contents.
+                contentSelector: 'div[itemprop=articleBody]',
+                // Which headings to grab inside of the contentSelector element.
+                headingSelector: 'h2, h3, h4, h5'
+            });
         }
     }
 };
