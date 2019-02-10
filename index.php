@@ -49,8 +49,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;   <!-- author -->
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                     </p>
-                    <p itemprop="headline"><?php $this->excerpt(90); ?></p>
-                    <button aria-label="阅读全文" class="btn btn-normal">READ MORE </button>
+                    <p itemprop="headline"><?php $this->excerpt(150); ?></p>
                 </div>
                 <?php if(!Utils::isWeixin()): ?>
                     <?php $lazyID = rand(1,10000); ?>
