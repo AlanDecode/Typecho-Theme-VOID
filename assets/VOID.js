@@ -161,10 +161,13 @@ var VOID = {
         $('.msg#msg' + id).addClass('show');
         var t = time;
         if(typeof(t) != 'number'){
-            t = 3000;
+            t = 2500;
         } 
         setTimeout(function(){
             $('.msg#msg' + id).addClass('hide');
+            setTimeout(function(){
+                $('.msg#msg' + id).remove();
+            }, 1000);
         }, t);
     },
 
