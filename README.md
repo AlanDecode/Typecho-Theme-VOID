@@ -12,7 +12,8 @@
 
 > 演示站点：[熊猫小A的博客](https://blog.imalan.cn)，介绍文章：[VOID：现在可以公开的情报](https://blog.imalan.cn/archives/247/)。
 
-* PJAX
+* PJAX 无刷新体验
+* AJAX 评论
 * 响应式设计
 * 卡片式
 * 代码高亮
@@ -56,6 +57,7 @@ git clone git@github.com:AlanDecode/Typecho-Theme-VOID.git ./VOID && cd ./VOID
 
 ```bash
 npm install -g gulp
+npm install --save-dev gulp 
 npm install
 ```
 
@@ -120,6 +122,20 @@ gulp build
 构建你的主题。如果你对自己的更改很满意，**欢迎提出 Pull Request**。
 
 ## 更新日志
+
+**2019-02-11 Version 1.4**
+
+* 去除自适应导航条
+* OWO 表情调整为懒加载
+* 目录树优化，现在可以随滚动折叠
+* 无头图时首页默认显示摘要
+* 性能优化
+* 其它细节调整
+* bug fix
+
+高级设置
+
+原默认首页封面图设置移动至高级设置 `defaultCover`。
 
 **2019-02-04 Version 1.3**
 
