@@ -226,11 +226,14 @@ main{
                                 font-weight: 300;
                                 font-size: 1rem;
                                 letter-spacing: 0.05em;
-                                color: #eeeeee;
+                                color: rgba(255,255,255,0.7);
                                 max-height: 100%;
                                 overflow: hidden;
                             }
                         }
+                    }
+                    &.show-excerpt .item-meta {
+                        opacity: 1;
                     }
                     @media screen and (min-width:768px) {
                         &:hover .item-meta{

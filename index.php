@@ -81,26 +81,24 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
         <section id="post-list" aria-label="最近文章列表">
             <div class="section-title">RECENT</div>
             <?php while($this->next()): ?>
-            <a class="item" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
-                <?php $lazyID = rand(1,10000); ?>
-                <?php if(!Utils::isWeixin()): ?>
-                    <div class="lazy-wrap loading">
-                        <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
-                        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
-                            <div class="item-meta">
-                            <span itemprop="headline"><?php $this->excerpt(110); ?></span>
-                            </div>
+            <a class="item <?php if(($this->options->showExcerpt == '1' && $this->fields->banner == '') || ($this->fields->banner == '' && $this->options->defaultCover == '')) echo 'show-excerpt'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <?php 
+                    if($this->fields->banner != ''){
+                        Contents::exportCover($this, $this->fields->banner, 110, false);
+                    }else{
+                        if($this->options->showExcerpt == '0' && $this->options->defaultCover != ''){
+                            Contents::exportCover($this, $this->options->defaultCover, 110, true);
+                        }else{ ?>
+                <div class="lazy-wrap">
+                    <div class="item-banner lazy loaded" style="background: black">
+                        <div class="item-meta">
+                        <span><?php $this->excerpt(110); ?></span>
                         </div>
                     </div>
-                <?php else: ?>
-                    <div class="lazy-wrap">
-                        <div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)">
-                            <div class="item-meta">
-                            <span><?php $this->excerpt(110); ?></span>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                </div>
+                       <?php }
+                    } 
+                ?>
                 <div class="item-content">
                     <h1 itemprop="name"><?php $this->title(); ?></h1>
                     <p>

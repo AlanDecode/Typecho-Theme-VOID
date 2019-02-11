@@ -333,4 +333,34 @@ EOF;
         }
         return $stat;
     }
+
+    /**
+     * 导出首页文章列表 cover
+     * 
+     * @return void
+     */
+    public static function exportCover($archive, $banner, $num=110, $random = false)
+    {
+        $lazyID = rand(1,10000);
+        $_banner = $banner;
+        if($random) $_banner = $banner.'?v='.$lazyID;
+        if(!Utils::isWeixin()){ ?>
+            <div class="lazy-wrap loading">
+                <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
+                <?php Utils::registerLazyImg($_banner, $lazyID); ?>
+                    <div class="item-meta">
+                    <span itemprop="headline"><?php $archive->excerpt($num); ?></span>
+                    </div>
+                </div>
+            </div>
+<?php   }else{ ?>
+            <div class="lazy-wrap">
+                <div class="item-banner lazy loaded" style="background-image:url(<?php echo $_banner; ?>)">
+                    <div class="item-meta">
+                    <span itemprop="headline"><?php $archive->excerpt($num); ?></span>
+                    </div>
+                </div>
+            </div>
+<?php   }
+    }
 }
