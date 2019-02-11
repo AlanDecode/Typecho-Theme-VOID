@@ -69,15 +69,15 @@ if(!Utils::isPjax()){
             <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'show-excerpt'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <?php 
                     if($this->fields->banner != ''){
-                        Contents::exportCover($this, $this->fields->banner, 110, false);
+                        Contents::exportCover($this, $this->fields->banner, 150, false);
                     }else{
                         if(!empty($setting['defaultCover'])){
-                            Contents::exportCover($this, $setting['defaultCover'], 110, true);
+                            Contents::exportCover($this, $setting['defaultCover'], 150, true);
                         }else{ ?>
                 <div class="lazy-wrap">
                     <div class="item-banner lazy loaded" style="background: black">
                         <div class="item-meta">
-                        <span><?php $this->excerpt(110); ?></span>
+                        <span><?php $this->excerpt(150); ?></span>
                         </div>
                     </div>
                 </div>
