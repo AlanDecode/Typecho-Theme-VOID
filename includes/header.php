@@ -8,24 +8,24 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <body>
-    <?php $advance = Utils::getAdvanceSettings(); ?>
     <header>
         <div class="container">
             <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
                 <span></span>
             </a>
             <nav aria-label="导航链接">
-                <a aria-label="返回主页" class="brand" href="<?php Utils::index(''); ?>"><?php if($advance['name']) echo $advance['name']; else echo $this->options->title; ?></a>
+                <a aria-label="返回主页" class="brand" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
                 <?php $this->widget('Widget_Contents_Page_List')->parse('<a aria-label="独立页面链接" href="{permalink}">{title}</a>'); ?>
                 <span aria-label="分类下拉列表" class="dropdown">分类
                     <ul>
                         <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a></li>'); ?>
                     </ul>
                 </span>
-                <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
+                <?php if($setting['nav']){ foreach ($setting['nav'] as $listItem): ?>
                 <span aria-label="<?php echo $listItem->name; ?>下拉列表" class="dropdown"><?php echo $listItem->name; ?>
                     <ul>
                         <?php foreach ($listItem->items as $item) {
@@ -55,7 +55,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <?php $this->widget('Widget_Metas_Category_List')->parse('<a href="{permalink}">{name}</a>'); ?>
             </nav>
         </section>
-        <?php if($advance['nav']){ foreach ($advance['nav'] as $listItem): ?>
+        <?php if($setting['nav']){ foreach ($setting['nav'] as $listItem): ?>
         <section data-title="<?php echo $listItem->name; ?>">
             <nav aria-label="<?php echo $listItem->name; ?>导航">
                 <?php foreach ($listItem->items as $item) {

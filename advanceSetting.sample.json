@@ -1,6 +1,7 @@
 {
     "name" : "A Panda.",
-    "welcomeWord" : false,
+    "welcomeWord" : true,
+    "defaultCover" : "https:\/\/api.imalan.cn\/random\/?c=unsplash&s=large&r=img",
     "customNotice" : "欢迎来到我的博客！",
     "msgBg" : "#fff",
     "msgColor" : "#333",

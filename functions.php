@@ -37,12 +37,8 @@ function themeInit(){
  * 主题设置
  */
 function themeConfig($form) {
-    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', '默认顶部大图', '可以填写随机图 API。');
+    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://i.loli.net/2019/02/11/5c614078f2263.png', '默认顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
-    $showExcerpt=new Typecho_Widget_Helper_Form_Element_Select('showExcerpt',array('0'=>'不启用','1'=>'启用'),'1','默认显示摘要','无主图时在首页显示摘要');
-    $form->addInput($showExcerpt);
-    $defaultCover=new Typecho_Widget_Helper_Form_Element_Text('defaultCover', NULL, 'https://api.imalan.cn/random/?c=unsplash&s=large&r=img', _t('默认首页文章封面图'), _t('可以填写随机图 API，默认显示摘要启用时本设置会被覆盖。'));
-    $form->addInput($defaultCover);
     $desktopBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('desktopBannerHeight', NULL, NULL, '桌面端顶部大图高度', '填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。');
     $form->addInput($desktopBannerHeight);
     $mobileBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('mobileBannerHeight', NULL, NULL, '移动端顶部大图高度', '填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。');
@@ -74,3 +70,5 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $showTOC=new Typecho_Widget_Helper_Form_Element_Select('showTOC',array('0'=>'不显示目录','1'=>'显示目录'),'0','文章目录','是否显示文章目录');
     $layout->addItem($showTOC);
 }
+
+$GLOBALS['VOIDSetting'] = Utils::getVOIDSettings();

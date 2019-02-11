@@ -8,6 +8,7 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
 
         <script>
@@ -30,7 +31,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
         <?php $this->footer(); ?>
 
-        <?php if($this->options->enableMath=='1'): ?>
+        <?php if($setting['enableMath']): ?>
         <script src='<?php Utils::indexTheme('/assets/libs/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -51,10 +52,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             });
         }
         </script>
-        <?php if($this->options->pjax=='1'): ?>
+        <?php if($setting['pjax']): ?>
         <script>
         $(document).on('pjax:complete',function(){
-            <?php echo $this->options->pjaxreload; ?>
+            <?php echo $setting['pjaxreload']; ?>
         })
         </script>
         <?php endif; ?>
@@ -78,7 +79,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <div class="container footer-info">
                 Powered by Typecho
                 <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a>
-                <div><?php echo $this->options->footer; ?></div>
+                <div><?php echo $setting['footer']; ?></div>
             </div>
         </footer>
     </body>

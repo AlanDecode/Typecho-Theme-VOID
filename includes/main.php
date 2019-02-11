@@ -8,12 +8,7 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-?>
-
-<?php 
-// load banner and cover
-$defaultBanner = $this->options->defaultBanner;
-$defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCover : $defaultBanner;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <main id="pjax-container">
@@ -21,13 +16,7 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
         <?php Contents::title($this); ?>
     </title>
 
-    <?php if(!Utils::isWeixin()): ?>
-        <?php $lazyID = rand(1,10000); ?>
-        <div class="lazy-wrap loading"><div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div></div>
-        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultBanner, $lazyID); ?>
-    <?php else: ?>
-        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultBanner; ?>)" class="lazy loaded"></div></div>
-    <?php endif; ?>
+    <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
         <section id="post">

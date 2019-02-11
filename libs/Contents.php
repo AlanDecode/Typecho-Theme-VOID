@@ -116,7 +116,8 @@ EOF;
      * 内容解析点钩子
      * 目录解析移至前端完成
      */
-    static public function parseContent($data, $widget, $last){
+    static public function parseContent($data, $widget, $last)
+    {
         $text = empty($last)?$data:$last;
         if ($widget instanceof Widget_Archive) {
             $text = self::parseAll($text);
@@ -152,7 +153,8 @@ EOF;
      * 
      * @return string
      */
-    static public function parseNotice($content){
+    static public function parseNotice($content)
+    {
         $reg='/\[notice.*?\](.*?)\[\/notice\]/s';
         $rp='<p class="notice">${1}</p>';
         $new=preg_replace($reg,$rp,$content);
@@ -164,7 +166,8 @@ EOF;
      *
      * @return string
      */
-    static public function parsePhotoSet($content){
+    static public function parsePhotoSet($content)
+    {
         // 清除无用 tag
         $reg = '/\[photos(.*?)\/photos\]/s';
         $new = preg_replace_callback($reg, array('Contents', 'parsePhotoSetCallBack'), $content);
@@ -179,7 +182,8 @@ EOF;
      * 
      * @return string
      */
-    private static function parsePhotoSetCallBack($match){
+    private static function parsePhotoSetCallBack($match)
+    {
         return '[photos'. str_replace(['<br>', '<p>', '</p>'], '', $match[1]) .'/photos]';
     }
 
@@ -188,7 +192,8 @@ EOF;
      * 
      * @return string
      */
-    static public function parseBiaoQing($content){
+    static public function parseBiaoQing($content)
+    {
         $content = preg_replace_callback('/\:\:\(\s*(呵呵|哈哈|吐舌|太开心|笑眼|花心|小乖|乖|捂嘴笑|滑稽|你懂的|不高兴|怒|汗|黑线|泪|真棒|喷|惊哭|阴险|鄙视|酷|啊|狂汗|what|疑问|酸爽|呀咩爹|委屈|惊讶|睡觉|笑尿|挖鼻|吐|犀利|小红脸|懒得理|勉强|爱心|心碎|玫瑰|礼物|彩虹|太阳|星星月亮|钱币|茶杯|蛋糕|大拇指|胜利|haha|OK|沙发|手纸|香蕉|便便|药丸|红领巾|蜡烛|音乐|灯泡|开心|钱|咦|呼|冷|生气|弱|吐血)\s*\)/is',
             array('Contents', 'parsePaopaoBiaoqingCallback'), $content);
         $content = preg_replace_callback('/\:\@\(\s*(高兴|小怒|脸红|内伤|装大款|赞一个|害羞|汗|吐血倒地|深思|不高兴|无语|亲亲|口水|尴尬|中指|想一想|哭泣|便便|献花|皱眉|傻笑|狂汗|吐|喷水|看不见|鼓掌|阴暗|长草|献黄瓜|邪恶|期待|得意|吐舌|喷血|无所谓|观察|暗地观察|肿包|中枪|大囧|呲牙|抠鼻|不说话|咽气|欢呼|锁眉|蜡烛|坐等|击掌|惊喜|喜极而泣|抽烟|不出所料|愤怒|无奈|黑线|投降|看热闹|扇耳光|小眼睛|中刀)\s*\)/is',
@@ -202,7 +207,8 @@ EOF;
      * 
      * @return string
      */
-    private static function parsePaopaoBiaoqingCallback($match){
+    private static function parsePaopaoBiaoqingCallback($match)
+    {
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/paopao/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
@@ -211,7 +217,8 @@ EOF;
      * 
      * @return string
      */
-    private static function parseAruBiaoqingCallback($match){
+    private static function parseAruBiaoqingCallback($match)
+    {
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
@@ -220,7 +227,8 @@ EOF;
      * 
      * @return string
      */
-    static public function parseFancyBox($content){
+    static public function parseFancyBox($content)
+    {
         $reg = '/<img.*?src="(.*?)".*?alt="(.*?)".*?>/s';
         $new = preg_replace_callback($reg, array('Contents', 'parseFancyBoxCallback'), $content);
         return $new;
@@ -231,7 +239,8 @@ EOF;
      * 
      * @return string
      */
-    private static function parseFancyBoxCallback($match){
+    private static function parseFancyBoxCallback($match)
+    {
         if($match[2] == '')
             return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img src="'.$match[1].'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
         else
@@ -243,13 +252,15 @@ EOF;
      * 
      * @return string
      */
-    static public function parseBoard($string){
+    static public function parseBoard($string)
+    {
         $reg='/\[(.*?)\]\((.*?)\)\+\((.*?)\)/s';
         $new=preg_replace_callback($reg, array('Contents', 'parseBoardCallback'), $string);
         return $new;
     }
 
-    function parseBoardCallback($matchs){
+    function parseBoardCallback($matchs)
+    {
         return '<a target="_blank" href="'.$matchs[2].'" class="board-item link-item"><div class="board-thumb" style="background-image:url('.$matchs[3].')"></div><div class="board-title">'.$matchs[1].'</div></a>';
     }
 
@@ -258,7 +269,8 @@ EOF;
      * 
      * @return string
      */
-    static public function parseRuby($string){
+    static public function parseRuby($string)
+    {
         $reg='/\{\{(.*?):(.*?)\}\}/s';
         $rp='<ruby>${1}<rp>(</rp><rt>${2}</rt><rp>)</rp></ruby>';
         $new=preg_replace($reg,$rp,$string);
@@ -268,7 +280,8 @@ EOF;
     /**
      * 文章上一篇
      */
-    public static function thePrev($archive){
+    public static function thePrev($archive)
+    {
         $db = Typecho_Db::get();
         $content = $db->fetchRow($db->select()->from('table.contents')->where('table.contents.created < ?', $archive->created)
         ->where('table.contents.status = ?', 'publish')
@@ -289,7 +302,8 @@ EOF;
     /**
      * 文章下一篇
      */
-    public static function theNext($archive){
+    public static function theNext($archive)
+    {
         $db = Typecho_Db::get();
         $content = $db->fetchRow($db->select()->from('table.contents')->where('table.contents.created > ? AND table.contents.created < ?',
             $archive->created, Helper::options()->gmtTime)
@@ -312,7 +326,8 @@ EOF;
      * 
      * @return array
      */
-    public static function archives($excerpt = false){
+    public static function archives($excerpt = false)
+    {
         $db = Typecho_Db::get();
         $cids = $db->fetchAll($db->select('table.contents.cid')
                     ->from('table.contents')

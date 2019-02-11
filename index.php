@@ -10,6 +10,7 @@
  * @link        https://blog.imalan.cn/archives/247/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <?php 
@@ -19,24 +20,12 @@ if(!Utils::isPjax()){
 } 
 ?>
 
-<?php 
-// load banner and cover
-$defaultBanner = $this->options->defaultBanner;
-$defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCover : $defaultBanner;
-?>
-
 <main id="pjax-container">
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
 
-    <?php if(!Utils::isWeixin()): ?>
-        <?php $lazyID = rand(1,10000); ?>
-        <div class="lazy-wrap loading"><div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div></div>
-        <?php Utils::registerLazyImg($defaultBanner, $lazyID); ?>
-    <?php else: ?>
-        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $defaultBanner; ?>)" class="lazy loaded"></div></div>
-    <?php endif; ?>
+    <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
         <?php $this->next(); ?>
@@ -51,12 +40,13 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     </p>
                     <p itemprop="headline"><?php $this->excerpt(150); ?></p>
                 </div>
-                <?php if(!Utils::isWeixin()): ?>
+                <?php  $cover = $this->fields->banner; if(empty($cover)) $cover = $setting['defaultCover']; if(empty($cover)) $cover = $setting['defaultBanner']; 
+                    if(!Utils::isWeixin()): ?>
                     <?php $lazyID = rand(1,10000); ?>
                     <div class="lazy-wrap loading"><div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>></div></div>
-                    <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
+                    <?php Utils::registerLazyImg($cover, $lazyID); ?>
                 <?php else: ?>
-                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)"></div></div>
+                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $cover; ?>)"></div></div>
                 <?php endif; ?>
                 <?php if($this->fields->banner != ''): ?>
                 <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
@@ -75,14 +65,14 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
         </section>
         <section id="post-list" aria-label="最近文章列表">
             <div class="section-title">RECENT</div>
-            <?php while($this->next()): ?>
-            <a class="item <?php if(($this->options->showExcerpt == '1' && $this->fields->banner == '') || ($this->fields->banner == '' && $this->options->defaultCover == '')) echo 'show-excerpt'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
+            <?php while($this->next()): //直接显示摘要是默认选项 ?>
+            <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'show-excerpt'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <?php 
                     if($this->fields->banner != ''){
                         Contents::exportCover($this, $this->fields->banner, 110, false);
                     }else{
-                        if($this->options->showExcerpt == '0' && $this->options->defaultCover != ''){
-                            Contents::exportCover($this, $this->options->defaultCover, 110, true);
+                        if(!empty($setting['defaultCover'])){
+                            Contents::exportCover($this, $setting['defaultCover'], 110, true);
                         }else{ ?>
                 <div class="lazy-wrap">
                     <div class="item-banner lazy loaded" style="background: black">

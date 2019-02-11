@@ -8,7 +8,9 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -28,19 +30,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.css');?>">
     
-    <?php $advance = Utils::getAdvanceSettings(); ?>
     <script>
     VOIDConfig = {
-        PJAX : <?php echo $this->options->pjax == '1' ? 'true' : 'false'; ?>,
+        PJAX : <?php echo $setting['pjax'] ? 'true' : 'false'; ?>,
         searchBase : "<?php Utils::index("/search/"); ?>",
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
-        enableMath : <?php echo $this->options->enableMath == '1' ? 'true' : 'false'; ?>,
+        enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
         tocOffset : 0,
-        customNotice : "<?php echo $advance['customNotice']; ?>",
-        welcomeWord : <?php echo $advance['welcomeWord'] ? 'true' : 'false'; ?>,
-        adaptiveHeader : <?php echo $advance['adaptiveHeader'] ? 'true' : 'false'; ?>,
-        bannerHeightType : <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !='') echo '"percentage",bannerHeight : '.$this->options->desktopBannerHeight; else echo '"px"';?>
+        customNotice : "<?php echo $setting['customNotice']; ?>",
+        welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
+        bannerHeightType : <?php if(!empty($setting['desktopBannerHeight'])) echo '"percentage",bannerHeight : '.$setting['desktopBannerHeight']; else echo '"px"';?>
     }
     if(VOIDConfig.bannerHeightType == "percentage"){
         VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 28;
@@ -59,28 +59,28 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         }
     }
     </script>
-    <?php echo $this->options->head; ?>
+    <?php echo $setting['head']; ?>
     <style>
-    <?php if($this->options->desktopBannerHeight && $this->options->desktopBannerHeight !=''): ?>
+    <?php if(!empty($setting['desktopBannerHeight'])): ?>
     @media screen and (min-width: 768px){
-        main>.lazy-wrap{height: <?php echo $this->options->desktopBannerHeight ?>vh;}
-        main{margin-top: calc(<?php echo $this->options->desktopBannerHeight ?>vh - 90px)}
+        main>.lazy-wrap{height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
+        main{margin-top: calc(<?php echo $setting['desktopBannerHeight']; ?>vh - 90px)}
     }
     <?php endif; ?>
-    <?php if($this->options->mobileBannerHeight && $this->options->mobileBannerHeight !=''): ?>
+    <?php if(!empty($setting['mobileBannerHeight'])): ?>
     @media screen and (max-width: 768px){
-        main>.lazy-wrap{height: <?php echo $this->options->mobileBannerHeight ?>vh;}
-        main{margin-top: calc(<?php echo $this->options->mobileBannerHeight ?>vh - 40px)}
+        main>.lazy-wrap{height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
+        main{margin-top: calc(<?php echo $setting['mobileBannerHeight']; ?>vh - 40px)}
     }
     <?php endif; ?>
-    <?php if($advance['msgBg'] != ''): ?>
+    <?php if(!empty($setting['msgBg'])): ?>
     .msg{
-        background: <?php echo $advance['msgBg']; ?>
+        background: <?php echo $setting['msgBg']; ?>
     }
     <?php endif; ?>
-    <?php if($advance['msgColor'] != ''): ?>
+    <?php if(!empty($setting['msgColor'])): ?>
     .msg{
-        color: <?php echo $advance['msgColor']; ?>
+        color: <?php echo $setting['msgColor']; ?>
     }
     <?php endif; ?>
     </style>

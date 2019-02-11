@@ -55,7 +55,8 @@ class Utils
      * 
      * @return bool
      */
-    public static function isPluginAvailable($name) {
+    public static function isPluginAvailable($name) 
+    {
         $plugins = Typecho_Plugin::export();
         $plugins = $plugins['activated'];
         return is_array($plugins) && array_key_exists($name, $plugins);
@@ -66,7 +67,8 @@ class Utils
      * 
      * @return void
      */
-    public static function registerLazyImg($url, $id){
+    public static function registerLazyImg($url, $id)
+    {
         echo '<script>registerLazyLoadImg("'.$url.'","[data-lazy-id=\''.$id.'\']")</script>';
     }
 
@@ -75,7 +77,8 @@ class Utils
      * 
      * @return bool
      */
-    public static function isPjax(){
+    public static function isPjax()
+    {
         return array_key_exists('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];
     }
 
@@ -84,7 +87,8 @@ class Utils
      * 
      * @return bool
      */
-    public static function isMobile(){ 
+    public static function isMobile()
+    { 
         if (isset ($_SERVER['HTTP_X_WAP_PROFILE'])){
             return TRUE;
         }
@@ -109,7 +113,8 @@ class Utils
      * 
      * @return bool
      */
-    public static function isWeixin() {
+    public static function isWeixin() 
+    {
         return  !self::isMobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false; 
     }
 
@@ -118,7 +123,8 @@ class Utils
      * 
      * @return void
      */
-    public static function addButton(){
+    public static function addButton()
+    {
         echo '<script src="';
         self::indexTheme('/assets/libs/owo/owo_01.js');
         echo '"></script>';
@@ -167,7 +173,8 @@ class Utils
      * 
      * @return array
      */
-    public static function isOutdated($archive){
+    public static function isOutdated($archive)
+    {
         date_default_timezone_set("Asia/Shanghai");
         $created = round((time()- $archive->created) / 3600 / 24);
         $updated = round((time()- $archive->modified) / 3600 / 24);
@@ -182,7 +189,8 @@ class Utils
      * 
      * @return array
      */
-    public static function getBuildTime(){
+    public static function getBuildTime()
+    {
         date_default_timezone_set("Asia/Shanghai");
         $db = Typecho_Db::get();
         $content = $db->fetchRow($db->select()->from('table.contents')
@@ -198,7 +206,8 @@ class Utils
      * 
      * @return int
      */
-    public static function getPostNum(){
+    public static function getPostNum()
+    {
         $db = Typecho_Db::get();
         return $db->fetchObject($db->select(array('COUNT(cid)' => 'num'))
                     ->from('table.contents')
@@ -211,7 +220,8 @@ class Utils
      * 
      * @return int
      */
-    public static function getCatNum(){
+    public static function getCatNum()
+    {
         $db = Typecho_Db::get();
         return $db->fetchObject($db->select(array('COUNT(mid)' => 'num'))
                     ->from('table.metas')
@@ -223,7 +233,8 @@ class Utils
      * 
      * @return int
      */
-    public static function getTagNum(){
+    public static function getTagNum()
+    {
         $db = Typecho_Db::get();
         return $db->fetchObject($db->select(array('COUNT(mid)' => 'num'))
                     ->from('table.metas')
@@ -235,7 +246,8 @@ class Utils
      * 
      * @return int
      */
-    public static function getWordCount(){
+    public static function getWordCount()
+    {
         $db = Typecho_Db::get();
         $posts = $db->fetchAll($db->select('table.contents.text')
                     ->from('table.contents')
@@ -253,27 +265,74 @@ class Utils
      * 
      * @return array
      */
-    public static function getAdvanceSettings(){
+    public static function getVOIDSettings()
+    {
         $output = array(
-            'nav' => false,
-            'name' => false,
-            'welcomeWord' => false,
+            // 主题设置
+            'defaultBanner' => 'https://i.loli.net/2019/02/11/5c614078f2263.png',
+            'desktopBannerHeight' => '',
+            'mobileBannerHeight' => '',
+            'enableMath' => false,
+            'head' => '',
+            'footer' => '',
+            'pjax' => false,
+            'pjaxreload' => '',
+
+            // 高级设置
+            'nav' => '',
+            'name' => '',
+            'welcomeWord' => true,
             'customNotice' => '',
             'msgColor' => '',
-            'msgBg' => ''
+            'msgBg' => '',
+            'defaultCover' => ''
         );
-        if(!Helper::options()->advance || Helper::options()->advance == '') return $output;
 
-        $settings = json_decode(Helper::options()->advance);
+        $options = Helper::options();
 
-        if(property_exists($settings, 'name')) $output['name'] = $settings->name;
-        if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
-        if(property_exists($settings, 'welcomeWord')) $output['welcomeWord'] = $settings->welcomeWord;
-        if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
-        if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
-        if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
+        if(!empty($options->advance)){
+            $settings = json_decode($options->advance);
+            if(property_exists($settings, 'name')) $output['name'] = $settings->name;
+            if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
+            if(property_exists($settings, 'welcomeWord')) $output['welcomeWord'] = $settings->welcomeWord;
+            if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
+            if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
+            if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
+            if(property_exists($settings, 'defaultCover')) $output['defaultCover'] = $settings->defaultCover;
+        }
+
+        if(!empty($options->defaultBanner)){
+            $output['defaultBanner'] = $options->defaultBanner;
+        }
+
+        if(!empty($options->desktopBannerHeight)){
+            $output['desktopBannerHeight'] = $options->desktopBannerHeight;
+        }
+
+        if(!empty($options->mobileBannerHeight)){
+            $output['mobileBannerHeight'] = $options->mobileBannerHeight;
+        }
+
+        if(!empty($options->enableMath)){
+            if($options->enableMath == '1') $output['enableMath'] = true;
+        }
+
+        if(!empty($options->head)){
+            $output['head'] = $options->head;
+        }
+
+        if(!empty($options->footer)){
+            $output['footer'] = $options->footer;
+        }
+
+        if(!empty($options->pjax)){
+            if($options->pjax == '1') $output['pjax'] = true;
+        }
+        
+        if(!empty($options->pjaxreload)){
+            $output['pjaxreload'] = $options->pjaxreload;
+        }
 
         return $output;
     }
-
 }
