@@ -63,11 +63,6 @@ $defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCove
                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                 </div>
                 <?php endif; ?>
-                <?php if($this->fields->banner != ''): ?>
-                <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
-                </div>
-                <?php endif; ?>
                 <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
                     <meta itemprop="name" content="<?php echo $this->options->title; ?>">
                     <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
