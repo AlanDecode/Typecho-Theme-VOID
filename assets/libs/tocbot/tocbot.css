@@ -44,7 +44,7 @@ a.toc-link {
 	font-weight: 700
 }
 
-.is-active-link::before, .toc-link:hover::before {
+.is-active-link::before {
     content: "";
     background-color: #54BC4B;
 	display: block;
@@ -53,4 +53,17 @@ a.toc-link {
     top: 0;
 	position: absolute;
 	width: 2px
+}
+
+@media screen and (min-width: 1366px){
+	.toc-link:hover::before {
+		content: "";
+		background-color: #54BC4B;
+		display: block;
+		height: 1.5rem;
+		left: -0.6rem;
+		top: 0;
+		position: absolute;
+		width: 2px
+	}
 }
