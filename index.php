@@ -6,26 +6,37 @@
  * 
  * @package     Typecho-Theme-VOID
  * @author      熊猫小A
- * @version     1.4
+ * @version     1.3
  * @link        https://blog.imalan.cn/archives/247/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <?php 
-if(!Utils::isPjax()){
+if(!Utils::isPjax()&&!is_ajax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
 } 
 ?>
 
+<?php 
+// load banner and cover
+$defaultBanner = $this->options->defaultBanner;
+$defaultCover = $this->options->defaultCover != '' ? $this->options->defaultCover : $defaultBanner;
+?>
+<?php if(!is_ajax()): ?>
 <main id="pjax-container">
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
 
-    <?php $this->need('includes/banner.php'); ?>
+    <?php if(!Utils::isWeixin()): ?>
+        <?php $lazyID = rand(1,10000); ?>
+        <div class="lazy-wrap loading"><div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div></div>
+        <?php Utils::registerLazyImg($defaultBanner, $lazyID); ?>
+    <?php else: ?>
+        <div class="lazy-wrap"><div id="banner" style="background-image:url(<?php echo $defaultBanner; ?>)" class="lazy loaded"></div></div>
+    <?php endif; ?>
 
     <div class="wrapper container">
         <?php $this->next(); ?>
@@ -38,15 +49,20 @@ if(!Utils::isPjax()){
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;   <!-- author -->
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                     </p>
-                    <p itemprop="headline"><?php $this->excerpt(150); ?></p>
+                    <p itemprop="headline"><?php $this->excerpt(90); ?></p>
+                    <button aria-label="阅读全文" class="btn btn-normal">READ MORE </button>
                 </div>
-                <?php  $cover = $this->fields->banner; if(empty($cover)) $cover = $setting['defaultCover']; if(empty($cover)) $cover = $setting['defaultBanner']; 
-                    if(!Utils::isWeixin()): ?>
+                <?php if(!Utils::isWeixin()): ?>
                     <?php $lazyID = rand(1,10000); ?>
                     <div class="lazy-wrap loading"><div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>></div></div>
-                    <?php Utils::registerLazyImg($cover, $lazyID); ?>
+                    <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
                 <?php else: ?>
-                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $cover; ?>)"></div></div>
+                    <div class="lazy-wrap"><div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)"></div></div>
+                <?php endif; ?>
+                <?php if($this->fields->banner != ''): ?>
+                <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
+                </div>
                 <?php endif; ?>
                 <?php if($this->fields->banner != ''): ?>
                 <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
@@ -65,25 +81,47 @@ if(!Utils::isPjax()){
         </section>
         <section id="post-list" aria-label="最近文章列表">
             <div class="section-title">RECENT</div>
-            <?php while($this->next()): //直接显示摘要是默认选项 ?>
-            <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'show-excerpt'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
-                <?php 
-                    if($this->fields->banner != ''){
-                        Contents::exportCover($this, $this->fields->banner, 150, false);
-                    }else{
-                        if(!empty($setting['defaultCover'])){
-                            Contents::exportCover($this, $setting['defaultCover'], 150, true);
-                        }else{ ?>
-                <div class="lazy-wrap">
-                    <div class="item-banner lazy loaded" style="background: black">
-                        <div class="item-meta">
-                        <span><?php $this->excerpt(150); ?></span>
+            <?php endif; ?>
+            <script>
+            var pageNum = 1; 
+            var pageAll = <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?>;
+            function ajaxPage(offset,size){
+                pageNum++;
+    $.ajax({
+        type: 'GET',
+        url: '/page/'+pageNum+'/',
+        success: function(result){
+            $('#post-list').append(result);
+            document.getElementById("ajaxpage").innerHTML="没有更多了~";
+        
+        },
+        error: function(xhr, type){
+            alert('Ajax error!');
+        }
+    });
+}
+            </script>
+            <?php while($this->next()): ?>
+            <a class="item" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <?php $lazyID = rand(1,10000); ?>
+                <?php if(!Utils::isWeixin()): ?>
+                    <div class="lazy-wrap loading">
+                        <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
+                        <?php Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(), $lazyID); ?>
+                            <div class="item-meta">
+                            <span itemprop="headline"><?php $this->excerpt(110); ?></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                       <?php }
-                    } 
-                ?>
+                <?php else: ?>
+                    <div class="lazy-wrap">
+                        <div class="item-banner lazy loaded" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $defaultCover.'?v='.rand(); ?>)">
+                            <div class="item-meta">
+                            <span><?php $this->excerpt(110); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="item-content">
                     <h1 itemprop="name"><?php $this->title(); ?></h1>
                     <p>
@@ -112,13 +150,14 @@ if(!Utils::isPjax()){
                 <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
             </a>
             <?php endwhile;?>
+            <?php if(!is_ajax()): ?>
         </section>
-        <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
+        <?php if($this->options->ajaxPage) echo'<ol class="pager"><li id ="ajaxpage"><a onclick="ajaxPage()">加载更多</a></li></ol>';else $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>
-
+<?php endif; ?>
 <?php 
-if(!Utils::isPjax()){
+if(!Utils::isPjax()&&!is_ajax()){
     $this->need('includes/footer.php');
 } 
 ?>
