@@ -197,7 +197,18 @@ body{
         animation-delay: 0.3;
     }
 }
-
+li#ajexpage{
+    color: #666;
+}
+li#ajexpage a:hover{
+    color: #666;
+    background: #ccc;
+}
+li#ajexpage a{
+    width: 8rem;
+    background: #111;
+    color: #fff;
+}
 @import "parts/header";
 @import "parts/index";
 @import "parts/article";
