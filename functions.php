@@ -74,8 +74,8 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
 }
 
 /**
-判断是否为ajax请求数据
-**/
+*判断是否为ajax请求数据
+*/
 function is_ajax()
 {
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
