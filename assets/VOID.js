@@ -387,7 +387,8 @@ var AjaxComment = {
                 success: function(data) { //成功取到数据
                     try {
                         if (!$(AjaxComment.commentList, data).length) {
-                            alert('提交失败,请重试!');
+                            var msg = '提交失败！请重试。' + $($(data)[7]).text();
+                            alert(msg);
                             $(AjaxComment.submitBtn).html('提交评论');
                             AjaxComment.err();
                             return false;
