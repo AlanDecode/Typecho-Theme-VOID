@@ -210,6 +210,12 @@ body{
     }
 }
 
+@media screen and (max-width: 767px){
+    #nprogress .spinner{
+        right: 45px;
+    }    
+}
+
 @import "parts/header";
 @import "parts/index";
 @import "parts/article";
