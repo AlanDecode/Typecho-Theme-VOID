@@ -35,16 +35,22 @@ $setting = $GLOBALS['VOIDSetting'];
                 </span>
                 <?php endforeach; } ?>
             </nav>
-            <span style="position:relative">
+            <span style="position:relative" class="hidden-xs">
                 <label for="search">搜索</label>
                 <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
             </span>
+            <a role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="toggleSearch(this);">
+                <div></div>
+                <span></span>
+            </a>
+        </div>
+        <div class="mobile-search">
+            <label for="search">搜索</label>
+            <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" class="text" required placeholder="输入内容然后 Go!" />
+            <button aria-label="开始搜索" onclick="startSearch('#search_new');">Go!</button>
         </div>
     </header>
     <div id="nav-mobile">
-        <div class="search">
-            <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" class="text" required placeholder="Search..." />
-        </div>
         <section id="pages" data-title="PAGES">
             <nav aria-label="页面导航">
                 <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>

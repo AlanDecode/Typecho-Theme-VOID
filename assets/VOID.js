@@ -26,9 +26,9 @@ var VOID = {
             $(this).removeClass('hover');
         });
         if($('main').offset().top - $(document).scrollTop() < 120){
-            $('header').addClass('dark');
+            $('header,.mobile-search').addClass('dark');
         }else{
-            $('header').removeClass('dark');
+            $('header,.mobile-search').removeClass('dark');
         }
         AjaxComment.init();
     },
@@ -141,6 +141,7 @@ var VOID = {
     beforePjax : function(){
         NProgress.start();
         $('.toggle').removeClass('pushed');
+        $('.mobile-search').removeClass('opened');
         $('header').removeClass('opened');
         if($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
@@ -485,9 +486,9 @@ setInterval(function(){
 
 $(document).scroll(function(){
     if($('main').offset().top - $(document).scrollTop() < 120){
-        $('header').addClass('dark');
+        $('header,.mobile-search').addClass('dark');
     }else{
-        $('header').removeClass('dark');
+        $('header,.mobile-search').removeClass('dark');
     }
     if(window.outerWidth < 1366) return;
     if($('.TOC').length<1) return;
@@ -503,6 +504,7 @@ $(document).scroll(function(){
 function startSearch(item) {
     var c = $(item).val();
     $(item).val('');
+    $(item).blur();
     if(!c || c==''){
         $(item).attr('placeholder','你还没有输入任何信息');
         return;
@@ -523,6 +525,11 @@ function enterSearch(item){
     if (event.keyCode == 13)  {  
         startSearch(item);
     }
+}
+// eslint-disable-next-line no-unused-vars
+function toggleSearch(){
+    $('.mobile-search').toggleClass('opened');
+    $('.mobile-search input').focus();
 }
 // eslint-disable-next-line no-unused-vars
 function toggleNav(item){

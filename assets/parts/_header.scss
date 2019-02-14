@@ -157,6 +157,75 @@ header{
             display: none;
         }
     }
+    #toggle-mobile-search{
+        display: none;
+        padding: 0;
+        @media screen and (max-width: 767px) {
+            display: block;
+            position: absolute;
+            right: 1rem;
+        }
+        > div{
+            width: 19px;
+            height: 19px;
+            border: 3px solid #fafafa;
+            border-radius: 50%;
+        }
+        > span{
+            position: relative;
+            &::before{
+                content: "";
+            position: absolute;
+            width: 10px;
+            height: 3px;
+            border-radius: 2px;
+            background: #fafafa;
+            left: 14px;
+            transform: rotate(42deg);
+            top: -3px;
+            } 
+        }
+    }
+    .mobile-search{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: 0.3s ease all;
+        transform: translateY(-10px);
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        display: flex;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.25);
+        &.dark{
+            background: #1e2023!important;
+        }
+        label{
+            top: 0;
+        }
+        input{
+            display: block;
+            flex: 1;
+            border-radius: 0;
+            border: none;
+            &::placeholder{
+                color: rgba(255, 255, 255, 0.37);
+            }
+        }
+        button{
+            background: none;
+            outline: none;
+            border: none;
+            color: #fafafa;
+        }
+        &.opened{
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+    }
 }
 #nav-mobile{
     position: fixed;
@@ -194,6 +263,9 @@ header{
         }    
     }
     section{
+        &#pages{
+            margin-top: calc(60px + 1rem);
+        }
         display: block;
         margin-top: 30px;
         padding-top: 1.5rem;

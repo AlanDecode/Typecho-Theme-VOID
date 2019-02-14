@@ -198,6 +198,18 @@ body{
     }
 }
 
+.hidden-xs{
+    @media screen and (max-width: 767px){
+        display: none!important
+    }
+}
+
+.show-xs{
+    @media screen and (min-width: 768px){
+        display: none!important
+    }
+}
+
 @import "parts/header";
 @import "parts/index";
 @import "parts/article";
