@@ -358,7 +358,6 @@ ruby > rt {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     li{
-        overflow: hidden;
         a{
             white-space: nowrap;
             text-overflow: ellipsis;
