@@ -357,6 +357,14 @@ ruby > rt {
     max-height: 85vh;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    li{
+        overflow: hidden;
+        a{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
     @media screen and (max-width: 1366px){
         display: none;
         &.show{

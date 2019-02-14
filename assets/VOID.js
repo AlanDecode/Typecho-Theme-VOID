@@ -490,7 +490,7 @@ $(document).scroll(function(){
     }else{
         $('header,.mobile-search').removeClass('dark');
     }
-    if(window.outerWidth < 1366) return;
+    if(window.innerWidth < 1366) return;
     if($('.TOC').length<1) return;
 
     if($(document).scrollTop() > VOIDConfig.tocOffset - 20.1){
