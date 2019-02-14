@@ -526,7 +526,13 @@ function enterSearch(item){
 // eslint-disable-next-line no-unused-vars
 function toggleSearch(){
     $('.mobile-search').toggleClass('opened');
-    $('.mobile-search input').focus();
+    setTimeout(function(){
+        if($('.mobile-search').hasClass('opened')){
+            $('.mobile-search input').focus();
+        }else{
+            $('.mobile-search input').blur();
+        }
+    }, 400);
 }
 // eslint-disable-next-line no-unused-vars
 function toggleNav(item){
