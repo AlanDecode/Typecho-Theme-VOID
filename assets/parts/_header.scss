@@ -164,10 +164,12 @@ header{
             display: block;
             position: absolute;
             right: 1rem;
+            top: 45%;
+            transform: translateY(-50%);
         }
         > div{
-            width: 19px;
-            height: 19px;
+            width: 17px;
+            height: 17px;
             border: 3px solid #fafafa;
             border-radius: 50%;
         }
@@ -175,14 +177,14 @@ header{
             position: relative;
             &::before{
                 content: "";
-            position: absolute;
-            width: 10px;
-            height: 3px;
-            border-radius: 2px;
-            background: #fafafa;
-            left: 14px;
-            transform: rotate(42deg);
-            top: -3px;
+                position: absolute;
+                width: 8px;
+                height: 3px;
+                border-radius: 2px;
+                background: #fafafa;
+                left: 14px;
+                transform: rotate(42deg);
+                top: -3px;
             } 
         }
     }
