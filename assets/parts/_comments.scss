@@ -107,9 +107,6 @@
     >.comment-list>.comment-body{
         border-bottom: 1px solid rgba(0,0,0,.1);
         margin-top: 1rem;
-        &:last-of-type{
-            border: none;
-        }
     }
     .comment-list{
         .comment-body{
@@ -169,8 +166,6 @@
                 word-break: break-word;
                 color: $textColor;
                 margin-top: 0.5rem;
-                padding: 0.5em;
-                background: rgba(0,0,0,0.05);
                 border-radius: 6px;
                 line-height: 1.5;
                 position: relative;
@@ -187,17 +182,6 @@
                 }
                 p:first-of-type{
                     display: inline;
-                }
-                &::before{
-                    position: absolute;
-                    top: 10px;
-                    left: -14px;
-                    width: 0;
-                    height: 0;
-                    content: '';
-                    border-style: solid;
-                    border-width: 7px;
-                    border-color: transparent rgba(0,0,0,0.05) transparent transparent;
                 }
             }
             
