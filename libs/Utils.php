@@ -309,7 +309,6 @@ class Utils
             if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
             if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
             if(property_exists($settings, 'defaultCover')) $output['defaultCover'] = $settings->defaultCover;
-            if(property_exists($settings, 'ajaxIndex')) $output['ajaxIndex'] = $settings->ajaxIndex;
             if(property_exists($settings, 'infiniteLoad')) $output['infiniteLoad'] = $settings->infiniteLoad;
         }
 
@@ -343,6 +342,10 @@ class Utils
         
         if(!empty($options->pjaxreload)){
             $output['pjaxreload'] = $options->pjaxreload;
+        }
+
+        if(!empty($options->ajaxIndex)){
+            if($options->ajaxIndex == '1') $output['ajaxIndex'] = true;
         }
 
         return $output;
