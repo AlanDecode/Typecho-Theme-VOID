@@ -183,6 +183,13 @@ main{
                     width: calc((100% - 60px) / 3.001);
                     box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
                     transition: 0.3s ease all;
+                    &.ajax{
+                        opacity: 0;
+                        &.ajax-loaded{
+                            animation: ajax-loaded 0.3s;
+                            animation-fill-mode: forwards;
+                        }
+                    }
                     &:nth-of-type(3n + 2){
                         margin: 0 30px;
                     }
@@ -298,11 +305,4 @@ main{
             }
         }
     }
-}
-
-a.item.ajax-loaded{
-    transform: translateY(-10px);
-    opacity: 0;
-    animation: slide-in 0.3s;
-    animation-fill-mode: forwards;
 }

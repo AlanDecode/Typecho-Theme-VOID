@@ -339,6 +339,7 @@ var VOID = {
                 }
                 VOIDConfig.nextUrl = $(data).find('a.next').attr('href');
                 $('#post-list').append($(data).find('a.item'));
+                $('a.item.ajax:not(.ajax-loaded)').addClass('ajax-loaded');
                 VOID.isAjaxLoading = false;
                 if(VOIDConfig.PJAX){
                     VOID.afterPjax();

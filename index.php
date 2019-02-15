@@ -68,7 +68,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
         <section id="post-list" aria-label="最近文章列表">
             <div class="section-title">RECENT</div>
             <?php while($this->next()): //直接显示摘要是默认选项 ?>
-            <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'show-excerpt'; ?> <?php if(Utils::isAjax()) echo 'ajax-loaded'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
+            <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'show-excerpt'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <?php 
                     if($this->fields->banner != ''){
                         Contents::exportCover($this, $this->fields->banner, 150, false);
