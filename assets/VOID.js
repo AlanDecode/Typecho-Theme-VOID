@@ -31,6 +31,18 @@ var VOID = {
             $('header,.mobile-search').removeClass('dark');
         }
         AjaxComment.init();
+        if(VOIDConfig.infiniteLoad){
+            $(window).scroll(function(){ // 检测是否滚动到底，到底了就加载新的数据
+                setTimeout(function(){
+                    var h=$('.footer-info').offset().top;
+                    var c = $(document).scrollTop();
+                    var wh = $(window).height();  
+                    if (Math.ceil(wh+c)>=h){
+                        VOID.ajaxLoad();
+                    }
+                }, 750);
+            });
+        }
     },
 
     showWelcomeWord : function(){
@@ -212,6 +224,10 @@ var VOID = {
         if(VOIDConfig.welcomeWord){
             alert('欢迎访问 ' + document.title);
         }
+        if($('a.next').length){
+            VOIDConfig.nextUrl = $('a.next').attr('href');
+            $('a.next').remove();
+        }
     },
 
     // 重载与事件绑定
@@ -287,6 +303,53 @@ var VOID = {
                 headingSelector: 'h2, h3, h4, h5'
             });
         }
+    },
+
+    isAjaxLoading : false,
+
+    // AJAX 首页分页
+    ajaxLoad : function(){
+        if(VOID.isAjaxLoading) return;
+        if(VOIDConfig.nextUrl == 'no-more') return;
+        if(VOIDConfig.nextUrl == -1){
+            if(!$('a.next').length){
+                $('a.ajax-Load').parent().html('这里是世界的尽头');
+                VOIDConfig.nextUrl = 'no-more';
+                return;
+            }else{
+                VOIDConfig.nextUrl = $('a.next').attr('href');
+                $('a.next').remove();
+            }
+        }
+        $('a.ajax-Load').html('加载中...');
+        VOID.isAjaxLoading = true;
+        $.ajax({
+            url: VOIDConfig.nextUrl,
+            type: 'get',
+            beforeSend: function(request) {
+                request.setRequestHeader('X-VOID-AJAX', 'true');
+            },
+            success: function(data){
+                if(!$(data).find('a.next').length){
+                    $('a.ajax-Load').parent().removeClass('current');
+                    $('a.ajax-Load').parent().html('这里是世界的尽头');
+                    VOIDConfig.nextUrl = 'no-more';
+                }else{
+                    $('a.ajax-Load').html('加载更多');
+                }
+                VOIDConfig.nextUrl = $(data).find('a.next').attr('href');
+                $('#post-list').append($(data).find('a.item'));
+                VOID.isAjaxLoading = false;
+                if(VOIDConfig.PJAX){
+                    VOID.afterPjax();
+                }
+            },
+            error: function(){
+                VOID.isAjaxLoading = false;
+                alert('加载失败！请检查网络或者联系博主。');
+                $('a.ajax-Load').html('加载更多');
+            }
+        });
     }
 };
 

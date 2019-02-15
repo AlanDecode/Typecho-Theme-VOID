@@ -83,6 +83,14 @@ class Utils
     }
 
     /**
+     * AJAX判定
+     */
+    public static function isAjax()
+    {
+        return array_key_exists('HTTP_X_VOID_AJAX', $_SERVER) && $_SERVER['HTTP_X_VOID_AJAX'];
+    }
+
+    /**
      * 移动端判定
      * 
      * @return bool
@@ -285,7 +293,9 @@ class Utils
             'customNotice' => '',
             'msgColor' => '',
             'msgBg' => '',
-            'defaultCover' => ''
+            'defaultCover' => '',
+            'ajaxIndex' => false,
+            'infiniteLoad' => false
         );
 
         $options = Helper::options();
@@ -299,6 +309,8 @@ class Utils
             if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
             if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
             if(property_exists($settings, 'defaultCover')) $output['defaultCover'] = $settings->defaultCover;
+            if(property_exists($settings, 'ajaxIndex')) $output['ajaxIndex'] = $settings->ajaxIndex;
+            if(property_exists($settings, 'infiniteLoad')) $output['infiniteLoad'] = $settings->infiniteLoad;
         }
 
         if(!empty($options->defaultBanner)){

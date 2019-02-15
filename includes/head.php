@@ -38,6 +38,9 @@ $setting = $GLOBALS['VOIDSetting'];
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
         tocOffset : 0,
+        ajaxIndex : <?php echo $setting['ajaxIndex'] ? 'true' : 'false'; ?>,
+        infiniteLoad : <?php echo $setting['infiniteLoad'] ? 'true' : 'false'; ?>,
+        nextUrl : -1,
         customNotice : "<?php echo $setting['customNotice']; ?>",
         welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
         bannerHeightType : <?php if(!empty($setting['desktopBannerHeight'])) echo '"percentage",bannerHeight : '.$setting['desktopBannerHeight']; else echo '"px"';?>

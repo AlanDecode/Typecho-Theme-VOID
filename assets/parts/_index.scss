@@ -300,3 +300,9 @@ main{
     }
 }
 
+a.item.ajax-loaded{
+    transform: translateY(-10px);
+    opacity: 0;
+    animation: slide-in 0.3s;
+    animation-fill-mode: forwards;
+}
