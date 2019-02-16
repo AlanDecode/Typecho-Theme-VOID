@@ -123,7 +123,7 @@ gulp build
 
 ## 更新日志
 
-**2019-02-15 Version 1.5**
+**2019-02-16 Version 1.5.1**
 
 * 可设置使用加载更多代替首页分页
 * 完善 AJAX 评论提示
@@ -136,7 +136,7 @@ gulp build
 高级设置
 
 * `"welcomeWord" : false` 现在会完全关闭提示语
-* `infiniteLoad` 设置首页随滚动无限加载
+* `infiniteLoad` 设置首页随滚动无限加载（当打开加载更多时有效）
 
 **2019-02-11 Version 1.4**
 
