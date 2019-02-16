@@ -31,7 +31,7 @@ var VOID = {
             $('header,.mobile-search').removeClass('dark');
         }
         AjaxComment.init();
-        if(VOIDConfig.infiniteLoad){
+        if(VOIDConfig.infiniteLoad && VOIDConfig.ajaxIndex){
             $(window).scroll(function(){ // 检测是否滚动到底，到底了就加载新的数据
                 setTimeout(function(){
                     var h=$('.footer-info').offset().top;
@@ -310,11 +310,11 @@ var VOID = {
     // AJAX 首页分页
     ajaxLoad : function(){
         if(VOID.isAjaxLoading) return;
-        if(VOIDConfig.nextUrl == 'no-more') return;
+        if(VOIDConfig.nextUrl == -2) return;
         if(VOIDConfig.nextUrl == -1){
             if(!$('a.next').length){
                 $('a.ajax-Load').parent().html('这里是世界的尽头');
-                VOIDConfig.nextUrl = 'no-more';
+                VOIDConfig.nextUrl = -2;
                 return;
             }else{
                 VOIDConfig.nextUrl = $('a.next').attr('href');
@@ -333,11 +333,11 @@ var VOID = {
                 if(!$(data).find('a.next').length){
                     $('a.ajax-Load').parent().removeClass('current');
                     $('a.ajax-Load').parent().html('这里是世界的尽头');
-                    VOIDConfig.nextUrl = 'no-more';
+                    VOIDConfig.nextUrl = -2;
                 }else{
+                    VOIDConfig.nextUrl = $(data).find('a.next').attr('href');
                     $('a.ajax-Load').html('加载更多');
                 }
-                VOIDConfig.nextUrl = $(data).find('a.next').attr('href');
                 $('#post-list').append($(data).find('a.item'));
                 $('a.item.ajax:not(.ajax-loaded)').addClass('ajax-loaded');
                 VOID.isAjaxLoading = false;
