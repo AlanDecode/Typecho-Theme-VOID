@@ -341,9 +341,13 @@ var VOID = {
                 $('#post-list').append($(data).find('a.item'));
                 $('a.item.ajax:not(.ajax-loaded)').addClass('ajax-loaded');
                 VOID.isAjaxLoading = false;
-                if(VOIDConfig.PJAX){
-                    VOID.afterPjax();
-                }
+                VOID.parseUrl();
+                $('.item,.board-item').on('touchstart',function(){
+                    $(this).addClass('hover');
+                });
+                $('.item,.board-item').on('touchend',function(){
+                    $(this).removeClass('hover');
+                });
             },
             error: function(){
                 VOID.isAjaxLoading = false;
