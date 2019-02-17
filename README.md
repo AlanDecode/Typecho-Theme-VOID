@@ -2,6 +2,8 @@
 
 > 🐒 猴子打字机原理的产物
 
+[![build status](https://img.shields.io/travis/AlanDecode/Typecho-Theme-VOID/source.svg?style=flat-square)](https://travis-ci.org/AlanDecode/Typecho-Theme-VOID)
+
 作为计算机术语时，VOID 的意思是「无类型」。
 
 ## 概览
@@ -51,13 +53,13 @@
 
 ```bash
 git clone git@github.com:AlanDecode/Typecho-Theme-VOID.git ./VOID && cd ./VOID
+git checkout source
 ```
 
 然后安装依赖：
 
 ```bash
 npm install -g gulp
-npm install --save-dev gulp 
 npm install
 ```
 
@@ -101,7 +103,13 @@ gulp build
 
 ## 开发
 
-如果你要定制自己的版本，首先按照[安装](#安装)中的方法二装好环境。然后：
+如果你要定制自己的版本，首先按照[安装](#安装)中的方法二装好环境。然后切换至源码分支：
+
+```bash
+git checkout source
+```
+
+然后：
 
 ```bash
 gulp dev
