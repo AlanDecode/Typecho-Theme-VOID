@@ -9,8 +9,6 @@
     "add": "git add ."
   },
   "pre-commit": [
-    "build",
-    "add"
   ],
   "repository": {
     "type": "git",
