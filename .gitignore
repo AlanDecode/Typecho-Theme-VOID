@@ -1,8 +1,7 @@
 node_modules/*
-package-lock.json
 temp/*
 build/*
 build.zip
-assets/bundle.js
-assets/bundle.css
-assets/VOID.css
+assets/bundle*.js
+assets/bundle*.css
+assets/VOID*.css
