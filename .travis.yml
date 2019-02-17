@@ -18,4 +18,4 @@ branches:
     - source
 env:
   global:
-    - GH_REF: git@github.com:AlanDecode/Typecho-Theme-VOID.git
+    - GH_REF: github.com/AlanDecode/Typecho-Theme-VOID.git
