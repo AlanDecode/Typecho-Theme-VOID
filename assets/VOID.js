@@ -6,6 +6,28 @@
 
 console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
+// 节流函数
+function throttle(fun, delay, time) {
+    var timeout,
+        startTime = new Date();
+
+    return function() {
+        var context = this,
+            args = arguments,
+            curTime = new Date();
+
+        clearTimeout(timeout);
+        // 如果达到了规定的触发时间间隔，触发 handler
+        if (curTime - startTime >= time) {
+            fun.apply(context, args);
+            startTime = curTime;
+            // 没达到触发间隔，重新设定定时器
+        } else {
+            timeout = setTimeout(fun, delay);
+        }
+    };
+}
+
 var VOID = {
     // 初始化单页应用
     init : function(){
@@ -30,9 +52,11 @@ var VOID = {
         }else{
             $('header,.mobile-search').removeClass('dark');
         }
+        // 监听滚动事件，实现懒加载
+        window.addEventListener('scroll',throttle(VOID.lazyLoad,500,1000));
         AjaxComment.init();
         if(VOIDConfig.infiniteLoad && VOIDConfig.ajaxIndex){
-            $(window).scroll(function(){ // 检测是否滚动到底，到底了就加载新的数据
+            window.addEventListener('scroll',throttle(function(){
                 setTimeout(function(){
                     var h=$('.footer-info').offset().top;
                     var c = $(document).scrollTop();
@@ -41,7 +65,7 @@ var VOID = {
                         VOID.ajaxLoad();
                     }
                 }, 750);
-            });
+            },500,1000));
         }
     },
 
@@ -355,6 +379,30 @@ var VOID = {
                 $('a.ajax-Load').html('加载更多');
             }
         });
+    },
+
+    lazyLoad : function(){
+        var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+        $.each($('img.lazyload'), function(i, item){
+            if($(item).offset().top < viewPortHeight + scrollTop && $(item).offset().top + $(item).height() > scrollTop){
+                if(!$(item).hasClass('loaded') && !$(item).hasClass('error')){
+                    var img = new Image();
+                    img.src = $(item).attr('data-src');
+                    img.onload = function () {
+                        $(item).animate({opacity : 0}, 150);
+                        setTimeout(function(){
+                            $(item).attr('src',$(item).attr('data-src'));
+                            $(item).addClass('loaded');
+                            $(item).animate({opacity : 1}, 180);
+                        }, 180);
+                    };
+                    img.onerror = function(){
+                        $(item).addClass('error');
+                    };
+                }
+            }
+        });
     }
 };
 
@@ -549,7 +597,7 @@ setInterval(function(){
     $('#uptime').html(days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分 ' + seconds + ' 秒 ');
 }, 1000);
 
-$(document).scroll(function(){
+window.addEventListener('scroll',throttle(function(){
     if($('main').offset().top - $(document).scrollTop() < 120){
         $('header,.mobile-search').addClass('dark');
     }else{
@@ -564,7 +612,7 @@ $(document).scroll(function(){
     else{
         $('.TOC').removeClass('fixed');
     }
-});
+},500,1000));
 
 function startSearch(item) {
     var c = $(item).val();

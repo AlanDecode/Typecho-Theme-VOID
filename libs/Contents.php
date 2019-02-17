@@ -242,9 +242,9 @@ EOF;
     private static function parseFancyBoxCallback($match)
     {
         if($match[2] == '')
-            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img src="'.$match[1].'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
+            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img class="lazyload" data-src="'.$match[1].'" src="https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
         else
-            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img src="'.$match[1].'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
+            return '<figure><a no-pjax data-fancybox="gallery" href="'.$match[1].'"><img class="lazyload" data-src="'.$match[1].'" src="https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
     }
 
     /**
