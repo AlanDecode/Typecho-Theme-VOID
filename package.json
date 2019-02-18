@@ -8,8 +8,7 @@
     "build": "gulp build",
     "add": "git add ."
   },
-  "pre-commit": [
-  ],
+  "pre-commit": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlanDecode/Typecho-Theme-VOID.git"
