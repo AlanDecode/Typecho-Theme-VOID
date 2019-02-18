@@ -132,7 +132,7 @@ EOF;
      */
     static public function parseAll($content)
     {
-        return self::parseHeader(self::parseBoard(self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content)))))));
+        return self::parseHeader(self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content))))));
     }
 
     /**
@@ -252,16 +252,27 @@ EOF;
      * 
      * @return string
      */
-    static public function parseBoard($string)
+    static public function markdown($text)
     {
+        $reg = '/\[links.*?\](.*?)\[\/links\]/s';
+        $text = preg_replace_callback($reg, array('Contents', 'markdownCallback'), $text);
+
+        $reg = '/<div class="board-list link-list">(.*?)<\/div>/s';
+        $text = preg_replace_callback($reg, array('Contents', 'markdownCallback'), $text);
+
         $reg='/\[(.*?)\]\((.*?)\)\+\((.*?)\)/s';
-        $new=preg_replace_callback($reg, array('Contents', 'parseBoardCallback'), $string);
-        return $new;
+        $rp = '<a target="_blank" href="${2}" class="board-item link-item"><div class="board-thumb" style="background-image:url(${3})"></div><div class="board-title">${1}</div></a>';
+        $text = preg_replace($reg,$rp,$text);
+
+        $text = Markdown::convert($text);
+
+        return $text;
     }
 
-    function parseBoardCallback($matchs)
+    function markdownCallback($matchs)
     {
-        return '<a target="_blank" href="'.$matchs[2].'" class="board-item link-item"><div class="board-thumb" style="background-image:url('.$matchs[3].')"></div><div class="board-title">'.$matchs[1].'</div></a>';
+        $text =  str_replace(array("\r\n", "\r", "\n"), "", $matchs[1]);
+        return '<div class="board-list link-list">'.$text.'</div>';
     }
 
     /**
