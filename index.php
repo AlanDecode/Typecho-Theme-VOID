@@ -89,7 +89,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
                     } 
                 ?>
                 <div class="item-content">
-                    <h1 itemprop="name"><?php $this->sticky(); $this->title(); ?></h1>
+                    <h1 itemprop="name"><?php if(Utils::isPluginAvailable('Sticky')) $this->sticky(); $this->title(); ?></h1>
                     <p>
                         <span hidden itemprop="author"><?php $this->author(); ?></span>
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
