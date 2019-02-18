@@ -31,7 +31,9 @@ if(!Utils::isPjax() && !Utils::isAjax()){
         <?php if(!Utils::isAjax()): ?>
             <?php $this->next(); ?>
             <section id="new" aria-label="最新文章">
-                <div class="section-title">LATEST</div>
+                <div class="section-title">
+                    <?php if(Utils::isPluginAvailable('Sticky') && !empty(Helper::options()->plugin('Sticky')->sticky_cids)) echo 'FEATURED'; else echo 'LATEST'; ?>
+                </div>
                 <a class="item" href="<?php $this->permalink(); ?>"  itemscope="" itemtype="http://schema.org/BlogPosting">
                     <div class="item-content">
                         <h1 itemprop="name" aria-label="文章标题：<?php $this->title(); ?>"><?php $this->title(); ?></h1>
@@ -87,7 +89,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
                     } 
                 ?>
                 <div class="item-content">
-                    <h1 itemprop="name"><?php $this->title(); ?></h1>
+                    <h1 itemprop="name"><?php $this->sticky(); $this->title(); ?></h1>
                     <p>
                         <span hidden itemprop="author"><?php $this->author(); ?></span>
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
