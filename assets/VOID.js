@@ -53,10 +53,10 @@ var VOID = {
             $('header,.mobile-search').removeClass('dark');
         }
         // 监听滚动事件，实现懒加载
-        window.addEventListener('scroll',throttle(VOID.lazyLoad,500,1000));
+        window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         AjaxComment.init();
         if(VOIDConfig.infiniteLoad && VOIDConfig.ajaxIndex){
-            window.addEventListener('scroll',throttle(function(){
+            window.addEventListener('scroll',function(){
                 setTimeout(function(){
                     var h=$('.footer-info').offset().top;
                     var c = $(document).scrollTop();
@@ -65,7 +65,7 @@ var VOID = {
                         VOID.ajaxLoad();
                     }
                 }, 750);
-            },500,1000));
+            });
         }
     },
 
@@ -597,7 +597,7 @@ setInterval(function(){
     $('#uptime').html(days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分 ' + seconds + ' 秒 ');
 }, 1000);
 
-window.addEventListener('scroll',throttle(function(){
+window.addEventListener('scroll',function(){
     if($('main').offset().top - $(document).scrollTop() < 120){
         $('header,.mobile-search').addClass('dark');
     }else{
@@ -612,7 +612,7 @@ window.addEventListener('scroll',throttle(function(){
     else{
         $('.TOC').removeClass('fixed');
     }
-},500,1000));
+});
 
 function startSearch(item) {
     var c = $(item).val();
