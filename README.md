@@ -129,6 +129,10 @@ gulp build
 
 构建你的主题。如果你对自己的更改很满意，**欢迎提出 Pull Request**。
 
+**如果本项目对你有所帮助，请考虑捐助我**
+
+![谢谢支持](https://wx1.sinaimg.cn/large/0060lm7Tly1g0c4cbi71lj30sc0iv453.jpg)
+
 ## 更新日志
 
 **2019-02-16 Version 1.5.1**
