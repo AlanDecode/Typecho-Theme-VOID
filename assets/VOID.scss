@@ -63,7 +63,7 @@ body{
     display: block;
     font-weight: 300;
     padding: 0.5rem 1rem;
-    border: 2px solid rgba(0,0,0,0.1);
+    border: 2px solid rgba(0,0,0,0.1)!important;
     max-width: 10rem;
     max-width: max-content;
     text-align: center;
@@ -74,7 +74,7 @@ body{
     cursor: pointer;
     &:hover,&.done{
         color: white!important;
-        border-color: $darkColor;
+        border-color: $darkColor!important;
         background: $darkColor;
     }
 }

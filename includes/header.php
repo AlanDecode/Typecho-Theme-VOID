@@ -35,11 +35,13 @@ $setting = $GLOBALS['VOIDSetting'];
                 </span>
                 <?php endforeach; } ?>
             </nav>
+            <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
             <span style="position:relative" class="hidden-xs">
                 <label for="search">搜索</label>
                 <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
             </span>
-            <a role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="toggleSearch(this);">
+            <?php endif; ?>
+            <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
                 <div></div>
                 <span></span>
             </a>

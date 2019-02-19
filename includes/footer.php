@@ -57,6 +57,18 @@ $setting = $GLOBALS['VOIDSetting'];
         $(document).on('pjax:complete',function(){
             <?php echo $setting['pjaxreload']; ?>
         })
+        <?php if(Utils::isPluginAvailable('ExSearch')): ?>
+        function ExSearchCall(item){
+            if (item && item.length) {
+                $('.ins-close').click(); // 关闭搜索框
+                let url = item.attr('data-url'); // 获取目标页面 URL
+                $.pjax({url: url, 
+                    container: '#pjax-container',
+                    fragment: '#pjax-container',
+                    timeout: 8000, }); // 发起一次 PJAX 请求
+            }
+        }
+        <?php endif; ?>
         </script>
         <?php endif; ?>
         <footer>
