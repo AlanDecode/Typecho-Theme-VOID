@@ -254,25 +254,47 @@ EOF;
      */
     static public function markdown($text)
     {
+        // 去除换行
         $reg = '/\[links.*?\](.*?)\[\/links\]/s';
-        $text = preg_replace_callback($reg, array('Contents', 'markdownCallback'), $text);
+        $text = preg_replace_callback($reg, array('Contents', 'parseBoardCallback1'), $text);
 
+        // 向前兼容
         $reg = '/<div class="board-list link-list">(.*?)<\/div>/s';
-        $text = preg_replace_callback($reg, array('Contents', 'markdownCallback'), $text);
+        $text = preg_replace_callback($reg, array('Contents', 'parseBoardCallback1'), $text);
 
-        $reg='/\[(.*?)\]\((.*?)\)\+\((.*?)\)/s';
-        $rp = '<a target="_blank" href="${2}" class="board-item link-item"><div class="board-thumb" style="background-image:url(${3})"></div><div class="board-title">${1}</div></a>';
-        $text = preg_replace($reg,$rp,$text);
+        $reg = '/\[links.*?\](.*?)\[\/links\]/s';
+        $text = preg_replace_callback($reg, array('Contents', 'parseBoardCallback2'), $text);
 
         $text = Markdown::convert($text);
 
         return $text;
     }
 
-    function markdownCallback($matchs)
+    /**
+     * 去除换行
+     * 
+     * @return string
+     */
+    function parseBoardCallback1($matchs)
     {
         $text =  str_replace(array("\r\n", "\r", "\n"), "", $matchs[1]);
-        return '<div class="board-list link-list">'.$text.'</div>';
+        return '[links]'.$text.'[/links]';
+    }
+
+    /**
+     * 解析友链列表
+     * 
+     * @return string
+     */
+    function parseBoardCallback2($matchs)
+    {
+        $text = '<div class="board-list link-list">%boards%</div>';
+
+        $reg='/\[(.*?)\]\((.*?)\)\+\((.*?)\)/s';
+        $rp = '<a target="_blank" href="${2}" class="board-item link-item"><div class="board-thumb" style="background-image:url(${3})"></div><div class="board-title">${1}</div></a>';
+        $boards = preg_replace($reg,$rp,$matchs[1]);
+
+        return  str_replace('%boards%', $boards, $text);
     }
 
     /**
