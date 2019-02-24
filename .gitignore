@@ -5,3 +5,6 @@ build.zip
 assets/bundle*.js
 assets/bundle*.css
 assets/VOID*.css
+assets/VOID*.css.map
+.DS_Store
+package-lock.json
