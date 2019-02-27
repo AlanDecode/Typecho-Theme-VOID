@@ -46,6 +46,8 @@ footer{
             }
             .avatar-list{
                 margin: 1rem -5px;
+                max-height: 120px;
+                overflow: hidden;
                 .avatar{
                     width: 48px;
                     height: 48px;
@@ -67,6 +69,9 @@ footer{
             flex-direction: column;
             section{
                 margin: 15px;
+                .avatar-list{
+                    margin-bottom: 0;
+                }
             }
         }
     }

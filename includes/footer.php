@@ -78,7 +78,7 @@ $setting = $GLOBALS['VOIDSetting'];
                     <div class="avatar-list">
                         <?php 
                             $recentComments=null;
-                            $this->widget('Widget_Comments_Recent','ignoreAuthor=true&pageSize=14')->to($recentComments);
+                            $this->widget('Widget_Comments_Recent','ignoreAuthor=true&pageSize=12')->to($recentComments);
                             while($recentComments->next()): ?>
                         <a href="<?php $recentComments->permalink(); ?>"><?php $recentComments->gravatar(64, ''); ?></a>
                         <?php endwhile; ?>
