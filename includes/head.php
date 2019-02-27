@@ -37,18 +37,12 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        tocOffset : 0,
+        tocOffset : -1,
         ajaxIndex : <?php echo $setting['ajaxIndex'] ? 'true' : 'false'; ?>,
         infiniteLoad : <?php echo $setting['infiniteLoad'] ? 'true' : 'false'; ?>,
         nextUrl : -1,
         customNotice : "<?php echo $setting['customNotice']; ?>",
         welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
-        bannerHeightType : <?php if(!empty($setting['desktopBannerHeight'])) echo '"percentage",bannerHeight : '.$setting['desktopBannerHeight']; else echo '"px"';?>
-    }
-    if(VOIDConfig.bannerHeightType == "percentage"){
-        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 132;
-    }else{
-        VOIDConfig.tocOffset = 532;
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
