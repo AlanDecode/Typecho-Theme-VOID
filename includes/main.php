@@ -70,7 +70,7 @@ $setting = $GLOBALS['VOIDSetting'];
                     data-twitter="<?php if($setting['twitterId']!='') echo $setting['twitterId']; else $this->author(); ?>"
                     data-facebook="<?php if($setting['facebookId']!='') echo $setting['facebookId']; else $this->author(); ?>" 
                     data-weibo="<?php if($setting['weiboId']!='') echo $setting['weiboId']; else $this->author(); ?>"
-                    data-text="<?php $this->excerpt(50); ?>"
+                    data-text="<?php $this->title(); ?>"
                     data-url="<?php $this->permalink(); ?>"
                     <?php if($this->fields->banner != '') echo 'data-image="'.$this->fields->banner.'"';?>>
                     <?php if(Utils::isPluginAvailable('Like')):?>
