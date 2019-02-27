@@ -1,11 +1,4 @@
 main{
-    // margin-top: 310px;
-    // @media screen and (max-width: 767px) {
-    //     margin-top: 250px;
-    // // }
-    // &.no-banner{
-    //     margin-top: 40px;
-    // }
     .lazy-wrap{
         @include bg;
         width: 100%;
@@ -41,11 +34,62 @@ main{
     >.lazy-wrap{
         width: 100%;
         overflow: hidden;
-        height: $bannerHeight;
+        min-height: $bannerHeight;
         @media screen and (max-width:767px) {
-            height: $bannerHeight_mobile;
+            min-height: $bannerHeight_mobile;
         }
         @include bg;
+        &.dark #banner{
+            filter: brightness(0.55);
+        }
+        .banner-title{
+            position: relative;
+            color: white;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 45px 80px 45px;
+            @media screen and (max-width: 767px) {
+                padding: 70px 1rem 40px 1rem;
+            }
+            .post-title{
+                text-align: center;
+                font-weight: 600;
+                word-break: break-word;
+                font-size: 2.7rem;
+                line-height: 1.67;
+                margin-bottom: 0;
+                @media screen and (max-width: 767px) {
+                    font-size: 2.2rem;
+                }
+                sup{
+                    margin: 0 .3rem;
+                    display: inline-block;
+                    text-indent: 0;
+                    text-align: center;
+                    font: 700 8px/14px -apple-systrem,BlinkMacSystremFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+                    border-bottom: 0;
+                    border-radius: 14px;
+                    vertical-align: text-top;
+                    -webkit-transition: all .1s ease;
+                    background: white;
+                    transition: all .1s ease;
+                    a{
+                        white-space: nowrap;
+                        color: $darkColor;
+                        padding: 0.5em;
+                        display: block;
+                    }
+                }
+            }
+            .post-meta{
+                text-align: center;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+        }
     }
     #banner{
         position: absolute;
@@ -140,7 +184,7 @@ main{
                         left: 0;
                         top: 0;
                         .item-banner{
-                            filter: brightness(0.55);
+                            filter: brightness(0.4);
                         }
                         &.loading::before{
                             top: 1rem;
@@ -183,7 +227,6 @@ main{
                             margin: 0;
                             line-height: 1.5;
                             word-break: break-all;
-                            font-size: 0.9rem;
                             font-weight: 300;
                         }
                     }
@@ -195,12 +238,11 @@ main{
                         .item-content{
                             color: $darkColor;
                         }
-                        
                     }
                     @media screen and (min-width: 768px) {
                         &:not(.no-banner):hover{
                             .item-banner{
-                                filter: brightness(0.4);
+                                filter: brightness(0.3);
                             }
                         }
                         &.no-banner:hover{

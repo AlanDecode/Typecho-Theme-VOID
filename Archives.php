@@ -29,12 +29,14 @@ if(!Utils::isPjax()){
     <div class="wrapper container">
         <section id="post">
             <article class="post yue">
-                <h1 class="post-title"><?php $this->title(); ?></h1>
+                <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->title(); ?></h1>
+                <?php if(!$setting['titleinbanner']): ?>
                 <p class="post-meta">
                     <?php 
                         echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × ".Utils::getWordCount()." 字";
                     ?>
                 </p>
+                <?php endif; ?>
                 <?php $archives = Contents::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
                     <section aria-label="<?php echo $year; ?>年归档列表"  class="year archives <?php if($index > 0) echo 'shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                         <ul>

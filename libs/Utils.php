@@ -285,6 +285,7 @@ class Utils
             'footer' => '',
             'pjax' => false,
             'pjaxreload' => '',
+            'titleinbanner' => false,
 
             // 高级设置
             'nav' => '',
@@ -347,7 +348,11 @@ class Utils
         if(!empty($options->ajaxIndex)){
             if($options->ajaxIndex == '1') $output['ajaxIndex'] = true;
         }
-        
+
+        if(!empty($options->titleinbanner)){
+            if($options->titleinbanner == '1') $output['titleinbanner'] = true;
+        }
+
         return $output;
     }
 }

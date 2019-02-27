@@ -21,7 +21,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <div class="wrapper container">
         <section id="post">
             <article class="post yue" itemscope itemtype="http://schema.org/Article">
-                <h1 itemprop="name" class="post-title"><?php $this->title(); ?>
+                <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> itemprop="name" class="post-title"><?php $this->title(); ?>
                     <?php if($this->user->hasLogin()): ?>
                         <sup>
                             <?php if($this->is('post')): ?>
@@ -33,7 +33,7 @@ $setting = $GLOBALS['VOIDSetting'];
                     <?php endif;?>
                 </h1>
                 <p hidden itemprop="headline"><?php $this->excerpt(50); ?></p>
-                <p class="post-meta">
+                <p <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-meta">
                     <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                     <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                     &nbsp;•&nbsp;

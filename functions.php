@@ -47,7 +47,9 @@ function themeConfig($form) {
     $form->addInput($mobileBannerHeight);
     $ajaxIndex=new Typecho_Widget_Helper_Form_Element_Select('ajaxIndex',array('0'=>'分页','1'=>'加载更多'),'0','首页分页样式','选择首页分页样式：普通分页或者加载更多。');
     $form->addInput($ajaxIndex);
-    
+    $titleinbanner=new Typecho_Widget_Helper_Form_Element_Select('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
+    $form->addInput($titleinbanner);
+
     // 高级设置
     $enableMath=new Typecho_Widget_Helper_Form_Element_Select('enableMath',array('0'=>'不启用','1'=>'启用'),'0','启用数学公式解析','是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
     $form->addInput($enableMath);
