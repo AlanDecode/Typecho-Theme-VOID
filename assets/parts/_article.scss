@@ -397,6 +397,14 @@ ruby > rt {
     background: black;
     z-index: 13;
 }
+.social-button{
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    a.social-button-icon{
+        border: none!important;
+    }
+}
 #social{
     .post-like{
         margin: 0 auto;

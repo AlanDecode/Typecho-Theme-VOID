@@ -296,7 +296,9 @@ class Utils
             'msgBg' => '',
             'defaultCover' => '',
             'ajaxIndex' => false,
-            'infiniteLoad' => false
+            'infiniteLoad' => false,
+            'twitterId' => '',
+            'weiboId' => ''
         );
 
         $options = Helper::options();
@@ -311,6 +313,8 @@ class Utils
             if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
             if(property_exists($settings, 'defaultCover')) $output['defaultCover'] = $settings->defaultCover;
             if(property_exists($settings, 'infiniteLoad')) $output['infiniteLoad'] = $settings->infiniteLoad;
+            if(property_exists($settings, 'twitterId')) $output['twitterId'] = $settings->twitterId;
+            if(property_exists($settings, 'weiboId')) $output['weiboId'] = $settings->weiboId;
         }
 
         if(!empty($options->defaultBanner)){

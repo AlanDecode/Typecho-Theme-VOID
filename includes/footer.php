@@ -54,23 +54,24 @@ $setting = $GLOBALS['VOIDSetting'];
         </script>
         <?php if($setting['pjax']): ?>
         <script>
-        $(document).on('pjax:complete',function(){
-            <?php echo $setting['pjaxreload']; ?>
-        })
-        <?php if(Utils::isPluginAvailable('ExSearch')): ?>
-        function ExSearchCall(item){
-            if (item && item.length) {
-                $('.ins-close').click(); // 关闭搜索框
-                let url = item.attr('data-url'); // 获取目标页面 URL
-                $.pjax({url: url, 
-                    container: '#pjax-container',
-                    fragment: '#pjax-container',
-                    timeout: 8000, }); // 发起一次 PJAX 请求
+            $(document).on('pjax:complete',function(){
+                <?php echo $setting['pjaxreload']; ?>
+            })
+            <?php if(Utils::isPluginAvailable('ExSearch')): ?>
+            function ExSearchCall(item){
+                if (item && item.length) {
+                    $('.ins-close').click(); // 关闭搜索框
+                    let url = item.attr('data-url'); // 获取目标页面 URL
+                    $.pjax({url: url, 
+                        container: '#pjax-container',
+                        fragment: '#pjax-container',
+                        timeout: 8000, }); // 发起一次 PJAX 请求
+                }
             }
-        }
-        <?php endif; ?>
+            <?php endif; ?>
         </script>
         <?php endif; ?>
+        <link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
         <footer>
             <div class="container">
                 <section data-title="Recent Guests">   <!-- 最近访客 -->

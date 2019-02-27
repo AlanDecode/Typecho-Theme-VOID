@@ -66,9 +66,15 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
                 <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                 <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
-                <div role=button aria-label="点赞" id="social">
+                <div class="social-button" 
+                    data-twitter="<?php if($setting['twitterId']!='') echo $setting['twitterId']; else $this->author(); ?>"
+                    data-facebook="<?php if($setting['facebookId']!='') echo $setting['facebookId']; else $this->author(); ?>" 
+                    data-weibo="<?php if($setting['weiboId']!='') echo $setting['weiboId']; else $this->author(); ?>"
+                    data-text="<?php $this->excerpt(50); ?>"
+                    data-url="<?php $this->permalink(); ?>"
+                    <?php if($this->fields->banner != '') echo 'data-image="'.$this->fields->banner.'"';?>>
                     <?php if(Utils::isPluginAvailable('Like')):?>
-                        <a href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
+                        <a role=button aria-label="点赞" id="social" href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
                     <?php endif; ?>
                 </div>
             </article>

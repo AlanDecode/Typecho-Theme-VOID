@@ -6,6 +6,9 @@
     "msgBg" : "#fff",
     "msgColor" : "#333",
     "infiniteLoad" : true,
+    "twitterId": "AlanDecode",
+    "weiboId" : "熊猫小AA",
+    "facebookId" : "熊猫小A",
     "nav" : [
         {
             "name" : "捉迷藏",

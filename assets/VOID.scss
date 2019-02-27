@@ -56,10 +56,10 @@ body{
 }
 
 .btn{
-    display: block;
-    font-weight: 300;
-    padding: 0.5rem 1rem;
-    border: 2px solid rgba(0,0,0,0.1)!important;
+    display: inline-block;
+    font-size: 14px;
+    padding: 0.35rem 0.85rem;
+    border: 3px solid rgba(0,0,0,0.1)!important;
     max-width: 10rem;
     max-width: max-content;
     text-align: center;

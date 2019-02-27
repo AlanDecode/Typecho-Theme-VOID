@@ -256,6 +256,7 @@ var VOID = {
             VOIDConfig.nextUrl = $('a.next').attr('href');
             $('a.next').remove();
         }
+        getSocial();
     },
 
     // 重载与事件绑定
