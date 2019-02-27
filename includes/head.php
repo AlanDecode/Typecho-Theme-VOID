@@ -66,12 +66,12 @@ $setting = $GLOBALS['VOIDSetting'];
     <style>
     <?php if(!empty($setting['desktopBannerHeight'])): ?>
     @media screen and (min-width: 768px){
-        main>.lazy-wrap{height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
+        main>.lazy-wrap{min-height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
     }
     <?php endif; ?>
     <?php if(!empty($setting['mobileBannerHeight'])): ?>
     @media screen and (max-width: 768px){
-        main>.lazy-wrap{height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
+        main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
     }
     <?php endif; ?>
     <?php if(!empty($setting['msgBg'])): ?>
