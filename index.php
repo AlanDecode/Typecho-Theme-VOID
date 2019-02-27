@@ -27,7 +27,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
     <?php $this->pageLink('','next'); ?>
     <?php $this->need('includes/banner.php'); ?>
 
-    <div class="wrapper container">
+    <div class="wrapper container wide">
         <section id="post-list" aria-label="最近文章列表">
             <?php while($this->next()): //直接显示摘要是默认选项 ?>
             <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'no-banner'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
