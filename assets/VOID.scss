@@ -12,7 +12,6 @@
 html{
     font-size: 16px;
     font-family: sans-serif;
-    background: #101318;
 }
 
 ::-webkit-scrollbar {
@@ -43,7 +42,6 @@ body,header,main,footer{
 }
 
 body{
-    background: #eee;
     &.modal-open{
         position: fixed;
         width: 100%;
@@ -55,9 +53,6 @@ body{
     max-width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
-    @media screen and (max-width: 767px) {
-        padding: 0 0.5rem;
-    }
 }
 
 .btn{

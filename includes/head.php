@@ -46,9 +46,9 @@ $setting = $GLOBALS['VOIDSetting'];
         bannerHeightType : <?php if(!empty($setting['desktopBannerHeight'])) echo '"percentage",bannerHeight : '.$setting['desktopBannerHeight']; else echo '"px"';?>
     }
     if(VOIDConfig.bannerHeightType == "percentage"){
-        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 28;
+        VOIDConfig.tocOffset = window.innerHeight * VOIDConfig.bannerHeight / 100 + 132;
     }else{
-        VOIDConfig.tocOffset = 430;
+        VOIDConfig.tocOffset = 532;
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
@@ -67,13 +67,11 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php if(!empty($setting['desktopBannerHeight'])): ?>
     @media screen and (min-width: 768px){
         main>.lazy-wrap{height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
-        main{margin-top: calc(<?php echo $setting['desktopBannerHeight']; ?>vh - 90px)}
     }
     <?php endif; ?>
     <?php if(!empty($setting['mobileBannerHeight'])): ?>
     @media screen and (max-width: 768px){
         main>.lazy-wrap{height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
-        main{margin-top: calc(<?php echo $setting['mobileBannerHeight']; ?>vh - 40px)}
     }
     <?php endif; ?>
     <?php if(!empty($setting['msgBg'])): ?>

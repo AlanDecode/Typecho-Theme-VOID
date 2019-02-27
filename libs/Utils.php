@@ -347,7 +347,7 @@ class Utils
         if(!empty($options->ajaxIndex)){
             if($options->ajaxIndex == '1') $output['ajaxIndex'] = true;
         }
-
+        
         return $output;
     }
 }

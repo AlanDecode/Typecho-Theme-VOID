@@ -48,7 +48,10 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
-        if($('main').offset().top - $(document).scrollTop() < 120){
+        var bannerHeight;
+        if($('main>.lazy-wrap').length) bannerHeight = $('main>.lazy-wrap').height() - 60;
+        else bannerHeight = -1;
+        if($(document).scrollTop() >= bannerHeight){
             $('header,.mobile-search').addClass('dark');
         }else{
             $('header,.mobile-search').removeClass('dark');
@@ -599,15 +602,18 @@ setInterval(function(){
 }, 1000);
 
 window.addEventListener('scroll',function(){
-    if($('main').offset().top - $(document).scrollTop() < 120){
+    var bannerHeight;
+    if($('main>.lazy-wrap').length) bannerHeight = $('main>.lazy-wrap').height() - 60;
+    else bannerHeight = -1;
+    if($(document).scrollTop() >= bannerHeight){
         $('header,.mobile-search').addClass('dark');
     }else{
         $('header,.mobile-search').removeClass('dark');
     }
+
     if(window.innerWidth < 1366) return;
     if($('.TOC').length<1) return;
-
-    if($(document).scrollTop() > VOIDConfig.tocOffset - 20.1){
+    if($(document).scrollTop() > VOIDConfig.tocOffset - 80.1){
         $('.TOC').addClass('fixed');
     }
     else{

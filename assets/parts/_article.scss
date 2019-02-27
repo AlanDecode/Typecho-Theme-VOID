@@ -1,10 +1,6 @@
 @import "./yue";
 
 section#post{
-    padding: 45px;
-    @media screen and (max-width:767px) {
-        padding: 1rem;
-    }
     .post-pager{
         margin-top: 2rem;
         display: flex;
@@ -350,9 +346,9 @@ ruby > rt {
 
 .TOC{
     position: absolute;
-    top: 180px;
+    top: 100px;
     left: 50%;
-    transform: translateX(450px);
+    transform: translateX(480px);
     z-index: 13;
     max-width: 500px;
     max-height: 85vh;

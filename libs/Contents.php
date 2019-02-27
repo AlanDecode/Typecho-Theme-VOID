@@ -387,7 +387,7 @@ EOF;
      * 
      * @return void
      */
-    public static function exportCover($archive, $banner, $num=110, $random = false)
+    public static function exportCover($archive, $banner, $random = false)
     {
         $lazyID = rand(1,10000);
         $_banner = $banner;
@@ -396,17 +396,11 @@ EOF;
             <div class="lazy-wrap loading">
                 <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
                 <?php Utils::registerLazyImg($_banner, $lazyID); ?>
-                    <div class="item-meta">
-                    <span itemprop="headline"><?php $archive->excerpt($num); ?></span>
-                    </div>
                 </div>
             </div>
 <?php   }else{ ?>
             <div class="lazy-wrap">
                 <div class="item-banner lazy loaded" style="background-image:url(<?php echo $_banner; ?>)">
-                    <div class="item-meta">
-                    <span itemprop="headline"><?php $archive->excerpt($num); ?></span>
-                    </div>
                 </div>
             </div>
 <?php   }

@@ -1,8 +1,11 @@
 main{
-    margin-top: 310px;
-    @media screen and (max-width: 767px) {
-        margin-top: 250px;
-    }
+    // margin-top: 310px;
+    // @media screen and (max-width: 767px) {
+    //     margin-top: 250px;
+    // // }
+    // &.no-banner{
+    //     margin-top: 40px;
+    // }
     .lazy-wrap{
         @include bg;
         width: 100%;
@@ -36,9 +39,6 @@ main{
         }
     }
     >.lazy-wrap{
-        position: absolute!important;
-        left: 0;
-        top: 0;
         width: 100%;
         overflow: hidden;
         height: $bannerHeight;
@@ -82,84 +82,14 @@ main{
                 .section-title{
                     color: #fafafa;
                 }
+                margin-top: 2rem;
+                &.no-banner{
+                    margin-top: calc(60px + 2rem);
+                }
                 margin-bottom: 7rem;
-            }
-            &#post,&#post-list.archive-list{
-                background: white;
-                box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
             }
             &#post.archive-list{
                 margin-bottom: 3rem;
-            }
-            &#new{
-                height: 300px;
-                @media screen and (max-width:767px){
-                    height: unset;
-                }
-                .item{
-                    display: block;
-                    position: relative;
-                    height: 100%;
-                    display: flex;
-                    transition: 0.3s ease all;
-                    background: white;
-                    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
-                    &.hover{
-                        transform: scale(0.95);
-                    }
-                    @media screen and (min-width: 768px) {
-                        &:hover{
-                            transform: scale(0.98);
-                        }
-                    }
-                    .lazy-wrap{
-                        flex: 0.55;
-                        height: 100%;
-                    }
-                    @media screen and (max-width:767px) {
-                        flex-direction: column;
-                        .lazy-wrap{
-                            height: 250px;
-                        }
-                    }
-                    .item-content{
-                        flex: 0.45;
-                        padding: 1rem;
-                        height: 100%;
-                        overflow: hidden;
-                        h1{
-                            font-weight: 600;
-                            font-size: 1.7rem;
-                            margin-top: 0;
-                        }
-                        p:not(.post-meta){
-                            font-weight: 300;
-                            line-height: 1.5;
-                            word-break: break-all;
-                            color: #666;
-                            max-height: 7.5rem;
-                            overflow: hidden;
-                        }
-                        .post-meta{
-                            margin-top: 0;
-                            font-size: 0.9rem;
-                            &,& *{
-                                color: $fadeColor;
-                            }
-                        }
-                        @media screen and (min-width: 768px) {
-                            p:not(.post-meta){
-                                max-height: 7.5rem;
-                                overflow: hidden;
-                            }
-                            div.btn{
-                                position: absolute;
-                                left: 1rem;
-                                bottom: 1rem;
-                            }
-                        }
-                    }
-                }
             }
             &#post-list{
                 margin-bottom: 0;
@@ -167,6 +97,9 @@ main{
                 flex-flow: row wrap;
                 justify-content: flex-start;
                 max-width: 100%;
+                @media screen and (max-width: 767px) {
+                    margin-top: -80px;
+                }
                 &.archive-list{
                     padding: 45px;
                     @media screen and (max-width: 767px) {
@@ -176,9 +109,8 @@ main{
                     margin-bottom: 3rem;
                 }
                 .item{
-                    display: flex;
-                    flex-direction: column;
-                    height: 250px;
+                    display: block;
+                    position: relative;
                     background-color: white;
                     margin-bottom: 40px;
                     width: calc((100% - 60px) / 3.001);
@@ -193,87 +125,89 @@ main{
                     }
                     &:nth-of-type(3n + 2){
                         margin: 0 30px;
-                    }
-                    &.hover{ // for mobile devices
-                        transform: scale(0.95);
+                        margin-bottom: 40px;
                     }
                     @media screen and (max-width: 767px){
                         width: 100%;
-                        margin: 15px 0!important;
-                    }
-                    @media screen and (min-width: 768px){
-                        &:hover{
-                            transform: scale(0.98);
-                        }
+                        margin: 10px 0!important;
                     }
                     .lazy-wrap{
                         transition: 0.3s ease all;
                         overflow: hidden;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        .item-banner{
+                            filter: brightness(0.55);
+                        }
+                        &.loading::before{
+                            top: 1rem;
+                            right: 1rem;
+                            transform: none;
+                        }
                     }
                     .item-banner{
                         width: 100%;
-                        height: 180px;
+                        height: 100%;
                         @include bg;
                         overflow: hidden;
                         position: relative;
-                        .item-meta{
-                            transition: 0.3s ease all;
-                            opacity: 0;
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            background: rgba(0,0,0,0.8);
-                            display: flex;
-                            flex-direction: column;
-                            padding: 1rem;
-                            justify-content: flex-start;
-                            span{
-                                display: block;
-                                line-height: 1.5;
-                                font-weight: 300;
-                                font-size: 1rem;
-                                letter-spacing: 0.05em;
-                                color: rgba(255,255,255,0.8);
-                                max-height: 100%;
-                                overflow: hidden;
-                                text-align: justify;
-                                word-break: break-all;
-                            }
-                        }
-                    }
-                    &.show-excerpt .item-meta {
-                        opacity: 1;
-                    }
-                    @media screen and (min-width:768px) {
-                        &:hover .item-meta{
-                            opacity: 1;
-                        }
+                        transition: 0.3s ease all;
                     }
                     .item-content{
-                        flex: 1;
+                        position: relative;
+                        width: 100%;
+                        padding: 100px 30px 30px;
                         display: flex;
                         flex-direction: column;
-                        padding:0 1rem 0.5rem;
+                        color: white;
+                        > span{
+                            display: block;
+                            font-size: 0.9rem;
+                            font-weight: 400;
+                        }
                         h1{
-                            font-size: 1.3rem;
-                            overflow: hidden;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
+                            font-size: 1.58rem;
                             margin: 0;
-                            margin-top: 10px;
-                            line-height: 1.3;
-                            color: $darkColor;
+                            line-height: 1.5;
+                            font-weight: 600;
+                            word-break: break-all;
+                            transition: 0.3s ease all;
+                            @media screen and (max-width: 767px) {
+                                font-size: 2rem;
+                            }
                         }
                         p{
-                            flex: 1;
                             margin: 0;
                             line-height: 1.5;
                             word-break: break-all;
-                            color: $fadeColor;
-                            display: flex;
                             font-size: 0.9rem;
-                            justify-content: space-between;
-                            align-items: flex-end;
+                            font-weight: 300;
+                        }
+                    }
+                    &.no-banner{
+                        border: solid 4px #12121c;
+                        .item-banner{
+                            filter: none;
+                        }
+                        .item-content{
+                            color: $darkColor;
+                        }
+                        
+                    }
+                    @media screen and (min-width: 768px) {
+                        &:not(.no-banner):hover{
+                            .item-banner{
+                                filter: brightness(0.4);
+                            }
+                        }
+                        &.no-banner:hover{
+                            h1{
+                                color: #E8371A;
+                            }
+                            border: solid 4px #E8371A;
                         }
                     }
                 }
