@@ -225,7 +225,6 @@ main{
                             margin: 0;
                             line-height: 1.5;
                             word-break: break-all;
-                            font-weight: 300;
                             font-size: 18px;
                         }
                     }
@@ -247,7 +246,7 @@ main{
                         .item-content{
                             color: $darkColor;
                             p{
-                                color: rgba(0,0,0,0.4);
+                                color: rgba(0,0,0,0.6);
                             }
                         }
                     }
