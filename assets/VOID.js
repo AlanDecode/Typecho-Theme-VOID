@@ -602,10 +602,7 @@ setInterval(function(){
 }, 1000);
 
 window.addEventListener('scroll',function(){
-    var bannerHeight;
-    if($('main>.lazy-wrap').length) bannerHeight = $('main>.lazy-wrap').height() - 60;
-    else bannerHeight = -1;
-    if($(document).scrollTop() >= bannerHeight){
+    if($(document).scrollTop() >= 70){
         $('header,.mobile-search').addClass('dark');
     }else{
         $('header,.mobile-search').removeClass('dark');
