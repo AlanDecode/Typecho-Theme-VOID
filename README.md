@@ -80,21 +80,10 @@ gulp build
 新建独立页面，然后如此书写：
 
 ```
-<div class="board-list link-list">
+[links]
 [熊猫小A](https://www.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=200&r=G&d=)
 [熊猫小A的博客](https://blog.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=)
-</div>
-```
-
-在某些 Typecho 版本中，你需要使用 `!!!` 包裹以上代码，例如：
-
-```
-!!!
-<div class="board-list link-list">
-[熊猫小A](https://www.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=200&r=G&d=)
-[熊猫小A的博客](https://blog.imalan.cn)+(https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=)
-</div>
-!!!
+[/links]
 ```
 
 ## 更新
@@ -134,6 +123,15 @@ gulp build
 ![谢谢支持](https://wx1.sinaimg.cn/large/0060lm7Tly1g0c4cbi71lj30sc0iv453.jpg)
 
 ## 更新日志
+
+**2019-02-27 Version 1.6**
+
+* 新的首页与文章页样式
+* 可设置将文章标题显示在头图中
+* 文章内图片懒加载
+* 更改友链列表的添加方式，详见使用方式
+* 适配 [ExSearch](https://github.com/AlanDecode/Typecho-Plugin-ExSearch) 插件
+* 添加社交分享按钮（可在高级设置中自定义社交 ID，默认为作者名）
 
 **2019-02-16 Version 1.5.1**
 
