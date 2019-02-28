@@ -8,22 +8,21 @@
 */ 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
+$banner = $setting['defaultBanner'];
+if($this->is('post') || $this->is('page')){
+    if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
+        $banner = $this->fields->banner;
+}
 ?>
 
 <?php if(!Utils::isWeixin()): ?>
     <?php $lazyID = rand(1,10000); ?>
     <div class="lazy-wrap loading <?php if($setting['titleinbanner'] && !$this->is('index')) echo 'dark'; ?>">
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
-        <?php 
-            if($this->is('post') || $this->is('page')){
-                Utils::registerLazyImg($this->fields->banner != '' ? $this->fields->banner : $setting['defaultBanner'], $lazyID); 
-            }else{
-                Utils::registerLazyImg($setting['defaultBanner'], $lazyID);
-            }
-        ?>
+        <?php Utils::registerLazyImg($banner, $lazyID); ?>
 <?php else: ?>
     <div class="lazy-wrap <?php if($setting['titleinbanner'] && !$this->is('index')) echo 'dark'; ?>">
-        <div id="banner" style="background-image:url(<?php echo $this->fields->banner != '' ? $this->fields->banner : $setting['defaultBanner']; ?>)" class="lazy loaded"></div>
+        <div id="banner" style="background-image:url(<?php echo $banner; ?>)" class="lazy loaded"></div>
 <?php endif; ?>
     <?php if($setting['titleinbanner'] && !$this->is('index')): ?>
         <div class="banner-title">
@@ -37,7 +36,7 @@ $setting = $GLOBALS['VOIDSetting'];
                             <?php else: ?>
                             <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
                             <?php endif;?>
-                        </sup>    
+                        </sup>
                     <?php endif;?>
                 <?php else: ?>
                     <?php $this->archiveTitle(array(
