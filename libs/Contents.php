@@ -33,7 +33,13 @@ Class Contents
      */
     public static function getComment($coid)
     {
-        return Helper::widgetById('contents', $coid);
+        $db = Typecho_Db::get();
+        $comment = new Widget_Abstract_Comments(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $db->fetchRow($comment->select()
+            ->where("coid = ?", $coid)
+            ->limit(1),
+            array($comment, 'push'));
+        return $comment;
     }
 
     /**
@@ -308,6 +314,34 @@ EOF;
         $rp='<ruby>${1}<rp>(</rp><rt>${2}</rt><rp>)</rp></ruby>';
         $new=preg_replace($reg,$rp,$string);
         return $new;
+    }
+
+    /**
+     * 最近评论，过滤引用通告，过滤博主评论
+     * 
+     * @return array
+     */
+    public static function getRecentComments($num = 10)
+    {
+        $output = array();
+
+        $db = Typecho_Db::get();
+        $rows = $db->fetchAll($db->select()->from('table.comments')->where('table.comments.status = ?', 'approved')
+        ->where('type = ?', 'comment')
+        ->where('ownerId <> authorId')
+        ->order('table.comments.created', Typecho_Db::SORT_DESC)
+        ->limit($num));
+
+        foreach ($rows as $row) {
+            $comment = self::getComment($row['coid']);
+            $output[] = array(
+                'permalink' => $comment->permalink,
+                'mail' => $row['mail'],
+                'author' => $row['author'],
+            );
+        }
+
+        return $output;
     }
 
     /**

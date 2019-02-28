@@ -77,11 +77,10 @@ $setting = $GLOBALS['VOIDSetting'];
                 <section data-title="Recent Guests">   <!-- 最近访客 -->
                     <div class="avatar-list">
                         <?php 
-                            $recentComments=null;
-                            $this->widget('Widget_Comments_Recent','ignoreAuthor=true&pageSize=12')->to($recentComments);
-                            while($recentComments->next()): ?>
-                        <a href="<?php $recentComments->permalink(); ?>"><?php $recentComments->gravatar(64, ''); ?></a>
-                        <?php endwhile; ?>
+                            $recentComments=Contents::getRecentComments(12);
+                            foreach ($recentComments as $comment){ ?>
+                                <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
+                        <?php } ?>
                     </div>
                 </section>
                 <section data-title="Site Info">   <!-- 一言与页底信息 -->
