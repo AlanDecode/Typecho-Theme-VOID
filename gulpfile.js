@@ -77,7 +77,12 @@ gulp.task('move', function(){
         .pipe(gulp.dest('./build/assets/libs/'));
     gulp.src(['./assets/sw-toolbox.js', './assets/VOIDCacheRule.js'])
         .pipe(gulp.dest('./build/assets/'));
-    return  gulp.src(['./LICENSE', './README.md', './screenshot.png', './advanceSetting.sample.json'])
+    return  gulp.src(['./LICENSE', 
+        './README.md',
+        './screenshot.png',
+        './advanceSetting.sample.json',
+        './.gitattributes',
+        './change-log.md'])
         .pipe(gulp.dest('./build/'));
 });
 
