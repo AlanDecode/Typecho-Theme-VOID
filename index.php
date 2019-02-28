@@ -30,21 +30,33 @@ if(!Utils::isPjax() && !Utils::isAjax()){
     <div class="wrapper container wide">
         <section id="post-list" aria-label="最近文章列表">
             <?php while($this->next()): ?>
-            <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'no-banner'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
-                <?php 
-                    if($this->fields->banner != ''){
-                        Contents::exportCover($this, $this->fields->banner, false);
-                    }else{
-                        if(!empty($setting['defaultCover'])){
-                            Contents::exportCover($this, $setting['defaultCover'], true);
-                        }else{ ?>
-                <div class="lazy-wrap">
-                    <div class="item-banner lazy loaded" style="background: white">
-                    </div>
-                </div>
-                       <?php }
-                    } 
-                ?>
+            <?php 
+                $banner = '';
+                if(!empty($setting['defaultCover'])) $banner = $setting['defaultCover'];
+                if($this->fields->bannerascover != '0'){
+                    if($this->fields->banner != '') $banner = $this->fields->banner;
+                }
+            ?>
+            <a class="item <?php if($banner == '') echo 'no-banner'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <?php if($banner != ''): ?>
+                    <?php $lazyID = rand(1,10000); if(!Utils::isWeixin()){ ?>
+                        <div class="lazy-wrap loading">
+                            <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
+                            <?php Utils::registerLazyImg($banner, $lazyID); ?>
+                            </div>
+                        </div>
+                    <?php }else{ ?>
+                        <div class="lazy-wrap">
+                            <div class="item-banner lazy loaded" style="background-image:url(<?php echo $banner; ?>)">
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php else: ?>
+                        <div class="lazy-wrap">
+                            <div class="item-banner lazy loaded" style="background: white">
+                            </div>
+                        </div>
+                <?php endif; ?>
                 <div class="item-content">
                     <span>
                         <span hidden itemprop="author"><?php $this->author(); ?></span>
