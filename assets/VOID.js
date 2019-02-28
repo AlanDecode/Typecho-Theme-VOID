@@ -39,6 +39,7 @@ var VOID = {
         hljs.initHighlightingOnLoad();
         VOID.hitokoto();
         VOID.handleLike();
+        pangu.spacingElementByTagName('p');
         // 初始化注脚
         $.bigfoot({actionOriginalFN: 'ignore'});
         // 初始化 touch 事件，移动端设备
@@ -265,7 +266,6 @@ var VOID = {
         else{
             VOIDConfig.tocOffset = 192;
         }
-        getSocial();
     },
 
     // 重载与事件绑定
@@ -280,11 +280,15 @@ var VOID = {
         if (typeof _hmt !== 'undefined'){
             _hmt.push(['_trackPageview', location.pathname + location.search]);
         }
+        // 重载 pangu.js
+        pangu.spacingElementByTagName('p');
+        // 重载社交分享
+        getSocial();
         // 重新绑定 touch 事件，移动端设备
-        $('.item,.board-item').on('touchstart',function(){
+        $('.board-item').on('touchstart',function(){
             $(this).addClass('hover');
         });
-        $('.item,.board-item').on('touchend',function(){
+        $('.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
         // 重载注脚
