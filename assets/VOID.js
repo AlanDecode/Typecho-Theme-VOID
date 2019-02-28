@@ -336,14 +336,20 @@ var VOID = {
     // 解析文章目录
     parseTOC : function(){
         if($('.TOC').length > 0){
-            tocbot.init({
+            var toc_option = {
                 // Where to render the table of contents.
                 tocSelector: '.TOC',
                 // Where to grab the headings to build the table of contents.
                 contentSelector: 'div[itemprop=articleBody]',
                 // Which headings to grab inside of the contentSelector element.
-                headingSelector: 'h2, h3, h4, h5'
-            });
+                headingSelector: 'h2, h3, h4, h5',
+                // 收缩深度
+                collapseDepth: 2,
+            };
+            if(window.innerWidth <= 1366){
+                toc_option.collapseDepth = 6;
+            }
+            tocbot.init(toc_option);
         }
     },
 
