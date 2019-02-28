@@ -305,18 +305,11 @@ class Utils
 
         if(!empty($options->advance)){
             $settings = json_decode($options->advance);
-            if(property_exists($settings, 'name')) $output['name'] = $settings->name;
-            if(property_exists($settings, 'nav')) $output['nav'] = $settings->nav;
-            if(property_exists($settings, 'welcomeWord')) $output['welcomeWord'] = $settings->welcomeWord;
-            if(property_exists($settings, 'customNotice')) $output['customNotice'] = $settings->customNotice;
-            if(property_exists($settings, 'msgBg')) $output['msgBg'] = $settings->msgBg;
-            if(property_exists($settings, 'msgColor')) $output['msgColor'] = $settings->msgColor;
-            if(property_exists($settings, 'defaultCover')) $output['defaultCover'] = $settings->defaultCover;
-            if(property_exists($settings, 'infiniteLoad')) $output['infiniteLoad'] = $settings->infiniteLoad;
-            if(property_exists($settings, 'twitterId')) $output['twitterId'] = $settings->twitterId;
-            if(property_exists($settings, 'weiboId')) $output['weiboId'] = $settings->weiboId;
+            foreach ($settings as $key => $value) {
+                $output[$key] = $value;
+            }
         }
-
+        
         if(!empty($options->defaultBanner)){
             $output['defaultBanner'] = $options->defaultBanner;
         }
