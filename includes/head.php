@@ -22,7 +22,16 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php 
         $banner=$this->fields->banner ? $this->fields->banner : '' ;
         Contents::exportHead($this,$banner);
+        $description = '';
+        if($this->is('post') || $this->is('page')) {
+            if($this->fields->excerpt != '')  $description = $this->fields->excerpt;
+        }else{
+            $description = Helper::options()->description;
+        }
     ?>
+    <meta name="description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
+    <meta property="og:description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
+    <meta name="twitter:description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
 
     <?php $this->header('commentReply=&description=&'); ?>
 

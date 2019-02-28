@@ -32,7 +32,6 @@ $setting = $GLOBALS['VOIDSetting'];
                         </sup>    
                     <?php endif;?>
                 </h1>
-                <p hidden itemprop="headline"><?php $this->excerpt(50); ?></p>
                 <p <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-meta">
                     <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                     <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
@@ -50,6 +49,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                 <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                 <?php endif; ?>
+                <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
                 <div itemprop="articleBody">
                 <?php $this->content(); ?>
                 </div>

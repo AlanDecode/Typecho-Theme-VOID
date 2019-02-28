@@ -29,7 +29,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
 
     <div class="wrapper container wide">
         <section id="post-list" aria-label="最近文章列表">
-            <?php while($this->next()): //直接显示摘要是默认选项 ?>
+            <?php while($this->next()): ?>
             <a class="item <?php if($this->fields->banner == '' && empty($setting['defaultCover'])) echo 'no-banner'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <?php 
                     if($this->fields->banner != ''){
@@ -51,7 +51,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
                     </span>
                     <h1 itemprop="name"><?php if(Utils::isPluginAvailable('Sticky')) $this->sticky(); $this->title(); ?></h1>
-                    <p><?php $this->excerpt(30); ?></p>
+                    <p><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
                 </div>
                 <?php if($this->fields->banner != ''): ?>
                 <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">

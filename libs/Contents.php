@@ -70,29 +70,19 @@ Class Contents
 		echo '</title>';
         $html = '';
         $site=Helper::options()->title;
-        $description='';
         $createTime = date('c', $archive->created);
         $modifyTime = date('c', $archive->modified);
         $link=$archive->permalink;
         $type='';
         $author=$archive->author->screenName;
         if($archive->is("index")){
-            $description=Helper::options()->description;
             $type='website';
         }
         elseif ($archive->is("post") || $archive->is("page")) {
-            if($archive->fields->excerpt && $archive->fields->excerpt!=''){
-                $description=$archive->fields->excerpt;
-            }
-            else{
-                $description = Typecho_Common::subStr(strip_tags($archive->excerpt), 0, 100, "...");
-            }
             $type='article';
         }
 
-        echo '<meta name="description" content="';
-        echo $description;
-        echo '" />
+        echo '
 <meta property="og:title" content="';
         self::title($archive);
         $html = <<< EOF
@@ -100,7 +90,6 @@ Class Contents
 <meta name="author" content="{$author}" />
 <meta property="og:site_name" content="{$site}" />
 <meta property="og:type" content="{$type}" />
-<meta property="og:description" content="{$description}" />
 <meta property="og:url" content="{$link}" />
 <meta property="og:image" content="{$img}" />
 <meta property="article:published_time" content="{$createTime}" />
@@ -111,7 +100,6 @@ EOF;
         self::title($archive);
         $html = <<<EOF
 " />
-<meta name="twitter:description" content="{$description}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{$img}" />\n
 EOF;

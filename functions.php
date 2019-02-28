@@ -75,6 +75,8 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $layout->addItem($banner);
     $showTOC=new Typecho_Widget_Helper_Form_Element_Select('showTOC',array('0'=>'不显示目录','1'=>'显示目录'),'0','文章目录','是否显示文章目录');
     $layout->addItem($showTOC);
+    $excerpt = new Typecho_Widget_Helper_Form_Element_Textarea('excerpt', NULL, NULL, '文章摘要', '输入自定义摘要。留空自动从文章截取。');
+    $layout->addItem($excerpt);
 }
 
 $GLOBALS['VOIDSetting'] = Utils::getVOIDSettings();
