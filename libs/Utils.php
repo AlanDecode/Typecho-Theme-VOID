@@ -286,6 +286,7 @@ class Utils
             'pjax' => false,
             'pjaxreload' => '',
             'titleinbanner' => false,
+            'lazyload' => false,
 
             // 高级设置
             'nav' => '',
@@ -309,7 +310,7 @@ class Utils
                 $output[$key] = $value;
             }
         }
-        
+
         if(!empty($options->defaultBanner)){
             $output['defaultBanner'] = $options->defaultBanner;
         }
@@ -324,6 +325,10 @@ class Utils
 
         if(!empty($options->enableMath)){
             if($options->enableMath == '1') $output['enableMath'] = true;
+        }
+
+        if(!empty($options->lazyload)){
+            if($options->lazyload == '1') $output['lazyload'] = true;
         }
 
         if(!empty($options->head)){

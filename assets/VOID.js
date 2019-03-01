@@ -61,7 +61,9 @@ var VOID = {
             $('header,.mobile-search').removeClass('dark');
         }
         // 监听滚动事件，实现懒加载
-        window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
+        if(VOIDConfig.lazyload){
+            window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
+        }
         AjaxComment.init();
         if(VOIDConfig.infiniteLoad && VOIDConfig.ajaxIndex){
             window.addEventListener('scroll',function(){

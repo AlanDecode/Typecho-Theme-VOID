@@ -52,6 +52,7 @@ $setting = $GLOBALS['VOIDSetting'];
         nextUrl : -1,
         customNotice : "<?php echo $setting['customNotice']; ?>",
         welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
+        lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
