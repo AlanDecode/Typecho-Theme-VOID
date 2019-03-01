@@ -21,6 +21,7 @@
 * 表情解析
 * 图片排版
 * 目录解析
+* ...
 
 以及其他很多细节，总之用起来还算舒服。我建立了一个示例页面，在这里你可以看到 VOID 对常用写作元素的支持以及一些特色功能演示：[示例页面](https://blog.imalan.cn/archives/194/)。
 
@@ -28,7 +29,7 @@
 
 ### 安装
 
-1. 下载主题：[点击下载](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/master.zip)
+1. 下载主题：[发布版](https://github.com/AlanDecode/Typecho-Theme-VOID/releases) | [开发版](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/nightly.zip)
 2. 解压
 3. **把解压后的文件夹重命名为 VOID**
 4. 检查文件夹名是否为 VOID，不是的话改成 VOID
@@ -146,7 +147,17 @@ gulp build
 
 ## 更新日志
 
-**2019-02-27 Version 1.6**
+**2019-03-01 Version 1.6.1**
+
+* 底部最近评论过滤 pingback 与 trackback
+* 文章编辑添加「文章摘要」字段，留空仍然自动截取
+* 添加 pangu.js，中英文间自动空格
+* 可单独设置是否将主图作为顶部大图与首页封面图
+* 优化小屏幕上目录显示
+* 调整首页样式
+* bug fix
+
+**Version 1.6**
 
 * 新的首页与文章页样式
 * 可设置将文章标题显示在头图中
