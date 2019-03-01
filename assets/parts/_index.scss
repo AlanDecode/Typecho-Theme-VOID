@@ -248,13 +248,6 @@ main{
                             background-image: url(https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg);
                         }
                     }
-                    @media screen and (min-width: 768px) {
-                        &.no-banner:hover{
-                            h1{
-                                color: #E8371A;
-                            }
-                        }
-                    }
                 }
             }
             .not-found{
