@@ -278,8 +278,6 @@ class Utils
         $output = array(
             // 主题设置
             'defaultBanner' => 'https://i.loli.net/2019/02/11/5c614078f2263.png',
-            'desktopBannerHeight' => '',
-            'mobileBannerHeight' => '',
             'enableMath' => false,
             'head' => '',
             'footer' => '',
@@ -295,6 +293,8 @@ class Utils
             'customNotice' => '',
             'msgColor' => '',
             'msgBg' => '',
+            'desktopBannerHeight' => '',
+            'mobileBannerHeight' => '',
             'defaultCover' => '',
             'ajaxIndex' => false,
             'infiniteLoad' => false,
@@ -313,14 +313,6 @@ class Utils
 
         if(!empty($options->defaultBanner)){
             $output['defaultBanner'] = $options->defaultBanner;
-        }
-
-        if(!empty($options->desktopBannerHeight)){
-            $output['desktopBannerHeight'] = $options->desktopBannerHeight;
-        }
-
-        if(!empty($options->mobileBannerHeight)){
-            $output['mobileBannerHeight'] = $options->mobileBannerHeight;
         }
 
         if(!empty($options->enableMath)){

@@ -5,6 +5,8 @@
     "customNotice" : "欢迎来到我的博客！",
     "msgBg" : "#fff",
     "msgColor" : "#333",
+    "desktopBannerHeight" : 30,
+    "mobileBannerHeight" : 30,
     "infiniteLoad" : true,
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",

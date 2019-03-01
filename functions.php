@@ -41,10 +41,6 @@ function themeInit(){
 function themeConfig($form) {
     $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://i.loli.net/2019/02/11/5c614078f2263.png', '默认顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
-    $desktopBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('desktopBannerHeight', NULL, NULL, '桌面端顶部大图高度', '填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。');
-    $form->addInput($desktopBannerHeight);
-    $mobileBannerHeight=new Typecho_Widget_Helper_Form_Element_Text('mobileBannerHeight', NULL, NULL, '移动端顶部大图高度', '填写数值，数值代表了高度相对屏幕高度的百分比。例如填写 70 即代表头图高度是屏幕高度的 70%。');
-    $form->addInput($mobileBannerHeight);
     $ajaxIndex=new Typecho_Widget_Helper_Form_Element_Select('ajaxIndex',array('0'=>'分页','1'=>'加载更多'),'0','首页分页样式','选择首页分页样式：普通分页或者加载更多。');
     $form->addInput($ajaxIndex);
     $titleinbanner=new Typecho_Widget_Helper_Form_Element_Select('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
