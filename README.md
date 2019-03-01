@@ -27,8 +27,6 @@
 
 ## 开始使用
 
-### 安装
-
 1. 下载主题：[发布版](https://github.com/AlanDecode/Typecho-Theme-VOID/releases) | [开发版](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/nightly.zip)
 2. 解压
 3. **把解压后的文件夹重命名为 VOID**
@@ -103,11 +101,10 @@
 
 <details><summary>展开详情</summary><br>
 
-如果你有不错的想法，可以定制自己的版本。首先你需要准备好 NodeJS 环境，然后 clone 这个 repo，并切换到源码分支：
+如果你有不错的想法，可以定制自己的版本。首先你需要准备好 NodeJS 环境，然后 clone 这个 repo：
 
 ```bash
 git clone https://github.com/AlanDecode/Typecho-Theme-VOID ./VOID && cd ./VOID
-git checkout source
 ```
 
 安装依赖：
