@@ -301,6 +301,18 @@ ruby > rt {
     margin-right: 2px;
     font-size: 60%;
 }
+.yue{
+    del{
+        transition: 0.3s ease all;
+        text-decoration: none;
+    }
+    del:not(:hover){
+        &,& *{
+            color: #222!important;
+        }
+        background: #222!important;
+    }
+}
 .board-list{
     display: flex;
     flex-flow: row wrap;
