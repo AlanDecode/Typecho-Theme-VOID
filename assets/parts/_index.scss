@@ -243,12 +243,9 @@ main{
                         }
                     }
                     &.no-banner{
-                        border: solid 4px #12121c;
                         .item-content{
-                            color: $darkColor;
-                            p{
-                                color: rgba(0,0,0,0.6);
-                            }
+                            @include bg;
+                            background-image: url(https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg);
                         }
                     }
                     @media screen and (min-width: 768px) {
@@ -256,7 +253,6 @@ main{
                             h1{
                                 color: #E8371A;
                             }
-                            border: solid 4px #E8371A;
                         }
                     }
                 }
