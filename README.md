@@ -41,7 +41,7 @@
 * 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，以启用 Service Worker 缓存。
 * 可选：主题文件夹下 advanceSetting.sample.json 中有一些高级设置，可以看看。
 
-### **常见问题（请务必仔细阅读）**
+## **常见问题（请务必仔细阅读）**
 
 <details><summary>添加归档页面</summary><br>
 
@@ -139,12 +139,6 @@ gulp build
 
 </details>
 
-## 捐助
-
-**如果本项目对你有所帮助，请考虑捐助我**
-
-![谢谢支持](https://wx1.sinaimg.cn/large/0060lm7Tly1g0c4cbi71lj30sc0iv453.jpg)
-
 ## 更新日志
 
 **2019-03-01 Version 1.6.1**
@@ -177,6 +171,12 @@ gulp build
 ### 其他
 
 [RAW](https://github.com/AlanDecode/Typecho-Theme-RAW) | [Mirages](https://get233.com/archives/mirages-intro.html) | [handsome](https://www.ihewro.com/archives/489/) | [Card](https://blog.shuiba.co/bitcron-theme-card) | [Casper](https://github.com/TryGhost/Casper) | [Typlog](https://typlog.com/)
+
+## 捐助
+
+**如果本项目对你有所帮助，请考虑捐助我**
+
+![谢谢支持](https://wx1.sinaimg.cn/large/0060lm7Tly1g0c4cbi71lj30sc0iv453.jpg)
 
 ## License
 
