@@ -25,10 +25,11 @@ if(!Utils::isPjax() && !Utils::isAjax()){
         <?php Contents::title($this); ?>
     </title>
     <?php $this->pageLink('','next'); ?>
-    <?php $this->need('includes/banner.php'); ?>
 
+    <?php if($setting['defaultBanner'] != '' && !$setting['indexNoBanner']) $this->need('includes/banner.php'); ?>
+    
     <div class="wrapper container wide">
-        <section id="post-list" aria-label="最近文章列表">
+        <section id="post-list" aria-label="最近文章列表" <?php if($setting['defaultBanner'] == '' || $setting['indexNoBanner']) echo 'class="no-banner"'; ?>>
             <?php while($this->next()): ?>
             <?php 
                 $banner = '';

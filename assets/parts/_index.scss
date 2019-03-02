@@ -144,6 +144,12 @@ main{
                 @media screen and (max-width: 767px) {
                     margin-top: -80px;
                 }
+                &.no-banner{
+                    margin-top: 80px;
+                    @media screen and (max-width: 767px) {
+                        margin-top: 60px;
+                    }
+                }
                 &.archive-list{
                     padding: 45px;
                     @media screen and (max-width: 767px) {

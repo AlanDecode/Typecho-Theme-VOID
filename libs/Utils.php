@@ -295,6 +295,7 @@ class Utils
             'msgBg' => '',
             'desktopBannerHeight' => '',
             'mobileBannerHeight' => '',
+            'indexNoBanner' => false,
             'defaultCover' => '',
             'ajaxIndex' => false,
             'infiniteLoad' => false,
@@ -311,9 +312,7 @@ class Utils
             }
         }
 
-        if(!empty($options->defaultBanner)){
-            $output['defaultBanner'] = $options->defaultBanner;
-        }
+        $output['defaultBanner'] = $options->defaultBanner;
 
         if(!empty($options->enableMath)){
             if($options->enableMath == '1') $output['enableMath'] = true;

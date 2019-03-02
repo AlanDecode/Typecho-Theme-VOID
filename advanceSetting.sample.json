@@ -28,6 +28,9 @@
     // 移动端头图高度，数值为高度占屏幕高度的百分比
     "mobileBannerHeight" : 30,
 
+    // 首页不显示大图
+    "indexNoBanner" : false,
+
     // 首页无限加载
     "infiniteLoad" : true,
 

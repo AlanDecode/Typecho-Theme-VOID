@@ -58,7 +58,8 @@ var VOID = {
         if($(document).scrollTop() > 70){
             $('header,.mobile-search').addClass('dark');
         }else{
-            $('header,.mobile-search').removeClass('dark');
+            if($('main>.lazy-wrap').length)
+                $('header,.mobile-search').removeClass('dark');
         }
         // 监听滚动事件，实现懒加载
         if(VOIDConfig.lazyload){
@@ -264,9 +265,11 @@ var VOID = {
         }
         if($('main>.lazy-wrap').length) {
             VOIDConfig.tocOffset = $('main>.lazy-wrap').height() + 132;
+            $('header').removeClass('dark');
         }
         else{
             VOIDConfig.tocOffset = 192;
+            $('header').addClass('dark');
         }
     },
 
@@ -627,7 +630,8 @@ window.addEventListener('scroll',function(){
     if($(document).scrollTop() >= 70){
         $('header,.mobile-search').addClass('dark');
     }else{
-        $('header,.mobile-search').removeClass('dark');
+        if($('main>.lazy-wrap').length)
+            $('header,.mobile-search').removeClass('dark');
     }
 
     if(window.innerWidth < 1366) return;

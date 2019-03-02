@@ -13,6 +13,10 @@ if($this->is('post') || $this->is('page')){
     if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
         $banner = $this->fields->banner;
 }
+if($banner == ''){
+    $banner = 'https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg';
+    echo '<style>#banner{filter: none!important}</style>';
+}
 ?>
 
 <?php if(!Utils::isWeixin()): ?>

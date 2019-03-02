@@ -12,7 +12,7 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <body>
-    <header>
+    <header <?php if(($setting['defaultBanner'] == '' || $setting['indexNoBanner']) && ($this->is('index') || $this->is('archive'))) echo 'class="dark"'; ?>>
         <div class="container">
             <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
                 <span></span>
