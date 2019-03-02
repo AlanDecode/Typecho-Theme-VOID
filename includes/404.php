@@ -18,7 +18,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
-        <section id="post-list" class="archive-list">
+        <section id="post-list" class="archive-list" style="margin-top: 0">
             <div class="not-found">
                 <h1>糟糕！这里什么也没有</h1>
                 <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search_404" class="text" required placeholder="Try search..." />
