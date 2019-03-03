@@ -43,6 +43,9 @@ body,header,main,footer{
 }
 
 body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     &.modal-open{
         position: fixed;
         width: 100%;

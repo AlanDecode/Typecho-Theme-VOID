@@ -10,6 +10,7 @@ header{
     &.dark{
         transition: 0.5s ease all;
         background: #1e2023!important;
+        box-shadow: 0 0 25px 0 rgba(0,0,0,.7);
         a,span.dropdown{
             color: #eee!important;
         }

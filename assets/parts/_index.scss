@@ -1,4 +1,5 @@
 main{
+    flex: 1;
     .lazy-wrap{
         @include bg;
         width: 100%;
