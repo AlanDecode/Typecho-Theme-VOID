@@ -86,12 +86,9 @@ $setting = $GLOBALS['VOIDSetting'];
                 <section data-title="Site Info">   <!-- 一言与页底信息 -->
                     <p>感谢陪伴：<span id="uptime"></span></p>
                     <p id="hitokoto"></p>
+                    <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
+                    <p><?php echo $setting['footer']; ?></p>
                 </section>
-            </div>
-            <div class="container footer-info">
-                Powered by Typecho
-                <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a>
-                <div><?php echo $setting['footer']; ?></div>
             </div>
         </footer>
     </body>
