@@ -60,6 +60,9 @@ body{
     &.wide{
         width: $mainWidth-wide;
     }
+    &.wider{
+        width: $mainWidth-wider;
+    }
 }
 
 .btn{

@@ -47,7 +47,7 @@ header{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0.3rem 0.5rem;
+        padding: 0.3rem 0.55rem;
         color: #eee;
         transition: 0.3s ease all;
         &:hover{
@@ -61,6 +61,7 @@ header{
         }
         &.toggle{
             display: none;
+            height: 100%;
         }
         @media screen and (max-width: 767px){
             &.brand{
@@ -74,8 +75,17 @@ header{
                 display: block;
                 position: absolute;
                 left: 1rem;
+                @media screen and (max-width: 767px) {
+                    left: 0;
+                }
             }
         }
+    }
+    span.search-desktop{
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
     span.dropdown{
         position: relative;
@@ -116,9 +126,21 @@ header{
         flex: 1;
         height: 100%;
         display: flex;
+        justify-content: center;
+        position: relative;
         @media screen and (max-width: 767px) {
             &{
                 justify-content: space-around;
+            }
+        }
+        >.brand.pull-left{
+            position: absolute;
+            left: 1rem;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            @media screen and (max-width: 1023.5px) {
+                display: none;
             }
         }
     }
@@ -161,13 +183,15 @@ header{
     #toggle-mobile-search{
         display: none;
         padding: 0;
+        display: none;
+        position: absolute;
+        right: 1rem;
         @media screen and (max-width: 767px) {
+            right: 0;
             display: block;
-            position: absolute;
-            right: 1rem;
-            top: 45%;
-            transform: translateY(-50%);
         }
+        top: 45%;
+        transform: translateY(-50%);
         > div{
             width: 17px;
             height: 17px;

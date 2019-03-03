@@ -13,13 +13,15 @@ $setting = $GLOBALS['VOIDSetting'];
 
 <body>
     <header <?php if(($setting['defaultBanner'] == '' || $setting['indexNoBanner']) && ($this->is('index') || $this->is('archive'))) echo 'class="dark"'; ?>>
-        <div class="container">
-            <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
-                <span></span>
-            </a>
-            <nav aria-label="导航链接">
-                <a aria-label="返回主页" class="brand" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
-                <?php $this->widget('Widget_Contents_Page_List')->parse('<a aria-label="独立页面链接" href="{permalink}">{title}</a>'); ?>
+        <div class="container wider">
+            <nav>
+                <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
+                    <span></span>
+                </a>
+                <a aria-label="返回主页" class="brand hidden-xs pull-left" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
+                <a aria-label="返回主页" class="brand show-xs" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
+                <a href="<?php Utils::index(''); ?>">首页</a>
+                <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>
                 <span aria-label="分类下拉列表" class="dropdown">分类
                     <ul>
                         <?php $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}">{name}</a></li>'); ?>
@@ -34,17 +36,17 @@ $setting = $GLOBALS['VOIDSetting'];
                     </ul>
                 </span>
                 <?php endforeach; } ?>
+                <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
+                <span class="hidden-xs search-desktop">
+                    <label for="search">搜索</label>
+                    <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
+                </span>
+                <?php endif; ?>
+                <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
+                    <div></div>
+                    <span></span>
+                </a>
             </nav>
-            <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
-            <span style="position:relative" class="hidden-xs">
-                <label for="search">搜索</label>
-                <input aria-label="搜索框" onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
-            </span>
-            <?php endif; ?>
-            <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
-                <div></div>
-                <span></span>
-            </a>
         </div>
         <div class="mobile-search">
             <label for="search">搜索</label>
