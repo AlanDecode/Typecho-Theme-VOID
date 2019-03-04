@@ -7,6 +7,9 @@
     // 自定义左上角显示的站点名
     "name" : "A Panda.",
 
+    // 简版首页（无头图，仅有文章列表）
+    "simpleIndex" : false,
+
     // 是否显示欢迎语
     "welcomeWord" : true,
 

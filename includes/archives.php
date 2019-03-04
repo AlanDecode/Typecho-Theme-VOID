@@ -27,7 +27,7 @@ $setting = $GLOBALS['VOIDSetting'];
                         'tag'       =>  _t('包含标签 "%s" 的文章'),
                         'author'    =>  _t('"%s" 发布的文章')
                     ), '', '');  ?></h1>
-                <section class="archives detail">
+                <section class="archives detail <?php if($this->is('index')) echo 'index'; ?>">
                     <ul aria-label="文章列表">
                     <?php while($this->next()): ?>
                     <li data-date="<?php echo date('m-d', $this->created); ?>" >
@@ -35,7 +35,9 @@ $setting = $GLOBALS['VOIDSetting'];
                             data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>">
                             <h4><?php $this->title(); ?></h4>
                         </a>
+                        <?php if($this->fields->excerpt != '') echo "<p class=\"excerpt\">{$this->fields->excerpt}</p>"; ?>
                         <p><?php $this->excerpt(100); ?></p>
+                        <?php if($this->is('index')) echo "<div class=\"post-meta-index\">Posted by {$this->author->screenName} on ".date('M d, Y', $this->created)."</div>"; ?>
                     </li>
                     <?php endwhile; ?>
                     </ul>

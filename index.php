@@ -17,7 +17,10 @@ $setting = $GLOBALS['VOIDSetting'];
 if(!Utils::isPjax() && !Utils::isAjax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
-} 
+}
+if($setting['simpleIndex']) {
+    $this->need('includes/archives.php');
+} else {
 ?>
 
 <main id="pjax-container">
@@ -90,7 +93,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
     </div>
 </main>
 
-<?php 
+<?php }
 if(!Utils::isPjax() && !Utils::isAjax()){
     $this->need('includes/footer.php');
 } 

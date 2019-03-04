@@ -265,6 +265,35 @@ article.post{
                 }
             }
         }
+        &.index{
+            padding-left: 0;
+            ul li{
+                h4{
+                    font-size: 1.58rem;
+                    line-height: 1.25;
+                }
+                &::before{
+                    display: none;
+                }
+                p.excerpt{
+                    color: rgba(0,0,0,.42);
+                    font-size: 1.32em;
+                    font-weight: 300;
+                    margin: 0;
+                }
+                div.post-meta-index{
+                    color: rgba(0,0,0,.18);
+                    font-size: 16px;
+                    font-style: italic;
+                    margin: 0;
+                    font-weight: 300;
+                    line-height: 1.25;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
         a.toggle-archive{
             position: absolute;
             top: 0.5rem;
