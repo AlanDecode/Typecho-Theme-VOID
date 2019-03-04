@@ -248,8 +248,8 @@ article.post{
                     }
                 }
                 p{
-                    line-height: 1.8;
-                    font-size: 0.95rem;
+                    line-height: 1.67;
+                    font-size: 16px;
                     color: #666;
                 }
                 &::before{
@@ -268,9 +268,11 @@ article.post{
         &.index{
             padding-left: 0;
             ul li{
+                margin-bottom: 2.5rem;
                 h4{
-                    font-size: 1.58rem;
+                    font-size: 1.67rem;
                     line-height: 1.25;
+                    font-weight: 600;
                 }
                 &::before{
                     display: none;
@@ -279,6 +281,7 @@ article.post{
                     color: rgba(0,0,0,.42);
                     font-size: 1.32em;
                     font-weight: 300;
+                    line-height: 1.25;
                     margin: 0;
                 }
                 div.post-meta-index{

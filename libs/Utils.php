@@ -285,6 +285,7 @@ class Utils
             'pjaxreload' => '',
             'titleinbanner' => false,
             'lazyload' => false,
+            'indexBannerTitle' => '',
 
             // 高级设置
             'nav' => '',
@@ -325,6 +326,10 @@ class Utils
 
         if(!empty($options->head)){
             $output['head'] = $options->head;
+        }
+
+        if(!empty($options->indexBannerTitle)){
+            $output['indexBannerTitle'] = $options->indexBannerTitle;
         }
 
         if(!empty($options->footer)){
