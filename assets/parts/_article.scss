@@ -234,10 +234,10 @@ article.post{
             padding: 0;
             margin: 0;
             li{
-                line-height: 2.5;
                 position: relative;
-                margin-bottom: 1.25rem;
-                padding-bottom: 1.25rem;
+                line-height: 1.78;
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
                 border-bottom: 1px dotted #ddd;
                 a{
                     border: none!important;
@@ -281,16 +281,18 @@ article.post{
                     width: 4rem;
                     line-height: 1;
                     left: -4rem;
-                    top: 0.75rem;
+                    top: 0.4rem;
                 }
             }
         }
         &.index{
             padding-left: 0;
             ul li{
+                line-height: 1.25;
+                margin-bottom: 1.25rem;
+                padding-bottom: 1.25rem;
                 h4{
                     font-size: 1.67rem;
-                    line-height: 1.25;
                     font-weight: 600;
                 }
                 &::before{
