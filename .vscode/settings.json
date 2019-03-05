@@ -8,5 +8,6 @@
             "extensionName": ".css",
             "savePath": null
         }
-    ]
+    ],
+    "liveSassCompile.settings.generateMap": false,
 }
