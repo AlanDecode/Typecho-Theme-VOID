@@ -31,6 +31,11 @@ $setting = $GLOBALS['VOIDSetting'];
                     <ul aria-label="文章列表">
                     <?php while($this->next()): ?>
                     <li data-date="<?php echo date('m-d', $this->created); ?>" >
+                        <?php if($this->is('index') && $this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
+                        <a href="<?php $this->permalink(); ?>" class="item-banner-index">
+                            <img src="<?php echo $this->fields->banner;?>">
+                        </a>
+                        <?php endif; ?>
                         <a href="<?php $this->permalink(); ?>"
                             data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>">
                             <h4><?php $this->title(); ?></h4>
