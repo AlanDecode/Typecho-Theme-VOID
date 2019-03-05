@@ -59,54 +59,6 @@ Class Contents
     }
 
     /**
-     * 输出 head 标签中的 meta
-     * 
-     * @return void
-     */
-    public static function exportHead(Widget_Archive $archive,$img)
-    {
-        echo '<title>';
-		self::title($archive);
-		echo '</title>';
-        $html = '';
-        $site=Helper::options()->title;
-        $createTime = date('c', $archive->created);
-        $modifyTime = date('c', $archive->modified);
-        $link=$archive->permalink;
-        $type='';
-        $author=$archive->author->screenName;
-        if($archive->is("index")){
-            $type='website';
-        }
-        elseif ($archive->is("post") || $archive->is("page")) {
-            $type='article';
-        }
-
-        echo '
-<meta property="og:title" content="';
-        self::title($archive);
-        $html = <<< EOF
-" />
-<meta name="author" content="{$author}" />
-<meta property="og:site_name" content="{$site}" />
-<meta property="og:type" content="{$type}" />
-<meta property="og:url" content="{$link}" />
-<meta property="og:image" content="{$img}" />
-<meta property="article:published_time" content="{$createTime}" />
-<meta property="article:modified_time" content="{$modifyTime}" />
-<meta name="twitter:title" content="
-EOF;
-        echo $html;
-        self::title($archive);
-        $html = <<<EOF
-" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="{$img}" />\n
-EOF;
-        echo $html;
-    }
-
-    /**
      * 内容解析点钩子
      * 目录解析移至前端完成
      */
