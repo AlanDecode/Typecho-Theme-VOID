@@ -20,19 +20,32 @@ $setting = $GLOBALS['VOIDSetting'];
     <meta name="HandheldFriendly" content="true">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php 
-        $banner=$this->fields->banner ? $this->fields->banner : '' ;
-        Contents::exportHead($this,$banner);
-        $description = '';
-        if($this->is('post') || $this->is('page')) {
-            if($this->fields->excerpt != '')  $description = $this->fields->excerpt;
-        }else{
-            $description = Helper::options()->description;
-        }
+    $banner = '';
+    $description = '';
+    if($this->is('post') || $this->is('page')){
+        if($this->fields->banner != '')
+            $banner=$this->fields->banner;
+        if($this->fields->excerpt != '')
+            $description = $this->fields->excerpt;
+    }else{
+        $description = Helper::options()->description;
+    }
     ?>
+    <title><?php Contents::title($this); ?></title>
+    <meta name="author" content="<?php $this->author(); ?>" />
     <meta name="description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
+    <meta property="og:title" content="<?php Contents::title($this); ?>" />
     <meta property="og:description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
+    <meta property="og:site_name" content="<?php Contents::title($this); ?>" />
+    <meta property="og:type" content="<?php if($this->is('post') || $this->is('page')) echo 'article'; else echo 'website'; ?>" />
+    <meta property="og:url" content="<?php $this->permalink(); ?>" />
+    <meta property="og:image" content="<?php echo $banner; ?>" />
+    <meta property="article:published_time" content="<?php echo date('c', $this->created); ?>" />
+    <meta property="article:modified_time" content="<?php echo date('c', $this->modified); ?>" />
+    <meta name="twitter:title" content="<?php Contents::title($this); ?>" />
     <meta name="twitter:description" content="<?php if($description != '') echo $description; else $this->excerpt(50); ?>" />
-
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="<?php echo $banner; ?>" />
     <?php $this->header('commentReply=&description=&'); ?>
 
     <!--CSS-->
