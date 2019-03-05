@@ -270,7 +270,7 @@ article.post{
                 p{
                     line-height: 1.67;
                     font-size: 16px;
-                    color: #666;
+                    color: rgba(0,0,0,.42);
                 }
                 &::before{
                     content: attr(data-date);
@@ -300,14 +300,14 @@ article.post{
                     display: none;
                 }
                 p.excerpt{
-                    color: rgba(0,0,0,.42);
+                    color: #666;
                     font-size: 1.2em;
                     font-weight: 300;
                     line-height: 1.3;
                     margin: 0.5rem 0;
                 }
                 div.post-meta-index{
-                    color: rgba(0,0,0,.18);
+                    color: rgba(0,0,0,.42);
                     font-size: 16px;
                     font-style: italic;
                     margin: 0;
