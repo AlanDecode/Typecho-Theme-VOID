@@ -292,6 +292,7 @@ article.post{
                 margin-bottom: 1.25rem;
                 padding-bottom: 1.25rem;
                 h4{
+                    line-height: 1.25;
                     font-size: 1.67rem;
                     font-weight: 600;
                 }
@@ -303,7 +304,7 @@ article.post{
                     font-size: 1.2em;
                     font-weight: 300;
                     line-height: 1.3;
-                    margin: 0;
+                    margin: 0.5rem 0;
                 }
                 div.post-meta-index{
                     color: rgba(0,0,0,.18);
