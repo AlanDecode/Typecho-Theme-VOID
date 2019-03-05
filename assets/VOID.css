@@ -1995,6 +1995,7 @@ article.post section.archives ul li {
 }
 
 article.post section.archives ul li a {
+  display: block;
   border: none !important;
 }
 
@@ -2059,7 +2060,7 @@ article.post section.archives.index ul li {
   padding-bottom: 1.25rem;
 }
 
-article.post section.archives.index ul li h4 {
+article.post section.archives.index ul li a h4 {
   line-height: 1.25;
   font-size: 1.67rem;
   font-weight: 600;
@@ -2069,16 +2070,23 @@ article.post section.archives.index ul li::before {
   display: none;
 }
 
-article.post section.archives.index ul li p.excerpt {
-  color: #666;
-  font-size: 1.2em;
+article.post section.archives.index ul li p {
+  color: rgba(0, 0, 0, 0.5);
   font-weight: 300;
+}
+
+article.post section.archives.index ul li p.excerpt {
+  color: #999;
+  font-size: 1.2em;
+  font-weight: normal;
   line-height: 1.3;
   margin: 0.5rem 0;
+  padding-left: 8px;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
 }
 
 article.post section.archives.index ul li div.post-meta-index {
-  color: rgba(0, 0, 0, 0.42);
+  color: rgba(0, 0, 0, 0.5);
   font-size: 16px;
   font-style: italic;
   margin: 0;
