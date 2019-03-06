@@ -39,10 +39,16 @@
 7. 上传文件夹至站点 /usr/themes 目录下
 8. 后台启用主题
 
-* 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，以启用 Service Worker 缓存。
+* 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，并在主题设置中启用 Service Worker 缓存。
 * 可选：主题文件夹下 advanceSetting.sample.json 中有一些高级设置，可以看看。
 
 ## **常见问题（请务必仔细阅读）**
+
+<details><summary>下载安装后样式不对？</summary><br>
+
+仓库中的是未压缩的源代码，包含大量实际使用中不需要的文件，并且可能无法直接使用。请一定通过这两个链接下载主题：[发布版](https://github.com/AlanDecode/Typecho-Theme-VOID/releases) | [开发版](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/nightly.zip)
+
+</details>
 
 <details><summary>添加归档页面</summary><br>
 
