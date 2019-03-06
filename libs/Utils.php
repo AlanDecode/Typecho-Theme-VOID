@@ -286,6 +286,7 @@ class Utils
             'titleinbanner' => false,
             'lazyload' => false,
             'indexBannerTitle' => '',
+            'serviceworker' => false,
 
             // 高级设置
             'nav' => '',
@@ -350,6 +351,10 @@ class Utils
 
         if(!empty($options->titleinbanner)){
             if($options->titleinbanner == '1') $output['titleinbanner'] = true;
+        }
+
+        if(!empty($options->serviceworker)){
+            if($options->serviceworker == '1') $output['serviceworker'] = true;
         }
 
         return $output;

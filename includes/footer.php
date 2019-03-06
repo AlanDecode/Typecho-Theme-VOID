@@ -10,7 +10,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
-
+        <?php if($setting['serviceworker']): ?>
         <script>
             var serviceWorkerUri = '/VOIDCacheRule.js';
             if ('serviceWorker' in navigator) {  
@@ -27,6 +27,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 console.log('Service workers are not supported in the current browser.');
             }
         </script>
+        <?php endif; ?>
         <script src="<?php Utils::indexTheme('/assets/bundle.js'); ?>"></script>
         <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
         <?php $this->footer(); ?>
