@@ -200,8 +200,10 @@ header{
         }
         > span{
             position: relative;
+            display: block;
             &::before{
                 content: "";
+                display: block;
                 position: absolute;
                 width: 8px;
                 height: 3px;
