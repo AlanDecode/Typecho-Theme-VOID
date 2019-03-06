@@ -2056,8 +2056,8 @@ article.post section.archives.index {
 
 article.post section.archives.index ul li {
   line-height: 1.25;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 36px;
+  padding-bottom: 36px;
 }
 
 article.post section.archives.index ul li a h4 {
@@ -2073,6 +2073,7 @@ article.post section.archives.index ul li::before {
 article.post section.archives.index ul li p {
   color: rgba(0, 0, 0, 0.5);
   font-weight: 300;
+  margin-top: 1rem;
 }
 
 article.post section.archives.index ul li p.excerpt {
@@ -2080,7 +2081,7 @@ article.post section.archives.index ul li p.excerpt {
   font-size: 1.2em;
   font-weight: normal;
   line-height: 1.3;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   padding-left: 8px;
   border-left: 3px solid rgba(0, 0, 0, 0.1);
 }

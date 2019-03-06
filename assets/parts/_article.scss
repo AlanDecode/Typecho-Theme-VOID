@@ -290,8 +290,8 @@ article.post{
             padding-left: 0;
             ul li{
                 line-height: 1.25;
-                margin-bottom: 1.25rem;
-                padding-bottom: 1.25rem;
+                margin-bottom: 36px;
+                padding-bottom: 36px;
                 a{
                     h4{
                         line-height: 1.25;
@@ -305,13 +305,14 @@ article.post{
                 p{
                     color: rgba(0,0,0,.5);
                     font-weight: 300;
+                    margin-top: 1rem;
                 }
                 p.excerpt{
                     color: #999;
                     font-size: 1.2em;
                     font-weight: normal;
                     line-height: 1.3;
-                    margin: 0.8rem 0;
+                    margin: 1rem 0;
                     padding-left: 8px;
                     border-left: 3px solid rgba(0,0,0,0.1);
                 }
