@@ -2066,6 +2066,16 @@ article.post section.archives.index ul li a h4 {
   font-weight: 600;
 }
 
+article.post section.archives.index ul li a.full-link {
+  display: inline;
+  color: #999;
+  border-bottom: 1px solid #999 !important;
+}
+
+article.post section.archives.index ul li a.full-link::after {
+  display: none;
+}
+
 article.post section.archives.index ul li::before {
   display: none;
 }
@@ -2091,6 +2101,7 @@ article.post section.archives.index ul li div.post-meta-index {
   font-size: 16px;
   font-style: italic;
   margin: 0;
+  margin-top: 12px;
   font-weight: 300;
   line-height: 1.25;
   white-space: nowrap;

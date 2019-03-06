@@ -298,6 +298,14 @@ article.post{
                         font-size: 1.67rem;
                         font-weight: 600;
                     }
+                    &.full-link{
+                        display: inline;
+                        color: #999;
+                        border-bottom: 1px solid #999!important;
+                        &::after{
+                            display: none;
+                        }
+                    }
                 }
                 &::before{
                     display: none;
@@ -321,6 +329,7 @@ article.post{
                     font-size: 16px;
                     font-style: italic;
                     margin: 0;
+                    margin-top: 12px;
                     font-weight: 300;
                     line-height: 1.25;
                     white-space: nowrap;

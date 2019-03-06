@@ -41,7 +41,7 @@ $setting = $GLOBALS['VOIDSetting'];
                             <h4><?php $this->title(); ?></h4>
                         </a>
                         <?php if($this->fields->excerpt != '') echo "<p class=\"excerpt\">{$this->fields->excerpt}</p>"; ?>
-                        <p><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
+                        <p><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
                         <?php if($this->is('index')) echo "<div class=\"post-meta-index\">Posted by {$this->author->screenName} on ".date('M d, Y', $this->created)."</div>"; ?>
                     </li>
                     <?php endwhile; ?>

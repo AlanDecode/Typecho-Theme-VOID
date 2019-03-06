@@ -516,7 +516,7 @@ var AjaxComment = {
                 AjaxComment.err();
                 return false;
             }
-            $(AjaxComment.submitBtn).html('提交中……');
+            $(AjaxComment.submitBtn).html('提交中');
             $.ajax({
                 url: $(AjaxComment.commentForm).attr('action'),
                 type: $(AjaxComment.commentForm).attr('method'),
