@@ -539,6 +539,9 @@ ruby > rt {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            &:hover{
+                color: #54BC4B
+            }
         }
     }
     display: none;

@@ -2393,6 +2393,10 @@ ruby > rt {
   overflow: hidden;
 }
 
+.TOC li a:hover {
+  color: #54BC4B;
+}
+
 .TOC.show {
   display: block;
 }
