@@ -344,10 +344,6 @@ var VOID = {
                 collapseDepth: 6,
             };
             tocbot.init(toc_option);
-            if(window.innerWidth >= 1366){
-                $('.TOC').addClass('show');
-                $('.toggle-toc .toggle').addClass('pushed');
-            }
         }
     },
 
@@ -626,14 +622,6 @@ window.addEventListener('scroll',function(){
         if($('main>.lazy-wrap').length)
             $('header,.mobile-search').removeClass('dark');
     }
-
-    // 移动 toc
-    var footer_to_bottom = $('footer').offset().top - ($(document).scrollTop() + $(window).height());
-    if(footer_to_bottom <= 0){
-        $('.toggle-toc,.TOC').css('bottom', -footer_to_bottom + 24 +'px');
-    }else{
-        $('.toggle-toc,.TOC').css('bottom', '1.5rem');
-    }
 });
 
 function startSearch(item) {
@@ -688,5 +676,11 @@ function toggleNav(item){
 // eslint-disable-next-line no-unused-vars
 function toggleToc(item) {
     $('.TOC').toggleClass('show');
+    $('.toggle-toc').toggleClass('pushed');
     $(item).toggleClass('pushed');
+}
+// eslint-disable-next-line no-unused-vars
+function goTop(time) {
+    var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
+    $body.animate({scrollTop: 0}, time);
 }

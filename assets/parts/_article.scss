@@ -520,15 +520,20 @@ ruby > rt {
 }
 
 .TOC{
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(420px);
+    position: fixed;
     z-index: 13;
-    max-width: 500px;
-    max-height: 85vh;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    width: max-content;
+    max-width: calc(100vw - 4rem - 39px);
+    max-height: calc(100vh - 1.5rem - 120px);
+    bottom: 1.5rem;
+    right: calc(3.5rem + 5px);
+    background: rgba($color: #000000, $alpha: 0.92);
+    padding: 1rem;
+    *{
+        color: #dddddd;
+    }
     li{
         a{
             white-space: nowrap;
@@ -539,29 +544,19 @@ ruby > rt {
     display: none;
     &.show{
         display: block;
-        position: fixed;
-        width: max-content;
-        max-width: calc(100vw - 4rem - 39px);
-        max-height: calc(100vh - 1.5rem - 60px);
-        bottom: 1.5rem;
-        right: 3.5rem;
-        background: rgba($color: #000000, $alpha: 0.92);
-        padding: 1rem;
-        *{
-            color: #dddddd;
-        }
-        top: unset;
-        left: unset;
-        transform: unset;
     }
 }
 .toggle-toc{
     position: fixed;
     right: 1.5rem;
-    bottom: 1.5rem;
+    bottom: 60px;
     padding: 0.4rem;
     background: black;
     z-index: 13;
+    transition: 0.2s ease transform;
+    &.pushed{
+        transform: translateX(-5px);
+    }
 }
 .social-button{
     padding: 1.5rem 0;

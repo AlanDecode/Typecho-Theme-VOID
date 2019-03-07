@@ -93,5 +93,6 @@ $setting = $GLOBALS['VOIDSetting'];
                 </section>
             </div>
         </footer>
+        <div id="back-top" onclick="goTop(500);"><div></div></div>
     </body>
 </html>
