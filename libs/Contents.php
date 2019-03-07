@@ -298,17 +298,16 @@ Class Contents
     {
         $db = Typecho_Db::get();
         $content = $db->fetchRow($db->select()->from('table.contents')->where('table.contents.created < ?', $archive->created)
-        ->where('table.contents.status = ?', 'publish')
-        ->where('table.contents.type = ?', $archive->type)
-        ->where('table.contents.password IS NULL')
-        ->order('table.contents.created', Typecho_Db::SORT_DESC)
-        ->limit(1));
+            ->where('table.contents.status = ?', 'publish')
+            ->where('table.contents.type = ?', $archive->type)
+            ->where('table.contents.password IS NULL')
+            ->order('table.contents.created', Typecho_Db::SORT_DESC)
+            ->limit(1));
 
         if ($content) {
-            $content = $archive->filter($content);
-            echo '<a href="'.$content['permalink'].'">← 上一篇</a>';
+            return self::getPost($content['cid']);    
         } else {
-            echo '<span>没有啦~</span>';
+            return null;
         }
 
     }
@@ -328,10 +327,9 @@ Class Contents
             ->limit(1));
 
         if ($content) {
-            $content = $archive->filter($content);
-            echo '<a href="'.$content['permalink'].'">下一篇 →</a>';
+            return self::getPost($content['cid']);    
         } else {
-            echo '<span>没有啦~</span>';
+            return null;
         }
     }
 

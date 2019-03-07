@@ -86,9 +86,19 @@ $setting = $GLOBALS['VOIDSetting'];
             <?php endif; ?>
             <!--分页-->
             <?php if(!$this->is('page')): ?>
-            <div class="post-pager">
-                <?php Contents::thePrev($this); ?>
-                <?php Contents::theNext($this); ?>
+            <div class="post-pager"><?php $prev = Contents::thePrev($this); $next = Contents::theNext($this); ?>
+                <?php if($prev): ?>
+                    <div class="prev">
+                        <a href="<?php $prev->permalink(); ?>"><h2><?php $prev->title(); ?></h2></a>
+                        <?php echo $prev->fields->excerpt != '' ? "<p>{$prev->fields->excerpt}</p>" : ''; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if($next): ?>
+                    <div class="next">
+                        <a href="<?php $prev->permalink(); ?>"><h2><?php $next->title(); ?></h2></a>
+                        <?php echo $next->fields->excerpt != '' ? "<p>{$next->fields->excerpt}</p>" : ''; ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
         </section>
