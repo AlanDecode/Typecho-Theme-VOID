@@ -92,11 +92,19 @@ $setting = $GLOBALS['VOIDSetting'];
                         <a href="<?php $prev->permalink(); ?>"><h2><?php $prev->title(); ?></h2></a>
                         <?php echo $prev->fields->excerpt != '' ? "<p>{$prev->fields->excerpt}</p>" : ''; ?>
                     </div>
+                <?php else: ?>
+                    <div class="prev">
+                        <h2>没有了</h2>
+                    </div>
                 <?php endif; ?>
                 <?php if($next): ?>
                     <div class="next">
-                        <a href="<?php $prev->permalink(); ?>"><h2><?php $next->title(); ?></h2></a>
+                        <a href="<?php $next->permalink(); ?>"><h2><?php $next->title(); ?></h2></a>
                         <?php echo $next->fields->excerpt != '' ? "<p>{$next->fields->excerpt}</p>" : ''; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="next">
+                        <h2>没有了</h2>
                     </div>
                 <?php endif; ?>
             </div>

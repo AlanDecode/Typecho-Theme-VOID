@@ -57,8 +57,6 @@ $setting = $GLOBALS['VOIDSetting'];
             </ul>
         </section>
         
-
-
         <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>
