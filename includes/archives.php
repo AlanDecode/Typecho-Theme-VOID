@@ -19,36 +19,46 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
-        <section id="post" class="archive-list">
-            <article class="post yue">
-                <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->archiveTitle(array(
-                        'category'  =>  _t('分类 "%s" 下的文章'),
-                        'search'    =>  _t('包含关键字 "%s" 的文章'),
-                        'tag'       =>  _t('包含标签 "%s" 的文章'),
-                        'author'    =>  _t('"%s" 发布的文章')
-                    ), '', '');  ?></h1>
-                <section class="archives detail <?php if($this->is('index')) echo 'index'; ?>">
-                    <ul aria-label="文章列表">
-                    <?php while($this->next()): ?>
-                    <li data-date="<?php echo date('m-d', $this->created); ?>" >
-                        <?php if($this->is('index') && $this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
-                        <a href="<?php $this->permalink(); ?>" class="item-banner-index">
-                            <img src="<?php echo $this->fields->banner;?>">
+        <section id="index-list">
+            <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->archiveTitle(array(
+                'category'  =>  _t('分类 "%s" 下的文章'),
+                'search'    =>  _t('包含关键字 "%s" 的文章'),
+                'tag'       =>  _t('包含标签 "%s" 的文章'),
+                'author'    =>  _t('"%s" 发布的文章')
+            ), '', '');  ?></h1>
+            <ul>
+            <?php while($this->next()): ?>
+                <li>
+                    <article class="yue" itemscope itemtype="http://schema.org/Article">
+                        <div hidden itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                            <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
+                        </div>
+                        <a class="title" href="<?php $this->permalink(); ?>">
+                            <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
                         </a>
+                        <?php if($this->fields->excerpt != ''): ?> 
+                            <p itemprop="headline" class="headline single"><?php echo $this->fields->excerpt; ?></p>
+                        <?php else: ?>
+                            <p class="excerpt" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
                         <?php endif; ?>
-                        <a href="<?php $this->permalink(); ?>"
-                            data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>">
-                            <h4><?php $this->title(); ?></h4>
-                        </a>
-                        <?php if($this->fields->excerpt != '') echo "<p class=\"excerpt\">{$this->fields->excerpt}</p>"; ?>
-                        <p><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
-                        <?php if($this->is('index')) echo "<div class=\"post-meta-index\">Posted by {$this->author->screenName} on ".date('M d, Y', $this->created)."</div>"; ?>
-                    </li>
-                    <?php endwhile; ?>
-                    </ul>
-                </section>
-            </article>
+                        <meta itemprop="author" content="<?php $this->author(); ?>">
+                        <meta itemprop="datePublished" content="<?php echo date('c', $this->created); ?>">
+                        <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
+                        <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
+                        <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="<?php $this->options->title(); ?>">
+                            <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                                <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
+                            </div>
+                        </div>
+                    </article>
+                </li>
+            <?php endwhile; ?>
+            </ul>
         </section>
+        
+
+
         <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>

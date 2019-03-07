@@ -18,8 +18,8 @@ if(!Utils::isPjax() && !Utils::isAjax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
 }
-if($setting['simpleIndex']) {
-    $this->need('includes/archives.php');
+if($setting['fancyIndex']) {
+    $this->need('includes/index-alt.php');
 } else {
 ?>
 
@@ -27,69 +27,46 @@ if($setting['simpleIndex']) {
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
-    <?php $this->pageLink('','next'); ?>
-
-    <?php if($setting['defaultBanner'] != '' && !$setting['indexNoBanner']) $this->need('includes/banner.php'); ?>
     
-    <div class="wrapper container wide">
-        <section id="post-list" aria-label="最近文章列表" <?php if($setting['defaultBanner'] == '' || $setting['indexNoBanner']) echo 'class="no-banner"'; ?>>
+    <?php $this->need('includes/banner.php'); ?>
+
+    <div class="wrapper container">
+        <section id="index-list">
+            <ul>
             <?php while($this->next()): ?>
-            <?php 
-                $banner = '';
-                if(!empty($setting['defaultCover'])) $banner = $setting['defaultCover'];
-                if($this->fields->bannerascover != '0'){
-                    if($this->fields->banner != '') $banner = $this->fields->banner;
-                }
-            ?>
-            <a class="item <?php if($banner == '') echo 'no-banner'; ?> <?php if(Utils::isAjax()) echo 'ajax'; ?>" href="<?php $this->permalink(); ?>" aria-label="最近文章" itemscope="" itemtype="http://schema.org/BlogPosting">
-                <?php if($banner != ''): ?>
-                    <?php $lazyID = rand(1,10000); if(!Utils::isWeixin()){ ?>
-                        <div class="lazy-wrap loading">
-                            <div class="item-banner lazy" data-lazy-id=<?php echo $lazyID; ?>>
-                            <?php Utils::registerLazyImg($banner, $lazyID); ?>
+                <li>
+                    <article class="yue" itemscope itemtype="http://schema.org/Article">
+                        <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
+                        <a href="<?php $this->permalink(); ?>" class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                            <img src="<?php echo $this->fields->banner;?>">
+                            <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
+                        </a>
+                        <?php else: ?>
+                        <div hidden itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                            <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
+                        </div>
+                        <?php endif; ?>
+                        <a class="title" href="<?php $this->permalink(); ?>">
+                            <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
+                        </a>
+                        <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline\">{$this->fields->excerpt}</p>"; ?>
+                        <p class="excerpt" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
+                        <div class="post-meta-index">Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time></div>
+                        
+                        <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
+                        <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
+                        <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="<?php $this->options->title(); ?>">
+                            <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                                <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
                             </div>
                         </div>
-                    <?php }else{ ?>
-                        <div class="lazy-wrap">
-                            <div class="item-banner lazy loaded" style="background-image:url(<?php echo $banner; ?>)">
-                            </div>
-                        </div>
-                    <?php } ?>
-                <?php else: ?>
-                        <div class="lazy-wrap">
-                            <div class="item-banner lazy loaded" style="background: white">
-                            </div>
-                        </div>
-                <?php endif; ?>
-                <div class="item-content">
-                    <span>
-                        <span hidden itemprop="author"><?php $this->author(); ?></span>
-                        <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>   <!-- date -->
-                    </span>
-                    <h1 itemprop="name"><?php if(Utils::isPluginAvailable('Sticky')) $this->sticky(); $this->title(); ?></h1>
-                    <p><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
-                </div>
-                <?php if($this->fields->banner != ''): ?>
-                <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
-                </div>
-                <?php endif; ?>
-                <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                    <meta itemprop="name" content="<?php echo $this->options->title; ?>">
-                    <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->email, 256, ''); ?>">
-                    </div>
-                </div>
-                <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
-            </a>
-            <?php endwhile;?>
+                    </article>
+                </li>
+            <?php endwhile; ?>
+            </ul>
         </section>
-        <?php if(!$setting['ajaxIndex']): ?>
-            <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
-        <?php else: ?>
-            <ol class="pager"><li class="current"><a class="ajax-Load" style="width:unset" href="javascript:void(0)" onclick="VOID.ajaxLoad();" no-pjax target="_self">加载更多</a></li></ol>
-        <?php endif; ?>
+        <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
 </main>
 

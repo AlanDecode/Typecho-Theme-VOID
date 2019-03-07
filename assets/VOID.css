@@ -1182,12 +1182,6 @@ main .wrapper section#post-list {
   max-width: 100%;
 }
 
-@media screen and (max-width: 767px) {
-  main .wrapper section#post-list {
-    margin-top: -80px;
-  }
-}
-
 main .wrapper section#post-list.no-banner {
   margin-top: 90px;
 }
@@ -1933,23 +1927,31 @@ article.post p.notice::after {
   z-index: 0;
 }
 
-article.post section.archives {
+section#archive-list h1.post-title {
+  text-align: center;
+}
+
+section#archive-list p.post-meta {
+  text-align: center;
+}
+
+section#archive-list section.year {
   position: relative;
   padding-top: 3rem;
   padding-left: 5rem;
   margin-bottom: 1rem;
 }
 
-article.post section.archives.shrink {
+section#archive-list section.year.shrink {
   overflow-y: hidden;
   max-height: 3rem;
 }
 
-article.post section.archives:first-of-type {
+section#archive-list section.year:first-of-type {
   margin-top: 2rem;
 }
 
-article.post section.archives::before {
+section#archive-list section.year::before {
   content: attr(data-year);
   position: absolute;
   top: 0;
@@ -1961,7 +1963,7 @@ article.post section.archives::before {
   text-align: right;
 }
 
-article.post section.archives::after {
+section#archive-list section.year::after {
   content: attr(data-num) " 篇";
   position: absolute;
   top: 0.6rem;
@@ -1970,25 +1972,13 @@ article.post section.archives::after {
   color: #666;
 }
 
-article.post section.archives.detail {
-  padding-top: 0;
-}
-
-article.post section.archives.detail::after {
-  display: none;
-}
-
-article.post section.archives.detail li {
-  margin-bottom: 1.5rem;
-}
-
-article.post section.archives ul {
+section#archive-list section.year ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-article.post section.archives ul li {
+section#archive-list section.year ul li {
   position: relative;
   line-height: 1.78;
   padding-bottom: 0.5rem;
@@ -1996,51 +1986,22 @@ article.post section.archives ul li {
   border-bottom: 1px dotted #ddd;
 }
 
-article.post section.archives ul li a {
+section#archive-list section.year ul li a {
   display: block;
   border: none !important;
 }
 
-article.post section.archives ul li a h4 {
+section#archive-list section.year ul li a h4 {
   display: inline;
 }
 
-article.post section.archives ul li a:not(.item-banner-index)::after {
+section#archive-list section.year ul li a::after {
   content: " ＋ " attr(data-words) " 字";
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.3);
 }
 
-article.post section.archives ul li a.item-banner-index {
-  display: block;
-  height: 0;
-  padding-top: 40%;
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-article.post section.archives ul li a.item-banner-index img {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #12121c;
-  background-color: #fff;
-  background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-article.post section.archives ul li p {
-  line-height: 1.67;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.42);
-}
-
-article.post section.archives ul li::before {
+section#archive-list section.year ul li::before {
   content: attr(data-date);
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.3);
@@ -2052,66 +2013,7 @@ article.post section.archives ul li::before {
   top: 0.4rem;
 }
 
-article.post section.archives.index {
-  padding-left: 0;
-}
-
-article.post section.archives.index ul li {
-  line-height: 1.25;
-  margin-bottom: 36px;
-  padding-bottom: 36px;
-}
-
-article.post section.archives.index ul li a h4 {
-  line-height: 1.25;
-  font-size: 1.67rem;
-  font-weight: 600;
-}
-
-article.post section.archives.index ul li a.full-link {
-  display: inline;
-  color: #999;
-  border-bottom: 1px solid #999 !important;
-}
-
-article.post section.archives.index ul li a.full-link::after {
-  display: none;
-}
-
-article.post section.archives.index ul li::before {
-  display: none;
-}
-
-article.post section.archives.index ul li p {
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 300;
-  margin-top: 1rem;
-}
-
-article.post section.archives.index ul li p.excerpt {
-  color: #999;
-  font-size: 1.2em;
-  font-weight: normal;
-  line-height: 1.3;
-  margin: 1rem 0;
-  padding-left: 8px;
-  border-left: 3px solid rgba(0, 0, 0, 0.1);
-}
-
-article.post section.archives.index ul li div.post-meta-index {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 16px;
-  font-style: italic;
-  margin: 0;
-  margin-top: 12px;
-  font-weight: 300;
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-article.post section.archives a.toggle-archive {
+section#archive-list section.year a.toggle-archive {
   position: absolute;
   top: 0.5rem;
   left: 0;
@@ -2131,9 +2033,115 @@ article.post section.archives a.toggle-archive {
   color: #333;
 }
 
-article.post section.archives a.toggle-archive:hover {
+section#archive-list section.year a.toggle-archive:hover {
   background: #111;
   color: #dddddd;
+}
+
+section#index-list {
+  margin-bottom: 3rem;
+}
+
+section#index-list h1.post-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+section#index-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+section#index-list ul li {
+  line-height: 1.25;
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px dotted #ddd;
+}
+
+section#index-list ul li a.banner {
+  border: none;
+  display: block;
+  height: 0;
+  padding-top: 40%;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+section#index-list ul li a.banner img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #12121c;
+  background-color: #fff;
+  background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section#index-list ul li a.title {
+  display: block;
+  color: #111;
+  border: none;
+}
+
+section#index-list ul li a.title h1 {
+  line-height: 1.35;
+  font-size: 1.67rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+section#index-list ul li a.title h1::after {
+  content: " ＋ " attr(data-words) " 字";
+  font-size: .9rem;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: normal;
+}
+
+section#index-list ul li p.headline {
+  color: #999;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 1rem 0;
+  padding-left: 8px;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+section#index-list ul li p.headline.single {
+  margin-bottom: 0;
+}
+
+section#index-list ul li p.excerpt {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  margin: 1rem 0 0 0;
+  line-height: 1.67;
+  font-size: 16px;
+}
+
+section#index-list ul li p.excerpt a {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+section#index-list ul li div.post-meta-index {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  margin-top: 12px;
+  font-weight: 300;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 ruby {

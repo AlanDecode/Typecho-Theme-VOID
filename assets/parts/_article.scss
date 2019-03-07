@@ -188,8 +188,16 @@ article.post{
             z-index: 0;
         }
     }
-    
-    section.archives{
+}
+
+section#archive-list{
+    h1.post-title{
+        text-align: center;
+    }
+    p.post-meta{
+        text-align: center;
+    }
+    section.year{
         position: relative;
         padding-top: 3rem;
         padding-left: 5rem;
@@ -220,15 +228,6 @@ article.post{
             font-size: 0.9rem;
             color: $fadeColor;
         }
-        &.detail{
-            padding-top: 0;
-            &::after{
-                display: none;
-            }
-            li{
-                margin-bottom: 1.5rem;
-            }
-        }
         ul{
             list-style: none;
             padding: 0;
@@ -245,33 +244,11 @@ article.post{
                     h4{
                         display: inline;
                     }
-                    &:not(.item-banner-index)::after{
+                    &::after{
                         content: " ＋ " attr(data-words) " 字";
                         font-size: 0.9rem;
                         color: rgba(0,0,0,0.3);
                     }
-                    &.item-banner-index{
-                        display: block;
-                        height: 0;
-                        padding-top: 40%;
-                        position: relative;
-                        margin-bottom: 1.5rem;
-                        img{
-                            @include bg;
-                            background-color: #fff;
-                            background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
-                            position: absolute;
-                            top: 0;
-                            height: 100%;
-                            width: 100%;
-                            object-fit: cover;
-                        }
-                    }
-                }
-                p{
-                    line-height: 1.67;
-                    font-size: 16px;
-                    color: rgba(0,0,0,.42);
                 }
                 &::before{
                     content: attr(data-date);
@@ -283,58 +260,6 @@ article.post{
                     line-height: 1;
                     left: -4rem;
                     top: 0.4rem;
-                }
-            }
-        }
-        &.index{
-            padding-left: 0;
-            ul li{
-                line-height: 1.25;
-                margin-bottom: 36px;
-                padding-bottom: 36px;
-                a{
-                    h4{
-                        line-height: 1.25;
-                        font-size: 1.67rem;
-                        font-weight: 600;
-                    }
-                    &.full-link{
-                        display: inline;
-                        color: #999;
-                        border-bottom: 1px solid #999!important;
-                        &::after{
-                            display: none;
-                        }
-                    }
-                }
-                &::before{
-                    display: none;
-                }
-                p{
-                    color: rgba(0,0,0,.5);
-                    font-weight: 300;
-                    margin-top: 1rem;
-                }
-                p.excerpt{
-                    color: #999;
-                    font-size: 1.2em;
-                    font-weight: normal;
-                    line-height: 1.3;
-                    margin: 1rem 0;
-                    padding-left: 8px;
-                    border-left: 3px solid rgba(0,0,0,0.1);
-                }
-                div.post-meta-index{
-                    color: rgba(0,0,0,.5);
-                    font-size: 16px;
-                    font-style: italic;
-                    margin: 0;
-                    margin-top: 12px;
-                    font-weight: 300;
-                    line-height: 1.25;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                 }
             }
         }
@@ -362,6 +287,97 @@ article.post{
         }
     }
 }
+
+section#index-list{
+    margin-bottom: 3rem;
+    h1.post-title{
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+            line-height: 1.25;
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px dotted #ddd;
+            a.banner{
+                border: none;
+                display: block;
+                height: 0;
+                padding-top: 40%;
+                position: relative;
+                margin-bottom: 1.5rem;
+                img{
+                    @include bg;
+                    background-color: #fff;
+                    background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    object-fit: cover;
+                }
+            }
+            a.title{
+                display: block;
+                color: $darkColor;
+                border: none;
+                h1{
+                    line-height: 1.35;
+                    font-size: 1.67rem;
+                    font-weight: 600;
+                    margin: 0;
+                    &::after{
+                        content: " ＋ " attr(data-words) " 字";
+                        font-size: .9rem;
+                        color: rgba(0,0,0,.3);
+                        font-weight: normal;
+                    }
+                }
+            }
+            p.headline{
+                color: #999;
+                font-size: 1.2em;
+                font-weight: 400;
+                line-height: 1.3;
+                margin: 1rem 0;
+                padding-left: 8px;
+                border-left: 3px solid rgba(0,0,0,.1);
+                &.single{
+                    margin-bottom: 0;
+                }
+            }
+            p.excerpt{
+                a{
+                    color: rgba(0,0,0,.5);
+                }
+                color: rgba(0,0,0,.5);
+                font-weight: 300;
+                margin: 1rem 0 0 0;
+                line-height: 1.67;
+                font-size: 16px;
+            }
+            div.post-meta-index{
+                color: rgba(0,0,0,.5);
+                font-size: 16px;
+                font-style: italic;
+                margin: 0;
+                margin-top: 12px;
+                font-weight: 300;
+                line-height: 1.25;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+
+
 ruby {
     background-color: rgba(146, 185, 204, 0.2);
     margin: 4px;

@@ -292,7 +292,7 @@ class Utils
             // 高级设置
             'nav' => '',
             'name' => '',
-            'simpleIndex' => false,
+            'fancyIndex' => false,
             'welcomeWord' => true,
             'customNotice' => '',
             'msgColor' => '',
