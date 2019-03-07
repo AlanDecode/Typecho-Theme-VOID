@@ -59,7 +59,6 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        tocOffset : -1,
         ajaxIndex : <?php echo $setting['ajaxIndex'] ? 'true' : 'false'; ?>,
         infiniteLoad : <?php echo $setting['infiniteLoad'] ? 'true' : 'false'; ?>,
         nextUrl : -1,

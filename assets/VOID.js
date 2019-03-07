@@ -49,12 +49,6 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
-        if($('main>.lazy-wrap').length) {
-            VOIDConfig.tocOffset = $('main>.lazy-wrap').height() + 132;
-        }
-        else{
-            VOIDConfig.tocOffset = 192;
-        }
         if($(document).scrollTop() > 70){
             $('header,.mobile-search').addClass('dark');
         }else{
@@ -264,11 +258,9 @@ var VOID = {
             $('a.next').remove();
         }
         if($('main>.lazy-wrap').length) {
-            VOIDConfig.tocOffset = $('main>.lazy-wrap').height() + 132;
             $('header').removeClass('dark');
         }
         else{
-            VOIDConfig.tocOffset = 192;
             $('header').addClass('dark');
         }
     },
@@ -349,12 +341,13 @@ var VOID = {
                 // Which headings to grab inside of the contentSelector element.
                 headingSelector: 'h2, h3, h4, h5',
                 // 收缩深度
-                collapseDepth: 2,
+                collapseDepth: 6,
             };
-            if(window.innerWidth <= 1366){
-                toc_option.collapseDepth = 6;
-            }
             tocbot.init(toc_option);
+            if(window.innerWidth >= 1366){
+                $('.TOC').addClass('show');
+                $('.toggle-toc .toggle').addClass('pushed');
+            }
         }
     },
 
@@ -634,14 +627,12 @@ window.addEventListener('scroll',function(){
             $('header,.mobile-search').removeClass('dark');
     }
 
-    if(window.innerWidth < 1366) return;
-    if($('.TOC').length<1) return;
-
-    if($(document).scrollTop() > VOIDConfig.tocOffset - 80.1){
-        $('.TOC').addClass('fixed');
-    }
-    else{
-        $('.TOC').removeClass('fixed');
+    // 移动 toc
+    var footer_to_bottom = $('footer').offset().top - ($(document).scrollTop() + $(window).height());
+    if(footer_to_bottom <= 0){
+        $('.toggle-toc,.TOC').css('bottom', -footer_to_bottom + 24 +'px');
+    }else{
+        $('.toggle-toc,.TOC').css('bottom', '1.5rem');
     }
 });
 

@@ -2354,6 +2354,7 @@ ruby > rt {
   max-height: 85vh;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  display: none;
 }
 
 .TOC li a {
@@ -2362,35 +2363,26 @@ ruby > rt {
   overflow: hidden;
 }
 
-@media screen and (max-width: 1366px) {
-  .TOC {
-    display: none;
-  }
-  .TOC.show {
-    display: block;
-    position: fixed;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    max-width: calc(100vw - 4rem - 39px);
-    max-height: calc(100vh - 1.5rem - 60px);
-    bottom: 1.5rem;
-    right: 3.5rem;
-    background: rgba(0, 0, 0, 0.92);
-    padding: 1rem;
-    top: unset;
-    left: unset;
-    -webkit-transform: unset;
-            transform: unset;
-  }
-  .TOC.show * {
-    color: #dddddd;
-  }
+.TOC.show {
+  display: block;
+  position: fixed;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: calc(100vw - 4rem - 39px);
+  max-height: calc(100vh - 1.5rem - 60px);
+  bottom: 1.5rem;
+  right: 3.5rem;
+  background: rgba(0, 0, 0, 0.92);
+  padding: 1rem;
+  top: unset;
+  left: unset;
+  -webkit-transform: unset;
+          transform: unset;
 }
 
-.TOC.fixed {
-  position: fixed;
-  top: 80px;
+.TOC.show * {
+  color: #dddddd;
 }
 
 .toggle-toc {
@@ -2400,12 +2392,6 @@ ruby > rt {
   padding: 0.4rem;
   background: black;
   z-index: 13;
-}
-
-@media screen and (min-width: 1366px) {
-  .toggle-toc {
-    display: none;
-  }
 }
 
 .social-button {
