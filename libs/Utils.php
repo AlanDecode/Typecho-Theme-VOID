@@ -281,6 +281,7 @@ class Utils
             'enableMath' => false,
             'head' => '',
             'footer' => '',
+            'serifincontent' => false,
             'pjax' => false,
             'pjaxreload' => '',
             'titleinbanner' => false,
@@ -339,6 +340,10 @@ class Utils
 
         if(!empty($options->pjax)){
             if($options->pjax == '1') $output['pjax'] = true;
+        }
+
+        if(!empty($options->serifincontent)){
+            if($options->serifincontent == '1') $output['serifincontent'] = true;
         }
         
         if(!empty($options->pjaxreload)){

@@ -101,5 +101,9 @@ $setting = $GLOBALS['VOIDSetting'];
         color: <?php echo $setting['msgColor']; ?>
     }
     <?php endif; ?>
+    <?php if($setting['serifincontent']): ?>
+    @font-face{font-family:"Droid Serif";src:url("<?php Utils::indexTheme('assets/fonts/Droid-Serif.ttf'); ?>");font-display: swap;}
+    div[itemprop=articleBody]{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
+    <?php endif; ?>
     </style>
     </head>

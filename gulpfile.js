@@ -77,6 +77,8 @@ gulp.task('move', function(){
         .pipe(gulp.dest('./build/assets/libs/'));
     gulp.src(['./assets/sw-toolbox.js', './assets/VOIDCacheRule.js'])
         .pipe(gulp.dest('./build/assets/'));
+    gulp.src(['./assets/fonts/*'])
+        .pipe(gulp.dest('./build/assets/fonts/'));
     return  gulp.src(['./LICENSE', 
         './README.md',
         './screenshot.png',

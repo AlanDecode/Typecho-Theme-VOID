@@ -49,6 +49,8 @@ function themeConfig($form) {
     $form->addInput($indexBannerTitle);
 
     // 高级设置
+    $serifincontent=new Typecho_Widget_Helper_Form_Element_Select('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');
+    $form->addInput($serifincontent);
     $lazyload=new Typecho_Widget_Helper_Form_Element_Select('lazyload',array('0'=>'不启用','1'=>'启用'),'0','图片懒加载','是否启用图片懒加载。');
     $form->addInput($lazyload);
     $enableMath=new Typecho_Widget_Helper_Form_Element_Select('enableMath',array('0'=>'不启用','1'=>'启用'),'0','启用数学公式解析','是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
