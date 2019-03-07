@@ -42,6 +42,9 @@ main{
         &.dark #banner{
             filter: brightness(0.55);
         }
+        &.dark.index #banner{
+            filter: brightness(0.8);
+        }
         .banner-title{
             position: relative;
             color: white;

@@ -21,11 +21,11 @@ if($banner == ''){
 
 <?php if(!Utils::isWeixin()): ?>
     <?php $lazyID = rand(1,10000); ?>
-    <div class="lazy-wrap loading <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; ?>">
+    <div class="lazy-wrap loading <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; if($this->is('index')) echo ' index'; ?>">
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
         <?php Utils::registerLazyImg($banner, $lazyID); ?>
 <?php else: ?>
-    <div class="lazy-wrap <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; ?>">
+    <div class="lazy-wrap <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; if($this->is('index')) echo ' index'; ?>">
         <div id="banner" style="background-image:url(<?php echo $banner; ?>)" class="lazy loaded"></div>
 <?php endif; ?>
     <?php if($setting['titleinbanner'] && !$this->is('index')): ?>
