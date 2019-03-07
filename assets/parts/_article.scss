@@ -35,7 +35,7 @@ section#post{
     }
 }
 
-article.post{
+article{
     .post-title{
         text-align: center;
         font-weight: 600;
@@ -294,11 +294,11 @@ section#index-list{
         text-align: center;
         margin-bottom: 2.5rem;
     }
-    ul{
+    >ul{
         list-style: none;
         padding: 0;
         margin: 0;
-        li{
+        >li{
             line-height: 1.25;
             margin-bottom: 36px;
             padding-bottom: 36px;
@@ -331,8 +331,9 @@ section#index-list{
                     font-size: 1.67rem;
                     font-weight: 600;
                     margin: 0;
+                    margin-bottom: 1rem;
                     &::after{
-                        content: " ＋ " attr(data-words) " 字";
+                        content: " ＋ " attr(data-words) " 字 • " attr(data-comments) " 评 ";
                         font-size: .9rem;
                         color: rgba(0,0,0,.3);
                         font-weight: normal;
@@ -345,8 +346,6 @@ section#index-list{
                 font-weight: 400;
                 line-height: 1.3;
                 margin: 1rem 0;
-                padding-left: 8px;
-                border-left: 3px solid rgba(0,0,0,.1);
                 &.single{
                     margin-bottom: 0;
                 }

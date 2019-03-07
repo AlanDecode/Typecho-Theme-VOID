@@ -47,12 +47,17 @@ if($setting['fancyIndex']) {
                         </div>
                         <?php endif; ?>
                         <a class="title" href="<?php $this->permalink(); ?>">
-                            <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
+                            <h1 itemprop="name" data-comments="<?php $this->commentsNum(); ?>" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
                         </a>
                         <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline\">{$this->fields->excerpt}</p>"; ?>
-                        <p class="excerpt" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
-                        <div class="post-meta-index">Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time></div>
                         
+                        <?php if($this->fields->showfullcontent != '1'): ?>
+                            <p class="excerpt content" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
+                        <?php else: ?>
+                            <div itemprop="articleBody"><?php $this->content(); ?></div>
+                        <?php endif; ?>
+
+                        <div class="post-meta-index">Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time></div>
                         <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                         <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                         <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
