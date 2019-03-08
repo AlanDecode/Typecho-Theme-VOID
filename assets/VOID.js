@@ -29,6 +29,15 @@ function throttle(fun, delay, time) {
     };
 }
 
+// eslint-disable-next-line no-unused-vars
+function checkGoTop(){
+    if($(document).scrollTop() > window.innerHeight){
+        $('#back-top').fadeIn(300);
+    }else{
+        $('#back-top').fadeOut(200);
+    }
+}
+
 var VOID = {
     // 初始化单页应用
     init : function(){
@@ -55,6 +64,7 @@ var VOID = {
             if($('main>.lazy-wrap').length)
                 $('header,.mobile-search').removeClass('dark');
         }
+        checkGoTop();
         // 监听滚动事件，实现懒加载
         if(VOIDConfig.lazyload){
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
@@ -263,6 +273,7 @@ var VOID = {
         else{
             $('header').addClass('dark');
         }
+        checkGoTop();
     },
 
     // 重载与事件绑定
@@ -622,6 +633,7 @@ window.addEventListener('scroll',function(){
         if($('main>.lazy-wrap').length)
             $('header,.mobile-search').removeClass('dark');
     }
+    checkGoTop();
 });
 
 function startSearch(item) {
