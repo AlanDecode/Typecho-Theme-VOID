@@ -251,6 +251,11 @@ a.next{
     }    
 }
 
+/* 对某些第三方插件的修正 */
+.douban-single{margin: 1rem auto}
+.MathJax_SVG_Display{overflow:hidden;max-width:100%}
+.aplayer .aplayer-list ol{-webkit-overflow-scrolling:touch}
+
 @import "parts/header";
 @import "parts/index";
 @import "parts/article";
