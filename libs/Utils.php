@@ -279,6 +279,7 @@ class Utils
             // 主题设置
             'defaultBanner' => 'https://i.loli.net/2019/02/11/5c614078f2263.png',
             'enableMath' => false,
+            'fixHeader' => false,
             'head' => '',
             'footer' => '',
             'serifincontent' => false,
@@ -320,6 +321,10 @@ class Utils
 
         if(!empty($options->enableMath)){
             if($options->enableMath == '1') $output['enableMath'] = true;
+        }
+
+        if(!empty($options->fixHeader)){
+            if($options->fixHeader == '1') $output['fixHeader'] = true;
         }
 
         if(!empty($options->lazyload)){

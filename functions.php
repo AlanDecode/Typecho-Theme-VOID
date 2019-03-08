@@ -47,6 +47,8 @@ function themeConfig($form) {
     $form->addInput($titleinbanner);
     $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长');
     $form->addInput($indexBannerTitle);
+    $fixHeader=new Typecho_Widget_Helper_Form_Element_Select('fixHeader',array('1'=>'是', '0'=>'否'),'1','固定导航栏','是否固定导航栏');
+    $form->addInput($fixHeader);
 
     // 高级设置
     $serifincontent=new Typecho_Widget_Helper_Form_Element_Select('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');

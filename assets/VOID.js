@@ -58,11 +58,13 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
-        if($(document).scrollTop() > 70){
-            $('header,.mobile-search').addClass('dark');
-        }else{
-            if($('main>.lazy-wrap').length)
-                $('header,.mobile-search').removeClass('dark');
+        if(VOIDConfig.fixHeader){
+            if($(document).scrollTop() > 70){
+                $('header,.mobile-search').addClass('dark');
+            }else{
+                if($('main>.lazy-wrap').length)
+                    $('header,.mobile-search').removeClass('dark');
+            }
         }
         checkGoTop();
         // 监听滚动事件，实现懒加载
@@ -267,11 +269,13 @@ var VOID = {
             VOIDConfig.nextUrl = $('a.next').attr('href');
             $('a.next').remove();
         }
-        if($('main>.lazy-wrap').length) {
-            $('header').removeClass('dark');
-        }
-        else{
-            $('header').addClass('dark');
+        if(VOIDConfig.fixHeader){
+            if($('main>.lazy-wrap').length) {
+                $('header').removeClass('dark');
+            }
+            else{
+                $('header').addClass('dark');
+            }
         }
         checkGoTop();
     },
@@ -627,11 +631,13 @@ setInterval(function(){
 }, 1000);
 
 window.addEventListener('scroll',function(){
-    if($(document).scrollTop() >= 70){
-        $('header,.mobile-search').addClass('dark');
-    }else{
-        if($('main>.lazy-wrap').length)
-            $('header,.mobile-search').removeClass('dark');
+    if(VOIDConfig.fixHeader){
+        if($(document).scrollTop() >= 70){
+            $('header,.mobile-search').addClass('dark');
+        }else{
+            if($('main>.lazy-wrap').length)
+                $('header,.mobile-search').removeClass('dark');
+        }
     }
     checkGoTop();
 });
