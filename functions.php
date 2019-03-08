@@ -77,7 +77,7 @@ function themeConfig($form) {
 function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $excerpt = new Typecho_Widget_Helper_Form_Element_Textarea('excerpt', NULL, NULL, '文章摘要', '输入自定义摘要。留空自动从文章截取。');
     $layout->addItem($excerpt);
-    $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('1'=>'是','0'=>'否'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');
+    $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('0'=>'否', '1'=>'是'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');
     $layout->addItem($showfullcontent);
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);
