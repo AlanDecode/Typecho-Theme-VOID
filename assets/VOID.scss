@@ -42,6 +42,10 @@ body,header,main,footer{
     width: 100%;
 }
 
+main{
+    overflow-x: hidden;
+}
+
 body{
     min-height: 100vh;
     display: flex;
