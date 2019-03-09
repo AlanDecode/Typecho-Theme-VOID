@@ -42,6 +42,10 @@ body,header,main,footer{
     width: 100%;
 }
 
+main{
+    overflow-x: hidden;
+}
+
 body{
     min-height: 100vh;
     display: flex;
@@ -246,6 +250,11 @@ a.next{
         right: 45px;
     }    
 }
+
+/* 对某些第三方插件的修正 */
+.douban-single{margin: 1rem auto}
+.MathJax_SVG_Display{overflow:hidden;max-width:100%}
+.aplayer .aplayer-list ol{-webkit-overflow-scrolling:touch}
 
 @import "parts/header";
 @import "parts/index";

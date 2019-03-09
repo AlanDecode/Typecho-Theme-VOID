@@ -47,6 +47,8 @@ function themeConfig($form) {
     $form->addInput($titleinbanner);
     $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长');
     $form->addInput($indexBannerTitle);
+    $fixHeader=new Typecho_Widget_Helper_Form_Element_Select('fixHeader',array('1'=>'是', '0'=>'否'),'1','固定导航栏','是否固定导航栏');
+    $form->addInput($fixHeader);
 
     // 高级设置
     $serifincontent=new Typecho_Widget_Helper_Form_Element_Select('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');
@@ -63,7 +65,7 @@ function themeConfig($form) {
     $form->addInput($pjax);
     $pjaxreload=new Typecho_Widget_Helper_Form_Element_Textarea('pjaxreload', NULL, NULL, 'PJAX 重载函数', '输入要重载的 JS，如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭 PJAX 并留空此项。');
     $form->addInput($pjaxreload);
-    $serviceworker=new Typecho_Widget_Helper_Form_Element_Select('serviceworker',array('0'=>'不启用','1'=>'启用'),'0','Service Worker','是否启用 Service Worker。Service Worker 可以使浏览器主动缓存静态文件，达到加速效果，但是可能导致某些异常。若要启用，请把主题 assets 文件夹下的 sw-toolbox.js 复制一份到<b>站点根目录</b>。');
+    $serviceworker=new Typecho_Widget_Helper_Form_Element_Select('serviceworker',array('0'=>'不启用','1'=>'启用'),'0','Service Worker','是否启用 Service Worker。Service Worker 可以使浏览器主动缓存静态文件，达到加速效果，但是可能导致某些异常。若要启用，请把主题 assets 文件夹下的 VOIDCacheRule.js 复制一份到<b>站点根目录</b>。');
     $form->addInput($serviceworker);
 
     // 超高级设置
@@ -77,7 +79,7 @@ function themeConfig($form) {
 function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $excerpt = new Typecho_Widget_Helper_Form_Element_Textarea('excerpt', NULL, NULL, '文章摘要', '输入自定义摘要。留空自动从文章截取。');
     $layout->addItem($excerpt);
-    $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('1'=>'是','0'=>'否'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');
+    $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('0'=>'否', '1'=>'是'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');
     $layout->addItem($showfullcontent);
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);

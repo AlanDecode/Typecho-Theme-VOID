@@ -148,11 +148,29 @@ article{
     .photos{
         display: flex;
         flex-wrap: wrap;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        @media screen and (min-width: 819.5px) {
+            width: 100vw;
+            margin-left: calc(-50vw + 394px);
+        }
+        @media screen and (min-width: 1023.5px) {
+            width: 1024px;
+            margin-left: -118px;
+        }
+        @media screen and (min-width: 1199.5px) {
+            width: 1200px;
+            margin-left: -206px;
+        }
+        @media screen and (min-width: 1365.5px) {
+            width: 1366px;
+            margin-left: -289px;
+        }
         figure{
             position: relative;
-            margin: 5px;
+            margin: 2.5px;
             @media screen and (max-width: 767px){
-                margin: 5px 0;
+                margin: 2.5px 0;
                 min-width: 100%;
                 flex: 1;
             }
