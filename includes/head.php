@@ -86,6 +86,9 @@ $setting = $GLOBALS['VOIDSetting'];
         position: absolute;
         background: rgba(0,0,0,0.15);
     }
+    #nprogress .spinner{
+        right: 15px;
+    }
     <?php endif; ?>
     <?php if(!empty($setting['desktopBannerHeight'])): ?>
     @media screen and (min-width: 768px){
