@@ -386,7 +386,7 @@ section#index-list{
                     margin: 0;
                     margin-bottom: 1rem;
                     &::after{
-                        content: " ＋ " attr(data-words) " 字 • " attr(data-comments) " 评 ";
+                        content: " ＋ " attr(data-words) " 字";
                         font-size: .9rem;
                         color: rgba(0,0,0,.3);
                         font-weight: normal;

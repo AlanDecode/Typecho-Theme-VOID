@@ -47,7 +47,7 @@ if($setting['fancyIndex']) {
                         </div>
                         <?php endif; ?>
                         <a class="title" href="<?php $this->permalink(); ?>">
-                            <h1 itemprop="name" data-comments="<?php $this->commentsNum(); ?>" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
+                            <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
                         </a>
                         <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline\">{$this->fields->excerpt}</p>"; ?>
                         
