@@ -539,6 +539,20 @@ a.next {
   }
 }
 
+/* 对某些第三方插件的修正 */
+.douban-single {
+  margin: 1rem auto;
+}
+
+.MathJax_SVG_Display {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.aplayer .aplayer-list ol {
+  -webkit-overflow-scrolling: touch;
+}
+
 header {
   z-index: 3;
   top: 0;
@@ -1074,7 +1088,6 @@ main > .lazy-wrap.dark.index #banner {
 
 main > .lazy-wrap .banner-title {
   position: relative;
-  color: white;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1090,6 +1103,14 @@ main > .lazy-wrap .banner-title {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 130px 45px 70px 45px;
+}
+
+main > .lazy-wrap .banner-title, main > .lazy-wrap .banner-title * {
+  color: white;
+}
+
+main > .lazy-wrap .banner-title a {
+  border-bottom: 1px solid white;
 }
 
 @media screen and (max-width: 767px) {
@@ -1111,27 +1132,6 @@ main > .lazy-wrap .banner-title .post-title {
   main > .lazy-wrap .banner-title .post-title {
     font-size: 2.2rem;
   }
-}
-
-main > .lazy-wrap .banner-title .post-title sup {
-  margin: 0 .3rem;
-  display: inline-block;
-  text-indent: 0;
-  text-align: center;
-  font: 700 8px/14px -apple-systrem,BlinkMacSystremFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;
-  border-bottom: 0;
-  border-radius: 14px;
-  vertical-align: text-top;
-  -webkit-transition: all .1s ease;
-  background: white;
-  transition: all .1s ease;
-}
-
-main > .lazy-wrap .banner-title .post-title sup a {
-  white-space: nowrap;
-  color: #111;
-  padding: 0.5em;
-  display: block;
 }
 
 main > .lazy-wrap .banner-title .post-meta {
@@ -1388,21 +1388,11 @@ main .wrapper section .not-found {
 main .wrapper section .not-found h1 {
   margin: 0;
   font-size: 1.9rem;
+  margin-bottom: 2rem;
 }
 
 main .wrapper section .not-found a {
   color: #666;
-}
-
-main .wrapper section .not-found input {
-  margin-top: 30px;
-  width: 80%;
-  background: none;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 2rem 0 1rem 0;
-  text-align: center;
 }
 
 /**
@@ -1414,7 +1404,7 @@ main .wrapper section .not-found input {
  */
 .yue {
   font: 400 17px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  color: #444443;
+  color: rgba(0, 0, 0, 0.86);
   letter-spacing: 0.04em;
   word-break: break-word;
 }
@@ -1434,7 +1424,7 @@ main .wrapper section .not-found input {
 .yue h5,
 .yue h6 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  color: #222223;
+  color: rgba(0, 0, 0, 0.88);
 }
 
 .yue h1 {
@@ -1499,7 +1489,7 @@ main .wrapper section .not-found input {
 .yue em,
 .yue i {
   font-style: italic;
-  color: #222223;
+  color: rgba(0, 0, 0, 0.88);
 }
 
 .yue img {
@@ -1938,13 +1928,6 @@ article .photos {
   }
 }
 
-@media screen and (min-width: 1365.5px) {
-  article .photos {
-    width: 1366px;
-    margin-left: -289px;
-  }
-}
-
 article .photos figure {
   position: relative;
   margin: 2.5px;
@@ -2230,7 +2213,7 @@ section#index-list > ul > li a.title h1 {
 }
 
 section#index-list > ul > li a.title h1::after {
-  content: " ＋ " attr(data-words) " 字 • " attr(data-comments) " 评 ";
+  content: " ＋ " attr(data-words) " 字";
   font-size: .9rem;
   color: rgba(0, 0, 0, 0.3);
   font-weight: normal;

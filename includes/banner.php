@@ -33,15 +33,6 @@ if($banner == ''){
             <h1 class="post-title">
                 <?php if(!$this->is('archive')): ?>
                     <?php $this->title(); ?>
-                    <?php if($this->user->hasLogin()): ?>
-                        <sup>
-                            <?php if($this->is('post')): ?>
-                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
-                            <?php else: ?>
-                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
-                            <?php endif;?>
-                        </sup>
-                    <?php endif;?>
                 <?php else: ?>
                     <?php $this->archiveTitle(array(
                             'category'  =>  _t('分类 "%s" 下的文章'),
@@ -58,7 +49,7 @@ if($banner == ''){
                     else{ ?>
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
-                        &nbsp;•&nbsp;<?php $this->commentsNum(); ?>&nbsp;评论
+                        &nbsp;•&nbsp;<a no-pjax target="_self" href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
                         <?php 
                             if(Utils::isPluginAvailable('TePostViews'))
                             {
@@ -67,6 +58,13 @@ if($banner == ''){
                                 echo '&nbsp;阅读';
                             }
                         ?>
+                        <?php if($this->user->hasLogin()): ?>
+                            <?php if($this->is('post')): ?>
+                            &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
+                            <?php else: ?>
+                            &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
+                            <?php endif;?>
+                        <?php endif;?>
                     <?php } ?>
                 </p>
             <?php endif;?>

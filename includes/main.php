@@ -21,17 +21,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <div class="wrapper container">
         <section id="post">
             <article class="post yue" itemscope itemtype="http://schema.org/Article">
-                <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> itemprop="name" class="post-title"><?php $this->title(); ?>
-                    <?php if($this->user->hasLogin()): ?>
-                        <sup>
-                            <?php if($this->is('post')): ?>
-                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
-                            <?php else: ?>
-                            <a class="edit-button" target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
-                            <?php endif;?>
-                        </sup>    
-                    <?php endif;?>
-                </h1>
+                <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> itemprop="name" class="post-title"><?php $this->title(); ?></h1>
                 <p <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-meta">
                     <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                     <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
@@ -45,6 +35,13 @@ $setting = $GLOBALS['VOIDSetting'];
                             echo '&nbsp;阅读';
                         }
                     ?>
+                    <?php if($this->user->hasLogin()): ?>
+                        <?php if($this->is('post')): ?>
+                        &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
+                        <?php else: ?>
+                        &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
+                        <?php endif;?>
+                    <?php endif;?>
                 </p>
                 <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                 <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
