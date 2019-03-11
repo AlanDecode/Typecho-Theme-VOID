@@ -1403,7 +1403,7 @@ main .wrapper section .not-found a {
  * Copyright (c) 2013 - 2017 by Hsiaoming Yang.
  */
 .yue {
-  font: 400 17px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font: 400 18px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: rgba(0, 0, 0, 0.86);
   letter-spacing: 0.04em;
   word-break: break-word;
@@ -2236,17 +2236,6 @@ section#index-list > ul > li p.headline::before {
 
 section#index-list > ul > li p.headline.single {
   margin-bottom: 0;
-}
-
-section#index-list > ul > li p.excerpt {
-  color: rgba(0, 0, 0, 0.5);
-  margin: 1rem 0 0 0;
-  line-height: 1.67;
-  font-size: 16px;
-}
-
-section#index-list > ul > li p.excerpt a {
-  color: rgba(0, 0, 0, 0.5);
 }
 
 section#index-list > ul > li div.post-meta-index {

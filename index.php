@@ -49,13 +49,15 @@ if($setting['fancyIndex']) {
                         <a class="title" href="<?php $this->permalink(); ?>">
                             <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
                         </a>
-                        <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline\">{$this->fields->excerpt}</p>"; ?>
+                        <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
                         
+                        <div itemprop="articleBody">
                         <?php if($this->fields->showfullcontent != '1'): ?>
-                            <p class="excerpt content" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
+                            <p <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
                         <?php else: ?>
-                            <div itemprop="articleBody"><?php $this->content(); ?></div>
+                            <?php $this->content(); ?>
                         <?php endif; ?>
+                        </div>
 
                         <div class="post-meta-index">Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time></div>
                         <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
