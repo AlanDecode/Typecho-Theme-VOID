@@ -31,7 +31,9 @@ $setting = $GLOBALS['VOIDSetting'];
                 <span aria-label="<?php echo $listItem->name; ?>下拉列表" class="dropdown"><?php echo $listItem->name; ?>
                     <ul>
                         <?php foreach ($listItem->items as $item) {
-                            echo "<li><a href=\"{$item->link}\">{$item->title}</a></li>";
+                            $target = '_blank';
+                            if(isset($item->target)) $target = $item->target;
+                            echo "<li><a target=\"{$target}\" href=\"{$item->link}\">{$item->title}</a></li>";
                         }?>
                     </ul>
                 </span>
@@ -69,7 +71,9 @@ $setting = $GLOBALS['VOIDSetting'];
         <section data-title="<?php echo $listItem->name; ?>">
             <nav aria-label="<?php echo $listItem->name; ?>导航">
                 <?php foreach ($listItem->items as $item) {
-                    echo "<a href=\"{$item->link}\">{$item->title}</a>";
+                    $target = '_blank';
+                    if(isset($item->target)) $target = $item->target;
+                    echo "<a target=\"{$target}\" href=\"{$item->link}\">{$item->title}</a>";
                 }?>
             </nav>
         </section>
