@@ -265,8 +265,11 @@ section#archive-list{
             font-size: 1.5rem;
             font-weight: 600;
             display: block;
-            width: 4rem;
+            width: 4.15rem;
             text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         &::after{
             content: attr(data-num) " 篇";
