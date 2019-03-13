@@ -7,9 +7,6 @@
     // 自定义左上角显示的站点名
     "name" : "A Panda.",
 
-    // 卡片化的首页，对配图要求高一些
-    "fancyIndex" : false,
-
     // 是否显示欢迎语
     "welcomeWord" : true,
 
