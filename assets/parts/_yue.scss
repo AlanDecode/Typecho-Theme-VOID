@@ -176,24 +176,21 @@
 .yue pre {
   margin: 1.64em 0;
   padding: 7px;
-  border: none;
-  border-left: 3px solid #dadada;
-  padding-left: 10px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   line-height: 1.5;
   font-size: 0.96em;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  color: #4c4c4c;
-  background-color: #f9f9f7;
+  background: #282c34;
+  color: #abb2bf;
   >code{
     width:max-content!important;
   }
 }
 .yue pre code,
 .yue pre tt {
-  color: #4c4c4c;
+  color: #abb2bf;
   border: none;
   background: none;
 }
