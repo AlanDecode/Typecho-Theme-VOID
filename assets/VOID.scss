@@ -27,6 +27,10 @@ html{
     background: rgba(0,0,0,.15);
 }
 
+::selection {
+    background-color: #ffe150;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -50,6 +54,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #f8f8f5;
     &.modal-open{
         position: fixed;
         width: 100%;
@@ -80,7 +85,6 @@ body{
     text-align: center;
     border-radius: 5rem;
     color: $fadeColor;
-    background: white;
     transition: 0.3s ease all;
     cursor: pointer;
     &:hover,&.done{
