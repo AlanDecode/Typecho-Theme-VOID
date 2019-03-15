@@ -7,31 +7,15 @@
     // 自定义左上角显示的站点名
     "name" : "A Panda.",
 
-    // 是否显示欢迎语
-    "welcomeWord" : true,
-
-    // 自定义的欢迎语
-    "customNotice" : "欢迎来到我的博客！",
-
-    // 提示块背景色
-    "msgBg" : "#fff",
-
-    // 提示块文字色
-    "msgColor" : "#333",
-
     // 桌面端头图高度，数值为高度占屏幕高度的百分比
     "desktopBannerHeight" : 30,
 
     // 移动端头图高度，数值为高度占屏幕高度的百分比
     "mobileBannerHeight" : 30,
 
-    // 首页不显示大图
-    "indexNoBanner" : false,
-
     // 社交 ID，用于生成分享链接
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",
-    "facebookId" : "熊猫小A",
 
     // 自定义添加栏下拉列表
     "nav" : [

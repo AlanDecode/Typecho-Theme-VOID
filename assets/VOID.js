@@ -42,7 +42,6 @@ var VOID = {
     // 初始化单页应用
     init : function(){
         VOID.parseTOC();
-        VOID.showWelcomeWord();
         VOID.parsePhotos();
         VOID.parseUrl();
         hljs.initHighlightingOnLoad();
@@ -64,51 +63,6 @@ var VOID = {
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         }
         AjaxComment.init();
-    },
-
-    showWelcomeWord : function(){
-        if(VOIDConfig.customNotice != ''){
-            setTimeout(function() {
-                alert(VOIDConfig.customNotice, 4000);
-            }, 200);
-        }
-        if(VOIDConfig.welcomeWord){
-            var text = '';
-            if (document.referrer !== '') {
-                var referrer = document.createElement('a');
-                referrer.href = document.referrer;
-                text = '嗨！来自 ' + referrer.hostname + ' 的朋友！';
-                var domain = referrer.hostname.split('.')[1];
-                if (domain == 'baidu') {
-                    text = '嗨！ 来自 百度搜索 的朋友！';
-                } else if (domain == 'so') {
-                    text = '嗨！ 来自 360搜索 的朋友！';
-                } else if (domain == 'google') {
-                    text = '嗨！ 来自 谷歌搜索 的朋友！';
-                }
-            } 
-            var now = (new Date()).getHours();
-            if (now > 23 || now <= 5) {
-                text = text + '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？';
-            } else if (now > 5 && now <= 7) {
-                text = text + '早上好！一日之计在于晨，美好的一天就要开始了！';
-            } else if (now > 7 && now <= 11) {
-                text = text + '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！';
-            } else if (now > 11 && now <= 14) {
-                text = text + '中午了，工作了一个上午，现在是午餐时间！';
-            } else if (now > 14 && now <= 17) {
-                text = text + '午后很容易犯困呢，今天的运动目标完成了吗？';
-            } else if (now > 17 && now <= 19) {
-                text = text + '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~';
-            } else if (now > 19 && now <= 21) {
-                text = text + '晚上好，今天过得怎么样？';
-            } else if (now > 21 && now <= 23) {
-                text = text + '已经这么晚了呀，早点休息吧，晚安~';
-            } 
-            setTimeout(function() {
-                alert(text);
-            }, 200);
-        }
     },
 
     // 解析照片集
@@ -222,7 +176,7 @@ var VOID = {
                 var id = th.attr('data-pid');
                 var cookies = $.macaroon('_syan_like') || '';
                 if (!id || !/^\d{1,10}$/.test(id)) return;
-                if (-1 !== cookies.indexOf(',' + id + ',')) return alert('您已经赞过了！');
+                if (-1 !== cookies.indexOf(',' + id + ',')) return VOID.alert('您已经赞过了！');
                 cookies ? cookies.length >= 160 ? (cookies = cookies.substring(0, cookies.length - 1), cookies = cookies.substr(1).split(','), cookies.splice(0, 1), cookies.push(id), cookies = cookies.join(','), $.macaroon('_syan_like', ',' + cookies + ',')) : $.macaroon('_syan_like', cookies + id + ',') : $.macaroon('_syan_like', ',' + id + ',');
                 $.post(likePath,{cid:id},function(){
                     th.addClass('actived');
@@ -242,9 +196,6 @@ var VOID = {
         VOID.reload();
         VOID.handleLike();
         AjaxComment.init();
-        if(VOIDConfig.welcomeWord){
-            alert('欢迎访问 ' + document.title);
-        }
         checkGoTop();
     },
 
@@ -411,20 +362,20 @@ var AjaxComment = {
             /* 检查 */
             if ($(AjaxComment.commentForm).find('#author')[0]) {
                 if ($(AjaxComment.commentForm).find('#author').val() == '') {
-                    alert(AjaxComment.noName);
+                    VOID.alert(AjaxComment.noName);
                     AjaxComment.err();
                     return false;
                 }
     
                 if ($(AjaxComment.commentForm).find('#mail').val() == '') {
-                    alert(AjaxComment.noMail);
+                    VOID.alert(AjaxComment.noMail);
                     AjaxComment.err();
                     return false;
                 }
     
                 var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
                 if (!filter.test($(AjaxComment.commentForm).find('#mail').val())) {
-                    alert(AjaxComment.invalidMail);
+                    VOID.alert(AjaxComment.invalidMail);
                     AjaxComment.err();
                     return false;
                 }
@@ -432,7 +383,7 @@ var AjaxComment = {
 
             var textValue = $(AjaxComment.commentForm).find(AjaxComment.textarea).val().replace(/(^\s*)|(\s*$)/g, '');//检查空格信息
             if (textValue == null || textValue == '') {
-                alert(AjaxComment.noContent);
+                VOID.alert(AjaxComment.noContent);
                 AjaxComment.err();
                 return false;
             }
@@ -442,7 +393,7 @@ var AjaxComment = {
                 type: $(AjaxComment.commentForm).attr('method'),
                 data: $(AjaxComment.commentForm).serializeArray(),
                 error: function() {
-                    alert('提交失败！请重试。');
+                    VOID.alert('提交失败！请重试。');
                     $(AjaxComment.submitBtn).html('提交评论');
                     AjaxComment.err();
                     return false;
@@ -451,7 +402,7 @@ var AjaxComment = {
                     try {
                         if (!$(AjaxComment.commentList, data).length) {
                             var msg = '提交失败！请重试。' + $($(data)[7]).text();
-                            alert(msg);
+                            VOID.alert(msg);
                             $(AjaxComment.submitBtn).html('提交评论');
                             AjaxComment.err();
                             return false;
@@ -462,7 +413,7 @@ var AjaxComment = {
 
                             if ($('.pager .prev').length && AjaxComment.parentID == ''){
                                 // 在分页对文章发表评论，无法取得最新评论内容
-                                alert('评论成功！请回到评论第一页查看。');
+                                VOID.alert('评论成功！请回到评论第一页查看。');
                                 AjaxComment.newID = '';
                                 AjaxComment.parentID = '';
                                 AjaxComment.finish();
@@ -481,7 +432,7 @@ var AjaxComment = {
                             if(AjaxComment.parentID == ''){
                                 // 无父 id，直接对文章评论，插入到第一个 comment-list 头部
                                 $('#comments>.comment-list').prepend(newCommentData);
-                                alert('评论成功！');
+                                VOID.alert('评论成功！');
                                 AjaxComment.finish();
                                 AjaxComment.newID = '';
                                 return false;
@@ -501,7 +452,7 @@ var AjaxComment = {
                                     // 父评论是子评论，与父评论平级，并放在后面
                                     $('#'+AjaxComment.parentID).after(newCommentData);
                                 }
-                                alert('评论成功！');
+                                VOID.alert('评论成功！');
                                 AjaxComment.finish();
                                 AjaxComment.parentID = '';
                                 AjaxComment.newID = '';
@@ -519,7 +470,6 @@ var AjaxComment = {
 };
 
 $(document).ready(function(){
-    window.alert = VOID.alert;
     VOID.init();
 });
 

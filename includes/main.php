@@ -65,7 +65,6 @@ $setting = $GLOBALS['VOIDSetting'];
                 <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                 <div class="social-button" 
                     data-twitter="<?php if($setting['twitterId']!='') echo $setting['twitterId']; else $this->author(); ?>"
-                    data-facebook="<?php if($setting['facebookId']!='') echo $setting['facebookId']; else $this->author(); ?>" 
                     data-weibo="<?php if($setting['weiboId']!='') echo $setting['weiboId']; else $this->author(); ?>"
                     data-text="<?php $this->title(); ?>"
                     data-url="<?php $this->permalink(); ?>"

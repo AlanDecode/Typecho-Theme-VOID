@@ -59,8 +59,6 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        customNotice : "<?php echo $setting['customNotice']; ?>",
-        welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
         fixHeader : <?php echo $setting['fixHeader'] ? 'true' : 'false'; ?>,
     }
@@ -94,16 +92,6 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php if(!empty($setting['mobileBannerHeight'])): ?>
     @media screen and (max-width: 768px){
         main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
-    }
-    <?php endif; ?>
-    <?php if(!empty($setting['msgBg'])): ?>
-    .msg{
-        background: <?php echo $setting['msgBg']; ?>
-    }
-    <?php endif; ?>
-    <?php if(!empty($setting['msgColor'])): ?>
-    .msg{
-        color: <?php echo $setting['msgColor']; ?>
     }
     <?php endif; ?>
     <?php if($setting['serifincontent']): ?>
