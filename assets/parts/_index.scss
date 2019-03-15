@@ -80,6 +80,20 @@ main{
                 margin-bottom: 0;
             }
         }
+        &.forceNoBanner{
+            background: #f8f8f5;
+            &::before{
+                display: none;
+            }
+            .banner-title{
+                &,& *{
+                    color: #333;
+                }
+                & a{
+                    border-bottom: 1px solid rgba(0,0,0,0.1);
+                }
+            }
+        }
     }
     #banner{
         position: absolute;

@@ -7,10 +7,10 @@ header{
     transition: 0.5s ease all;
     background: rgba(0,0,0,.25);
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 25px 0 rgba(0,0,0,.7);
     &.dark{
         transition: 0.5s ease all;
         background: #111!important;
-        box-shadow: 0 0 25px 0 rgba(0,0,0,.7);
         a,span.dropdown{
             color: #eee!important;
         }
@@ -31,6 +31,9 @@ header{
         input{
             border-color: rgba(255,255,255,0.8)!important;
         }
+    }
+    &.forceNoBanner{
+        background: #111!important;
     }
     &.opened{
         background: rgba(0, 0, 0, 0.9)!important;

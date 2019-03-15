@@ -83,7 +83,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <style>
     <?php if(!$setting['fixHeader']): ?>
     body>header{
-        position: absolute;
+        position: <?php if(!$setting['forceNoBanner']) echo 'absolute'; else echo 'relative'; ?>;
         background: rgba(0,0,0,0.15);
     }
     #nprogress .spinner{

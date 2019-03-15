@@ -39,6 +39,9 @@
     "weiboId" : "熊猫小AA",
     "facebookId" : "熊猫小A",
 
+    // 强制无顶部头图
+    "forceNoBanner" : false,
+
     // 自定义添加栏下拉列表
     "nav" : [
         {

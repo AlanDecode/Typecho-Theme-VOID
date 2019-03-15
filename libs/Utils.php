@@ -305,7 +305,8 @@ class Utils
             'ajaxIndex' => false,
             'infiniteLoad' => false,
             'twitterId' => '',
-            'weiboId' => ''
+            'weiboId' => '',
+            'forceNoBanner' => false
         );
 
         $options = Helper::options();
