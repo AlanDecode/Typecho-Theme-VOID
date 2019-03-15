@@ -1,0 +1,100 @@
+section#archive-list{
+    h1.post-title{
+        text-align: center;
+    }
+    p.post-meta{
+        text-align: center;
+    }
+    section.year{
+        position: relative;
+        padding-top: 3rem;
+        padding-left: 5rem;
+        margin-bottom: 1rem;
+        &.shrink{
+            overflow-y: hidden;
+            max-height: 3rem;
+        }
+        &:first-of-type{
+            margin-top: 2rem;
+        }
+        &::before{
+            content: attr(data-year);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+            width: 4.15rem;
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &::after{
+            content: attr(data-num) " 篇";
+            position: absolute;
+            top: 0.6rem;
+            left: 5rem;
+            font-size: 0.9rem;
+            color: $fadeColor;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li{
+                position: relative;
+                line-height: 1.78;
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+                border-bottom: 1px dotted #ddd;
+                a{
+                    display: block;
+                    border: none!important;
+                    h4{
+                        display: inline;
+                    }
+                    &::after{
+                        content: " ＋ " attr(data-words) " 字";
+                        font-size: 0.9rem;
+                        color: rgba(0,0,0,0.3);
+                    }
+                }
+                &::before{
+                    content: attr(data-date);
+                    font-size: 0.9rem;
+                    color: rgba(0, 0, 0, 0.3);
+                    position: absolute;
+                    display: inline-block;
+                    width: 4rem;
+                    line-height: 1;
+                    left: -4rem;
+                    top: 0.4rem;
+                }
+            }
+        }
+        a.toggle-archive{
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            font-size: 0.9rem;
+            display: block;
+            background: #eee;
+            display: inline-block;
+            line-height: 1;
+            left: 8.5rem;
+            border: none!important;
+            border-radius: 0.3rem;
+            padding: 0.3rem;
+            width: 1.5rem;
+            text-align: center;
+            transition: 0.3s ease all;
+            color: $textColor;
+            &:hover{
+                background: $darkColor;
+                color: #dddddd;
+            }
+        }
+    }
+}

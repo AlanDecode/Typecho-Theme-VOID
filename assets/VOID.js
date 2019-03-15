@@ -58,14 +58,6 @@ var VOID = {
         $('.item,.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
-        if(VOIDConfig.fixHeader){
-            if($(document).scrollTop() > 70){
-                $('header,.mobile-search').addClass('dark');
-            }else{
-                if($('main>.lazy-wrap').length)
-                    $('header,.mobile-search').removeClass('dark');
-            }
-        }
         checkGoTop();
         // 监听滚动事件，实现懒加载
         if(VOIDConfig.lazyload){
@@ -252,14 +244,6 @@ var VOID = {
         AjaxComment.init();
         if(VOIDConfig.welcomeWord){
             alert('欢迎访问 ' + document.title);
-        }
-        if(VOIDConfig.fixHeader){
-            if($('main>.lazy-wrap').length) {
-                $('header').removeClass('dark');
-            }
-            else{
-                $('header').addClass('dark');
-            }
         }
         checkGoTop();
     },
@@ -563,14 +547,6 @@ setInterval(function(){
 }, 1000);
 
 window.addEventListener('scroll',function(){
-    if(VOIDConfig.fixHeader){
-        if($(document).scrollTop() >= 70){
-            $('header,.mobile-search').addClass('dark');
-        }else{
-            if($('main>.lazy-wrap').length)
-                $('header,.mobile-search').removeClass('dark');
-        }
-    }
     checkGoTop();
 });
 

@@ -63,16 +63,6 @@ class Utils
     }
 
     /**
-     * 输出图片懒加载注册js
-     * 
-     * @return void
-     */
-    public static function registerLazyImg($url, $id)
-    {
-        echo '<script>registerLazyLoadImg("'.$url.'","[data-lazy-id=\''.$id.'\']")</script>';
-    }
-
-    /**
      * PJAX判定
      * 
      * @return bool
@@ -106,16 +96,6 @@ class Utils
             }
         }
         return FALSE;
-    }
-
-    /**
-     * 电脑微信判定
-     * 
-     * @return bool
-     */
-    public static function isWeixin() 
-    {
-        return  !self::isMobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false; 
     }
 
     /**

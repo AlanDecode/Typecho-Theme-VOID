@@ -13,9 +13,6 @@
     // 自定义的欢迎语
     "customNotice" : "欢迎来到我的博客！",
 
-    // 默认的文章封面
-    "defaultCover" : "https:\/\/api.imalan.cn\/random\/?c=unsplash&s=large&r=img",
-
     // 提示块背景色
     "msgBg" : "#fff",
 
@@ -35,9 +32,6 @@
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",
     "facebookId" : "熊猫小A",
-
-    // 强制无顶部头图
-    "forceNoBanner" : false,
 
     // 自定义添加栏下拉列表
     "nav" : [

@@ -5,34 +5,10 @@ header{
     width: 100%;
     position: fixed;
     transition: 0.5s ease all;
-    background: rgba(0,0,0,.25);
+    background: #111;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 25px 0 rgba(0,0,0,.7);
-    &.dark{
-        transition: 0.5s ease all;
-        background: #111!important;
-        a,span.dropdown{
-            color: #eee!important;
-        }
-        span.dropdown{
-            &:hover{
-                background: rgba(0, 0, 0, 0.65)!important;
-            }
-            ul{
-                background: rgba(0, 0, 0, 0.65)!important;
-            }
-            ul li:hover{
-                background: rgba(0, 0, 0, 0.65)!important;
-            }
-        }
-        label{
-            color: #eee!important;
-        }
-        input{
-            border-color: rgba(255,255,255,0.8)!important;
-        }
-    }
-    &.forceNoBanner{
+    &.no-banner{
         background: #111!important;
     }
     &.opened{
@@ -84,12 +60,6 @@ header{
             }
         }
     }
-    span.search-desktop{
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
     span.dropdown{
         position: relative;
         cursor: pointer;
@@ -124,6 +94,12 @@ header{
                 display: block;
             }
         }
+    }
+    span.search-desktop{
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
     nav{
         flex: 1;
@@ -229,10 +205,7 @@ header{
         display: flex;
         padding: 0.5rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(0, 0, 0, 0.45);
-        &.dark{
-            background: #1e2023!important;
-        }
+        background: #1e2023
         label{
             top: 0;
         }

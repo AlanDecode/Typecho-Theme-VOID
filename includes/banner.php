@@ -13,25 +13,22 @@ if($this->is('post') || $this->is('page')){
     if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
         $banner = $this->fields->banner;
 }
-if($banner == ''){
-    $banner = 'https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg';
-    echo '<style>#banner{filter: none!important}</style>';
-}
+$lazyID = rand(1,10000);
 ?>
 
-<?php if(!Utils::isWeixin()): ?>
-    <?php $lazyID = rand(1,10000); ?>
-    <div class="lazy-wrap loading <?php if($setting['forceNoBanner']) echo 'forceNoBanner'; ?> <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; if($this->is('index')) echo ' index'; ?>">
-        <?php if(!$setting['forceNoBanner']): ?>
-            <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
-            <?php Utils::registerLazyImg($banner, $lazyID); ?>
-        <?php endif; ?>
-<?php else: ?>
-    <div class="lazy-wrap <?php if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo 'dark'; if($this->is('index')) echo ' index'; ?>">
-        <?php if(!$setting['forceNoBanner']): ?>
-            <div id="banner" style="background-image:url(<?php echo $banner; ?>)" class="lazy loaded"></div>
-        <?php endif; ?>
-<?php endif; ?>
+<div class="lazy-wrap
+    <?php 
+        if(empty($banner)) echo ' no-banner';
+        else echo ' loading';
+        if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo ' dark';
+        if($this->is('index')) echo ' index';
+    ?>">
+
+    <?php if(!empty($banner)): ?>
+        <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
+        <script>registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
+    <?php endif;?>
+
     <?php if($setting['titleinbanner'] && !$this->is('index')): ?>
         <div class="banner-title">
             <h1 class="post-title">
@@ -74,8 +71,8 @@ if($banner == ''){
             <?php endif;?>
         </div>
     <?php elseif($setting['indexBannerTitle']!='' && $this->is('index')): ?>
-    <div class="banner-title index">
-        <h1 class="post-title"><?php echo $setting['indexBannerTitle']; ?></h1>
-    </div>
+        <div class="banner-title index">
+            <h1 class="post-title"><?php echo $setting['indexBannerTitle']; ?></h1>
+        </div>
     <?php endif; ?>
 </div>

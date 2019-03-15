@@ -1,9 +1,15 @@
 main{
     flex: 1;
     .lazy-wrap{
-        @include bg;
         width: 100%;
+        overflow: hidden;
+        min-height: $bannerHeight;
+        @media screen and (max-width:767px) {
+            min-height: $bannerHeight_mobile;
+        }
+        background: #f8f8f5;
         position: relative;
+        @include bg;
         &.loading{
             background-color: #12121c;
         }
@@ -17,50 +23,30 @@ main{
             top: calc(1rem + 60px);
             right: 1rem;
         }
-        .lazy{
-            @include bg;
+        #banner{
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: 1.2s ease opacity;
-            &.loaded{
-                opacity: 1;
-            }
+            @include bg;
         }
-        @media screen and (max-width: 767px) {
-            order: -1;
-        }
-    }
-    >.lazy-wrap{
-        width: 100%;
-        overflow: hidden;
-        min-height: $bannerHeight;
-        @media screen and (max-width:767px) {
-            min-height: $bannerHeight_mobile;
-        }
-        @include bg;
         &.dark #banner{
-            filter: brightness(0.55);
+            filter: brightness(0.65);
         }
         &.dark.index #banner{
             filter: brightness(0.8);
         }
         .banner-title{
             position: relative;
-            &,& *{
-                color: white;
-            }
-            & a{
-                border-bottom: 1px solid white;
-            }
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 130px 45px 70px 45px;
+            padding: 70px 45px;
             @media screen and (max-width: 767px) {
-                padding: 100px 1rem 50px 1rem;
+                padding: 50px 1rem;
             }
             .post-title{
                 text-align: center;
@@ -80,11 +66,8 @@ main{
                 margin-bottom: 0;
             }
         }
-        &.forceNoBanner{
-            background: #f8f8f5;
-            &::before{
-                display: none;
-            }
+        &.no-banner{
+            border-bottom: 1px dotted #ddd;
             .banner-title{
                 &,& *{
                     color: #333;
@@ -94,15 +77,28 @@ main{
                 }
             }
         }
+        &:not(.no-banner){
+            .banner-title{
+                &,& *{
+                    color: white;
+                }
+                & a{
+                    border-bottom: 1px solid white;
+                }
+            }
+        }
+        .lazy{
+            @include bg;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: 1.2s ease opacity;
+            &.loaded{
+                opacity: 1;
+            }
+        }
     }
-    #banner{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        @include bg;
-    }
+
     .wrapper{
         position: relative;
         z-index: 1;
@@ -127,128 +123,11 @@ main{
                 }
             }
             &:first-of-type{
-                .section-title{
-                    color: #fafafa;
-                }
                 margin-top: 2rem;
                 &.no-banner{
                     margin-top: calc(60px + 2rem);
                 }
                 margin-bottom: 7rem;
-            }
-            &#post.archive-list{
-                margin-bottom: 3rem;
-            }
-            &#post-list{
-                margin-bottom: 0;
-                display: flex;
-                flex-flow: row wrap;
-                justify-content: flex-start;
-                max-width: 100%;
-                &.no-banner{
-                    margin-top: 90px;
-                    @media screen and (max-width: 767px) {
-                        margin-top: 60px;
-                    }
-                }
-                &.archive-list{
-                    padding: 45px;
-                    @media screen and (max-width: 767px) {
-                        padding: 1rem;
-                        padding-top: 0;
-                    }
-                    margin-bottom: 3rem;
-                }
-                .item{
-                    display: block;
-                    position: relative;
-                    background-color: white;
-                    margin-bottom: 40px;
-                    width: calc((100% - 60px) / 3.001);
-                    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
-                    transition: 0.3s ease all;
-                    &:nth-of-type(3n + 2){
-                        margin: 0 30px;
-                        margin-bottom: 40px;
-                    }
-                    @media screen and (max-width: 767px){
-                        width: 100%;
-                        margin: 10px 0!important;
-                    }
-                    .lazy-wrap{
-                        transition: 0.3s ease all;
-                        overflow: hidden;
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        &.loading::before{
-                            top: 1rem;
-                            right: 1rem;
-                            transform: none;
-                        }
-                    }
-                    .item-banner{
-                        width: 100%;
-                        height: 100%;
-                        @include bg;
-                        overflow: hidden;
-                        position: relative;
-                        transition: 0.3s ease all;
-                    }
-                    .item-content{
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        min-height: 290px;
-                        padding: 80px 30px 30px;
-                        display: flex;
-                        flex-direction: column;
-                        color: white;
-                        > span{
-                            display: block;
-                            font-size: 0.9rem;
-                            font-weight: 400;
-                        }
-                        h1{
-                            font-size: 1.58rem;
-                            margin: 10px 0;
-                            line-height: 1.3;
-                            font-weight: 600;
-                            word-break: break-word;
-                            transition: 0.3s ease all;
-                            @media screen and (max-width: 767px) {
-                                font-size: 2rem;
-                            }
-                        }
-                        p{
-                            margin: 0;
-                            line-height: 1.5;
-                            word-break: break-all;
-                            font-size: 18px;
-                        }
-                    }
-                    &:not(.no-banner){
-                        .item-content{
-                            transition: 0.3s ease all;
-                            background: rgba(0,0,0,0.4);
-                        }
-                        @media screen and (min-width: 768px) {
-                           &:hover{
-                                .item-content{
-                                    background: rgba(0,0,0,0.5);
-                                }
-                            }
-                        }
-                    }
-                    &.no-banner{
-                        .item-content{
-                            @include bg;
-                            background-image: url(https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg);
-                        }
-                    }
-                }
             }
             .not-found{
                 height: 300px;
@@ -265,6 +144,90 @@ main{
                 a{
                     color: $fadeColor;
                 }
+            }
+        }
+    }
+}
+
+section#index-list{
+    margin-bottom: 3rem;
+    h1.post-title{
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    >ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        >li{
+            line-height: 1.25;
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px dotted #ddd;
+            a.banner{
+                border: none;
+                display: block;
+                height: 0;
+                padding-top: 40%;
+                position: relative;
+                margin-bottom: 1.5rem;
+                img{
+                    @include bg;
+                    background-color: #fff;
+                    background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    object-fit: cover;
+                }
+            }
+            a.title{
+                display: block;
+                color: $darkColor;
+                border: none;
+                h1{
+                    line-height: 1.35;
+                    font-size: 1.67rem;
+                    font-weight: bolder;
+                    margin: 0;
+                    margin-bottom: 1rem;
+                    &::after{
+                        content: " ＋ " attr(data-words) " 字";
+                        font-size: .9rem;
+                        color: rgba(0,0,0,.3);
+                        font-weight: normal;
+                    }
+                }
+            }
+            p.headline{
+                color: #999;
+                font-size: 1.2em;
+                font-weight: 400;
+                line-height: 1.3;
+                margin: 1rem 0;
+                text-align: left;
+                padding-left: 8px;
+                border-left: 3px solid rgba($color: #000000, $alpha: 0.18);
+                &::before{
+                    display: none;
+                }
+                &.single{
+                    margin-bottom: 0;
+                }
+            }
+            div.post-meta-index{
+                color: rgba(0,0,0,.5);
+                font-size: 16px;
+                font-style: italic;
+                margin: 0;
+                margin-top: 12px;
+                font-weight: 300;
+                line-height: 1.25;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

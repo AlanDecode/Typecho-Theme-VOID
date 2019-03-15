@@ -9,10 +9,15 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
+$banner = $setting['defaultBanner'];
+if($this->is('post') || $this->is('page')){
+    if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
+        $banner = $this->fields->banner;
+}
 ?>
 
 <body>
-    <header class="<?php if(($setting['defaultBanner'] == '' || $setting['indexNoBanner']) && ($this->is('index') || $this->is('archive'))) echo 'dark'; if($setting['forceNoBanner']) echo ' forceNoBanner' ?>">
+    <header class="<?php if(empty($banner)) echo 'no-banner'; ?>">
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
