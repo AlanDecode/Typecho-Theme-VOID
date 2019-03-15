@@ -18,9 +18,6 @@ if(!Utils::isPjax() && !Utils::isAjax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
 }
-if($setting['fancyIndex']) {
-    $this->need('includes/index-alt.php');
-} else {
 ?>
 
 <main id="pjax-container">
@@ -77,7 +74,7 @@ if($setting['fancyIndex']) {
     </div>
 </main>
 
-<?php }
+<?php
 if(!Utils::isPjax() && !Utils::isAjax()){
     $this->need('includes/footer.php');
 } 

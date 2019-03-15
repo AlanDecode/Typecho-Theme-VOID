@@ -278,7 +278,6 @@ class Utils
         $output = array(
             // 主题设置
             'defaultBanner' => 'https://i.loli.net/2019/02/11/5c614078f2263.png',
-            'fancyIndex' => false,
             'enableMath' => false,
             'fixHeader' => false,
             'head' => '',
@@ -322,10 +321,6 @@ class Utils
 
         if(!empty($options->enableMath)){
             if($options->enableMath == '1') $output['enableMath'] = true;
-        }
-
-        if(!empty($options->fancyIndex)){
-            if($options->fancyIndex == '1') $output['fancyIndex'] = true;
         }
 
         if(!empty($options->fixHeader)){

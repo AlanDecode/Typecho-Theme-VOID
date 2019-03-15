@@ -41,8 +41,6 @@ function themeInit(){
 function themeConfig($form) {
     $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg', '默认顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
-    $fancyIndex=new Typecho_Widget_Helper_Form_Element_Select('fancyIndex',array('0'=>'简洁式','1'=>'卡片式'),'0','首页风格','选择首页风格，简洁式或者卡片式。');
-    $form->addInput($fancyIndex);
     $ajaxIndex=new Typecho_Widget_Helper_Form_Element_Select('ajaxIndex',array('0'=>'分页','1'=>'加载更多'),'0','首页分页样式','选择首页分页样式：普通分页或者加载更多。仅当卡片式首页有效。');
     $form->addInput($ajaxIndex);
     $titleinbanner=new Typecho_Widget_Helper_Form_Element_Select('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
