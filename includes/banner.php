@@ -53,9 +53,9 @@ $lazyID = rand(1,10000);
                         <?php 
                             if(Utils::isPluginAvailable('TePostViews'))
                             {
-                                echo '&nbsp;•&nbsp;';
+                                echo '&nbsp;•&nbsp;<span>';
                                 $this->viewsNum();
-                                echo '&nbsp;阅读';
+                                echo '&nbsp;阅读</span>';
                             }
                         ?>
                         <?php if($this->user->hasLogin()): ?>
