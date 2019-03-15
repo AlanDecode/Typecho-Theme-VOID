@@ -16,7 +16,7 @@ if($this->is('post') || $this->is('page')){
 }
 ?>
 
-<body class="<?php if($setting['fixHeader']) echo 'header-fixed'; ?>">
+<body>
     <header class="<?php if(empty($banner)) echo 'no-banner'; ?>">
         <div class="container wider">
             <nav>

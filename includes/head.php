@@ -59,8 +59,7 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
-        fixHeader : <?php echo $setting['fixHeader'] ? 'true' : 'false'; ?>,
+        lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
@@ -76,14 +75,6 @@ $setting = $GLOBALS['VOIDSetting'];
     </script>
     <?php echo $setting['head']; ?>
     <style>
-    <?php if(!$setting['fixHeader']): ?>
-    body>header{
-        position: relative;
-    }
-    #nprogress .spinner{
-        right: 15px;
-    }
-    <?php endif; ?>
     <?php if(!empty($setting['desktopBannerHeight'])): ?>
     @media screen and (min-width: 768px){
         main>.lazy-wrap{min-height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
