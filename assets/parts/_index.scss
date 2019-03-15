@@ -1,17 +1,17 @@
 main{
     flex: 1;
+    body.header-fixed &{
+        margin-top: 58px;
+        @media screen and (max-width:767px) {
+            margin-top: 50px;
+        }
+    }
     .lazy-wrap{
         width: 100%;
         overflow: hidden;
         min-height: $bannerHeight;
         @media screen and (max-width:767px) {
             min-height: $bannerHeight_mobile;
-        }
-        &.bigger-padding{
-            padding-top: 60px;
-            @media screen and (max-width:767px) {
-               padding-top: 50px;
-            }
         }
         background: #f8f8f5;
         position: relative;

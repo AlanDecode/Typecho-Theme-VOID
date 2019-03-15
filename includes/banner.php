@@ -21,8 +21,7 @@ $lazyID = rand(1,10000);
         if(empty($banner)) echo ' no-banner';
         else echo ' loading';
         if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo ' dark';
-        if($this->is('index')) echo ' index';
-    ?><?php if($setting['fixHeader']) echo ' bigger-padding'; ?>">
+        if($this->is('index')) echo ' index';?>">
 
     <?php if(!empty($banner)): ?>
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
