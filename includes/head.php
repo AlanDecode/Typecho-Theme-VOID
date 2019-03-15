@@ -59,7 +59,6 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        infiniteLoad : <?php echo $setting['infiniteLoad'] ? 'true' : 'false'; ?>,
         customNotice : "<?php echo $setting['customNotice']; ?>",
         welcomeWord : <?php echo $setting['welcomeWord'] ? 'true' : 'false'; ?>,
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,

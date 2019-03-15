@@ -43,9 +43,9 @@ function themeConfig($form) {
     $form->addInput($defaultBanner);
     $titleinbanner=new Typecho_Widget_Helper_Form_Element_Select('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
     $form->addInput($titleinbanner);
-    $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长');
+    $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长。');
     $form->addInput($indexBannerTitle);
-    $fixHeader=new Typecho_Widget_Helper_Form_Element_Select('fixHeader',array('1'=>'是', '0'=>'否'),'1','固定导航栏','是否固定导航栏');
+    $fixHeader=new Typecho_Widget_Helper_Form_Element_Select('fixHeader',array('1'=>'是', '0'=>'否'),'1','固定导航栏','是否固定导航栏。');
     $form->addInput($fixHeader);
 
     // 高级设置

@@ -52,10 +52,10 @@ var VOID = {
         // 初始化注脚
         $.bigfoot({actionOriginalFN: 'ignore'});
         // 初始化 touch 事件，移动端设备
-        $('.item,.board-item').on('touchstart',function(){
+        $('.board-item').on('touchstart',function(){
             $(this).addClass('hover');
         });
-        $('.item,.board-item').on('touchend',function(){
+        $('.board-item').on('touchend',function(){
             $(this).removeClass('hover');
         });
         checkGoTop();
