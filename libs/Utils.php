@@ -265,17 +265,10 @@ class Utils
             // 高级设置
             'nav' => '',
             'name' => '',
-            'welcomeWord' => true,
-            'customNotice' => '',
-            'msgColor' => '',
-            'msgBg' => '',
             'desktopBannerHeight' => '',
             'mobileBannerHeight' => '',
-            'indexNoBanner' => false,
-            'defaultCover' => '',
             'twitterId' => '',
-            'weiboId' => '',
-            'forceNoBanner' => false
+            'weiboId' => ''
         );
 
         $options = Helper::options();
