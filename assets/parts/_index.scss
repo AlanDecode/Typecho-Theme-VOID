@@ -216,7 +216,7 @@ section#index-list{
                 text-align: left;
                 padding-left: 8px;
                 border-left: 3px solid rgba($color: #000000, $alpha: 0.18);
-                &::before{
+                &::before, &::after{
                     display: none;
                 }
                 &.single{
