@@ -83,14 +83,6 @@ class Utils
     }
 
     /**
-     * AJAX判定
-     */
-    public static function isAjax()
-    {
-        return array_key_exists('HTTP_X_VOID_AJAX', $_SERVER) && $_SERVER['HTTP_X_VOID_AJAX'];
-    }
-
-    /**
      * 移动端判定
      * 
      * @return bool
@@ -301,8 +293,6 @@ class Utils
             'mobileBannerHeight' => '',
             'indexNoBanner' => false,
             'defaultCover' => '',
-            'ajaxIndex' => false,
-            'infiniteLoad' => false,
             'twitterId' => '',
             'weiboId' => '',
             'forceNoBanner' => false
@@ -353,10 +343,6 @@ class Utils
         
         if(!empty($options->pjaxreload)){
             $output['pjaxreload'] = $options->pjaxreload;
-        }
-
-        if(!empty($options->ajaxIndex)){
-            if($options->ajaxIndex == '1') $output['ajaxIndex'] = true;
         }
 
         if(!empty($options->titleinbanner)){

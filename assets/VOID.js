@@ -72,18 +72,6 @@ var VOID = {
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         }
         AjaxComment.init();
-        if(VOIDConfig.infiniteLoad && VOIDConfig.ajaxIndex){
-            window.addEventListener('scroll',function(){
-                setTimeout(function(){
-                    var h=$('.footer-info').offset().top;
-                    var c = $(document).scrollTop();
-                    var wh = $(window).height();  
-                    if (Math.ceil(wh+c)>=h){
-                        VOID.ajaxLoad();
-                    }
-                }, 750);
-            });
-        }
     },
 
     showWelcomeWord : function(){
@@ -265,10 +253,6 @@ var VOID = {
         if(VOIDConfig.welcomeWord){
             alert('欢迎访问 ' + document.title);
         }
-        if($('a.next').length){
-            VOIDConfig.nextUrl = $('a.next').attr('href');
-            $('a.next').remove();
-        }
         if(VOIDConfig.fixHeader){
             if($('main>.lazy-wrap').length) {
                 $('header').removeClass('dark');
@@ -360,58 +344,6 @@ var VOID = {
             };
             tocbot.init(toc_option);
         }
-    },
-
-    isAjaxLoading : false,
-
-    // AJAX 首页分页
-    ajaxLoad : function(){
-        if(VOID.isAjaxLoading) return;
-        if(VOIDConfig.nextUrl == -2) return;
-        if(VOIDConfig.nextUrl == -1){
-            if(!$('a.next').length){
-                $('a.ajax-Load').parent().html('这里是世界的尽头');
-                VOIDConfig.nextUrl = -2;
-                return;
-            }else{
-                VOIDConfig.nextUrl = $('a.next').attr('href');
-                $('a.next').remove();
-            }
-        }
-        $('a.ajax-Load').html('加载中...');
-        VOID.isAjaxLoading = true;
-        $.ajax({
-            url: VOIDConfig.nextUrl,
-            type: 'get',
-            beforeSend: function(request) {
-                request.setRequestHeader('X-VOID-AJAX', 'true');
-            },
-            success: function(data){
-                if(!$(data).find('a.next').length){
-                    $('a.ajax-Load').parent().removeClass('current');
-                    $('a.ajax-Load').parent().html('这里是世界的尽头');
-                    VOIDConfig.nextUrl = -2;
-                }else{
-                    VOIDConfig.nextUrl = $(data).find('a.next').attr('href');
-                    $('a.ajax-Load').html('加载更多');
-                }
-                $('#post-list').append($(data).find('a.item'));
-                $('a.item.ajax:not(.ajax-loaded)').addClass('ajax-loaded');
-                VOID.isAjaxLoading = false;
-                VOID.parseUrl();
-                $('.item,.board-item').on('touchstart',function(){
-                    $(this).addClass('hover');
-                });
-                $('.item,.board-item').on('touchend',function(){
-                    $(this).removeClass('hover');
-                });
-            },
-            error: function(){
-                VOID.isAjaxLoading = false;
-                alert('加载失败！请检查网络或者联系博主。');
-                $('a.ajax-Load').html('加载更多');
-            }
-        });
     },
 
     lazyLoad : function(){

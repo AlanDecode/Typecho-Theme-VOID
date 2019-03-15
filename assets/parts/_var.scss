@@ -26,15 +26,6 @@ $bannerHeight_mobile: 250px;
     }
 }
 
-@keyframes ajax-loaded{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
 @keyframes fade-out{
     0%{
         right: 20px;

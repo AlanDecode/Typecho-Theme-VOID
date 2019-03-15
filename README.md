@@ -12,7 +12,6 @@
 
 > 演示站点：[熊猫小A的博客](https://blog.imalan.cn)，介绍文章：[VOID：现在可以公开的情报](https://blog.imalan.cn/archives/247/)。
 
-* 简版与图片版两种首页样式
 * PJAX 无刷新体验
 * AJAX 评论
 * 响应式设计

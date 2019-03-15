@@ -14,7 +14,7 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <?php 
-if(!Utils::isPjax() && !Utils::isAjax()){
+if(!Utils::isPjax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
 }
@@ -75,7 +75,7 @@ if(!Utils::isPjax() && !Utils::isAjax()){
 </main>
 
 <?php
-if(!Utils::isPjax() && !Utils::isAjax()){
+if(!Utils::isPjax()){
     $this->need('includes/footer.php');
 } 
 ?>
