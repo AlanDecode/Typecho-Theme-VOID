@@ -244,10 +244,12 @@ body{
         display: none!important
     }
 }
-
+#nprogress .spinner{
+    top: 75px;
+}
 @media screen and (max-width: 767px){
     #nprogress .spinner{
-        right: 45px;
+        top: 65px;
     }    
 }
 
