@@ -214,6 +214,10 @@ section#index-list{
                 text-align: left;
                 padding-left: 8px;
                 border-left: 3px solid rgba($color: #000000, $alpha: 0.18);
+                border-top: none;
+                border-bottom: none;
+                padding-top: 0;
+                padding-bottom: 0;
                 &::before, &::after{
                     display: none;
                 }
