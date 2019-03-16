@@ -12,7 +12,7 @@
 html{
     font-size: 16px;
     font-family: sans-serif;
-    background: #f8f8f5;
+    background: #111;
 }
 
 ::-webkit-scrollbar {
@@ -48,13 +48,14 @@ body,header,main,footer{
 
 main{
     overflow-x: hidden;
+    background: #f8f8f5;
 }
 
 body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f8f8f5;
+    background-color: #111;
     &.modal-open{
         position: fixed;
         width: 100%;
