@@ -38,6 +38,9 @@ section#archive-list{
             left: 5rem;
             font-size: 0.9rem;
             color: $fadeColor;
+            .theme-dark &{
+                color: $td-textColor-dark;
+            }
         }
         ul{
             list-style: none;
@@ -49,6 +52,9 @@ section#archive-list{
                 padding-bottom: 0.5rem;
                 margin-bottom: 0.5rem;
                 border-bottom: 1px dotted #ddd;
+                .theme-dark &{
+                    border-color: $td-borderColor;
+                }
                 a{
                     display: block;
                     border: none!important;
@@ -59,12 +65,18 @@ section#archive-list{
                         content: " ＋ " attr(data-words) " 字";
                         font-size: 0.9rem;
                         color: rgba(0,0,0,0.3);
+                        .theme-dark &{
+                            color: $td-textColor-dark;
+                        }
                     }
                 }
                 &::before{
                     content: attr(data-date);
                     font-size: 0.9rem;
                     color: rgba(0, 0, 0, 0.3);
+                    .theme-dark &{
+                        color: $td-textColor-dark;
+                    }
                     position: absolute;
                     display: inline-block;
                     width: 4rem;
@@ -81,6 +93,9 @@ section#archive-list{
             font-size: 0.9rem;
             display: block;
             background: #eee;
+            .theme-dark &{
+                background: $td-bgColor-dark;
+            }
             display: inline-block;
             line-height: 1;
             left: 8.5rem;
@@ -91,9 +106,17 @@ section#archive-list{
             text-align: center;
             transition: 0.3s ease all;
             color: $textColor;
+            .theme-dark &{
+                background: $td-bgColor-dark;
+                color: $td-textColor;
+            }
             &:hover{
                 background: $darkColor;
                 color: #dddddd;
+                .theme-dark &{
+                    background: $td-textColor-light;
+                    color: $darkColor;
+                }
             }
         }
     }

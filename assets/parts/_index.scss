@@ -12,7 +12,6 @@ main{
         @media screen and (max-width:767px) {
             min-height: $bannerHeight_mobile;
         }
-        background: #f8f8f5;
         position: relative;
         @include bg;
         &.loading{
@@ -73,12 +72,23 @@ main{
         }
         &.no-banner{
             border-bottom: 1px dotted #ddd;
+            .theme-dark &{
+                border-color: $td-borderColor;
+            }
             .banner-title{
                 &,& *{
                     color: #333;
                 }
                 & a{
                     border-bottom: 1px solid rgba(0,0,0,0.1);
+                }
+                .theme-dark &{
+                    &,& *{
+                        color: $td-textColor;
+                    }
+                    & a{
+                        border-color: $td-borderColor
+                    }
                 }
             }
         }
@@ -114,6 +124,9 @@ main{
                 position: absolute;
                 font-size: 1.8rem;
                 color: $darkColor;
+                .theme-dark &{
+                    color: $td-textColor;
+                }
                 top: -3rem;
                 left: 0;
                 font-weight: 600;
@@ -148,6 +161,9 @@ main{
                 }
                 a{
                     color: $fadeColor;
+                    .theme-dark &{
+                        color: $td-textColor;
+                    }
                 }
             }
         }
@@ -169,6 +185,9 @@ section#index-list{
             margin-bottom: 36px;
             padding-bottom: 36px;
             border-bottom: 1px dotted #ddd;
+            .theme-dark &{
+                border-color: $td-borderColor;
+            }
             a.banner{
                 border: none;
                 display: block;
@@ -190,7 +209,6 @@ section#index-list{
             }
             a.title{
                 display: block;
-                color: $darkColor;
                 border: none;
                 h1{
                     line-height: 1.35;
@@ -198,12 +216,24 @@ section#index-list{
                     font-weight: bolder;
                     margin: 0;
                     margin-bottom: 1rem;
+                    color: $darkColor!important;
+                    .theme-dark &{
+                        color: $td-textColor-light!important;
+                    }
                     &::after{
                         content: " ＋ " attr(data-words) " 字";
                         font-size: .9rem;
                         color: rgba(0,0,0,.3);
+                        .theme-dark &{
+                            color: $td-textColor-dark;
+                        }
                         font-weight: normal;
                     }
+                }
+            }
+            p{
+                .theme-dark &{
+                    color: $td-textColor-dark;
                 }
             }
             p.headline{
@@ -215,6 +245,10 @@ section#index-list{
                 text-align: left;
                 padding-left: 8px;
                 border-left: 3px solid rgba($color: #000000, $alpha: 0.18);
+                .theme-dark &{
+                    border-color: $td-borderColor;
+                    color: $td-textColor-dark
+                }
                 border-top: none;
                 border-bottom: none;
                 padding-top: 0;
@@ -228,6 +262,9 @@ section#index-list{
             }
             div.post-meta-index{
                 color: rgba(0,0,0,.5);
+                .theme-dark &{
+                    color: $td-textColor-dark;
+                }
                 font-size: 16px;
                 font-style: italic;
                 margin: 0;

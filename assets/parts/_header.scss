@@ -7,6 +7,9 @@ header{
     transition: 0.5s ease all;
     background: #111;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    .theme-dark &{
+        border-color: $td-borderColor;
+    }
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     &.headroom--pinned{
         transform: translateY(0);
@@ -34,9 +37,12 @@ header{
         align-items: center;
         padding: 0.3rem 0.55rem;
         color: #eee;
+        .theme-dark &{
+            color: $td-textColor;
+        }
         transition: 0.3s ease all;
         &:hover{
-            color: #eee;
+            color: #eee!important;
         }
         &.brand{
             font-weight: 600;
@@ -79,6 +85,9 @@ header{
             margin: 0;
             top: 100%;
             color: #eee;
+            .theme-dark &{
+                color: $td-textColor;
+            }
             left: 50%;
             transform: translateX(-50%);
             min-width: 100%;
@@ -90,6 +99,9 @@ header{
                 &:hover{
                     background: rgba(0, 0, 0, 0.75);
                     color: #eee;
+                    .theme-dark &{
+                        color: $td-textColor;
+                    }
                 }
             }
         }

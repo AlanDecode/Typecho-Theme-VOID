@@ -9,6 +9,9 @@
 .yue {
   font: 400 18px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #444443;
+  .theme-dark &{
+    color: $td-textColor;
+  }
   letter-spacing: 0.04em;
   word-break: break-word;
 }
@@ -21,6 +24,9 @@
 .yue h6 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #222223;
+  .theme-dark &{
+    color: $td-textColor-light;
+  }
   &::before{
     display: block;
     content: " ";
@@ -62,11 +68,10 @@
   word-wrap: break-word;
   &:not([data-fancybox=gallery]):not(.post-like):not(.edit-button){
     border-bottom: 1px solid rgba(0,0,0,0.2);
+    .theme-dark &{
+      border-color: $td-textColor-dark;
+    }
   }
-}
-.yue a:not([data-fancybox=gallery],.post-meta,.post-like):hover {
-  color: #555;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
 }
 .yue h1 a, .yue h2 a, .yue h3 a {
   text-decoration: none;
@@ -75,16 +80,25 @@
 .yue b {
   font-weight: 700;
   color: #222223;
+  .theme-dark &{
+    color: $td-textColor-light;
+  }
 }
 .yue em,
 .yue i {
   font-style: italic;
   color: rgba($color: #000000, $alpha: 0.88);
+  .theme-dark &{
+    color: $td-textColor-light
+  }
 }
 .yue img {
   max-width: 100%;
   height: auto;
   margin: 0.2em 0;
+  .theme-dark &{
+    filter: brightness(0.85);
+  }
 }
 .yue a img {
   /* Remove border on IE */
@@ -113,10 +127,16 @@
   font-weight: 400;
   font-size: 14px;
   color: #666665;
+  .theme-dark &{
+    color: $td-textColor-dark;
+  }
 }
 .yue figure figcaption a {
   text-decoration: none;
   color: #666665;
+  .theme-dark &{
+    color: $td-textColor-dark;
+  }
 }
 .yue hr {
   display: block;
@@ -124,16 +144,26 @@
   margin: 40px auto 34px;
   border: 0 none;
   border-top: 3px solid #dededc;
+  .theme-dark &{
+    border-color: $td-borderColor;
+  }
 }
 .yue blockquote {
   margin: 0 0 1.64em 0;
   border-left: 3px solid #dadada;
   padding-left: 12px;
   color: #666664;
+  .theme-dark &{
+    color: $td-textColor-dark;
+    border-color: $td-borderColor;
+  }
   text-align: justify;
 }
 .yue blockquote a {
   color: #666664;
+  .theme-dark &{
+    color: $td-textColor-dark;
+  }
 }
 .yue ul,
 .yue ol {
@@ -176,6 +206,11 @@
   background-color: #f9f9f7;
   padding: 1px 2px;
   border: 1px solid #eee;
+  .theme-dark &{
+    color: $td-textColor-dark;
+    background-color: $td-bgColor-dark;
+    border-color: $td-bgColor-dark;
+  }
   border-radius: 3px;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   word-wrap: break-word;
@@ -190,6 +225,9 @@
   font-size: 0.96em;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   background: #282c34;
+  .theme-dark &{
+    background: $td-bgColor-dark;
+  }
   color: #abb2bf;
   >code{
     width:max-content!important;
@@ -210,6 +248,12 @@
   font-size: 0.96em;
   box-sizing: border-box;
 }
+.yue thead{
+  background-color: #efefee;
+  .theme-dark &{
+    background-color: $td-bgColor-dark;
+  }
+}
 .yue th,
 .yue td {
   text-align: left;
@@ -221,6 +265,9 @@
 }
 .yue tr:nth-child(even) {
   background-color: #efefee;
+  .theme-dark &{
+    background-color: $td-bgColor-dark;
+  }
 }
 .yue iframe {
   display: block;

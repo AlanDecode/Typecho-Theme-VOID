@@ -12,7 +12,7 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <!DOCTYPE HTML>
-<html>
+<html class="theme-dark">
     <head>
     <meta charset="<?php $this->options->charset(); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

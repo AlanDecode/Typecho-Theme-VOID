@@ -1,4 +1,8 @@
 #comments{
+    color: $textColor;
+    .theme-dark &{
+        color: $td-textColor;
+    }
     form,p{
         width: 100%;
     }
@@ -11,6 +15,9 @@
             padding: 0.25rem;
             border-radius: 5px;
             background: #eeeeee;
+            .theme-dark &{
+                background: $td-bgColor-dark;
+            }
         }
     }
     form{
@@ -51,6 +58,9 @@
         .comment-info-input input,#textarea{
             padding: 0.3em;
             border: 1px solid rgba(0,0,0,.2);
+            .theme-dark &{
+                border-color: $td-borderColor;
+            }
             border-radius: 4px;
             background: none;
         }
@@ -69,17 +79,38 @@
                 &:hover{
                     background: $darkColor;
                 }
+                .theme-dark &{
+                    color: $td-textColor-dark;
+                }
             }
             .OwO{
                 display: block;
                 width: 100%;
                 position: absolute;
-                .OwO{
-                    display: block;
-                    width: 100%;
-                    position: absolute;
+                .theme-dark & .OwO-logo{
+                    background: $td-bgColor-dark;
+                    color: $td-textColor;
+                    border-color: $td-textColor-dark;
                 }
                 .OwO-body{
+                    .OwO-bar{
+                        overflow-y: hidden;
+                    }
+                    .theme-dark &, .theme-dark & .OwO-bar{
+                        background: $td-bgColor-dark;
+                        border-color: $td-textColor-dark;
+                        color: $td-textColor;
+                    }
+                    .theme-dark & li.OwO-item{
+                        background: $td-bgColor!important;
+                        color: $td-textColor;
+                    }
+                    .theme-dark & .OwO-packages{
+                        li:hover, li.OwO-package-active{
+                            color: $td-textColor-dark;
+                            background: $td-bgColor;
+                        }
+                    }
                     max-width:100%;
                     z-index: 2;
                     min-width: 245px;
@@ -106,6 +137,9 @@
     }
     >.comment-list>.comment-body{
         border-bottom: 1px solid rgba(0,0,0,.1);
+        .theme-dark &{
+            border-color: $td-borderColor;
+        }
         margin-top: 1rem;
     }
     .comment-list{
@@ -158,6 +192,9 @@
                 }
                 >span a{
                     color: rgba(0,0,0,.3);
+                    .theme-dark &{
+                        color: $td-textColor-dark;
+                    }
                     font-size: 0.9rem;
                 }
             }
@@ -165,6 +202,9 @@
                 max-width: calc(100% - 52px - 1rem);
                 word-break: break-word;
                 color: $textColor;
+                .theme-dark &{
+                    color: $td-textColor;
+                }
                 margin-top: 0.5rem;
                 border-radius: 6px;
                 line-height: 1.5;

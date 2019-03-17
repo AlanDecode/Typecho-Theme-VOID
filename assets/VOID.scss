@@ -19,15 +19,24 @@ html{
     width: 6px;
     height: 6px;
     background-color: rgba(0,0,0,.15);
+    .theme-dark &{
+        background-color: $td-bgColor;
+    }
 }
 ::-webkit-scrollbar-track {
     background-color: #eee;
+    .theme-dark &{
+        background-color: $td-bgColor;
+    }
 }
 ::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,.15);
+    .theme-dark &{
+        background-color: rgba($color: #fff, $alpha: 0.25);
+    }
 }
-
 ::selection {
+    color: white;
     background-color: #ffe150;
 }
 
@@ -39,6 +48,9 @@ a, a:hover{
     text-decoration: none;
     border: none;
     color: $textColor;
+    .theme-dark &{
+        color: $td-textColor;
+    }
     outline: none;
 }
 
@@ -51,6 +63,9 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #f8f8f5;
+    .theme-dark &{
+        background-color: $td-bgColor;
+    }
     &.modal-open{
         position: fixed;
         width: 100%;
@@ -81,10 +96,18 @@ body{
     text-align: center;
     border-radius: 5rem;
     color: $fadeColor;
+    background: none;
+    .theme-dark &{
+        border-color: $td-borderColor!important;
+        color: $td-textColor-dark;
+    }
     transition: 0.3s ease all;
     cursor: pointer;
     &:hover,&.done{
         color: white!important;
+        .theme-dark &{
+            color: $td-textColor-light!important;
+        }
         border-color: $darkColor!important;
         background: $darkColor;
     }
@@ -168,9 +191,17 @@ body{
     }
     padding: 1.2px;
     background: #eee;
+    .theme-dark &{
+        background: $td-textColor-dark;
+        filter: brightness(0.85);
+    }
 }
 
 .pager{
+    color: $textColor;
+    .theme-dark &{
+        color: $td-textColor;
+    }
     list-style: none;
     padding: 0;
     display: flex;
@@ -196,6 +227,9 @@ body{
         &.current a, a:hover{
             background: $darkColor;
             color: white;
+            .theme-dark &{
+                color: $td-textColor-light;
+            }
         }
     }
 }
