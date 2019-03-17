@@ -62,6 +62,16 @@ var VOID = {
         if(VOIDConfig.lazyload){
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         }
+        // headroom
+        var header = document.querySelector('body>header');
+        var headroom  = new Headroom(header,{
+            tolerance : {
+                up : 20,
+                down : 0
+            }
+        });
+        // initialise
+        headroom.init(); 
         AjaxComment.init();
     },
 
@@ -275,7 +285,7 @@ var VOID = {
                 // Which headings to grab inside of the contentSelector element.
                 headingSelector: 'h2, h3, h4, h5',
                 // 收缩深度
-                collapseDepth: 6,
+                collapseDepth: 6
             };
             tocbot.init(toc_option);
         }
