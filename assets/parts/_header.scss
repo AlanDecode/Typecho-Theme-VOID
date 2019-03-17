@@ -7,11 +7,12 @@ header{
     transition: 0.5s ease all;
     background: #111;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     &.headroom--pinned{
         transform: translateY(0);
     }
     &.headroom--unpinned{
-        transform: translateY(-100%);
+        transform: translateY(-80px);
     }
     &.no-banner{
         background: #111!important;
@@ -87,15 +88,15 @@ header{
                 transition: 0.3s all;
                 white-space: nowrap;
                 &:hover{
-                    background: rgba(0, 0, 0, 0.65);
+                    background: rgba(0, 0, 0, 0.75);
                     color: #eee;
                 }
             }
         }
         &:hover{
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.75);
             ul{
-                background: rgba(0, 0, 0, 0.65);
+                background: rgba(0, 0, 0, 0.75);
                 display: block;
             }
         }

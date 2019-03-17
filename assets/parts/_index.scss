@@ -1,13 +1,14 @@
 main{
     flex: 1;
-    margin-top: 58px;
-    @media screen and (max-width:767px) {
-        margin-top: 50px;
-    }
     .lazy-wrap{
         width: 100%;
         overflow: hidden;
         min-height: $bannerHeight;
+        padding-top: 58px;
+        display: flex;
+        @media screen and (max-width:767px) {
+            padding-top: 50px;
+        }
         @media screen and (max-width:767px) {
             min-height: $bannerHeight_mobile;
         }

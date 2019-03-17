@@ -46,15 +46,11 @@ body,header,main,footer{
     width: 100%;
 }
 
-main{
-    background: #f8f8f5;
-}
-
 body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #111;
+    background-color: #f8f8f5;
     &.modal-open{
         position: fixed;
         width: 100%;

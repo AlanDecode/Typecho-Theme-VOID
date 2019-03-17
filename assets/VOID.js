@@ -64,7 +64,7 @@ var VOID = {
         }
         // headroom
         var header = document.querySelector('body>header');
-        var headroom  = new Headroom(header);
+        var headroom  = new Headroom(header, {offset: 60});
         // initialise
         headroom.init(); 
         AjaxComment.init();
