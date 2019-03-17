@@ -130,10 +130,16 @@ body{
         height: 3px;
         margin-top: -1.5px;
         background-color: #eee;
+        .theme-dark &{
+            background-color: $td-textColor;
+        }
         border-radius: 1px;
         &::before,&::after{
             content: "";
             background: #eee;
+            .theme-dark &{
+                background: $td-textColor;
+            }
             position: absolute;
             width: 100%;
             height: 100%;

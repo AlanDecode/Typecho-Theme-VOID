@@ -191,7 +191,10 @@ header{
         > div{
             width: 17px;
             height: 17px;
-            border: 3px solid #fafafa;
+            border: 3px solid #eee;
+            .theme-dark &{
+                border-color: $td-textColor;
+            }
             border-radius: 50%;
         }
         > span{
@@ -204,7 +207,10 @@ header{
                 width: 8px;
                 height: 3px;
                 border-radius: 2px;
-                background: #fafafa;
+                background: #eee;
+                .theme-dark &{
+                    background: $td-textColor;
+                }
                 left: 14px;
                 transform: rotate(42deg);
                 top: -3px;
