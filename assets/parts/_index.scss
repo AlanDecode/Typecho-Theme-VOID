@@ -154,6 +154,10 @@ main{
                 justify-content: center;
                 align-items: center;
                 width: 100%;
+                color: $textColor;
+                .theme-dark &{
+                    color: $td-textColor;
+                }
                 h1{
                     margin: 0;
                     font-size: 1.9rem;
