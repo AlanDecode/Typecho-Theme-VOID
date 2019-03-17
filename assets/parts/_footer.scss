@@ -14,6 +14,11 @@ footer{
             *{
                 color: rgba($color: #fff, $alpha: 0.7)!important;
             }
+            .theme-dark &{
+                *{
+                    color: $td-textColor!important;
+                }
+            }
         }
         section{
             flex: 1;
@@ -22,6 +27,11 @@ footer{
             padding-top: 1rem;
             &,& *{
                 color: #ddd;
+                .theme-dark &{
+                    *{
+                        color: $td-textColor;
+                    }
+                }
                 font-weight: 300;
             }
             &:nth-child(2){
