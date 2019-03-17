@@ -16,7 +16,15 @@ if($this->is('post') || $this->is('page')){
 }
 ?>
 
-<body>
+<body class="
+    <?php 
+        if($setting['colorScheme'] == 0){
+            echo($_COOKIE['theme_dark'] == '1' ? 'theme-dark' : '');
+        } 
+        elseif ($setting['colorScheme'] == 2) {
+            echo 'theme-dark';
+        }
+    ?>">
     <header class="<?php if(empty($banner)) echo 'no-banner'; ?>">
         <div class="container wider">
             <nav>

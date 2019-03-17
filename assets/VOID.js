@@ -7,6 +7,31 @@
 
 console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
+(function(){
+    if(VOIDConfig.colorScheme == 0){
+        // 若不存在 cookie，根据时间判断，并设置 cookie
+        if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
+            if(new Date().getHours() >= 22 || new Date().getHours() < 7){
+                document.body.classList.add('theme-dark');
+                document.cookie = 'theme_dark=1;path=/';
+                console.log('夜间模式开启');
+            }else{
+                document.body.classList.remove('night');
+                document.cookie = 'theme_dark=0;path=/';
+                console.log('夜间模式关闭');
+            }
+        // 若存在 cookie，根据 cookie 判断
+        }else{
+            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+            if(night == '0'){
+                document.body.classList.remove('theme-dark');
+            }else if(night == '1'){
+                document.body.classList.add('theme-dark');
+            }
+        }
+    }
+})();
+
 // 节流函数
 function throttle(fun, delay, time) {
     var timeout,

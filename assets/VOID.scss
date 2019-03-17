@@ -62,8 +62,9 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: 0.15s ease background;
     background-color: #f8f8f5;
-    .theme-dark &{
+    &.theme-dark{
         background-color: $td-bgColor;
     }
     &.modal-open{

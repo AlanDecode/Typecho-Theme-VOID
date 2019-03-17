@@ -45,6 +45,8 @@ function themeConfig($form) {
     $form->addInput($titleinbanner);
     $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长。');
     $form->addInput($indexBannerTitle);
+    $colorScheme=new Typecho_Widget_Helper_Form_Element_Select('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下晚 22:00 至早晨 06:59 会显示为夜间模式。');
+    $form->addInput($colorScheme);
 
     // 高级设置
     $serifincontent=new Typecho_Widget_Helper_Form_Element_Select('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');

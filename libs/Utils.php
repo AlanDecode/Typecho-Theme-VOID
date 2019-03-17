@@ -260,6 +260,7 @@ class Utils
             'lazyload' => false,
             'indexBannerTitle' => '',
             'serviceworker' => false,
+            'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
 
             // 高级设置
             'nav' => '',
@@ -287,6 +288,11 @@ class Utils
 
         if(!empty($options->lazyload)){
             if($options->lazyload == '1') $output['lazyload'] = true;
+        }
+
+        if(!empty($options->colorScheme)){
+            if($options->colorScheme == '1') $output['colorScheme'] = 1;
+            if($options->colorScheme == '2') $output['colorScheme'] = 2;
         }
 
         if(!empty($options->head)){

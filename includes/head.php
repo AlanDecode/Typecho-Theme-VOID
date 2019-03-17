@@ -12,7 +12,7 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <!DOCTYPE HTML>
-<html class="theme-dark">
+<html>
     <head>
     <meta charset="<?php $this->options->charset(); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,7 +59,8 @@ $setting = $GLOBALS['VOIDSetting'];
         home: "<?php Utils::index("/"); ?>",
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
-        lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>
+        lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
+        colorScheme:  <?php echo $setting['colorScheme']; ?>
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){

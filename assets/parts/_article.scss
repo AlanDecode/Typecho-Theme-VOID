@@ -311,9 +311,9 @@ ruby > rt {
     }
     del:not(:hover){
         &,& *{
-            color: #222!important;
+            color: #111!important;
         }
-        background: #222!important;
+        background: #111!important;
     }
 }
 .board-list{
