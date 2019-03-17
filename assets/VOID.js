@@ -64,12 +64,7 @@ var VOID = {
         }
         // headroom
         var header = document.querySelector('body>header');
-        var headroom  = new Headroom(header,{
-            tolerance : {
-                up : 20,
-                down : 0
-            }
-        });
+        var headroom  = new Headroom(header);
         // initialise
         headroom.init(); 
         AjaxComment.init();
