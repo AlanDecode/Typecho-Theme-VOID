@@ -311,9 +311,10 @@ ruby > rt {
     }
     del:not(:hover){
         &,& *{
-            color: #111!important;
+            color: rgba(0,0,0,0)!important;
+            background: #111!important;
+            border: none!important;
         }
-        background: #111!important;
     }
 }
 .board-list{
