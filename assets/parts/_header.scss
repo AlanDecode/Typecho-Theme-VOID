@@ -38,7 +38,7 @@ header{
         padding: 0.3rem 0.55rem;
         color: #eee;
         .theme-dark &{
-            color: $td-textColor;
+            color: $td-textColor-light;
         }
         transition: 0.3s ease all;
         &:hover{
@@ -86,7 +86,7 @@ header{
             top: 100%;
             color: #eee;
             .theme-dark &{
-                color: $td-textColor;
+                color: $td-textColor-light;
             }
             left: 50%;
             transform: translateX(-50%);
@@ -100,7 +100,7 @@ header{
                     background: rgba(0, 0, 0, 0.75);
                     color: #eee;
                     .theme-dark &{
-                        color: $td-textColor;
+                        color: $td-textColor-light;
                     }
                 }
             }
@@ -143,6 +143,9 @@ header{
     }
     label{
         color: #eee;
+        .theme-dark &{
+            color: $td-textColor-light;
+        }
         position: absolute;
         display: block;
         height: 100%;
@@ -161,6 +164,9 @@ header{
             font-size: 1rem;
         }
         color: #eee;
+        .theme-dark &{
+            color: $td-textColor-light;
+        }
         outline: none;
         height: 1.5rem;
         background: none;
@@ -232,9 +238,17 @@ header{
         background: #1e2023;
         label{
             top: 0;
+            color: #eee;
+            .theme-dark &{
+                color: $td-textColor-light;
+            }
         }
         input{
             display: block;
+            color: #eee;
+            .theme-dark &{
+                color: $td-textColor-light;
+            }
             flex: 1;
             border-radius: 0;
             border: none;
@@ -246,7 +260,10 @@ header{
             background: none;
             outline: none;
             border: none;
-            color: #fafafa;
+            color: #eee;
+            .theme-dark &{
+                color: $td-textColor-light;
+            }
         }
         &.opened{
             transform: translateY(0);
