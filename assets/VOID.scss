@@ -296,6 +296,12 @@ body{
 .douban-single{margin: 1rem auto}
 .MathJax_SVG_Display{overflow:hidden;max-width:100%}
 .aplayer .aplayer-list ol{-webkit-overflow-scrolling:touch}
+.theme-dark .aplayer{
+    color: #222;
+    ol::-webkit-scrollbar-track{
+        background: #fff;
+    }
+}
 
 @import "parts/header";
 @import "parts/index";
