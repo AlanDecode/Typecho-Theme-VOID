@@ -17,6 +17,9 @@ main{
         &.loading{
             background-color: #12121c;
         }
+        &:not(.no-banner){
+            background-color: #12121c;
+        }
         &.loading::before{
             content: "";
             @include bg;
