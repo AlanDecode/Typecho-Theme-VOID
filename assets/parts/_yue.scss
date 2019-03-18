@@ -38,6 +38,9 @@
 .yue h1 {
   font-size: 1.8em;
   margin: 0.67em 0;
+  &::before{
+    display: none;
+  }
 }
 .yue > h1 {
   margin-top: 0;
