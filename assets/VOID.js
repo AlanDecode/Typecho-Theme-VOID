@@ -17,7 +17,6 @@ console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; backg
                 console.log('夜间模式开启');
             }else{
                 document.body.classList.remove('night');
-                document.cookie = 'theme_dark=0;max-age=1800;path=/';
                 console.log('夜间模式关闭');
             }
         // 若存在 cookie，根据 cookie 判断
