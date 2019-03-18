@@ -227,7 +227,12 @@ var VOID = {
     // PJAX 结束后
     afterPjax : function(){
         NProgress.done();
-        animateTo(0, 300);
+        var hash = new URL(window.location.href).hash;
+        if(hash != ''){
+            animateTo($(hash).offset().top - 80, 500);
+        }else{
+            animateTo(0, 500);
+        }
         if($('#banner').length){
             $('body>header').removeClass('no-banner');
         }else{
@@ -541,7 +546,7 @@ setInterval(function(){
 window.addEventListener('scroll',function(){
     checkGoTop();
     if(VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner')) {
-        var tr = $(window).width() > 767 ? 130 : 50;
+        var tr = $(window).width() > 767 ? 150 : 80;
         if ($(document).scrollTop() > tr){
             $('body>header').addClass('dark');
         }else{
