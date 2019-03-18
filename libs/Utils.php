@@ -261,6 +261,7 @@ class Utils
             'indexBannerTitle' => '',
             'serviceworker' => false,
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
+            'headerColorScheme' => 0, //0: 暗色，1: 透明
 
             // 高级设置
             'nav' => '',
@@ -293,6 +294,10 @@ class Utils
         if(!empty($options->colorScheme)){
             if($options->colorScheme == '1') $output['colorScheme'] = 1;
             if($options->colorScheme == '2') $output['colorScheme'] = 2;
+        }
+
+        if(!empty($options->headerColorScheme)){
+            if($options->headerColorScheme == '1') $output['headerColorScheme'] = 1;
         }
 
         if(!empty($options->head)){

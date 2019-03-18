@@ -32,6 +32,12 @@ console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; backg
     }
 })();
 
+// eslint-disable-next-line no-unused-vars
+function animateTo(distance, time){
+    var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
+    $body.animate({scrollTop: distance}, time);
+}
+
 // 节流函数
 function throttle(fun, delay, time) {
     var timeout,
@@ -134,6 +140,7 @@ var VOID = {
                 container: '#pjax-container',
                 fragment: '#pjax-container',
                 timeout: 8000,
+                scrollTo: false
             });
         }
     },
@@ -220,6 +227,12 @@ var VOID = {
     // PJAX 结束后
     afterPjax : function(){
         NProgress.done();
+        animateTo(0, 300);
+        if($('#banner').length){
+            $('body>header').removeClass('no-banner');
+        }else{
+            $('body>header').addClass('no-banner');
+        }
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
@@ -376,8 +389,7 @@ var AjaxComment = {
         $(AjaxComment.textarea).val('');
         $(AjaxComment.submitBtn).attr('disabled', false);
         if($('#comment-'+AjaxComment.newID).length > 0){
-            var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
-            $body.animate({scrollTop: $('#comment-' + AjaxComment.newID).offset().top - 50}, 500);
+            animateTo($('#comment-' + AjaxComment.newID).offset().top - 50, 500);
             $('#comment-' + AjaxComment.newID).fadeTo(500 ,1);
         }
         $('.comment-num .num').html(parseInt($('.comment-num .num').html())+1);
@@ -528,6 +540,14 @@ setInterval(function(){
 
 window.addEventListener('scroll',function(){
     checkGoTop();
+    if(VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner')) {
+        var tr = $(window).width() > 767 ? 130 : 50;
+        if ($(document).scrollTop() > tr){
+            $('body>header').addClass('dark');
+        }else{
+            $('body>header').removeClass('dark');
+        }
+    }
 });
 
 function startSearch(item) {
@@ -587,6 +607,5 @@ function toggleToc(item) {
 }
 // eslint-disable-next-line no-unused-vars
 function goTop(time) {
-    var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
-    $body.animate({scrollTop: 0}, time);
+    animateTo(0, time);
 }

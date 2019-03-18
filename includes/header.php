@@ -25,7 +25,7 @@ if($this->is('post') || $this->is('page')){
             echo 'theme-dark';
         }
     ?>">
-    <header class="<?php if(empty($banner)) echo 'no-banner'; ?>">
+    <header class="<?php if(empty($banner)) echo 'no-banner dark'; ?>">
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">

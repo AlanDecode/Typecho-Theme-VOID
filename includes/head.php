@@ -60,7 +60,8 @@ $setting = $GLOBALS['VOIDSetting'];
         buildTime : "<?php Utils::getBuildTime(); ?>",
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
-        colorScheme:  <?php echo $setting['colorScheme']; ?>
+        colorScheme:  <?php echo $setting['colorScheme']; ?>,
+        headerColorScheme: <?php echo $setting['headerColorScheme']; ?>
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
@@ -81,14 +82,20 @@ $setting = $GLOBALS['VOIDSetting'];
         main>.lazy-wrap{min-height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
     }
     <?php endif; ?>
+
     <?php if(!empty($setting['mobileBannerHeight'])): ?>
     @media screen and (max-width: 768px){
         main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
     }
     <?php endif; ?>
+
     <?php if($setting['serifincontent']): ?>
     @font-face{font-family:"Droid Serif";src:url("<?php Utils::indexTheme('assets/fonts/Droid-Serif.ttf'); ?>");font-display: swap;}
     div[itemprop=articleBody],.content{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
+    <?php endif; ?>
+
+    <?php if($setting['headerColorScheme']): ?>
+    body>header{background: transparent;}
     <?php endif; ?>
     </style>
     </head>

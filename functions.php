@@ -41,29 +41,31 @@ function themeInit(){
 function themeConfig($form) {
     $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg', '默认顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
-    $titleinbanner=new Typecho_Widget_Helper_Form_Element_Select('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
+    $titleinbanner=new Typecho_Widget_Helper_Form_Element_Radio('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
     $form->addInput($titleinbanner);
     $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长。');
     $form->addInput($indexBannerTitle);
-    $colorScheme=new Typecho_Widget_Helper_Form_Element_Select('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下晚 22:00 至早晨 06:59 会显示为夜间模式。');
+    $colorScheme=new Typecho_Widget_Helper_Form_Element_Radio('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下晚 22:00 至早晨 06:59 会显示为夜间模式。');
     $form->addInput($colorScheme);
+    $headerColorScheme=new Typecho_Widget_Helper_Form_Element_Radio('headerColorScheme',array('0'=>'暗色导航栏','1'=>'透明导航栏'),'0','导航栏颜色','选择透明导航栏时，当页面位于顶部导航栏会变透明。为了良好的可读性，使用暗色导航栏时请用深色头图。');
+    $form->addInput($headerColorScheme);
 
     // 高级设置
-    $serifincontent=new Typecho_Widget_Helper_Form_Element_Select('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');
+    $serifincontent=new Typecho_Widget_Helper_Form_Element_Radio('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');
     $form->addInput($serifincontent);
-    $lazyload=new Typecho_Widget_Helper_Form_Element_Select('lazyload',array('0'=>'不启用','1'=>'启用'),'0','图片懒加载','是否启用图片懒加载。');
+    $lazyload=new Typecho_Widget_Helper_Form_Element_Radio('lazyload',array('0'=>'不启用','1'=>'启用'),'0','图片懒加载','是否启用图片懒加载。');
     $form->addInput($lazyload);
-    $enableMath=new Typecho_Widget_Helper_Form_Element_Select('enableMath',array('0'=>'不启用','1'=>'启用'),'0','启用数学公式解析','是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
+    $enableMath=new Typecho_Widget_Helper_Form_Element_Radio('enableMath',array('0'=>'不启用','1'=>'启用'),'0','启用数学公式解析','是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
     $form->addInput($enableMath);
     $head=new Typecho_Widget_Helper_Form_Element_Textarea('head', NULL, '', 'head 标签输出内容', '统计代码等。');
     $form->addInput($head);
     $footer=new Typecho_Widget_Helper_Form_Element_Textarea('footer', NULL, '', 'footer 标签输出内容', '备案号等。');
     $form->addInput($footer);
-    $pjax=new Typecho_Widget_Helper_Form_Element_Select('pjax',array('0'=>'不启用','1'=>'启用'),'0','启用 PJAX (BETA)','是否启用 PJAX。如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭此项。');
+    $pjax=new Typecho_Widget_Helper_Form_Element_Radio('pjax',array('0'=>'不启用','1'=>'启用'),'0','启用 PJAX (BETA)','是否启用 PJAX。如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭此项。');
     $form->addInput($pjax);
     $pjaxreload=new Typecho_Widget_Helper_Form_Element_Textarea('pjaxreload', NULL, NULL, 'PJAX 重载函数', '输入要重载的 JS，如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭 PJAX 并留空此项。');
     $form->addInput($pjaxreload);
-    $serviceworker=new Typecho_Widget_Helper_Form_Element_Select('serviceworker',array('0'=>'不启用','1'=>'启用'),'0','Service Worker','是否启用 Service Worker。Service Worker 可以使浏览器主动缓存静态文件，达到加速效果，但是可能导致某些异常。若要启用，请把主题 assets 文件夹下的 VOIDCacheRule.js 复制一份到<b>站点根目录</b>。');
+    $serviceworker=new Typecho_Widget_Helper_Form_Element_Radio('serviceworker',array('0'=>'不启用','1'=>'启用'),'0','Service Worker','是否启用 Service Worker。Service Worker 可以使浏览器主动缓存静态文件，达到加速效果，但是可能导致某些异常。若要启用，请把主题 assets 文件夹下的 VOIDCacheRule.js 复制一份到<b>站点根目录</b>。');
     $form->addInput($serviceworker);
 
     // 超高级设置

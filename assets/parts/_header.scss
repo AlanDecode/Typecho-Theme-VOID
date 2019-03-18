@@ -17,7 +17,7 @@ header{
     &.headroom--unpinned{
         transform: translateY(-80px);
     }
-    &.no-banner{
+    &.dark, &.no-banner{
         background: #111!important;
     }
     &.opened{
