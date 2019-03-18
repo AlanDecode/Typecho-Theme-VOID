@@ -13,11 +13,11 @@ console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; backg
         if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
             if(new Date().getHours() >= 22 || new Date().getHours() < 7){
                 document.body.classList.add('theme-dark');
-                document.cookie = 'theme_dark=1;path=/';
+                document.cookie = 'theme_dark=1;max-age=1800;path=/';
                 console.log('夜间模式开启');
             }else{
                 document.body.classList.remove('night');
-                document.cookie = 'theme_dark=0;path=/';
+                document.cookie = 'theme_dark=0;max-age=1800;path=/';
                 console.log('夜间模式关闭');
             }
         // 若存在 cookie，根据 cookie 判断
