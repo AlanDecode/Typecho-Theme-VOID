@@ -7,30 +7,6 @@
 
 console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
-(function(){
-    if(VOIDConfig.colorScheme == 0){
-        // 若不存在 cookie，根据时间判断，并设置 cookie
-        if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
-            if(new Date().getHours() >= 22 || new Date().getHours() < 7){
-                document.body.classList.add('theme-dark');
-                document.cookie = 'theme_dark=1;max-age=1800;path=/';
-                console.log('夜间模式开启');
-            }else{
-                document.body.classList.remove('theme-dark');
-                console.log('夜间模式关闭');
-            }
-        // 若存在 cookie，根据 cookie 判断
-        }else{
-            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
-            if(night == '0'){
-                document.body.classList.remove('theme-dark');
-            }else if(night == '1'){
-                document.body.classList.add('theme-dark');
-            }
-        }
-    }
-})();
-
 // eslint-disable-next-line no-unused-vars
 function animateTo(distance, time){
     var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
@@ -352,6 +328,30 @@ var VOID = {
         });
     }
 };
+
+(function(){
+    if(VOIDConfig.colorScheme == 0){
+        // 若不存在 cookie，根据时间判断，并设置 cookie
+        if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
+            if(new Date().getHours() >= 22 || new Date().getHours() < 7){
+                document.body.classList.add('theme-dark');
+                document.cookie = 'theme_dark=1;max-age=1800;path=/';
+                VOID.alert('夜间模式开启');
+            }else{
+                document.body.classList.remove('theme-dark');
+            }
+        // 若存在 cookie，根据 cookie 判断
+        }else{
+            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+            if(night == '0'){
+                document.body.classList.remove('theme-dark');
+            }else if(night == '1'){
+                document.body.classList.add('theme-dark');
+                VOID.alert('夜间模式开启');
+            }
+        }
+    }
+})();
 
 
 // eslint-disable-next-line no-unused-vars

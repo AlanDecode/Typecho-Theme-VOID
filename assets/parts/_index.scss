@@ -39,10 +39,7 @@ main{
             @include bg;
         }
         &.dark #banner{
-            filter: brightness(0.65);
-        }
-        &.dark.index #banner{
-            filter: brightness(0.8);
+            filter: brightness(0.725);
         }
         .banner-title{
             position: relative;
