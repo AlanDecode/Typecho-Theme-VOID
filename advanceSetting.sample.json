@@ -13,6 +13,9 @@
     // 移动端头图高度，数值为高度占屏幕高度的百分比
     "mobileBannerHeight" : 30,
 
+    // 固定导航栏（禁止随滚动显隐）
+    "fixHeader": false,
+
     // 社交 ID，用于生成分享链接
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",

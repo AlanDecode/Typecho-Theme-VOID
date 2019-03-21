@@ -269,7 +269,8 @@ class Utils
             'desktopBannerHeight' => '',
             'mobileBannerHeight' => '',
             'twitterId' => '',
-            'weiboId' => ''
+            'weiboId' => '',
+            'fixHeader' => false
         );
 
         $options = Helper::options();

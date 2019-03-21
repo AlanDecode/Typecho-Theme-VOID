@@ -69,10 +69,12 @@ var VOID = {
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         }
         // headroom
-        var header = document.querySelector('body>header');
-        var headroom  = new Headroom(header, {offset: 60});
-        // initialise
-        headroom.init(); 
+        if(!VOIDConfig.fixHeader){
+            var header = document.querySelector('body>header');
+            var headroom  = new Headroom(header, {offset: 60});
+            // initialise
+            headroom.init(); 
+        }
         AjaxComment.init();
     },
 
