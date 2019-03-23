@@ -56,7 +56,10 @@ if(!Utils::isPjax()){
                         <?php endif; ?>
                         </div>
 
-                        <div class="post-meta-index">Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time></div>
+                        <div class="post-meta-index">
+                            Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time>
+                            <?php if($this->fields->showfullcontent == '1') echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; ?>
+                        </div>
                         <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                         <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                         <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
