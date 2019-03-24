@@ -69,7 +69,7 @@ var VOID = {
             window.addEventListener('scroll',throttle(VOID.lazyLoad,100,1000));
         }
         // headroom
-        if(!VOIDConfig.fixHeader){
+        if(VOIDConfig.headerMode == 0){
             var header = document.querySelector('body>header');
             var headroom  = new Headroom(header, {offset: 60});
             // initialise
@@ -546,7 +546,7 @@ setInterval(function(){
 
 window.addEventListener('scroll',function(){
     checkGoTop();
-    if(VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner')) {
+    if(VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner') && VOIDConfig.headerMode != 2) {
         var tr = $(window).width() > 767 ? 150 : 80;
         if ($(document).scrollTop() > tr){
             $('body>header').addClass('dark');

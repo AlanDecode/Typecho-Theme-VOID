@@ -62,7 +62,7 @@ $setting = $GLOBALS['VOIDSetting'];
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
         colorScheme:  <?php echo $setting['colorScheme']; ?>,
         headerColorScheme: <?php echo $setting['headerColorScheme']; ?>,
-        fixHeader: <?php echo $setting['fixHeader'] ? 'true' : 'false'; ?>
+        headerMode: <?php echo $setting['headerMode']; ?>
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){
@@ -88,6 +88,10 @@ $setting = $GLOBALS['VOIDSetting'];
     @media screen and (max-width: 768px){
         main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
     }
+    <?php endif; ?>
+
+    <?php if($setting['headerMode'] == 2): ?>
+    body>header{ position: absolute }
     <?php endif; ?>
 
     <?php if($setting['serifincontent']): ?>

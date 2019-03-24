@@ -270,7 +270,7 @@ class Utils
             'mobileBannerHeight' => '',
             'twitterId' => '',
             'weiboId' => '',
-            'fixHeader' => false
+            'headerMode' => 0
         );
 
         $options = Helper::options();
