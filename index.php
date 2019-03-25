@@ -50,7 +50,7 @@ if(!Utils::isPjax()){
                         
                         <div itemprop="articleBody">
                         <?php if($this->fields->showfullcontent != '1'): ?>
-                            <p <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
+                            <p <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
                         <?php else: ?>
                             <?php $this->content(); ?>
                         <?php endif; ?>
@@ -58,8 +58,14 @@ if(!Utils::isPjax()){
 
                         <div class="post-meta-index">
                             Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time>
-                            <?php if($this->fields->showfullcontent == '1') echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; ?>
+                            <?php 
+                            if($this->fields->showfullcontent == '1') 
+                                echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; 
+                            else
+                                echo  ' • <a href="'.$this->permalink.'">阅读全文 →</a>'; 
+                            ?>
                         </div>
+                        
                         <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                         <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                         <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
