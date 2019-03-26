@@ -142,7 +142,7 @@ article{
         &::before, &::after{
             content: "";
             @include bg;
-            background-color: #f8f8f5;
+            background-color: #fefefe;
             .theme-dark &{
                 background-color: $td-bgColor;
             }
