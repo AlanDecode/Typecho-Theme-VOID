@@ -50,7 +50,9 @@ if(!Utils::isPjax()){
                         
                         <div itemprop="articleBody">
                         <?php if($this->fields->showfullcontent != '1'): ?>
-                            <p <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
+                            <?php if($this->fields->excerpt == ''): ?>
+                                <p itemprop="headline"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
+                            <?php endif; ?>
                         <?php else: ?>
                             <?php $this->content(); ?>
                         <?php endif; ?>
