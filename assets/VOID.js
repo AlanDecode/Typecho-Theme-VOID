@@ -44,6 +44,25 @@ function checkGoTop(){
     }
 }
 
+var getDeviceState = function(element) {
+    var zIndex;
+    if (window.getComputedStyle) {
+        // 现代浏览器
+        zIndex = window.getComputedStyle(element).getPropertyValue('z-index');
+    } else if (element.currentStyle) {
+        // ie8-
+        zIndex = element.currentStyle['z-index'];
+    }
+    return parseInt(zIndex, 10);
+};
+
+var getPrefersDarkModeState = function () {
+    var indicator = document.createElement('div');
+    indicator.className = 'dark-mode-state-indicator';
+    document.body.appendChild(indicator);
+    return getDeviceState(indicator) === 11;
+};
+
 var VOID = {
     // 初始化单页应用
     init : function(){
@@ -333,23 +352,29 @@ var VOID = {
 
 (function(){
     if(VOIDConfig.colorScheme == 0){
-        // 若不存在 cookie，根据时间判断，并设置 cookie
-        if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
-            if(new Date().getHours() >= 22 || new Date().getHours() < 7){
-                document.body.classList.add('theme-dark');
-                document.cookie = 'theme_dark=1;max-age=1800;path=/';
-                VOID.alert('夜间模式开启');
-            }else{
-                document.body.classList.remove('theme-dark');
-            }
-        // 若存在 cookie，根据 cookie 判断
+        if(getPrefersDarkModeState()){
+            document.body.classList.add('theme-dark');
+            document.cookie = 'theme_dark=1;max-age=7200;path=/';
+            VOID.alert('深色模式开启');
         }else{
-            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
-            if(night == '0'){
-                document.body.classList.remove('theme-dark');
-            }else if(night == '1'){
-                document.body.classList.add('theme-dark');
-                VOID.alert('夜间模式开启');
+            // 若不存在 cookie，根据时间判断，并设置 cookie
+            if(document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
+                if(new Date().getHours() >= 22 || new Date().getHours() < 7){
+                    document.body.classList.add('theme-dark');
+                    document.cookie = 'theme_dark=1;max-age=1800;path=/';
+                    VOID.alert('深色模式开启');
+                }else{
+                    document.body.classList.remove('theme-dark');
+                }
+            // 若存在 cookie，根据 cookie 判断
+            }else{
+                var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+                if(night == '0'){
+                    document.body.classList.remove('theme-dark');
+                }else if(night == '1'){
+                    document.body.classList.add('theme-dark');
+                    VOID.alert('深色模式开启');
+                }
             }
         }
     }

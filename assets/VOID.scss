@@ -296,6 +296,16 @@ body{
     }    
 }
 
+.dark-mode-state-indicator {
+    position: absolute;
+    top: -999em;
+    left: -999em;
+    z-index: 1;
+    @media (prefers-color-scheme: dark) {
+        z-index: 11;
+    }
+}
+
 /* 对某些第三方插件的修正 */
 .douban-single{margin: 1rem auto}
 .MathJax_SVG_Display{overflow:hidden;max-width:100%}
