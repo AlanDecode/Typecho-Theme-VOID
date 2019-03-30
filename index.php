@@ -27,7 +27,7 @@ if(!Utils::isPjax()){
     
     <?php $this->need('includes/banner.php'); ?>
 
-    <div class="wrapper container">
+    <div class="wrapper container wide">
         <section id="index-list">
             <ul>
             <?php while($this->next()): ?>

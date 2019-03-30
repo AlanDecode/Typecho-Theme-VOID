@@ -182,13 +182,17 @@ article{
         flex-wrap: wrap;
         width: calc(100% + 2rem);
         margin-left: -1rem;
-        @media screen and (min-width: 819.5px) {
+        @media screen and (min-width: 919.5px) {
             width: 100vw;
-            margin-left: calc(-50vw + 394px);
+            margin-left: calc(-50vw + 444px);
         }
         @media screen and (min-width: 1023.5px) {
             width: 1024px;
-            margin-left: -118px;
+            margin-left: -68px;
+        }
+        @media screen and (min-width: 1365.5px) {
+            width: 1366px;
+            margin-left: -239px;
         }
         figure{
             position: relative;
