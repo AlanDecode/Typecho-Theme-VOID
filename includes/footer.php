@@ -74,11 +74,11 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php endif; ?>
         <link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
         <footer>
-            <div class="container wide">
+            <div class="container">
                 <section data-title="Recent Guests">   <!-- 最近访客 -->
                     <div class="avatar-list">
                         <?php 
-                            $recentComments=Contents::getRecentComments(16);
+                            $recentComments=Contents::getRecentComments(14);
                             foreach ($recentComments as $comment){ ?>
                                 <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
                         <?php } ?>
