@@ -32,7 +32,7 @@ if(!Utils::isPjax()){
             <ul>
             <?php while($this->next()): ?>
                 <li>
-                    <article class="yue" itemscope itemtype="http://schema.org/Article">
+                    <article class="yue <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0') echo 'has-banner'; ?>" itemscope itemtype="http://schema.org/Article">
                         <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
                         <a href="<?php $this->permalink(); ?>" class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                             <img src="<?php echo $this->fields->banner;?>">
@@ -43,37 +43,39 @@ if(!Utils::isPjax()){
                             <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
                         </div>
                         <?php endif; ?>
-                        <a class="title" href="<?php $this->permalink(); ?>">
-                            <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
-                        </a>
-                        <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
-                        
-                        <div itemprop="articleBody">
-                        <?php if($this->fields->showfullcontent != '1'): ?>
-                            <?php if($this->fields->excerpt == ''): ?>
-                                <p itemprop="headline"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
+                        <div class="content-wrap">
+                            <a class="title" href="<?php $this->permalink(); ?>">
+                                <h1 itemprop="name" data-words="<?php echo mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $this->content), 'UTF-8'); ?>"><?php $this->title(); ?></h1>
+                            </a>
+                            <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
+                            
+                            <div itemprop="articleBody">
+                            <?php if($this->fields->showfullcontent != '1'): ?>
+                                <?php if($this->fields->excerpt == ''): ?>
+                                    <p itemprop="headline"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?></p>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php $this->content(); ?>
                             <?php endif; ?>
-                        <?php else: ?>
-                            <?php $this->content(); ?>
-                        <?php endif; ?>
-                        </div>
+                            </div>
 
-                        <div class="post-meta-index">
-                            Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time>
-                            <?php 
-                            if($this->fields->showfullcontent == '1') 
-                                echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; 
-                            else
-                                echo  ' • <a href="'.$this->permalink.'">阅读全文 →</a>'; 
-                            ?>
-                        </div>
-                        
-                        <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
-                        <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                        <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                            <meta itemprop="name" content="<?php $this->options->title(); ?>">
-                            <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                                <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
+                            <div class="post-meta-index">
+                                Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time>
+                                <?php 
+                                if($this->fields->showfullcontent == '1') 
+                                    echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; 
+                                else
+                                    echo  ' • <a href="'.$this->permalink.'">阅读全文 →</a>'; 
+                                ?>
+                            </div>
+                            
+                            <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
+                            <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
+                            <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                                <meta itemprop="name" content="<?php $this->options->title(); ?>">
+                                <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                                    <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
+                                </div>
                             </div>
                         </div>
                     </article>

@@ -217,6 +217,9 @@ section#index-list{
                 h1{
                     line-height: 1.35;
                     font-size: 1.67rem;
+                    @media screen and (min-width: 767.5px){
+                        font-size: 2rem;
+                    }
                     font-weight: bolder;
                     margin: 0;
                     margin-bottom: 1rem;
@@ -278,6 +281,23 @@ section#index-list{
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+            }
+            @media screen and (min-width: 767.5px) {
+                .has-banner{
+                    display: flex;
+                    flex-direction: row;
+                    .banner{
+                        flex: 0.5;
+                        margin-right: 1.5rem;
+                        padding-top: 30%;
+                    }
+                    .content-wrap{
+                        flex: 0.5;
+                        h1{
+                            font-size: 36px;
+                        }
+                    }
+                }   
             }
         }
     }
