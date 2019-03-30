@@ -195,19 +195,15 @@ section#index-list{
             a.banner{
                 border: none;
                 display: block;
-                height: 0;
-                padding-top: 40%;
                 position: relative;
                 margin-bottom: 1.5rem;
+                padding: unset;
+                height: unset;
                 img{
                     @include bg;
                     background-color: #fff;
                     background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
-                    position: absolute;
-                    top: 0;
-                    height: 100%;
-                    width: 100%;
-                    left: 0;
+                    max-width: 100%;
                     object-fit: cover;
                 }
             }
@@ -216,9 +212,9 @@ section#index-list{
                 border: none;
                 h1{
                     line-height: 1.35;
-                    font-size: 1.67rem;
+                    font-size: 1.71rem;
                     @media screen and (min-width: 767.5px){
-                        font-size: 2rem;
+                        font-size: 1.85rem;
                     }
                     font-weight: bolder;
                     margin: 0;
@@ -289,12 +285,11 @@ section#index-list{
                     .banner{
                         flex: 0.5;
                         margin-right: 1.5rem;
-                        padding-top: 30%;
                     }
                     .content-wrap{
                         flex: 0.5;
                         h1{
-                            font-size: 36px;
+                            font-size: 2rem;
                         }
                     }
                 }   
