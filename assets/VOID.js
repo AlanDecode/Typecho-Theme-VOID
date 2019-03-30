@@ -362,7 +362,7 @@ var VOID = {
                 if(new Date().getHours() >= 22 || new Date().getHours() < 7){
                     document.body.classList.add('theme-dark');
                     document.cookie = 'theme_dark=1;max-age=1800;path=/';
-                    VOID.alert('深色模式开启');
+                    VOID.alert('夜间模式开启');
                 }else{
                     document.body.classList.remove('theme-dark');
                 }
@@ -373,7 +373,7 @@ var VOID = {
                     document.body.classList.remove('theme-dark');
                 }else if(night == '1'){
                     document.body.classList.add('theme-dark');
-                    VOID.alert('深色模式开启');
+                    VOID.alert('夜间模式开启');
                 }
             }
         }
