@@ -201,8 +201,6 @@ section#index-list{
                 height: unset;
                 img{
                     @include bg;
-                    background-color: #fff;
-                    background-image: url(https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg);
                     max-width: 100%;
                     object-fit: cover;
                 }
