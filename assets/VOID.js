@@ -364,7 +364,7 @@ var VOID = {
 
 (function(){
     if(VOIDConfig.colorScheme == 0){
-        if(getPrefersDarkModeState()){
+        if(getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme){
             document.body.classList.add('theme-dark');
             document.cookie = 'theme_dark=1;max-age=7200;path=/';
             VOID.alert('深色模式开启');

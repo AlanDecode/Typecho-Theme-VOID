@@ -62,7 +62,8 @@ $setting = $GLOBALS['VOIDSetting'];
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
         colorScheme:  <?php echo $setting['colorScheme']; ?>,
         headerColorScheme: <?php echo $setting['headerColorScheme']; ?>,
-        headerMode: <?php echo $setting['headerMode']; ?>
+        headerMode: <?php echo $setting['headerMode']; ?>,
+        followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>
     }
     var likePath="<?php Utils::index('/action/like?up'); ?>";
     function registerLazyLoadImg(url, target){

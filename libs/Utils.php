@@ -288,7 +288,8 @@ class Utils
             'mobileBannerHeight' => '',
             'twitterId' => '',
             'weiboId' => '',
-            'headerMode' => 0
+            'headerMode' => 0,
+            'followSystemColorScheme' => false
         );
 
         $options = Helper::options();
