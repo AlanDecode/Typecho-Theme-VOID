@@ -60,7 +60,7 @@ if(!Utils::isPjax()){
                             </div>
 
                             <div class="post-meta-index">
-                                Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php $this->date('Y-m-d'); ?></time>
+                                Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                                 <?php 
                                 if($this->fields->showfullcontent == '1') 
                                     echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; 
