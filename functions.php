@@ -53,7 +53,7 @@ function themeConfig($form) {
     $form->addInput($titleinbanner);
     $indexBannerTitle=new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', NULL, '', '首页顶部大图内文字', '你随意，但不建议太长。');
     $form->addInput($indexBannerTitle);
-    $colorScheme=new Typecho_Widget_Helper_Form_Element_Radio('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下晚 22:00 至早晨 06:59 会显示为夜间模式。');
+    $colorScheme=new Typecho_Widget_Helper_Form_Element_Radio('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下每天日落到日出会显示为夜间模式。（此功能需要用户允许网站访问地理位置，不允许时默认晚 21:00 至 06:59 显示为夜间模式）。');
     $form->addInput($colorScheme);
     $headerColorScheme=new Typecho_Widget_Helper_Form_Element_Radio('headerColorScheme',array('0'=>'暗色导航栏','1'=>'透明导航栏'),'0','导航栏颜色','选择透明导航栏时，当页面位于顶部导航栏会变透明。为了良好的可读性，使用暗色导航栏时请用深色头图。');
     $form->addInput($headerColorScheme);
