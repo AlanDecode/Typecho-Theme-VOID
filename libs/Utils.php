@@ -232,8 +232,10 @@ class Utils
             $dbname =$db->getPrefix() . 'contents';
             $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $archive->cid));
             $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
-            $db->query('update `'.$dbname.'` set `wordCount`='.$count.' where `cid`='.$archive->cid);
-            $db->query('update `'.$dbname.'` set `wordCountTime`='.$archive->modified.' where `cid`='.$archive->cid);
+            
+            $db->query($db->update('table.contents')->rows(array('wordCount' => (int)$count))->where('cid = ?', $archive->cid));
+            $db->query($db->update('table.contents')->rows(array('wordCountTime' => (int)$archive->modified))->where('cid = ?', $archive->cid));
+
             return $count;
         }
         else{
@@ -249,8 +251,10 @@ class Utils
         $dbname =$db->getPrefix() . 'contents';
         $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $cid));
         $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
-        $db->query('update `'.$dbname.'` set `wordCount`='.$count.' where `cid`='.$cid);
-        $db->query('update `'.$dbname.'` set `wordCountTime`='.$row['modified'].' where `cid`='.$cid);
+
+        $db->query($db->update('table.contents')->rows(array('wordCount' => (int)$count))->where('cid = ?', $cid));
+        $db->query($db->update('table.contents')->rows(array('wordCountTime' => (int)$row['modified']))->where('cid = ?', $cid));
+
         return $count;
     }
 
