@@ -8,7 +8,7 @@
 
 console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
-// eslint-disable-next-line no-unused-vars
+
 function animateTo(distance, time){
     var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
     $body.animate({scrollTop: distance}, time);
@@ -36,7 +36,7 @@ function throttle(fun, delay, time) {
     };
 }
 
-// eslint-disable-next-line no-unused-vars
+
 function checkGoTop(){
     if($(document).scrollTop() > window.innerHeight){
         $('#back-top').fadeIn(300);
@@ -398,54 +398,36 @@ function checkColorScheme(sunset, sunrise){
 }
 
 (function(){
-    if(VOIDConfig.colorScheme == 0){
-        if(getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme){
-            document.body.classList.add('theme-dark');
-            document.cookie = 'theme_dark=1;max-age=7200;path=/';
-            VOID.alert('深色模式开启');
-        }else{
-            if('geolocation' in navigator) {
-                if(typeof(navigator.permissions)=='object'){
-                    navigator.permissions.query({name:'geolocation'}).then(function(result) {
-                        if(result.state == 'denied'){
-                            VOID.alert('请允许本站获得您的位置，以提供更准确的夜间模式切换功能。');
-                            sunset=new Date(new Date().setHours(21, 0, 0));
-                            sunrise=new Date(new Date().setHours(7, 0, 0));
-                            checkColorScheme(sunset, sunrise);
-                        }else{
-                            // 获取当地日落日出时间
-                            navigator.geolocation.getCurrentPosition(function(position) {
-                                sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-                                sunrise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-                                // 全部转换至当天
-                                sunset = new Date(new Date().setHours(sunset.getHours(), sunset.getMinutes(), 0));
-                                sunrise = new Date(new Date().setHours(sunrise.getHours(), sunrise.getMinutes(), 0));
-                                checkColorScheme(sunset, sunrise);
-                            });
-                        }
-                    });
-                }else{
-                    // 不支持检测（Safari），那就只能强行了
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-                        sunrise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-                        // 全部转换至当天
-                        sunset = new Date(new Date().setHours(sunset.getHours(), sunset.getMinutes(), 0));
-                        sunrise = new Date(new Date().setHours(sunrise.getHours(), sunrise.getMinutes(), 0));
-                        checkColorScheme(sunset, sunrise);
-                    });
+    if(VOIDConfig.colorScheme != 0) return;
+    if(getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme){
+        document.body.classList.add('theme-dark');
+        document.cookie = 'theme_dark=1;max-age=7200;path=/';
+        VOID.alert('已为您开启深色模式。');
+    } else {
+        if('geolocation' in navigator){
+            navigator.geolocation.getCurrentPosition(function(position){
+                sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+                sunrise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+                // 全部转换至当天
+                sunset = new Date(new Date().setHours(sunset.getHours(), sunset.getMinutes(), 0));
+                sunrise = new Date(new Date().setHours(sunrise.getHours(), sunrise.getMinutes(), 0));
+                checkColorScheme(sunset, sunrise);
+            }, function(data){
+                if(data.code == 1){
+                    VOID.alert('请允许本站访问您的位置，以提供更精确的夜间模式切换功能。');
                 }
-            }else{
                 sunset=new Date(new Date().setHours(21, 0, 0));
                 sunrise=new Date(new Date().setHours(7, 0, 0));
                 checkColorScheme(sunset, sunrise);
-            }
+            });
+        }else{
+            sunset=new Date(new Date().setHours(21, 0, 0));
+            sunrise=new Date(new Date().setHours(7, 0, 0));
+            checkColorScheme(sunset, sunrise);
         }
     }
 })();
 
-
-// eslint-disable-next-line no-unused-vars
 var AjaxComment = {
     noName : '必须填写用户名',
     noMail : '必须填写电子邮箱地址',
@@ -663,14 +645,14 @@ function startSearch(item) {
         window.open(t,'_self');
     }
 }
-// eslint-disable-next-line no-unused-vars
+
 function enterSearch(item){
     var event = window.event || arguments.callee.caller.arguments[0];  
     if (event.keyCode == 13)  {  
         startSearch(item);
     }
 }
-// eslint-disable-next-line no-unused-vars
+
 function toggleSearch(){
     $('.mobile-search').toggleClass('opened');
     setTimeout(function(){
@@ -681,7 +663,7 @@ function toggleSearch(){
         }
     }, 400);
 }
-// eslint-disable-next-line no-unused-vars
+
 function toggleNav(item){
     $(item).toggleClass('pushed');
     $('header').toggleClass('opened');
@@ -694,13 +676,13 @@ function toggleNav(item){
         $('#nav-mobile').fadeOut(200);
     }
 }
-// eslint-disable-next-line no-unused-vars
+
 function toggleToc(item) {
     $('.TOC').toggleClass('show');
     $('.toggle-toc').toggleClass('pushed');
     $(item).toggleClass('pushed');
 }
-// eslint-disable-next-line no-unused-vars
+
 function goTop(time) {
     animateTo(0, time);
 }
