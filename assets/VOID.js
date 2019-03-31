@@ -66,6 +66,7 @@ var getPrefersDarkModeState = function () {
 var VOID = {
     // 初始化单页应用
     init : function(){
+        VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
@@ -234,6 +235,7 @@ var VOID = {
         }else{
             $('body>header').addClass('no-banner');
         }
+        VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
@@ -347,6 +349,16 @@ var VOID = {
                 }
             }
         });
+    },
+
+    countWords : function(){
+        if($('#totalWordCount').length) {
+            var total=0;
+            $.each($('a.archive-title'), function(i, item){
+                total += parseInt($(item).attr('data-words'));
+            });
+            $('#totalWordCount').html(total);
+        }
     }
 };
 

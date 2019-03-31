@@ -32,11 +32,11 @@ if(!Utils::isPjax()){
             <?php if(!$setting['titleinbanner']): ?>
             <p class="post-meta">
                 <?php 
-                    echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × ".Utils::getWordCount()." 字";
+                    echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × <span id=\"totalWordCount\"></span> 字";
                 ?>
             </p>
             <?php endif; ?>
-            <?php $archives = Contents::archives(); $index = 0; foreach ($archives as $year => $posts): ?>
+            <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
                 <section aria-label="<?php echo $year; ?>年归档列表"  class="year<?php if($index > 0) echo ' shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                     <ul>
                 <?php foreach($posts as $created => $post): ?>
@@ -47,7 +47,6 @@ if(!Utils::isPjax()){
                 </section>
             <?php $index = $index + 1; endforeach; ?>
         </section>
-
         <!--评论区，可选-->
         <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
     </div>

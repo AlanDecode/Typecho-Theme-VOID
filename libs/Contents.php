@@ -309,7 +309,6 @@ Class Contents
         } else {
             return null;
         }
-
     }
 
     /**
@@ -338,25 +337,27 @@ Class Contents
      * 
      * @return array
      */
-    public static function archives($excerpt = false)
+    public static function archives($widget, $excerpt = false)
     {
         $db = Typecho_Db::get();
-        $cids = $db->fetchAll($db->select('table.contents.cid')
+        $rows = $db->fetchAll($db->select()
                     ->from('table.contents')
                     ->order('table.contents.created', Typecho_Db::SORT_DESC)
                     ->where('table.contents.type = ?', 'post')
                     ->where('table.contents.status = ?', 'publish'));
+        
         $stat = array();
-        foreach ($cids as $cid) {
-            $post = self::getPost($cid);
+        foreach ($rows as $row) {
+            $row = $widget->filter($row);
+            if($row['wordCount']==0) $row['wordCount'] = Utils::wordCountByCid($row['cid']);
             $arr = array(
-                'title' => $post->title,
-                'permalink' => $post->permalink,
-                'words' => mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $post->content), 'UTF-8'));
+                'title' => $row['title'],
+                'permalink' => $row['permalink'],
+                'words' => $row['wordCount']);
             if($excerpt){
-                $arr['excerpt'] = substr($post->content, 30);
+                $arr['excerpt'] = substr($row['content'], 30);
             }
-            $stat[date('Y', $post->created)][$post->created] = $arr;
+            $stat[date('Y', $row['created'])][$row['created']] = $arr;
         }
         return $stat;
     }

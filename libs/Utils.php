@@ -222,22 +222,36 @@ class Utils
     }
 
     /**
-     * 总字数
+     * 单文章字数
      * 
      * @return int
      */
-    public static function getWordCount()
-    {
-        $db = Typecho_Db::get();
-        $posts = $db->fetchAll($db->select('table.contents.text')
-                    ->from('table.contents')
-                    ->where('table.contents.type = ?', 'post')
-                    ->where('table.contents.status = ?', 'publish'));
-        $total = 0;
-        foreach ($posts as $post) {
-            $total = $total + mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $post['text']), 'UTF-8');
+    public static function wordCount($archive){
+        if($archive->wordCount == 0 || ($archive->modified > $archive->wordCountTime)){
+            $db = Typecho_Db::get();
+            $dbname =$db->getPrefix() . 'contents';
+            $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $archive->cid));
+            $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
+            $db->query('update `'.$dbname.'` set `wordCount`='.$count.' where `cid`='.$archive->cid);
+            $db->query('update `'.$dbname.'` set `wordCountTime`='.$archive->modified.' where `cid`='.$archive->cid);
+            return $count;
         }
-        return $total;
+        else{
+            return $archive->wordCount;
+        }
+    }
+
+    /**
+     * 根据 cid 直接更新字数
+     */
+    public static function wordCountByCid($cid){
+        $db = Typecho_Db::get();
+        $dbname =$db->getPrefix() . 'contents';
+        $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $cid));
+        $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
+        $db->query('update `'.$dbname.'` set `wordCount`='.$count.' where `cid`='.$cid);
+        $db->query('update `'.$dbname.'` set `wordCountTime`='.$row['modified'].' where `cid`='.$cid);
+        return $count;
     }
 
     /**
