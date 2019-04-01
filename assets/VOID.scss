@@ -112,6 +112,28 @@ body{
         border-color: $darkColor!important;
         background: $darkColor;
     }
+    &.btn-highlight{
+        border: 3px solid #ff5268!important;
+        color: #ff5268;
+        display: inline-block;
+        .theme-dark &{
+            border-color: $td-borderColor!important;
+            color: $td-textColor-dark;
+        }
+        &:hover,&.done{
+            color: white!important;
+            .theme-dark &{
+                color: $td-textColor-light!important;
+            }
+            border-color: #ff5268!important;
+            background: #ff5268;
+        }
+    }
+}
+
+#reward, #reward img{
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .toggle{

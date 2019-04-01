@@ -280,6 +280,7 @@ class Utils
             'serviceworker' => false,
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
             'headerColorScheme' => 0, //0: 暗色，1: 透明
+            'reward' => '',
 
             // 高级设置
             'nav' => '',
@@ -342,6 +343,10 @@ class Utils
         
         if(!empty($options->pjaxreload)){
             $output['pjaxreload'] = $options->pjaxreload;
+        }
+
+        if(!empty($options->reward)){
+            $output['reward'] = $options->reward;
         }
 
         if(!empty($options->titleinbanner)){

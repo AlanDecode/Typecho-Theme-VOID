@@ -69,6 +69,10 @@ $setting = $GLOBALS['VOIDSetting'];
                     data-text="<?php $this->title(); ?>"
                     data-url="<?php $this->permalink(); ?>"
                     <?php if($this->fields->banner != '') echo 'data-image="'.$this->fields->banner.'"';?>>
+                    <?php if(!empty($setting['reward'])):?>
+                        <a data-fancybox="gallery" role=button aria-label="赞赏" data-src="#reward" href="javascript:;" class="btn btn-normal btn-highlight">赏杯咖啡</a>
+                        <div hidden id="reward"><img src="<?php echo $setting['reward']; ?>"></div>
+                    <?php endif; ?>
                     <?php if(Utils::isPluginAvailable('Like')):?>
                         <a role=button aria-label="点赞" id="social" href="javascript:;" data-pid="<?php echo $this->cid;?>" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php Like_Plugin::theLike($link = false,$this);?></span></a>
                     <?php endif; ?>
