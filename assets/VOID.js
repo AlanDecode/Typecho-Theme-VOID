@@ -414,7 +414,10 @@ function checkColorScheme(sunset, sunrise){
                 checkColorScheme(sunset, sunrise);
             }, function(data){
                 if(data.code == 1){
-                    VOID.alert('请允许本站访问您的位置，以提供更精确的夜间模式切换功能。');
+                    if(document.cookie.replace(/(?:(?:^|.*;\s*)no_notify_geo\s*=\s*([^;]*).*$)|^.*$/, '$1') === ''){
+                        document.cookie = 'no_notify_geo=1;max-age=43200;path=/';
+                        VOID.alert('请允许本站访问您的位置，以提供更精确的夜间模式切换功能。本站不会记录您的位置信息，更不会滥用它。', 5000);
+                    }
                 }
                 sunset=new Date(new Date().setHours(21, 0, 0));
                 sunrise=new Date(new Date().setHours(7, 0, 0));
