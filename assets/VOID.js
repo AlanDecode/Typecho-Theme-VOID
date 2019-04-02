@@ -140,8 +140,7 @@ var VOID = {
             $(document).pjax('a.pjax', {
                 container: '#pjax-container',
                 fragment: '#pjax-container',
-                timeout: 8000,
-                scrollTo: false
+                timeout: 8000
             });
         }
     },
@@ -231,8 +230,6 @@ var VOID = {
         var hash = new URL(window.location.href).hash;
         if(hash != ''){
             animateTo($(hash).offset().top - 80, 500);
-        }else{
-            animateTo(0, 500);
         }
         if($('#banner').length){
             $('body>header').removeClass('no-banner');
