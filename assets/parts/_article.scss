@@ -146,7 +146,7 @@ article {
         &::after {
             content: "";
             @include bg;
-            background-color: #fefefe;
+            background-color: #fff;
             .theme-dark & {
                 background-color: $td-bgColor;
             }
