@@ -14,10 +14,10 @@
 
 * PJAX 无刷新体验
 * AJAX 评论
-* 夜间模式自动切换
+* 夜间模式（支持随日出日落自动切换）
 * 响应式设计
 * 优秀的可读性
-* 代码高亮
+* 代码高亮、行号
 * MathJax 公式
 * 表情解析（文章、评论可用）
 * 图片排版（可用作相册）
@@ -103,6 +103,12 @@
 
 </details>
 
+<details><summary>SQLite 数据库支持</summary><br>
+
+目前本主题在 SQLite 数据库下可能会有未知问题，请知悉。
+
+</details>
+
 ## 更新
 
 同[开始使用](#开始使用)，区别是你可以直接覆盖主题文件，不禁用主题，这样你的主题设置就不会丢失。
@@ -148,35 +154,16 @@ gulp build
 
 ## 更新日志
 
-**2019-03-26 Version 2.0.1**
+**2019-04-02 Version 2.1**
 
-* 修复夜间模式自动切换的 bug
-* 开启夜间模式时显示提示
-* 高级设置增加更多导航栏模式设置
-* 修改背景配色
-* 一些其它细小的优化与修复
-
-**2019-03-18 Version 2.0**
-
-🎉 MAKE VOID GREAT AGAIN!
-
-2.0 是一次删繁就简、回归本质的更新。我在这个版本中对代码进行了精简，移除了许多实用性不足的功能。同时对已有的功能、样式进行了细致的优化，只为了能够更舒心地写作与阅读。
-
-* 添加了夜间模式，支持自动切换
-* 添加导航栏颜色模式设置（暗色、透明色）
-* 导航栏可随滚动显隐
-* 优化了头图设置逻辑
-* 优化了摘要样式
-* 优化了大量细节
-* 消灭了大量臭虫
-
-**移除**了以下特性：
-
-* 卡片版首页
-* 首页加载更多与无限滚动
-* 提示语与欢迎语
-* 导航栏位置设置
-* 强制首页无大图
+* 自动模式下可根据地理位置计算日出日落时间并切换夜间模式。（需要用户允许访问位置，若不允许则默认 21:00 至 07:00 之间为夜间模式）
+* macOS 10.14.4 及以上操作系统支持跟随系统深色模式
+* 调整首页文章列表样式，取消封面图长宽比例限制
+* 代码块支持行号
+* 增加打赏二维码设置
+* 文章字数缓存至数据库，提升性能
+* 修复了时区导致的文章发布时间显示错误
+* 当文章设定了摘要时首页不再从文章中截取摘要
 
 更多：[change-log.md](https://github.com/AlanDecode/Typecho-Theme-VOID/blob/master/change-log.md)
 
@@ -184,7 +171,7 @@ gulp build
 
 ### 开源项目
 
-[JQuery](https://github.com/jquery/jquery) | [highlight.js](https://highlightjs.org/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/)
+[JQuery](https://github.com/jquery/jquery) | [highlight.js](https://highlightjs.org/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [sun.js](https://github.com/Triggertrap/sun-js)
 
 ### 其他
 

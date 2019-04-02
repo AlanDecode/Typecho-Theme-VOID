@@ -2,11 +2,11 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-// RAW
+// VOID
 // Author: 熊猫小A
-// Link: https://www.imalan.cn
+// Link: https://blog.imalan.cn/archives/247/
 
-console.log(' %c Theme VOID %c https://blog.imalan.cn/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
+console.log(' %c Theme VOID %c https://blog.imalan.cn/archives/247/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
 
 function animateTo(distance, time){
