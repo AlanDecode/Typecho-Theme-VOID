@@ -15,26 +15,6 @@ html{
     background: #111;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: rgba(0,0,0,.15);
-    .theme-dark &{
-        background-color: $td-bgColor;
-    }
-}
-::-webkit-scrollbar-track {
-    background-color: #eee;
-    .theme-dark &{
-        background-color: $td-bgColor;
-    }
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,.15);
-    .theme-dark &{
-        background-color: rgba($color: #fff, $alpha: 0.25);
-    }
-}
 ::selection {
     color: white;
     background-color: #ffe150;
