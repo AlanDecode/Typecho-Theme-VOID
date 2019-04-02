@@ -52,6 +52,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
                 <?php if($this->fields->banner != ''): ?>
                 <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <img src="<?php echo $this->fields->banner; ?>" />
                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                 </div>
                 <?php endif; ?>
