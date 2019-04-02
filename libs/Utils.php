@@ -289,7 +289,7 @@ class Utils
             'mobileBannerHeight' => '',
             'twitterId' => '',
             'weiboId' => '',
-            'headerMode' => 0,
+            'headerMode' => 1,
             'followSystemColorScheme' => false
         );
 
