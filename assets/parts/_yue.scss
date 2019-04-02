@@ -235,6 +235,9 @@
     .theme-dark & {
         background: $td-bgColor-dark;
     }
+    .theme-dark &::-webkit-scrollbar{
+        background: $td-bgColor-dark;
+    }
     color: #abb2bf;
     > code {
         width: max-content !important;
@@ -249,7 +252,7 @@
 .yue pre code{
     display: block;
     overflow-x: auto;
-    padding: 0.5em;
+    padding: 0;
     color: #abb2bf;
     background: #282c34;
 }

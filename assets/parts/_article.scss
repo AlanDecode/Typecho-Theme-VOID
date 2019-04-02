@@ -443,12 +443,6 @@ ruby > rt {
             .theme-dark & {
                 background-color: transparent!important;
             }
-            &:first-of-type{
-                padding-top: 12px!important;
-            }
-            &:last-of-type{
-                padding-bottom: 12px!important;
-            }
         }
     }
 }
@@ -465,6 +459,9 @@ ruby > rt {
     right: calc(3.5rem + 5px);
     background: rgba($color: #000000, $alpha: 0.92);
     padding: 1rem;
+    .theme-dark &::-webkit-scrollbar{
+        background: none;
+    }
     * {
         color: #eee;
     }
