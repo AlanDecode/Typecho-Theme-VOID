@@ -7,13 +7,14 @@
  */
 
 .yue {
-  font: 400 18px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  color: #444443;
-  .theme-dark &{
-    color: $td-textColor;
-  }
-  letter-spacing: 0.04em;
-  word-break: break-word;
+    font: 400 18px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
+        "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+    color: #444443;
+    .theme-dark & {
+        color: $td-textColor;
+    }
+    letter-spacing: 0.04em;
+    word-break: break-word;
 }
 
 .yue h1,
@@ -22,293 +23,304 @@
 .yue h4,
 .yue h5,
 .yue h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  color: #222223;
-  .theme-dark &{
-    color: $td-textColor-light;
-  }
-  &::before{
-    display: block;
-    content: " ";
-    height: 60px;
-    margin-top: -60px;
-    visibility: hidden;
-  }
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
+        "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+    color: #222223;
+    .theme-dark & {
+        color: $td-textColor-light;
+    }
+    &::before {
+        display: block;
+        content: " ";
+        height: 60px;
+        margin-top: -60px;
+        visibility: hidden;
+    }
 }
 .yue h1 {
-  font-size: 1.8em;
-  margin: 0.67em 0;
-  &::before{
-    display: none;
-  }
+    font-size: 1.8em;
+    margin: 0.67em 0;
+    &::before {
+        display: none;
+    }
 }
 .yue > h1 {
-  margin-top: 0;
-  font-size: 2.2em;
+    margin-top: 0;
+    font-size: 2.2em;
 }
 .yue h2 {
-  font-size: 1.5em;
-  margin: 0.83em 0;
+    font-size: 1.5em;
+    margin: 0.83em 0;
 }
 .yue h3 {
-  font-size: 1.17em;
-  margin: 1em 0;
+    font-size: 1.17em;
+    margin: 1em 0;
 }
 .yue h4,
 .yue h5,
 .yue h6 {
-  font-size: 1em;
-  margin: 1.6em 0 1em 0;
+    font-size: 1em;
+    margin: 1.6em 0 1em 0;
 }
 .yue h6 {
-  font-weight: 500;
+    font-weight: 500;
 }
 .yue p {
-  margin-top: 0.6em;
-  margin-bottom: 1.24em;
+    margin-top: 0.6em;
+    margin-bottom: 1.24em;
 }
 .yue a {
-  word-wrap: break-word;
-  &:not([data-fancybox=gallery]):not(.post-like):not(.edit-button){
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    .theme-dark &{
-      border-color: $td-textColor-dark;
+    word-wrap: break-word;
+    &:not([data-fancybox="gallery"]):not(.post-like):not(.edit-button) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        .theme-dark & {
+            border-color: $td-textColor-dark;
+        }
     }
-  }
 }
-.yue h1 a, .yue h2 a, .yue h3 a {
-  text-decoration: none;
+.yue h1 a,
+.yue h2 a,
+.yue h3 a {
+    text-decoration: none;
 }
 .yue strong,
 .yue b {
-  font-weight: 700;
-  color: #222223;
-  .theme-dark &{
-    color: $td-textColor-light;
-  }
+    font-weight: 700;
+    color: #222223;
+    .theme-dark & {
+        color: $td-textColor-light;
+    }
 }
 .yue em,
 .yue i {
-  font-style: italic;
-  color: rgba($color: #000000, $alpha: 0.88);
-  .theme-dark &{
-    color: $td-textColor-light
-  }
+    font-style: italic;
+    color: rgba($color: #000000, $alpha: 0.88);
+    .theme-dark & {
+        color: $td-textColor-light;
+    }
 }
 .yue img {
-  max-width: 100%;
-  height: auto;
-  margin: 0.2em 0;
-  .theme-dark &{
-    filter: brightness(0.85);
-  }
+    max-width: 100%;
+    height: auto;
+    margin: 0.2em 0;
+    .theme-dark & {
+        filter: brightness(0.85);
+    }
 }
 .yue a img {
-  /* Remove border on IE */
-  border: none;
+    /* Remove border on IE */
+    border: none;
 }
 .yue figure {
-  position: relative;
-  clear: both;
-  outline: 0;
-  margin: 10px 0 30px;
-  padding: 0;
-  min-height: 100px;
+    position: relative;
+    clear: both;
+    outline: 0;
+    margin: 10px 0 30px;
+    padding: 0;
+    min-height: 100px;
 }
 .yue figure img {
-  display: block;
-  max-width: 100%;
-  margin: auto auto 4px;
-  box-sizing: border-box;
+    display: block;
+    max-width: 100%;
+    margin: auto auto 4px;
+    box-sizing: border-box;
 }
 .yue figure figcaption {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  left: 0;
-  margin-top: 10px;
-  font-weight: 400;
-  font-size: 14px;
-  color: #666665;
-  .theme-dark &{
-    color: $td-textColor-dark;
-  }
+    position: relative;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666665;
+    .theme-dark & {
+        color: $td-textColor-dark;
+    }
 }
 .yue figure figcaption a {
-  text-decoration: none;
-  color: #666665;
-  .theme-dark &{
-    color: $td-textColor-dark;
-  }
+    text-decoration: none;
+    color: #666665;
+    .theme-dark & {
+        color: $td-textColor-dark;
+    }
 }
 .yue hr {
-  display: block;
-  width: 14%;
-  margin: 40px auto 34px;
-  border: 0 none;
-  border-top: 3px solid #dededc;
-  .theme-dark &{
-    border-color: $td-borderColor;
-  }
+    display: block;
+    width: 14%;
+    margin: 40px auto 34px;
+    border: 0 none;
+    border-top: 3px solid #dededc;
+    .theme-dark & {
+        border-color: $td-borderColor;
+    }
 }
 .yue blockquote {
-  margin: 0 0 1.64em 0;
-  border-left: 3px solid #dadada;
-  padding-left: 12px;
-  color: #666664;
-  .theme-dark &{
-    color: $td-textColor-dark;
-    border-color: $td-borderColor;
-  }
-  text-align: justify;
+    margin: 0 0 1.64em 0;
+    border-left: 3px solid #dadada;
+    padding-left: 12px;
+    color: #666664;
+    .theme-dark & {
+        color: $td-textColor-dark;
+        border-color: $td-borderColor;
+    }
+    text-align: justify;
 }
 .yue blockquote a {
-  color: #666664;
-  .theme-dark &{
-    color: $td-textColor-dark;
-  }
+    color: #666664;
+    .theme-dark & {
+        color: $td-textColor-dark;
+    }
 }
 .yue ul,
 .yue ol {
-  margin: 0 0 24px 6px;
-  padding-left: 16px;
+    margin: 0 0 24px 6px;
+    padding-left: 16px;
 }
 .yue ul {
-  list-style-type: square;
+    list-style-type: square;
 }
 .yue ol {
-  list-style-type: decimal;
+    list-style-type: decimal;
 }
 .yue li {
-  margin-bottom: 0.2em;
+    margin-bottom: 0.2em;
 }
 .yue li ul,
 .yue li ol {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 14px;
 }
 .yue li ul {
-  list-style-type: disc;
+    list-style-type: disc;
 }
 .yue li ul ul {
-  list-style-type: circle;
+    list-style-type: circle;
 }
 .yue li p {
-  margin: 0.4em 0 0.6em;
+    margin: 0.4em 0 0.6em;
 }
 .yue .unstyled {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 .yue code,
 .yue tt {
-  color: #808080;
-  font-size: 0.96em;
-  background-color: #f9f9f7;
-  padding: 1px 2px;
-  border: 1px solid #eee;
-  .theme-dark &{
-    color: $td-textColor-dark;
-    background-color: $td-bgColor-dark;
-    border-color: $td-bgColor-dark;
-  }
-  border-radius: 3px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  word-wrap: break-word;
+    color: #808080;
+    font-size: 0.96em;
+    background-color: #f9f9f7;
+    padding: 1px 2px;
+    border: 1px solid #eee;
+    .theme-dark & {
+        color: $td-textColor-dark;
+        background-color: $td-bgColor-dark;
+        border-color: $td-bgColor-dark;
+    }
+    border-radius: 3px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    word-wrap: break-word;
 }
 .yue pre {
-  margin: 1.64em 0;
-  padding: 7px;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  line-height: 1.5;
-  font-size: 0.96em;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  background: #282c34;
-  .theme-dark &{
-    background: $td-bgColor-dark;
-  }
-  color: #abb2bf;
-  >code{
-    width:max-content!important;
-  }
+    margin: 1.64em 0;
+    padding: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    line-height: 1.5;
+    font-size: 0.96em;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    background: #282c34;
+    .theme-dark & {
+        background: $td-bgColor-dark;
+    }
+    color: #abb2bf;
+    > code {
+        width: max-content !important;
+    }
 }
 .yue pre code,
 .yue pre tt {
-  color: #abb2bf;
-  border: none;
-  background: none;
+    color: #abb2bf;
+    border: none;
+    background: none;
+}
+.yue pre code{
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #abb2bf;
+    background: #282c34;
 }
 .yue table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 1.5em;
-  font-size: 0.96em;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 1.5em;
+    font-size: 0.96em;
+    box-sizing: border-box;
 }
-.yue thead{
-  background-color: #efefee;
-  .theme-dark &{
-    background-color: $td-bgColor-dark;
-  }
+.yue thead {
+    background-color: #efefee;
+    .theme-dark & {
+        background-color: $td-bgColor-dark;
+    }
 }
 .yue th,
 .yue td {
-  text-align: left;
-  padding: 4px 8px 4px 10px;
-  border: 1px solid #dadada;
+    text-align: left;
+    padding: 4px 8px 4px 10px;
+    border: 1px solid #dadada;
 }
 .yue td {
-  vertical-align: top;
+    vertical-align: top;
 }
 .yue tr:nth-child(even) {
-  background-color: #efefee;
-  .theme-dark &{
-    background-color: $td-bgColor-dark;
-  }
+    background-color: #efefee;
+    .theme-dark & {
+        background-color: $td-bgColor-dark;
+    }
 }
 .yue iframe {
-  display: block;
-  max-width: 100%;
-  margin-bottom: 30px;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 30px;
 }
 .yue figure iframe {
-  margin: auto;
+    margin: auto;
 }
 .yue table pre {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
 }
 @media (min-width: 1100px) {
-  .yue blockquote {
-    margin-left: -24px;
-    padding-left: 20px;
-    border-width: 4px;
-  }
-  .yue blockquote blockquote {
-    margin-left: 0;
-  }
+    .yue blockquote {
+        margin-left: -24px;
+        padding-left: 20px;
+        border-width: 4px;
+    }
+    .yue blockquote blockquote {
+        margin-left: 0;
+    }
 }
 
 [lang^="zh"] .yue p,
 [lang^="ja"] .yue p {
-  text-align: justify;
-  text-justify: inter-ideographic;
+    text-align: justify;
+    text-justify: inter-ideographic;
 }
 
 [lang^="zh"] .yue em,
 [lang^="ja"] .yue em {
-  font-style: normal;
-  font-family: Baskerville,Georgia,Kaiti SC,STKaiti,AR PL UKai CN,AR PL UKai HK,AR PL UKai TW,AR PL UKai TW MBE,AR PL KaitiM GB,KaiTi,KaiTi_GB2312,DFKai-SB,TW\\-Kai,serif;
-  -webkit-text-emphasis: dot #555;
-          text-emphasis: dot #555;
-  -webkit-text-emphasis-position: under left;
-          text-emphasis-position: under left;
+    font-style: normal;
+    font-family: Baskerville, Georgia, Kaiti SC, STKaiti, AR PL UKai CN, AR PL UKai HK, AR PL UKai TW, AR PL UKai TW MBE,
+        AR PL KaitiM GB, KaiTi, KaiTi_GB2312, DFKai-SB, TW\\-Kai, serif;
+    -webkit-text-emphasis: dot #555;
+    text-emphasis: dot #555;
+    -webkit-text-emphasis-position: under left;
+    text-emphasis-position: under left;
 }

@@ -71,7 +71,10 @@ var VOID = {
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
-        hljs.initHighlightingOnLoad();
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+            hljs.lineNumbersBlock(block, {singleLine: true});
+        });
         VOID.hitokoto();
         VOID.handleLike();
         pangu.spacingElementByTagName('p');
@@ -249,7 +252,10 @@ var VOID = {
     // 重载与事件绑定
     reload : function(){
         // 重载代码高亮
-        $('pre code').each(function(i, block) {hljs.highlightBlock(block);});   
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+            hljs.lineNumbersBlock(block, {singleLine: true});
+        });
         // 重载 MathJax
         if (typeof MathJax !== 'undefined'){
             MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
