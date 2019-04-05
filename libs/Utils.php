@@ -290,7 +290,8 @@ class Utils
             'twitterId' => '',
             'weiboId' => '',
             'headerMode' => 1,
-            'followSystemColorScheme' => false
+            'followSystemColorScheme' => false,
+            'accurateDarkMode' => false
         );
 
         $options = Helper::options();
