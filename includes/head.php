@@ -98,7 +98,7 @@ $setting = $GLOBALS['VOIDSetting'];
 
     <?php if($setting['serifincontent']): ?>
     @font-face{font-family:"Droid Serif";src:url("<?php Utils::indexTheme('assets/fonts/Droid-Serif.ttf'); ?>");font-display: swap;}
-    div[itemprop=articleBody],.content{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
+    div[itemprop=articleBody],.content,.yue{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
     <?php endif; ?>
 
     <?php if($setting['headerColorScheme']): ?>
