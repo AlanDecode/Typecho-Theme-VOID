@@ -10,9 +10,9 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
-        <?php if($setting['serviceworker']): ?>
+        <?php if(!empty($setting['serviceworker'])): ?>
         <script>
-            var serviceWorkerUri = '/VOIDCacheRule.js';
+            var serviceWorkerUri = '/<?php echo $setting['serviceworker']; ?>';
             if ('serviceWorker' in navigator) {  
                 navigator.serviceWorker.register(serviceWorkerUri).then(function() {
                 if (navigator.serviceWorker.controller) {

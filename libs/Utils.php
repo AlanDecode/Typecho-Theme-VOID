@@ -277,7 +277,7 @@ class Utils
             'titleinbanner' => false,
             'lazyload' => false,
             'indexBannerTitle' => '',
-            'serviceworker' => false,
+            'serviceworker' => '',
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
             'headerColorScheme' => 0, //0: 暗色，1: 透明
             'reward' => '',
@@ -356,7 +356,7 @@ class Utils
         }
 
         if(!empty($options->serviceworker)){
-            if($options->serviceworker == '1') $output['serviceworker'] = true;
+            $output['serviceworker'] = $options->serviceworker;
         }
 
         return $output;
