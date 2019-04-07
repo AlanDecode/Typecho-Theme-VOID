@@ -291,7 +291,8 @@ class Utils
             'weiboId' => '',
             'headerMode' => 1,
             'followSystemColorScheme' => false,
-            'accurateDarkMode' => false
+            'accurateDarkMode' => false,
+            "kitId" => 'suh1quu'
         );
 
         $options = Helper::options();

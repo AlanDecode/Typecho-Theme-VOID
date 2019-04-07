@@ -96,13 +96,27 @@ $setting = $GLOBALS['VOIDSetting'];
     body>header{ position: absolute }
     <?php endif; ?>
 
-    <?php if($setting['serifincontent']): ?>
+    <?php if(empty($setting['kitId']) && $setting['serifincontent']): ?>
     @font-face{font-family:"Droid Serif";src:url("<?php Utils::indexTheme('assets/fonts/Droid-Serif.ttf'); ?>");font-display: swap;}
-    div[itemprop=articleBody],.content,.yue{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
+    div[itemprop=articleBody], .yue{font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
     <?php endif; ?>
 
     <?php if($setting['headerColorScheme']): ?>
     body>header{background: transparent;}
     <?php endif; ?>
     </style>
+
+    <?php if(!empty($setting['kitId'])):?>
+        <script>
+        (function(d) {
+            var config = {
+                kitId: '<?php echo $setting['kitId']; ?>',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+        </script>
+        <style>div[itemprop=articleBody], .yue{font-family: 'Source Han Serif SC','Source Han Serif','source-han-serif-sc', 'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}</style>
+    <?php endif; ?>
     </head>
