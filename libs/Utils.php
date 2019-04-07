@@ -292,7 +292,7 @@ class Utils
             'headerMode' => 1,
             'followSystemColorScheme' => false,
             'accurateDarkMode' => false,
-            "kitId" => 'suh1quu'
+            "useNotoSerif" => false
         );
 
         $options = Helper::options();
