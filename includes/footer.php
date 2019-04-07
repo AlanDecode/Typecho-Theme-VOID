@@ -16,7 +16,7 @@ $setting = $GLOBALS['VOIDSetting'];
             if ('serviceWorker' in navigator) {  
                 navigator.serviceWorker.register(serviceWorkerUri).then(function() {
                 if (navigator.serviceWorker.controller) {
-                    console.log('Assets cached by the controlling service worker.');
+                    console.log('Service woker is registered and is controlling.');
                 } else {
                     console.log('Please reload this page to allow the service worker to handle network operations.');
                 }

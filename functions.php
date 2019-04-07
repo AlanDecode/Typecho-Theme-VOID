@@ -75,7 +75,7 @@ function themeConfig($form) {
     $form->addInput($pjax);
     $pjaxreload=new Typecho_Widget_Helper_Form_Element_Textarea('pjaxreload', NULL, NULL, 'PJAX 重载函数', '输入要重载的 JS，如果你发现站点有点不对劲，又不知道这个选项是啥意思，请关闭 PJAX 并留空此项。');
     $form->addInput($pjaxreload);
-    $serviceworker=new Typecho_Widget_Helper_Form_Element_Text('serviceworker',NULL, NULL,'Service Worker','是否启用 Service Worker。Service Worker 可以使浏览器主动缓存静态文件，达到加速效果，但是可能导致某些异常。若要启用，请把缓存规则文件（例如主题 assets 文件夹下的 VOIDCacheRule.js）复制一份到<b>站点根目录</b>，并在这里填写规则文件名（例如 VOIDCacheRule.js）。');
+    $serviceworker=new Typecho_Widget_Helper_Form_Element_Text('serviceworker',NULL, NULL,'自定义 Service Worker','如果你知道这是什么，请把你的 SW 文件（例如主题 assets 文件夹下的 VOIDCacheRule.js）复制一份到<b>站点根目录</b>，并在这里填写文件名（例如 VOIDCacheRule.js）。若不知道该选项含义，请留空此项。');
     $form->addInput($serviceworker);
 
     // 超高级设置
