@@ -96,17 +96,12 @@ $setting = $GLOBALS['VOIDSetting'];
     body>header{ position: absolute }
     <?php endif; ?>
 
-    <?php if(!$setting['useNotoSerif'] && $setting['serifincontent']): ?>
-    @font-face{font-family:"Droid Serif";src:url("<?php Utils::indexTheme('assets/fonts/Droid-Serif.ttf'); ?>");font-display: swap;}
-    div[itemprop=articleBody], .yue{font-display:swap; font-family: 'Droid Serif','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif}
-    <?php endif; ?>
-
     <?php if($setting['headerColorScheme']): ?>
     body>header{background: transparent;}
     <?php endif; ?>
     </style>
 
-    <?php if($setting['useNotoSerif']):?>
+    <?php if($setting['serifincontent']): ?>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">
     <style>div[itemprop=articleBody], .yue{font-family: 'Noto Serif SC', serif; font-display:swap}</style>
     <?php endif; ?>

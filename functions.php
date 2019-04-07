@@ -61,7 +61,7 @@ function themeConfig($form) {
     // 高级设置
     $reward=new Typecho_Widget_Helper_Form_Element_Text('reward', NULL, '', '打赏二维码', '图片链接，只允许一张图片，更多请自行合成。');
     $form->addInput($reward);
-    $serifincontent=new Typecho_Widget_Helper_Form_Element_Radio('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','在文章内容中启用衬线体','是否对文章内容中的西文字符启用衬线体（Droid Serif），启用后需要多加载 118 KB 的字体文件。');
+    $serifincontent=new Typecho_Widget_Helper_Form_Element_Radio('serifincontent',array('0'=>'不启用','1'=>'启用'),'0','文章内容使用思源宋体','是否对文章内容中启用衬线体（思源宋体）。此服务由 Google 字体提供，可能会有加载较慢的情况。');
     $form->addInput($serifincontent);
     $lazyload=new Typecho_Widget_Helper_Form_Element_Radio('lazyload',array('0'=>'不启用','1'=>'启用'),'0','图片懒加载','是否启用图片懒加载。');
     $form->addInput($lazyload);
