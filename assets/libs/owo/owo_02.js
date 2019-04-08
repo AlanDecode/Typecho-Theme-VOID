@@ -1,4 +1,41 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 'use strict';
+
+function insertAtCursor(myField, myValue) {
+    var textTop = myField.scrollTop;
+    var documentTop = document.documentElement.scrollTop;
+
+    //IE 浏览器
+    if (document.selection) {
+        myField.focus();
+        var sel = document.selection.createRange();
+        sel.text = myValue;
+        sel.select();
+    }
+
+    //FireFox、Chrome等
+    else if (myField.selectionStart || myField.selectionStart == '0') {
+        var startPos = myField.selectionStart;
+        var endPos = myField.selectionEnd;
+
+        myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+
+        myField.focus();
+        myField.selectionStart = startPos + myValue.length;
+        myField.selectionEnd = startPos + myValue.length;
+    } else {
+        
+        myField.value += myValue;
+        myField.focus();
+    }
+
+    myField.scrollTop = textTop;
+    document.documentElement.scrollTop=documentTop;
+}
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -100,9 +137,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         var cursorPos = _this2.area.selectionEnd;
                         var areaValue = _this2.area.value;
                         if (target.dataset.id == "not-given") {
-                            _this2.area.value = areaValue.slice(0, cursorPos) + target.innerHTML + areaValue.slice(cursorPos) + ' ';
+                            insertAtCursor(_this2.area, ' ' + target.innerHTML + ' ');
+                            //_this2.area.value = areaValue.slice(0, cursorPos) + target.innerHTML + areaValue.slice(cursorPos) + ' ';
                         } else {
-                            _this2.area.value = areaValue.slice(0, cursorPos) + target.dataset.id + areaValue.slice(cursorPos) + ' ';
+                            insertAtCursor(_this2.area, ' ' + target.dataset.id + ' ');
+                            //_this2.area.value = areaValue.slice(0, cursorPos) + target.dataset.id + areaValue.slice(cursorPos) + ' ';
                         }
                         _this2.area.focus();
                         _this2.toggle();
