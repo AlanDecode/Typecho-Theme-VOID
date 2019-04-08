@@ -428,7 +428,6 @@ var DarkModeSwitcher = {
                 document.body.classList.remove('theme-dark');
             }else if(night == '1'){
                 document.body.classList.add('theme-dark');
-                VOID.alert('日落了，夜间模式已开启。');
             }
         }
     },
@@ -450,8 +449,11 @@ var DarkModeSwitcher = {
         if(VOIDConfig.colorScheme != 0) return;
         if(getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme){
             document.body.classList.add('theme-dark');
+            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+            if(night != '1'){
+                VOID.alert('已为您开启深色模式。');
+            }
             document.cookie = 'theme_dark=1;max-age=7200;path=/';
-            VOID.alert('已为您开启深色模式。');
         } else {
             if(!VOIDConfig.accurateDarkMode){
                 DarkModeSwitcher.checkColorSchemeFallback();
