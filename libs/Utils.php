@@ -145,7 +145,8 @@ class Utils
                 max-width:-webkit-calc(25% - 10px);
                 max-width:calc(25% - 10px)
             }
-        }</style>';
+        }
+        .wmd-button-row{height:unset}</style>';
     }
 
     /**
