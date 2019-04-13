@@ -9,7 +9,7 @@
 .yue {
     font: 400 18px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
         "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-    color: #444443;
+    color: #333332;
     .theme-dark & {
         color: $td-textColor;
     }
@@ -25,7 +25,7 @@
 .yue h6 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
         "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-    color: #222223;
+    color: #222222;
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -86,7 +86,7 @@
 .yue strong,
 .yue b {
     font-weight: 700;
-    color: #222223;
+    color: #222222;
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -94,7 +94,7 @@
 .yue em,
 .yue i {
     font-style: italic;
-    color: rgba($color: #000000, $alpha: 0.88);
+    color: rgba($color: #222222, $alpha: 0.88);
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -133,14 +133,14 @@
     margin-top: 10px;
     font-weight: 400;
     font-size: 14px;
-    color: #666665;
+    color: #555554;
     .theme-dark & {
         color: $td-textColor-dark;
     }
 }
 .yue figure figcaption a {
     text-decoration: none;
-    color: #666665;
+    color: #555554;
     .theme-dark & {
         color: $td-textColor-dark;
     }
@@ -159,7 +159,7 @@
     margin: 0 0 1.64em 0;
     border-left: 3px solid #dadada;
     padding-left: 12px;
-    color: #666664;
+    color: #555553;
     .theme-dark & {
         color: $td-textColor-dark;
         border-color: $td-borderColor;
@@ -167,7 +167,7 @@
     text-align: justify;
 }
 .yue blockquote a {
-    color: #666664;
+    color: #555553;
     .theme-dark & {
         color: $td-textColor-dark;
     }
@@ -322,8 +322,8 @@
     font-style: normal;
     font-family: Baskerville, Georgia, Kaiti SC, STKaiti, AR PL UKai CN, AR PL UKai HK, AR PL UKai TW, AR PL UKai TW MBE,
         AR PL KaitiM GB, KaiTi, KaiTi_GB2312, DFKai-SB, TW\\-Kai, serif;
-    -webkit-text-emphasis: dot #555;
-    text-emphasis: dot #555;
+    -webkit-text-emphasis: dot #444;
+    text-emphasis: dot #444;
     -webkit-text-emphasis-position: under left;
     text-emphasis-position: under left;
 }
