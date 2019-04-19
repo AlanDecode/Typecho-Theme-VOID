@@ -10,14 +10,12 @@
  * @link        https://blog.imalan.cn/archives/247/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$setting = $GLOBALS['VOIDSetting'];
-?>
+$setting = $GLOBALS['VOIDSetting']; 
 
-<?php 
 if(!Utils::isPjax()){
     $this->need('includes/head.php');
     $this->need('includes/header.php');
-}
+} 
 ?>
 
 <main id="pjax-container">

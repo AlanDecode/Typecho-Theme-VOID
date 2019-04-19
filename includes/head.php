@@ -8,9 +8,8 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$setting = $GLOBALS['VOIDSetting'];
+$setting = $GLOBALS['VOIDSetting']; 
 ?>
-
 <!DOCTYPE HTML>
 <html>
     <head>

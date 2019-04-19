@@ -8,9 +8,6 @@
  * @version     2019-01-15 1.0
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-?>
-
-<?php
 
 // 看不见错误就是没有错误
 error_reporting(0);
