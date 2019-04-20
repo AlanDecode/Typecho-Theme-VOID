@@ -23,8 +23,7 @@ footer{
         section{
             flex: 1;
             position: relative;
-            margin-top: 1rem;
-            padding-top: 1rem;
+            margin: 1rem 0.5rem 0 0.5rem;
             &,& *{
                 color: #ddd;
                 .theme-dark &{
@@ -33,17 +32,6 @@ footer{
                     }
                 }
                 font-weight: 300;
-            }
-            &:nth-child(2){
-                margin: 0 15px;
-                margin-top: 1rem;
-            }
-            &::before{
-                content: attr(data-title);
-                position: absolute;
-                color: #ddd;
-                font-weight: normal;
-                top: 0;
             }
             ul{
                 list-style: none;
@@ -70,17 +58,23 @@ footer{
                 &:first-child{
                     margin-top: 1rem;
                 }
-                &#hitokoto{
-                    margin: 1rem 0;
-                }
             }
         }
         @media screen and (max-width:767px) {
             flex-direction: column;
             section{
-                margin: 15px;
                 .avatar-list{
                     margin-bottom: 0;
+                }
+            }
+        }
+    }
+    &.no-rg{
+        @media screen and (max-width:767px){
+            section:nth-child(2) {
+                margin-top: 0.5rem;
+                p:nth-child(1) {
+                    margin-top: 0;
                 }
             }
         }

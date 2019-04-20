@@ -73,20 +73,27 @@ $setting = $GLOBALS['VOIDSetting'];
         </script>
         <?php endif; ?>
         <link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
-        <footer>
+        <footer <?php if(!$setting['showRecentGuest']) echo 'class="no-rg"' ?>>
             <div class="container">
-                <section data-title="Recent Guests">   <!-- 最近访客 -->
-                    <div class="avatar-list">
-                        <?php 
-                            $recentComments=Contents::getRecentComments(14);
-                            foreach ($recentComments as $comment){ ?>
-                                <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
-                        <?php } ?>
-                    </div>
+                <section>   <!-- 最近访客 -->
+                    <?php if($setting['showRecentGuest']): ?>
+                        <div class="avatar-list">
+                            <?php 
+                                $recentComments=Contents::getRecentComments(14);
+                                foreach ($recentComments as $comment){ ?>
+                                    <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
+                            <?php } ?>
+                        </div>
+                    <?php else: ?>
+                        <p>感谢陪伴：<span id="uptime"></span></p>
+                        <p id="hitokoto"></p>
+                    <?php endif; ?>
                 </section>
-                <section data-title="Site Info">   <!-- 一言与页底信息 -->
-                    <p>感谢陪伴：<span id="uptime"></span></p>
-                    <p id="hitokoto"></p>
+                <section>   <!-- 一言与页底信息 -->
+                    <?php if($setting['showRecentGuest']): ?>
+                        <p>感谢陪伴：<span id="uptime"></span></p>
+                        <p id="hitokoto"></p>
+                    <?php endif; ?>
                     <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
                     <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
                     <p><?php echo $setting['footer']; ?></p>
