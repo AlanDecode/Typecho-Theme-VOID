@@ -73,13 +73,11 @@ var VOID = {
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
-        $('pre code').each(function (i, block) {
-            hljs.highlightBlock(block);
-            hljs.lineNumbersBlock(block, { singleLine: true });
-        });
         VOID.hitokoto();
         VOID.handleLike();
         pangu.spacingElementByTagName('p');
+        // 高亮
+        VOID.highlight();
         // 初始化注脚
         $.bigfoot({ actionOriginalFN: 'ignore' });
         // 初始化 touch 事件，移动端设备
@@ -251,10 +249,7 @@ var VOID = {
     // 重载与事件绑定
     reload: function () {
         // 重载代码高亮
-        $('pre code').each(function (i, block) {
-            hljs.highlightBlock(block);
-            hljs.lineNumbersBlock(block, { singleLine: true });
-        });
+        VOID.highlight();
         // 重载 MathJax
         if (typeof MathJax !== 'undefined') {
             MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
@@ -331,6 +326,20 @@ var VOID = {
             };
             tocbot.init(toc_option);
         }
+    },
+
+    highlight: function () {
+        $.each($('pre code:not([class*="language-"])'), function (i, item) {
+            var c = $(item).attr('class');
+            if (typeof (c) != 'undefined') {
+                c = 'language-' + c.replace('lang-', '');
+            } else {
+                c = 'language-';
+            }
+            $(item).addClass(c);
+        });
+        
+        Prism.highlightAll();
     },
 
     lazyLoad: function () {
@@ -522,6 +531,7 @@ var AjaxComment = {
         }
         $('.comment-num .num').html(parseInt($('.comment-num .num').html()) + 1);
         AjaxComment.bindClick();
+        VOID.highlight();
     },
 
     init: function () {

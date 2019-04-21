@@ -411,48 +411,6 @@ ruby > rt {
         "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
 }
 
-/* for linenumbers */
-.yue pre code, .hljs{
-    table, table.hljs-ln{
-        width: unset;
-        max-width: unset;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin: 16px 0;
-        font-size: inherit;
-        thead {
-            background-color: transparent;
-            .theme-dark & {
-                background-color: transparent;
-            }
-        }
-        th,
-        td {
-            text-align: unset;
-            padding: 0 12px!important;
-            border: none;
-            &.hljs-ln-numbers{
-                user-select: none;
-                text-align: center;
-                vertical-align: middle;
-                border-right: 1px solid rgba($color: #eee, $alpha: 0.3);
-            }
-            &.hljs-ln-code{
-                padding-left: 12px!important;
-            }
-        }
-        td {
-            vertical-align: unset;
-        }
-        tr {
-            background-color: transparent!important;
-            .theme-dark & {
-                background-color: transparent!important;
-            }
-        }
-    }
-}
-
 .TOC {
     position: fixed;
     z-index: 13;

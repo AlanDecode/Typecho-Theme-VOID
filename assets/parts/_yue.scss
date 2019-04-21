@@ -224,37 +224,32 @@
 }
 .yue pre {
     margin: 1.64em 0;
-    padding: 0;
+    padding: 16px 10px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     line-height: 1.5;
     font-size: 0.96em;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    background: #282c34;
+    color: #abb2bf;
+    background: rgb(45, 45, 45);
     .theme-dark & {
         background: $td-bgColor-dark;
     }
     .theme-dark &::-webkit-scrollbar{
         background: $td-bgColor-dark;
     }
-    color: #abb2bf;
     > code {
+        color: #abb2bf;
         width: max-content !important;
+        display: block;
+        padding: 0;
     }
 }
 .yue pre code,
 .yue pre tt {
-    color: #abb2bf;
     border: none;
     background: none;
-}
-.yue pre code{
-    display: block;
-    overflow-x: auto;
-    padding: 0;
-    color: #abb2bf;
-    background: #282c34;
 }
 .yue table {
     width: 100%;
