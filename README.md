@@ -1,4 +1,4 @@
-# Typecho Theme VOID 2.1.1
+# Typecho Theme VOID 2.1.2
 
 > ✏ 一款简洁优雅的单栏 Typecho 主题
 
