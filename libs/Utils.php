@@ -293,7 +293,8 @@ class Utils
             'headerMode' => 1,
             'followSystemColorScheme' => false,
             'accurateDarkMode' => false,
-            "useNotoSerif" => false
+            "useNotoSerif" => false,
+            "showRecentGuest" => false
         );
 
         $options = Helper::options();

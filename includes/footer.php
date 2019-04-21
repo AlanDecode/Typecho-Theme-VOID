@@ -10,6 +10,35 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
+        <footer <?php if(!$setting['showRecentGuest']) echo 'class="no-rg"' ?>>
+            <div class="container">
+                <section>
+                    <?php if($setting['showRecentGuest']): ?>
+                        <div class="avatar-list">
+                            <?php 
+                                $recentComments=Contents::getRecentComments(14);
+                                foreach ($recentComments as $comment){ ?>
+                                    <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
+                            <?php } ?>
+                        </div>
+                    <?php else: ?>
+                        <p>感谢陪伴：<span id="uptime"></span></p>
+                        <p id="hitokoto"></p>
+                    <?php endif; ?>
+                </section>
+                <section>
+                    <?php if($setting['showRecentGuest']): ?>
+                        <p>感谢陪伴：<span id="uptime"></span></p>
+                        <p id="hitokoto"></p>
+                    <?php endif; ?>
+                    <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
+                    <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
+                    <p><?php echo $setting['footer']; ?></p>
+                </section>
+            </div>
+        </footer>
+        <div id="back-top" onclick="goTop(500);"><div></div></div>
+
         <?php if(!empty($setting['serviceworker'])): ?>
         <script>
             var serviceWorkerUri = '/<?php echo $setting['serviceworker']; ?>';
@@ -30,8 +59,6 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php endif; ?>
         <script src="<?php Utils::indexTheme('/assets/bundle.js'); ?>"></script>
         <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
-        <?php $this->footer(); ?>
-
         <?php if($setting['enableMath']): ?>
         <script src='<?php Utils::indexTheme('/assets/libs/mathjax/2.7.4/MathJax.js'); ?>' async></script>
         <script type="text/x-mathjax-config">
@@ -73,26 +100,6 @@ $setting = $GLOBALS['VOIDSetting'];
         </script>
         <?php endif; ?>
         <link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
-        <footer>
-            <div class="container">
-                <section data-title="Recent Guests">   <!-- 最近访客 -->
-                    <div class="avatar-list">
-                        <?php 
-                            $recentComments=Contents::getRecentComments(14);
-                            foreach ($recentComments as $comment){ ?>
-                                <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
-                        <?php } ?>
-                    </div>
-                </section>
-                <section data-title="Site Info">   <!-- 一言与页底信息 -->
-                    <p>感谢陪伴：<span id="uptime"></span></p>
-                    <p id="hitokoto"></p>
-                    <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
-                    <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
-                    <p><?php echo $setting['footer']; ?></p>
-                </section>
-            </div>
-        </footer>
-        <div id="back-top" onclick="goTop(500);"><div></div></div>
+        <?php $this->footer(); ?>
     </body>
 </html>
