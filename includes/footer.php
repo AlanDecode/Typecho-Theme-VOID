@@ -37,7 +37,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 </section>
             </div>
         </footer>
-        <div id="back-top" onclick="goTop(500);"><div></div></div>
+        <div id="back-top" onclick="VOID.goTop();"><div></div></div>
 
         <?php if(!empty($setting['serviceworker'])): ?>
         <script>

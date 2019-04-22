@@ -140,7 +140,8 @@ var VOID = {
             $(document).pjax('a.pjax', {
                 container: '#pjax-container',
                 fragment: '#pjax-container',
-                timeout: 8000
+                timeout: 8000,
+                scrollTo: false
             });
         }
     },
@@ -226,11 +227,6 @@ var VOID = {
 
     // PJAX 结束后
     afterPjax: function () {
-        NProgress.done();
-        var hash = new URL(window.location.href).hash;
-        if (hash != '') {
-            animateTo($(hash).offset().top - 80, 500);
-        }
         if ($('#banner').length) {
             $('body>header').removeClass('no-banner');
         } else {
@@ -373,6 +369,16 @@ var VOID = {
                 total += parseInt($(item).attr('data-words'));
             });
             $('#totalWordCount').html(total);
+        }
+    },
+
+    goTop: function () {
+        var a = document.documentElement.scrollTop || document.body.scrollTop;
+        if (a > 0) {
+            requestAnimationFrame(VOID.goTop);
+            window.scrollTo(0, a - (a / 5));
+        } else {
+            cancelAnimationFrame(VOID.goTop);
         }
     }
 };
@@ -661,6 +667,18 @@ if (VOIDConfig.PJAX) {
     $(document).on('pjax:complete', function () {
         VOID.afterPjax();
     });
+
+    $(document).on('pjax:end', function () {
+        NProgress.done();
+        setTimeout(function () {
+            var hash = new URL(window.location.href).hash;
+            if (hash != '') {
+                animateTo($(hash).offset().top - 80, 500);
+            } else {
+                VOID.goTop();
+            }
+        }, 50);
+    });
 }
 
 setInterval(function () {
@@ -744,8 +762,4 @@ function toggleToc(item) {
     $('.TOC').toggleClass('show');
     $('.toggle-toc').toggleClass('pushed');
     $(item).toggleClass('pushed');
-}
-
-function goTop(time) {
-    animateTo(0, time);
 }
