@@ -233,7 +233,8 @@ class Utils
             $dbname =$db->getPrefix() . 'contents';
             $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $archive->cid));
             $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
-            
+            $count += str_word_count($row['text'], 0);
+
             $db->query($db->update('table.contents')->rows(array('wordCount' => (int)$count))->where('cid = ?', $archive->cid));
             $db->query($db->update('table.contents')->rows(array('wordCountTime' => (int)$archive->modified))->where('cid = ?', $archive->cid));
 
