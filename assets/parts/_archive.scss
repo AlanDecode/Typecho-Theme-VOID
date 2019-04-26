@@ -61,7 +61,7 @@ section#archive-list{
                     h4{
                         display: inline;
                     }
-                    &::after{
+                    &.show-word-count::after{
                         content: " ＋ " attr(data-words) " 字";
                         font-size: 0.9rem;
                         color: rgba(0,0,0,0.3);

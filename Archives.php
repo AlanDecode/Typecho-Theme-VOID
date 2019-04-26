@@ -40,7 +40,7 @@ if(!Utils::isPjax()){
                 <section aria-label="<?php echo $year; ?>年归档列表"  class="year<?php if($index > 0) echo ' shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                     <ul>
                 <?php foreach($posts as $created => $post): ?>
-                        <li data-date="<?php echo date('m-d', $created); ?>"><a class="archive-title" data-words="<?php echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
+                        <li data-date="<?php echo date('m-d', $created); ?>"><a class="archive-title<?php if($setting['VOIDPlugin']) echo ' show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
                 <?php endforeach; ?>
                     </ul>
                     <a role=button aria-label="收起与展开列表" class="toggle-archive" target="_self" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>

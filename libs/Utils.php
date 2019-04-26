@@ -223,44 +223,6 @@ class Utils
     }
 
     /**
-     * 单文章字数
-     * 
-     * @return int
-     */
-    public static function wordCount($archive){
-        if($archive->wordCount == 0 || ($archive->modified > $archive->wordCountTime)){
-            $db = Typecho_Db::get();
-            $dbname =$db->getPrefix() . 'contents';
-            $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $archive->cid));
-            $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
-            $count += str_word_count($row['text'], 0);
-
-            $db->query($db->update('table.contents')->rows(array('wordCount' => (int)$count))->where('cid = ?', $archive->cid));
-            $db->query($db->update('table.contents')->rows(array('wordCountTime' => (int)$archive->modified))->where('cid = ?', $archive->cid));
-
-            return $count;
-        }
-        else{
-            return $archive->wordCount;
-        }
-    }
-
-    /**
-     * 根据 cid 直接更新字数
-     */
-    public static function wordCountByCid($cid){
-        $db = Typecho_Db::get();
-        $dbname =$db->getPrefix() . 'contents';
-        $row = $db->fetchRow($db->select()->from('table.contents')->where('cid = ?', $cid));
-        $count = mb_strlen(preg_replace("/[^\x{4e00}-\x{9fa5}]/u", "", $row['text']), 'UTF-8');
-
-        $db->query($db->update('table.contents')->rows(array('wordCount' => (int)$count))->where('cid = ?', $cid));
-        $db->query($db->update('table.contents')->rows(array('wordCountTime' => (int)$row['modified']))->where('cid = ?', $cid));
-
-        return $count;
-    }
-
-    /**
      * 超高级设置
      * 
      * @return array
@@ -295,7 +257,10 @@ class Utils
             'followSystemColorScheme' => false,
             'accurateDarkMode' => false,
             "useNotoSerif" => false,
-            "showRecentGuest" => false
+            "showRecentGuest" => false,
+
+            //插件是否启用
+            'VOIDPlugin' => false
         );
 
         $options = Helper::options();
@@ -360,6 +325,10 @@ class Utils
 
         if(!empty($options->serviceworker)){
             $output['serviceworker'] = $options->serviceworker;
+        }
+
+        if(self::isPluginAvailable('VOID')) {
+            $output['VOIDPlugin'] = true;
         }
 
         return $output;

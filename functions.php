@@ -23,14 +23,6 @@ Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('Contents'
 Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Contents','parseContent');
 Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('Contents','parseContent');
 
-$db = Typecho_Db::get();
-$prefix = $db->getPrefix();
-// contents 表中若无 wordCount 字段则添加
-if (!array_key_exists('wordCount', $db->fetchRow($db->select()->from('table.contents'))))
-    $db->query('ALTER TABLE `'. $prefix .'contents` ADD `wordCount` INT(10) DEFAULT 0;');
-if (!array_key_exists('wordCountTime', $db->fetchRow($db->select()->from('table.contents'))))
-    $db->query('ALTER TABLE `'. $prefix .'contents` ADD `wordCountTime` INT(10) DEFAULT 0;');
-
 /**
  * 主题启用
  */

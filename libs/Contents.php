@@ -349,11 +349,14 @@ Class Contents
         $stat = array();
         foreach ($rows as $row) {
             $row = $widget->filter($row);
-            if($row['wordCount']==0) $row['wordCount'] = Utils::wordCountByCid($row['cid']);
             $arr = array(
                 'title' => $row['title'],
-                'permalink' => $row['permalink'],
-                'words' => $row['wordCount']);
+                'permalink' => $row['permalink']);
+
+            if(Utils::isPluginAvailable('VOID')) {
+                $arr['words'] = $row['wordCount'];
+            }
+            
             if($excerpt){
                 $arr['excerpt'] = substr($row['content'], 30);
             }

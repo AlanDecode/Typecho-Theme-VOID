@@ -44,9 +44,10 @@ $lazyID = rand(1,10000);
             </h1>
             <?php if(!$this->is('archive')): ?>
                 <p class="post-meta">
-                    <?php if($this->template == 'Archives.php') 
-                        echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × <span id=\"totalWordCount\"></span> 字";
-                    else{ ?>
+                    <?php if($this->template == 'Archives.php') {
+                        echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签";
+                        if($setting['VOIDPlugin']) echo ' × <span id="totalWordCount"></span> 字';
+                    } else{ ?>
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                         &nbsp;•&nbsp;<a no-pjax target="_self" href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>

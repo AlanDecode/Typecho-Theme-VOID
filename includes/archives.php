@@ -34,7 +34,7 @@ $setting = $GLOBALS['VOIDSetting'];
                             <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
                         </div>
                         <a class="title" href="<?php $this->permalink(); ?>">
-                            <h1 itemprop="name" data-words="<?php echo Utils::wordCount($this); ?>"><?php $this->title(); ?></h1>
+                            <h1 itemprop="name" class="<?php if($setting['VOIDPlugin']) echo 'show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $this->wordCount; ?>"><?php $this->title(); ?></h1>
                         </a>
                         <?php if($this->fields->excerpt != ''): ?> 
                             <p itemprop="headline" class="headline single"><?php echo $this->fields->excerpt; ?></p>
