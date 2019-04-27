@@ -182,8 +182,7 @@ var VOID = {
     },
 
     alert: function (content, time) {
-        var errTemplate = '<div class="msg high" id="msg{id}">{Text}</div>';
-        if (VOIDConfig.headerMode == 2) errTemplate = errTemplate.replace('high', 'higher');
+        var errTemplate = '<div class="msg" id="msg{id}">{Text}</div>';
         var id = new Date().getTime();
         $('body').prepend(errTemplate.replace('{Text}', content).replace('{id}', id));
         $.each($('.msg'), function (i, item) {
