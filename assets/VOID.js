@@ -212,7 +212,7 @@ var VOID = {
         // 已点赞高亮
         $.each($('.post-like'), function(i, item){
             var cid = String($(item).attr('data-cid'));
-            if(liked.indexOf(cid) != -1) {
+            if(liked.indexOf(',' + String(cid) + ',') != -1) {
                 $(item).addClass('done');
             }
         });
@@ -380,9 +380,9 @@ var VOID = {
         
         // 首先检查该 cid 是否已经点过赞了
         var liked = getCookie('void_likes');
-        if(liked == null) liked = '';
+        if(liked == null) liked = ',';
 
-        if(liked.indexOf(String(cid)) != -1) {
+        if(liked.indexOf(',' + String(cid) + ',') != -1) {
             VOID.alert('您已经点过赞了~');
         } else {
             $.post(VOIDConfig.likePath,{
@@ -392,7 +392,7 @@ var VOID = {
                 var num = $(sel).find('.like-num').text();
                 $(sel).find('.like-num').text(parseInt(num) + 1);
                 // 设置 cookie，一周有效
-                liked = liked + ',' + String(cid);
+                liked = liked + String(cid) + ',';
                 setCookie('void_likes', liked, 3600*24*7);
             }, 'json');
         }
