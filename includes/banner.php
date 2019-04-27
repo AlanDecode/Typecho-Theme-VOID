@@ -51,14 +51,7 @@ $lazyID = rand(1,10000);
                         <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
                         <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                         &nbsp;•&nbsp;<a no-pjax target="_self" href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
-                        <?php 
-                            if(Utils::isPluginAvailable('TePostViews'))
-                            {
-                                echo '&nbsp;•&nbsp;<span>';
-                                $this->viewsNum();
-                                echo '&nbsp;阅读</span>';
-                            }
-                        ?>
+                        <?php if($setting['VOIDPlugin']) echo '&nbsp;•&nbsp;<span>'.$this->viewsNum.'&nbsp;阅读</span>'; ?>
                         <?php if($this->user->hasLogin()): ?>
                             <?php if($this->is('post')): ?>
                             &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>

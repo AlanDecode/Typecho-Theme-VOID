@@ -27,14 +27,7 @@ $setting = $GLOBALS['VOIDSetting'];
                     <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                     &nbsp;•&nbsp;
                     <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
-                    <?php 
-                        if(Utils::isPluginAvailable('TePostViews'))
-                        {
-                            echo '&nbsp;•&nbsp;';
-                            $this->viewsNum();
-                            echo '&nbsp;阅读';
-                        }
-                    ?>
+                    <?php if($setting['VOIDPlugin']) echo '&nbsp;•&nbsp;'.$this->viewsNum.'&nbsp;阅读'; ?>
                     <?php if($this->user->hasLogin()): ?>
                         <?php if($this->is('post')): ?>
                         &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
