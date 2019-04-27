@@ -263,6 +263,9 @@ body{
 .msg{
     position: fixed;
     top: 70px;
+    &.higher {
+        top: 20px;
+    }
     background: #f0f8e5;
     padding: 0.7rem;
     border-radius: 4px;
