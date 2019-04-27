@@ -64,20 +64,18 @@ var getPrefersDarkModeState = function () {
     return getDeviceState(indicator) === 11;
 };
 
-function setCookie(name, value, time)
-{
-    document.cookie = name + '=' + escape (value) + ';max-age=' + String(time) + ';path=/';
-} 
+function setCookie(name, value, time) {
+    document.cookie = name + '=' + escape(value) + ';max-age=' + String(time) + ';path=/';
+}
 
-function getCookie(name) 
-{
-    var reg=new RegExp('(^| )' + name + '=([^;]*)(;|$)');
+function getCookie(name) {
+    var reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
     var arr = document.cookie.match(reg);
-    if(arr)
-        return unescape(arr[2]); 
-    else 
+    if (arr)
+        return unescape(arr[2]);
+    else
         return null;
-} 
+}
 
 var VOID = {
     // 初始化单页应用
@@ -185,7 +183,7 @@ var VOID = {
 
     alert: function (content, time) {
         var errTemplate = '<div class="msg high" id="msg{id}">{Text}</div>';
-        if(VOIDConfig.headerMode == 2) errTemplate = errTemplate.replace('high', 'higher');
+        if (VOIDConfig.headerMode == 2) errTemplate = errTemplate.replace('high', 'higher');
         var id = new Date().getTime();
         $('body').prepend(errTemplate.replace('{Text}', content).replace('{id}', id));
         $.each($('.msg'), function (i, item) {
@@ -209,11 +207,11 @@ var VOID = {
     // 点赞事件处理
     handleLike: function () {
         var liked = getCookie('void_likes');
-        if(liked == null) return;
+        if (liked == null) return;
         // 已点赞高亮
-        $.each($('.post-like'), function(i, item){
+        $.each($('.post-like'), function (i, item) {
             var cid = String($(item).attr('data-cid'));
-            if(liked.indexOf(',' + String(cid) + ',') != -1) {
+            if (liked.indexOf(',' + String(cid) + ',') != -1) {
                 $(item).addClass('done');
             }
         });
@@ -328,7 +326,7 @@ var VOID = {
             }
             $(item).addClass(c);
         });
-        
+
         Prism.highlightAll();
     },
 
@@ -378,23 +376,23 @@ var VOID = {
 
     like: function (sel) {
         var cid = parseInt($(sel).attr('data-cid'));
-        
+
         // 首先检查该 cid 是否已经点过赞了
         var liked = getCookie('void_likes');
-        if(liked == null) liked = ',';
+        if (liked == null) liked = ',';
 
-        if(liked.indexOf(',' + String(cid) + ',') != -1) {
+        if (liked.indexOf(',' + String(cid) + ',') != -1) {
             VOID.alert('您已经点过赞了~');
         } else {
-            $.post(VOIDConfig.likePath,{
+            $.post(VOIDConfig.likePath, {
                 cid: cid
-            }, function(data){
+            }, function (data) {
                 $(sel).addClass('done');
                 var num = $(sel).find('.like-num').text();
                 $(sel).find('.like-num').text(parseInt(num) + 1);
                 // 设置 cookie，一周有效
                 liked = liked + String(cid) + ',';
-                setCookie('void_likes', liked, 3600*24*7);
+                setCookie('void_likes', liked, 3600 * 24 * 7);
             }, 'json');
         }
     }
