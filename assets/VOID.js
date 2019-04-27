@@ -64,7 +64,20 @@ var getPrefersDarkModeState = function () {
     return getDeviceState(indicator) === 11;
 };
 
+function setCookie(name, value, time)
+{
+    document.cookie = name + '=' + escape (value) + ';max-age=' + String(time) + ';path=/';
+} 
 
+function getCookie(name) 
+{
+    var reg=new RegExp('(^| )' + name + '=([^;]*)(;|$)');
+    var arr = document.cookie.match(reg);
+    if(arr)
+        return unescape(arr[2]); 
+    else 
+        return null;
+} 
 
 var VOID = {
     // 初始化单页应用
@@ -380,6 +393,11 @@ var VOID = {
         } else {
             cancelAnimationFrame(VOID.goTop);
         }
+    },
+
+    like: function (cid) {
+        // 首先检查该 cid 是否已经点过赞了
+
     }
 };
 
@@ -422,7 +440,7 @@ var DarkModeSwitcher = {
         var sunrise_s = sunrise.getHours() + sunrise.getMinutes() / 60;
         var current_s = current.getHours() + current.getMinutes() / 60;
         // 若不存在 cookie，根据时间判断，并设置 cookie
-        if (document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') === '') {
+        if (getCookie('theme_dark') == null) {
             if (current_s > sunset_s || current_s < sunrise_s) {
                 document.body.classList.add('theme-dark');
                 if (current_s > sunset_s) // 如果当前为夜晚，日出时间应该切换至第二日
@@ -430,15 +448,14 @@ var DarkModeSwitcher = {
                 // 现在距日出还有 (s)
                 var toSunrise = (sunrise.getTime() - current.getTime()) / 1000;
                 // 设置 cookie
-                var cookieString = 'theme_dark=1;max-age=' + parseInt(toSunrise) + ';path=/';
-                document.cookie = cookieString;
+                setCookie('theme_dark', '1', parseInt(toSunrise));
                 VOID.alert('日落了，夜间模式已开启。');
             } else {
                 document.body.classList.remove('theme-dark');
             }
         } else {
             // 若存在 cookie，根据 cookie 判断
-            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+            var night = getCookie('theme_dark');
             if (night == '0') {
                 document.body.classList.remove('theme-dark');
             } else if (night == '1') {
@@ -464,11 +481,11 @@ var DarkModeSwitcher = {
         if (VOIDConfig.colorScheme != 0) return;
         if (getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme) {
             document.body.classList.add('theme-dark');
-            var night = document.cookie.replace(/(?:(?:^|.*;\s*)theme_dark\s*=\s*([^;]*).*$)|^.*$/, '$1') || '0';
+            var night = getCookie('theme_dark');
             if (night != '1') {
                 VOID.alert('已为您开启深色模式。');
             }
-            document.cookie = 'theme_dark=1;max-age=7200;path=/';
+            setCookie('theme_dark', '1', 7200);
         } else {
             if (!VOIDConfig.accurateDarkMode) {
                 DarkModeSwitcher.checkColorSchemeFallback();
