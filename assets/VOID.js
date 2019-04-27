@@ -207,35 +207,15 @@ var VOID = {
 
     // 点赞事件处理
     handleLike: function () {
+        var liked = getCookie('void_likes');
+        if(liked == null) return;
         // 已点赞高亮
-        if ($('.post-like').length > 0) {
-            var cookies = $.macaroon('_syan_like') || '';
-            $.each($('.post-like'), function (i, item) {
-                var id = $(item).attr('data-pid');
-                if (-1 !== cookies.indexOf(',' + id + ',')) $(item).addClass('done');
-            });
-            $('.post-like').click(function () {
-                $(this).addClass('done');
-            });
-        }
-        // 点赞事件绑定
-        if ($('.post-like').length > 0) {
-            $('.post-like').unbind('click');
-            $('.post-like').click(function () {
-                $(this).addClass('done');
-                var th = $(this);
-                var id = th.attr('data-pid');
-                var cookies = $.macaroon('_syan_like') || '';
-                if (!id || !/^\d{1,10}$/.test(id)) return;
-                if (-1 !== cookies.indexOf(',' + id + ',')) return VOID.alert('您已经赞过了！');
-                cookies ? cookies.length >= 160 ? (cookies = cookies.substring(0, cookies.length - 1), cookies = cookies.substr(1).split(','), cookies.splice(0, 1), cookies.push(id), cookies = cookies.join(','), $.macaroon('_syan_like', ',' + cookies + ',')) : $.macaroon('_syan_like', cookies + id + ',') : $.macaroon('_syan_like', ',' + id + ',');
-                $.post(likePath, { cid: id }, function () {
-                    th.addClass('actived');
-                    var zan = th.find('.like-num').text();
-                    th.find('.like-num').text(parseInt(zan) + 1);
-                }, 'json');
-            });
-        }
+        $.each($('.post-like'), function(i, item){
+            var cid = String($(item).attr('data-cid'));
+            if(liked.indexOf(cid) != -1) {
+                $(item).addClass('done');
+            }
+        });
     },
 
     // PJAX 结束后
@@ -395,9 +375,27 @@ var VOID = {
         }
     },
 
-    like: function (cid) {
+    like: function (sel) {
+        var cid = parseInt($(sel).attr('data-cid'));
+        
         // 首先检查该 cid 是否已经点过赞了
+        var liked = getCookie('void_likes');
+        if(liked == null) liked = '';
 
+        if(liked.indexOf(String(cid)) != -1) {
+            VOID.alert('您已经点过赞了~');
+        } else {
+            $.post(VOIDConfig.likePath,{
+                cid: cid
+            }, function(data){
+                $(sel).addClass('done');
+                var num = $(sel).find('.like-num').text();
+                $(sel).find('.like-num').text(parseInt(num) + 1);
+                // 设置 cookie，一周有效
+                liked = liked + ',' + String(cid);
+                setCookie('void_likes', liked, 3600*24*7);
+            }, 'json');
+        }
     }
 };
 
