@@ -190,8 +190,8 @@ Class Contents
         $src_ori = $match[1];
         $src = $src_ori;
 
-        if(Helper::options()->lazyload == '1'){
-            $src = 'https://wx1.sinaimg.cn/large/005IXWDbly1g09s40ntuaj30za0g7745.jpg';
+        if(Helper::options()->lazyload == '1') {
+            $src = Helper::options()->themeUrl.'/assets/imgs/placeholder.jpg';
         }
 
         if($match[2] == '')
