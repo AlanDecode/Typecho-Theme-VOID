@@ -25,25 +25,24 @@
 * 目录解析
 * 完整的结构化数据支持
 * 够用的后台设置与丰富的高级设置
-* **配套插件，提供更多高级功能**
+* **配套插件，提供更多高级功能（浏览量统计、文章点赞、字数统计等）**
 * ...
 
 以及其他很多细节，总之用起来还算舒服。我建立了一个示例页面，在这里你可以看到 VOID 对常用写作元素的支持以及一些特色功能演示：[示例页面](https://blog.imalan.cn/archives/194/)。
 
 ## 开始使用
 
-1. 下载主题：[发布版](https://github.com/AlanDecode/Typecho-Theme-VOID/releases) | [开发版](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/nightly.zip)
+1. 下载主题：[发布版](https://github.com/AlanDecode/Typecho-Theme-VOID/releases)
 2. 解压
-3. **把解压后的文件夹重命名为 VOID**
-4. 检查文件夹名是否为 VOID，不是的话改成 VOID
-5. 检查文件夹名是否为 VOID，不是的话改成 VOID
-6. 检查文件夹名是否为 VOID，不是的话改成 VOID
-7. 上传文件夹至站点 /usr/themes 目录下
-8. 后台启用主题
+3. 将**主题文件夹下**的 VOID 文件夹上传至站点 /usr/themes 目录下
+4. 后台启用主题
+5. 将**配套插件文件夹下**的 VOID 文件夹上传至站点 /usr/plugins 目录下
+6. 后台启用插件
 
-* **推荐**：主题包 `插件` 文件夹下附带了配套的 VOID 插件，可上传到插件目录并启用，以获得文章点赞、浏览量统计、字数统计等等高级功能。
 * 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，并在主题设置中启用 Service Worker 缓存。
 * 可选：主题文件夹下 advanceSetting.sample.json 中有一些高级设置，可以看看。
+
+开发版主题可以在这里获取：[开发版](https://github.com/AlanDecode/Typecho-Theme-VOID/archive/nightly.zip)。注意，不保证开发版有更新更多的功能。而且开发版变动频繁，若无必要请使用发布版主题。
 
 ## **常见问题（请务必仔细阅读）**
 
