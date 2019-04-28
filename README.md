@@ -1,4 +1,4 @@
-# Typecho Theme VOID 2.1.2
+# Typecho Theme VOID 2.2
 
 > ✏ 一款简洁优雅的单栏 Typecho 主题
 
@@ -25,6 +25,7 @@
 * 目录解析
 * 完整的结构化数据支持
 * 够用的后台设置与丰富的高级设置
+* **配套插件，提供更多高级功能**
 * ...
 
 以及其他很多细节，总之用起来还算舒服。我建立了一个示例页面，在这里你可以看到 VOID 对常用写作元素的支持以及一些特色功能演示：[示例页面](https://blog.imalan.cn/archives/194/)。
@@ -40,10 +41,29 @@
 7. 上传文件夹至站点 /usr/themes 目录下
 8. 后台启用主题
 
+* **推荐**：主题包 `插件` 文件夹下附带了配套的 VOID 插件，可上传到插件目录并启用，以获得文章点赞、浏览量统计、字数统计等等高级功能。
 * 可选：将主题 `assets` 文件夹下的 `VOIDCacheRule.js` 复制一份到站点根目录，并在主题设置中启用 Service Worker 缓存。
 * 可选：主题文件夹下 advanceSetting.sample.json 中有一些高级设置，可以看看。
 
 ## **常见问题（请务必仔细阅读）**
+
+<details><summary>如何开启文章点赞？</summary><br>
+
+文章点赞功能依赖配套插件，请上传至插件目录并启用。插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。
+
+</details>
+
+<details><summary>如何开启文章浏览量统计？</summary><br>
+
+文章浏览量统计功能依赖配套插件，请上传至插件目录并启用。插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。
+
+</details>
+
+<details><summary>如何开启文章字数统计？</summary><br>
+
+文章字数统计功能依赖配套插件，请上传至插件目录并启用。插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。
+
+</details>
 
 <details><summary>下载安装后样式不对？</summary><br>
 
@@ -101,18 +121,6 @@
 
 </details>
 
-<details><summary>浏览量统计</summary><br>
-
-使用插件：[TePostViews](https://github.com/AlanDecode/TePostViews)
-
-</details>
-
-<details><summary>文章点赞</summary><br>
-
-使用插件：[Like](https://github.com/AlanDecode/Like)
-
-</details>
-
 <details><summary>SQLite 数据库支持</summary><br>
 
 目前本主题在 SQLite 数据库下可能会有未知问题，请知悉。
@@ -164,17 +172,17 @@ gulp build
 
 ## 更新日志
 
-**2019-04-21 Version 2.1.2**
+**2019-04-28 Version 2.2**
 
-* 优化夜间模式提醒
-* 优化字体细节
-* 使用 Prism.js 替换 Highlight.js
-* 调整脚本加载顺序，缩短白屏时间
-* 消灭了一些臭虫
+* **增加了主题配套插件**
+* PJAX 结束后的小动画回归
+* 西文衬线体更换为 Droid Serif
+* 优化信息提示框位置
+* 修复新浪图床爆炸导致的问题
+* 修复英文字数统计的问题
+* 其它小型优化
 
-高级设置：
-
-* 是否在底部显示最近访客
+❗ 注意！从 2.2 版本起，主题部分功能需要配套插件支持，例如文章点赞、浏览量统计、字数统计等。**请卸载**原来的 Likes、TePostViews 插件，否则数据会出现错误！TePostViews 插件卸载前请设置为**卸载后保留数据**，以防丢失浏览数据。
 
 更多：[change-log.md](https://github.com/AlanDecode/Typecho-Theme-VOID/blob/master/change-log.md)
 

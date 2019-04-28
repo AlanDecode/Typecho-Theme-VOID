@@ -223,6 +223,19 @@ class Utils
     }
 
     /**
+     * 存在 VOID 插件且满足要求
+     */
+    public static function hasVOIDPlugin($req)
+    {
+        if(self::isPluginAvailable('VOID')) {
+            $version_have = VOID_Plugin::$VERSION;
+            if($version_have >= $req) return true;
+        }
+
+        return false;
+    }
+
+    /**
      * 超高级设置
      * 
      * @return array
@@ -327,7 +340,7 @@ class Utils
             $output['serviceworker'] = $options->serviceworker;
         }
 
-        if(self::isPluginAvailable('VOID')) {
+        if(self::hasVOIDPlugin($GLOBALS['VOIDPluginREQ'])) {
             $output['VOIDPlugin'] = true;
         }
 
