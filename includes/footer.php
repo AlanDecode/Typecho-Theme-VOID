@@ -44,17 +44,28 @@ $setting = $GLOBALS['VOIDSetting'];
             var serviceWorkerUri = '/<?php echo $setting['serviceworker']; ?>';
             if ('serviceWorker' in navigator) {  
                 navigator.serviceWorker.register(serviceWorkerUri).then(function() {
-                if (navigator.serviceWorker.controller) {
-                    console.log('Service woker is registered and is controlling.');
-                } else {
-                    console.log('Please reload this page to allow the service worker to handle network operations.');
-                }
+                    if (navigator.serviceWorker.controller) {
+                        console.log('Service woker is registered and is controlling.');
+                    } else {
+                        console.log('Please reload this page to allow the service worker to handle network operations.');
+                    }
                 }).catch(function(error) {
-                console.log('ERROR: ' + error);
+                    console.log('ERROR: ' + error);
                 });
             } else {
                 console.log('Service workers are not supported in the current browser.');
             }
+        </script>
+        <?php else: ?>
+        <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }}).catch(function(err) {
+                console.log('Service Worker registration failed: ', err);
+            });
+        }
         </script>
         <?php endif; ?>
         <script src="<?php Utils::indexTheme('/assets/bundle.js'); ?>"></script>
