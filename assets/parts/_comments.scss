@@ -57,7 +57,7 @@
         }
         .comment-info-input input,#textarea{
             padding: 0.3em;
-            border: 1px solid rgba(0,0,0,.2);
+            border: 3px solid rgba(0,0,0,.1);
             color: $textColor;
             .theme-dark &{
                 color: $td-textColor;
