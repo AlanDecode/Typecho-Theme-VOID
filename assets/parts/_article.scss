@@ -305,19 +305,26 @@ article {
             z-index: 0;
         }
     }
-}
-
-ruby {
-    background-color: rgba(146, 185, 204, 0.2);
-    margin: 4px;
-    padding: 0 2px;
-    border-radius: 4px;
-}
-ruby > rt {
-    font-style: italic;
-    color: #6a8998;
-    margin-right: 2px;
-    font-size: 60%;
+    ruby {
+        background-color: rgba(146, 185, 204, 0.2);
+        margin: 4px;
+        padding: 0 2px;
+        border-radius: 4px;
+    }
+    ruby > rt {
+        font-style: italic;
+        color: #6a8998;
+        margin-right: 2px;
+        font-size: 60%;
+    }
+    details {
+        summary + * {
+            margin-top: 0;
+        }
+        > br {
+            display: none;
+        }
+    }
 }
 
 .yue {
