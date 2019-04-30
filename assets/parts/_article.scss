@@ -318,9 +318,13 @@ article {
         font-size: 60%;
     }
     details {
-        summary + * {
-            margin-top: 0;
-        }
+        summary {
+            cursor: pointer;
+            outline: none;
+            & + * {
+                margin-top: 0!important;
+            }
+        }  
         > br {
             display: none;
         }

@@ -29,12 +29,22 @@
     .theme-dark & {
         color: $td-textColor-light;
     }
+    position: relative;
     &::before {
         display: block;
         content: " ";
         height: 60px;
         margin-top: -60px;
         visibility: hidden;
+    }
+    @media screen and (min-width:1023.5px) {
+        &::after {
+            display: block;
+            content: "¶";
+            position: absolute;
+            left: -25px;
+            top: 60px;
+        }   
     }
 }
 .yue h1 {
