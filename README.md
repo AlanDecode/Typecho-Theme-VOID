@@ -191,7 +191,7 @@ gulp build
 
 ### 开源项目
 
-[JQuery](https://github.com/jquery/jquery) | [Prism.js](https://prismjs.com/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [sun.js](https://github.com/Triggertrap/sun-js) | [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) | [clipboard.js](https://clipboardjs.com/)
+[JQuery](https://github.com/jquery/jquery) | [Prism.js](https://prismjs.com/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [sun.js](https://github.com/Triggertrap/sun-js) | [jsTimezoneDetect](https://bitbucket.org/pellepim/jstimezonedetect) | [clipboard.js](https://clipboardjs.com/) | [jquery.scrollTo](https://github.com/flesler/jquery.scrollTo)
 
 ### 其他
 

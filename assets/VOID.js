@@ -8,12 +8,6 @@
 
 console.log(' %c Theme VOID %c https://blog.imalan.cn/archives/247/ ', 'color: #fadfa3; background: #23b7e5; padding:5px;', 'background: #1c2b36; padding:5px;');
 
-
-function animateTo(distance, time) {
-    var $body = (window.opera) ? (document.compatMode == 'CSS1Compat' ? $('html') : $('body')) : $('html,body');
-    $body.animate({ scrollTop: distance }, time);
-}
-
 // 节流函数
 function throttle(fun, delay, time) {
     var timeout,
@@ -314,6 +308,13 @@ var VOID = {
                 collapseDepth: 6
             };
             tocbot.init(toc_option);
+            $.each($('.toc-link'), function(i, item){
+                var posi = $(document.getElementById($(item).attr('href').replace('#', ''))).offset().top;
+                $(item).click(function(){
+                    $.scrollTo(posi, 300);
+                    return false;
+                });
+            });
         }
     },
 
@@ -574,7 +575,7 @@ var AjaxComment = {
         $(AjaxComment.textarea).val('');
         $(AjaxComment.submitBtn).attr('disabled', false);
         if ($('#comment-' + AjaxComment.newID).length > 0) {
-            animateTo($('#comment-' + AjaxComment.newID).offset().top - 50, 500);
+            $.scrollTo($('#comment-' + AjaxComment.newID).offset().top - 50, 500);
             $('#comment-' + AjaxComment.newID).fadeTo(500, 1);
         }
         $('.comment-num .num').html(parseInt($('.comment-num .num').html()) + 1);
@@ -715,7 +716,7 @@ if (VOIDConfig.PJAX) {
         setTimeout(function () {
             var hash = new URL(window.location.href).hash;
             if (hash != '') {
-                animateTo($(hash).offset().top - 80, 500);
+                $.scrollTo($(hash).offset().top - 80, 500);
             } else {
                 VOID.goTop();
             }
