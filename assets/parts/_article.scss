@@ -332,6 +332,8 @@ article {
     span.copy-link.loaded {
         margin-left: 0.5em;
         cursor: pointer;
+        font-size: 0.9em;
+        opacity: 0.2;
         @media screen and (min-width:1023.5px) {
             display: block;
             width: 25px;
@@ -340,7 +342,6 @@ article {
             margin-left: 0;
             top: 60px;
             text-align: right;
-            opacity: 0.2;
             &:hover {
                 opacity: 1;
             }
