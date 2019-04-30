@@ -84,6 +84,7 @@ var VOID = {
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
+        VOID.initCopyLink();
         VOID.hitokoto();
         VOID.handleLike();
         pangu.spacingElementByTagName('p');
@@ -227,6 +228,7 @@ var VOID = {
         VOID.parseTOC();
         VOID.parsePhotos();
         VOID.parseUrl();
+        VOID.initCopyLink();
         VOID.reload();
         VOID.handleLike();
         AjaxComment.init();
@@ -393,6 +395,33 @@ var VOID = {
                 liked = liked + String(cid) + ',';
                 setCookie('void_likes', liked, 3600 * 24 * 7);
             }, 'json');
+        }
+    },
+
+    clipboards : [],
+    initCopyLink: function() {
+        for(i = 0; i<VOID.clipboards.length; i++) {
+            VOID.clipboards.pop().destroy();
+        }
+
+        $.each($('h2 .copy-link, h3 .copy-link, h4 .copy-link'), function(i, item){
+            loc = encodeURI(window.location.origin 
+                + window.location.pathname 
+                + '#' 
+                + $(item).parent().attr('id'));
+            $(item).attr('data-clipboard-text', loc);
+            $(item).addClass('loaded').html('¶');
+        });
+
+        if($('.copy-link').length) {
+            var clipboard = new ClipboardJS('.copy-link');
+            clipboard.on('success', function(e) {
+                VOID.alert('章节链接已复制');
+            });
+            clipboard.on('error', function(e) {
+                VOID.alert('抱歉，无法复制章节链接。请联系站长。');
+            });
+            VOID.clipboards.push(clipboard);
         }
     }
 };

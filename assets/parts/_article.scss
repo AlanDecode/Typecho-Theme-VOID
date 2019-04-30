@@ -329,6 +329,23 @@ article {
             display: none;
         }
     }
+    span.copy-link.loaded {
+        margin-left: 0.5em;
+        cursor: pointer;
+        @media screen and (min-width:1023.5px) {
+            display: block;
+            width: 25px;
+            position: absolute;
+            left: -35px;
+            margin-left: 0;
+            top: 60px;
+            text-align: right;
+            opacity: 0.2;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .yue {

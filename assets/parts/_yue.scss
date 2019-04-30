@@ -37,15 +37,6 @@
         margin-top: -60px;
         visibility: hidden;
     }
-    @media screen and (min-width:1023.5px) {
-        &::after {
-            display: block;
-            content: "¶";
-            position: absolute;
-            left: -25px;
-            top: 60px;
-        }   
-    }
 }
 .yue h1 {
     font-size: 1.8em;
