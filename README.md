@@ -130,7 +130,9 @@
 
 同[开始使用](#开始使用)，区别是你可以直接覆盖主题文件，不禁用主题，这样你的主题设置就不会丢失。
 
-## 开发
+## 开发与自定义
+
+**首先注意：我不保证提供任何自定义修改相关的指导与帮助。You are on your own.**
 
 <details><summary>展开详情</summary><br>
 
@@ -147,13 +149,13 @@ npm install -g gulp
 npm install
 ```
 
-然后将依赖打包：
+用以下命令打包依赖的 JS 和 CSS：
 
 ```bash
 gulp dev
 ```
 
-你可以使用自己喜欢的方式编译 SCSS，或者使用：
+主题的样式是用 SCSS 写的，你可以使用自己喜欢的方式编译 SCSS，或者使用：
 
 ```bash
 gulp sass
