@@ -339,6 +339,9 @@ body{
         background: #fff;
     }
 }
+#MathJax_Message {
+    display: none!important;
+}
 
 @import "parts/header";
 @import "parts/index";
