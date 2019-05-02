@@ -196,13 +196,14 @@ section#index-list{
                 border: none;
                 display: block;
                 position: relative;
-                margin-bottom: 1.5rem;
+                margin-bottom: 0.6rem;
                 padding: unset;
                 height: unset;
                 img{
                     @include bg;
                     max-width: 100%;
                     object-fit: cover;
+                    margin: 0;
                 }
             }
             a.title{
@@ -216,7 +217,7 @@ section#index-list{
                     }
                     font-weight: bolder;
                     margin: 0;
-                    margin-bottom: 1rem;
+                    margin-bottom: 0.6rem;
                     color: $darkColor!important;
                     .theme-dark &{
                         color: $td-textColor-light!important;
@@ -233,6 +234,8 @@ section#index-list{
                 }
             }
             p{
+                margin: 0.6rem 0;
+                margin-bottom: 1.7rem;
                 .theme-dark &{
                     color: $td-textColor-dark;
                 }
@@ -242,7 +245,7 @@ section#index-list{
                 font-size: 1.2em;
                 font-weight: 400;
                 line-height: 1.3;
-                margin: 1.4rem 0;
+                margin-top: 0.6rem;
                 text-align: left;
                 .theme-dark &{
                     border-color: $td-borderColor;
