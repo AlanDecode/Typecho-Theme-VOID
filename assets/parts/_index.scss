@@ -234,11 +234,13 @@ section#index-list{
                 }
             }
             p{
-                margin: 0.6rem 0;
-                margin-bottom: 1.7rem;
                 .theme-dark &{
                     color: $td-textColor-dark;
                 }
+            }
+            p[itemprop=headline] {
+                margin: 0.6rem 0;
+                margin-bottom: 1.7rem;
             }
             p.headline{
                 color: #999;
