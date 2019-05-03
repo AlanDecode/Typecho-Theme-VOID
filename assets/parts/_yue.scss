@@ -23,8 +23,7 @@
 .yue h4,
 .yue h5,
 .yue h6 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
-        "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+    font-family: $void-sans-serif;
     color: #222222;
     .theme-dark & {
         color: $td-textColor-light;

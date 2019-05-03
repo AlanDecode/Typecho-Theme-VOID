@@ -16,6 +16,9 @@ $td-textColor-light: #cececf;
 $td-textColor-dark: #aaa;
 $td-borderColor: rgba(255,255,255,0.1);
 
+$void-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC",
+"Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+
 @mixin bg {
     background: {
         size: cover;
