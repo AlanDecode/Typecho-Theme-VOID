@@ -186,8 +186,8 @@ section#index-list{
         margin: 0;
         >li{
             line-height: 1.25;
-            margin-bottom: 36px;
-            padding-bottom: 36px;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
             border-bottom: 1px dotted #ddd;
             .theme-dark &{
                 border-color: $td-borderColor;
@@ -240,7 +240,6 @@ section#index-list{
             }
             p[itemprop=headline] {
                 margin: 0.6rem 0;
-                margin-bottom: 1.7rem;
             }
             p.headline{
                 color: #999;
@@ -265,19 +264,16 @@ section#index-list{
                 }
             }
             div.post-meta-index{
-                color: rgba(0,0,0,.5);
+                color: rgba(0,0,0,.1);
                 .theme-dark &{
                     color: $td-textColor-dark;
                 }
-                font-size: 16px;
-                font-style: italic;
-                margin: 0;
-                margin-top: 12px;
-                font-weight: 300;
-                line-height: 1.25;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                font-size: 14px;
+                font-weight: bold;
+                font-family: var(--sys-sans),sans-serif;
+                text-transform: uppercase;
+                vertical-align: middle;
+                margin-bottom: 3px;
             }
             @media screen and (min-width: 767.5px) {
                 .has-banner{

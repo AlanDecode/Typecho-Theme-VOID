@@ -42,6 +42,11 @@ if(!Utils::isPjax()){
                         </div>
                         <?php endif; ?>
                         <div class="content-wrap">
+                            <div class="post-meta-index">
+                                <span hidden itemprop="author"><?php $this->author(); ?></span>
+                                <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
+                            </div>
+
                             <a class="title" href="<?php $this->permalink(); ?>">
                                 <h1 itemprop="name" class="<?php if($setting['VOIDPlugin']) echo 'show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $this->wordCount; ?>"><?php $this->title(); ?></h1>
                             </a>
@@ -57,16 +62,6 @@ if(!Utils::isPjax()){
                             <?php endif; ?>
                             </div>
 
-                            <div class="post-meta-index">
-                                Posted by <span itemprop="author"><?php $this->author(); ?></span> on <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
-                                <?php 
-                                if($this->fields->showfullcontent == '1') 
-                                    echo  ' • <a href="'.$this->permalink.'#comments">参与讨论 →</a>'; 
-                                else
-                                    echo  ' • <a href="'.$this->permalink.'">阅读全文 →</a>'; 
-                                ?>
-                            </div>
-                            
                             <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                             <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                             <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">

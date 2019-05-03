@@ -33,6 +33,10 @@ $setting = $GLOBALS['VOIDSetting'];
                         <div hidden itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                             <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
                         </div>
+                        <div class="post-meta-index">
+                            <span hidden itemprop="author"><?php $this->author(); ?></span>
+                            <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
+                        </div>
                         <a class="title" href="<?php $this->permalink(); ?>">
                             <h1 itemprop="name" class="<?php if($setting['VOIDPlugin']) echo 'show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $this->wordCount; ?>"><?php $this->title(); ?></h1>
                         </a>
