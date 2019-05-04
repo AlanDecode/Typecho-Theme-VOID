@@ -320,13 +320,17 @@ var VOID = {
 
     highlight: function () {
         $.each($('pre code'), function(i, item){
-            if($(item).attr('class')!=undefined && $(item).attr('class')!=='') {
-                $(item).parent().attr('data-lang', $(item).attr('class'));
+            var lang = '';
+            if ($(item).attr('class') != undefined && $(item).attr('class') !== '') {
+                lang = $(item).attr('class').toLowerCase().replace('lang-', '').replace('language-', '');
             } else {
-                $(item).parent().attr('data-lang', 'plaintext');
+                lang = 'plaintext';
             }
+            $(item).parent().attr('data-lang', lang);
             hljs.highlightBlock(item);
-            hljs.lineNumbersBlock(item);
+            hljs.lineNumbersBlock(item, {
+                singleLine: true
+            });
         });
     },
 
