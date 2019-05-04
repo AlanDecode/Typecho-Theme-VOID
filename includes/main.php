@@ -77,6 +77,12 @@ $setting = $GLOBALS['VOIDSetting'];
                 <div aria-label="文章目录" class="TOC"></div>
                 <div role=button aria-label="展开或关闭文章目录" class="toggle-toc"><a target="_self" class="toggle" href="javascript:void(0);" onclick="toggleToc();"><span></span></a>
                 </div>
+                <style>
+                .photos {
+                    margin-left: 0!important;
+                    width: auto!important;
+                }
+                </style>
             <?php endif; ?>
             <!--分页-->
             <?php if(!$this->is('page')): ?>
