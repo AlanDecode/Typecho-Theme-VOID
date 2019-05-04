@@ -324,7 +324,7 @@ var VOID = {
             if ($(item).attr('class') != undefined && $(item).attr('class') !== '') {
                 lang = $(item).attr('class').toLowerCase().replace('lang-', '').replace('language-', '');
             } else {
-                lang = 'plaintext';
+                //lang = 'plaintext';
             }
             $(item).parent().attr('data-lang', lang);
             hljs.highlightBlock(item);
