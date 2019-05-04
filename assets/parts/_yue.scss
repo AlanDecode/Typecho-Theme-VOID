@@ -29,17 +29,14 @@
         color: $td-textColor-light;
     }
     position: relative;
-    &::before {
-        display: block;
-        content: " ";
-        height: 60px;
-        margin-top: -60px;
-        visibility: hidden;
+    transition: 0.5s ease all;
+    & + * {
+        margin-top: 0!important;
     }
 }
 .yue h1 {
     font-size: 1.8em;
-    margin: 0.67em 0;
+    margin: 1.206em 0 0.36em;
     &::before {
         display: none;
     }
@@ -50,17 +47,17 @@
 }
 .yue h2 {
     font-size: 1.5em;
-    margin: 0.83em 0;
+    margin: 1.005em 0 0.375em;
 }
 .yue h3 {
     font-size: 1.17em;
-    margin: 1em 0;
+    margin: 1em 0 0.2925em;
 }
 .yue h4,
 .yue h5,
 .yue h6 {
     font-size: 1em;
-    margin: 1.6em 0 1em 0;
+    margin: 1em 0 0.35em;
 }
 .yue h6 {
     font-weight: 500;
@@ -155,7 +152,7 @@
     }
 }
 .yue blockquote {
-    margin: 0 0 1.64em 0;
+    margin: 0.92em 0;
     border-left: 3px solid #dadada;
     padding-left: 12px;
     color: #555553;

@@ -309,8 +309,9 @@ var VOID = {
             };
             tocbot.init(toc_option);
             $.each($('.toc-link'), function(i, item){
-                var posi = $(document.getElementById($(item).attr('href').replace('#', ''))).offset().top;
                 $(item).click(function(){
+                    var target = $(document.getElementById($(this).attr('href').replace('#', '')));
+                    var posi = target.offset().top - 60;
                     $.scrollTo(posi, 300);
                     return false;
                 });
