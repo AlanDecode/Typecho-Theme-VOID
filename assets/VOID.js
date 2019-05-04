@@ -112,10 +112,6 @@ var VOID = {
         VOID.highlight();
         // 初始化注脚
         $.bigfoot({ actionOriginalFN: 'ignore' });
-        // 检查目录
-        if(window.innerWidth >= 1200) {
-            toggleToc();
-        } 
         // 初始化 touch 事件，移动端设备
         $('.board-item').on('touchstart', function () {
             $(this).addClass('hover');
@@ -247,9 +243,6 @@ var VOID = {
         } else {
             $('body>header').addClass('no-banner');
         }
-        if(window.innerWidth >= 1200) {
-            toggleToc();
-        } 
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -339,13 +332,30 @@ var VOID = {
                 collapseDepth: 6
             };
             tocbot.init(toc_option);
+            var closeTOC = function(){
+                $('.TOC').removeClass('show');
+                $('.toggle-toc, .toggle-toc .toggle').removeClass('pushed');
+                $('main .container').removeClass('toc-show');
+            };
             $.each($('.toc-link'), function(i, item){
                 $(item).click(function(){
                     var target = $(document.getElementById($(this).attr('href').replace('#', '')));
                     var posi = target.offset().top - 60;
                     $.scrollTo(posi, 300);
+                    if(window.innerWidth < 1200) {
+                        closeTOC();
+                    }
                     return false;
                 });
+            });
+            // 检查目录
+            if(window.innerWidth >= 1200) {
+                toggleToc();
+            } 
+            $('article.post').click(function(){
+                if(window.innerWidth < 1200) {
+                    closeTOC();
+                }
             });
         }
     },
