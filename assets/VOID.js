@@ -319,17 +319,15 @@ var VOID = {
     },
 
     highlight: function () {
-        $.each($('pre code:not([class*="language-"])'), function (i, item) {
-            var c = $(item).attr('class');
-            if (typeof (c) != 'undefined') {
-                c = 'language-' + c.replace('lang-', '');
+        $.each($('pre code'), function(i, item){
+            if($(item).attr('class')!=undefined && $(item).attr('class')!=='') {
+                $(item).parent().attr('data-lang', $(item).attr('class'));
             } else {
-                c = 'language-';
+                $(item).parent().attr('data-lang', 'plaintext');
             }
-            $(item).addClass(c);
+            hljs.highlightBlock(item);
+            hljs.lineNumbersBlock(item);
         });
-
-        Prism.highlightAll();
     },
 
     lazyLoad: function () {

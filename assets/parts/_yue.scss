@@ -204,52 +204,8 @@
     margin: 0;
     padding: 0;
 }
-.yue code,
-.yue tt {
-    color: #808080;
-    font-size: 0.96em;
-    background-color: #f9f9f7;
-    padding: 1px 2px;
-    border: 1px solid #eee;
-    .theme-dark & {
-        color: $td-textColor-dark;
-        background-color: $td-bgColor-dark;
-        border-color: $td-bgColor-dark;
-    }
-    border-radius: 3px;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    word-wrap: break-word;
-}
-.yue pre {
-    margin: 1.64em 0;
-    padding: 16px 10px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    line-height: 1.5;
-    font-size: 0.96em;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    color: #abb2bf;
-    background: rgb(45, 45, 45);
-    .theme-dark & {
-        background: $td-bgColor-dark;
-    }
-    .theme-dark &::-webkit-scrollbar{
-        background: $td-bgColor-dark;
-    }
-    > code {
-        color: #abb2bf;
-        width: max-content !important;
-        display: block;
-        padding: 0;
-    }
-}
-.yue pre code,
-.yue pre tt {
-    border: none;
-    background: none;
-}
-.yue table {
+
+.yue table:not(.hljs-ln) {
     width: 100%;
     max-width: 100%;
     border-collapse: collapse;
@@ -279,6 +235,126 @@
         background-color: $td-bgColor-dark;
     }
 }
+
+.yue code,
+.yue tt {
+    color: #808080;
+    font-size: 0.96em;
+    background-color: #f9f9f7;
+    padding: 1px 2px;
+    border: 1px solid #eee;
+    .theme-dark & {
+        color: $td-textColor-dark;
+        background-color: $td-bgColor-dark;
+        border-color: $td-bgColor-dark;
+    }
+    border-radius: 3px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    word-wrap: break-word;
+}
+.yue pre {
+    position: relative;
+    width: 100%;
+    padding-top: 42px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    line-height: 1.5;
+    font-size: 0.96em;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    background: rgb(29, 31, 33);
+    border-radius: 5px;
+    .theme-dark & {
+        background: $td-bgColor-dark;
+    }
+    .theme-dark &::-webkit-scrollbar{
+        background: $td-bgColor-dark;
+    }
+    &::before {
+        content: " ";
+        position: absolute;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background: #fc625d;
+        width: 12px;
+        height: 12px;
+        left: 12px;
+        top: 10px;
+        -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        z-index: 2;
+    }
+    &::after {
+        content: attr(data-lang);
+        text-align: center;
+        background: #21252b;
+        width: 100%;
+        height: 32px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #eee;
+        line-height: 32px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    > code {
+        color: #ccc;
+        padding: 10px;
+        padding-top: 0;
+    }
+    table {
+        &, & * {
+            border: none;
+            background: transparent!important;
+        }
+        margin: 0;
+        width: 100%;
+        @media screen and (min-width: 767.5px) {
+            .hljs-ln-code:hover{
+                background: #343638!important;
+            }
+        }
+    }
+}
+.yue pre code,
+.yue pre tt {
+    border: none;
+    background: none;
+}
+
+/* for highlightjs */
+.yue {
+    /* for block of numbers */
+    .hljs-ln-numbers {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        text-align: center;
+        color: #ccc;
+        border-right: 1px solid rgba(255, 255, 255, 0.25);
+        .theme-dark &{
+            border-color: $td-borderColor;
+        }
+        vertical-align: top;
+        padding-right: 8px;
+
+        /* your custom style here */
+        width: 10px;
+    }
+
+    /* for block of code */
+    .hljs-ln-code {
+        padding-left: 10px;
+    }
+}
+
 .yue iframe {
     display: block;
     max-width: 100%;
