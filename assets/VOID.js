@@ -30,15 +30,6 @@ function throttle(fun, delay, time) {
     };
 }
 
-
-function checkGoTop() {
-    if ($(document).scrollTop() > window.innerHeight) {
-        $('#back-top').fadeIn(300);
-    } else {
-        $('#back-top').fadeOut(200);
-    }
-}
-
 var getDeviceState = function (element) {
     var zIndex;
     if (window.getComputedStyle) {
@@ -71,6 +62,41 @@ function getCookie(name) {
         return null;
 }
 
+function adjustTOC() {
+    var top = 0;
+    var bottom = 0;
+    var bottom1 = 24;
+    if($('main > .lazy-wrap').length) {
+        var t = $('main > .lazy-wrap').offset().top + $('main > .lazy-wrap').outerHeight() - $(document).scrollTop();
+        if(t >= 0) top = t;
+    }
+    if($('footer').length) {
+        var b = -$('footer').offset().top + window.innerHeight + $(document).scrollTop();
+        if(b >= 0){
+            bottom = b;
+            bottom1 = b + 32;
+        }
+    }
+    requestAnimationFrame(function(){
+        $('.TOC').css('top', String(top) + 'px');
+        $('.TOC').css('bottom', String(bottom) + 'px');
+        $('.toggle-toc').css('bottom', String(bottom1) + 'px');
+    });
+}
+
+$(document).scroll(function () {
+    adjustTOC();
+});
+
+function toggleToc() {
+    if($('.TOC').length) {
+        requestAnimationFrame(adjustTOC);
+        $('.TOC').toggleClass('show');
+        $('.toggle-toc, .toggle-toc .toggle').toggleClass('pushed');
+        $('main .container').toggleClass('toc-show');
+    }
+}
+
 var VOID = {
     // 初始化单页应用
     init: function () {
@@ -86,6 +112,10 @@ var VOID = {
         VOID.highlight();
         // 初始化注脚
         $.bigfoot({ actionOriginalFN: 'ignore' });
+        // 检查目录
+        if(window.innerWidth >= 1200) {
+            toggleToc();
+        } 
         // 初始化 touch 事件，移动端设备
         $('.board-item').on('touchstart', function () {
             $(this).addClass('hover');
@@ -93,7 +123,6 @@ var VOID = {
         $('.board-item').on('touchend', function () {
             $(this).removeClass('hover');
         });
-        checkGoTop();
         // 监听滚动事件，实现懒加载
         if (VOIDConfig.lazyload) {
             window.addEventListener('scroll', throttle(VOID.lazyLoad, 100, 1000));
@@ -218,6 +247,9 @@ var VOID = {
         } else {
             $('body>header').addClass('no-banner');
         }
+        if(window.innerWidth >= 1200) {
+            toggleToc();
+        } 
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -226,7 +258,6 @@ var VOID = {
         VOID.reload();
         VOID.handleLike();
         AjaxComment.init();
-        checkGoTop();
     },
 
     // 重载与事件绑定
@@ -741,7 +772,6 @@ setInterval(function () {
 }, 1000);
 
 window.addEventListener('scroll', function () {
-    checkGoTop();
     if (VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner') && VOIDConfig.headerMode != 2) {
         var tr = $(window).width() > 767 ? 150 : 80;
         if ($(document).scrollTop() > tr) {
@@ -802,10 +832,4 @@ function toggleNav(item) {
         VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
     }
-}
-
-function toggleToc(item) {
-    $('.TOC').toggleClass('show');
-    $('.toggle-toc').toggleClass('pushed');
-    $(item).toggleClass('pushed');
 }
