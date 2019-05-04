@@ -285,7 +285,7 @@
     }
     &::after {
         content: attr(data-lang);
-        text-align: center;
+        text-align: right;
         background: #21252b;
         width: 100%;
         height: 32px;
@@ -299,6 +299,8 @@
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        padding: 0 12px;
+        box-sizing: border-box;
     }
     > code {
         color: #ccc;
