@@ -210,6 +210,7 @@ article {
         figure {
             position: relative;
             margin: 2.5px;
+            min-height: unset;
             @media screen and (max-width: 767px) {
                 figcaption {
                     display: none;
