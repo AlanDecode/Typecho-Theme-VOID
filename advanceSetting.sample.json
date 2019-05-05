@@ -29,6 +29,9 @@
     // 底部显示最近访客
     "showRecentGuest": true,
 
+    // 大图集
+    "largePhotoSet": true,
+
     // 自定义添加栏下拉列表
     "nav" : [
         {

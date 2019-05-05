@@ -111,8 +111,8 @@ $setting = $GLOBALS['VOIDSetting'];
             </div>
             <style>
             .photos {
-                margin-left: 0!important;
-                width: auto!important;
+                width: calc(100% + 2rem)!important;
+                margin-left: -1rem!important;
             }
             </style>
         <?php endif; ?>

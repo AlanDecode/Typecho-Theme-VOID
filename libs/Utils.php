@@ -271,6 +271,7 @@ class Utils
             'accurateDarkMode' => false,
             "useNotoSerif" => false,
             "showRecentGuest" => false,
+            "largePhotoSet" => true,
 
             //插件是否启用
             'VOIDPlugin' => false

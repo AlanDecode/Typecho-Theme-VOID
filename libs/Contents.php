@@ -114,11 +114,21 @@ Class Contents
      */
     static public function parsePhotoSet($content)
     {
+        $setting = $GLOBALS['VOIDSetting'];
+
         // 清除无用 tag
         $reg = '/\[photos(.*?)\/photos\]/s';
         $new = preg_replace_callback($reg, array('Contents', 'parsePhotoSetCallBack'), $content);
         $reg='/<p>\[photos.*?\](.*?)\[\/photos\]<\/p>/s';
-        $rp='<div class="photos">${1}</div>';
+        $rp='';
+
+        if($setting['largePhotoSet']) {
+            $rp = '<div class="photos large">${1}</div>';
+        }
+        else {
+            $rp = '<div class="photos">${1}</div>';
+        }
+
         $new=preg_replace($reg, $rp, $new);
         return $new;
     }
