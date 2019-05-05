@@ -92,7 +92,7 @@ function toggleToc() {
     if($('.TOC').length) {
         requestAnimationFrame(adjustTOC);
         $('.TOC').toggleClass('show');
-        $('.toggle-toc, .toggle-toc .toggle').toggleClass('pushed');
+        $('.toggle-toc').toggleClass('pushed');
         $('main .container').toggleClass('toc-show');
     }
 }
@@ -334,7 +334,7 @@ var VOID = {
             tocbot.init(toc_option);
             var closeTOC = function(){
                 $('.TOC').removeClass('show');
-                $('.toggle-toc, .toggle-toc .toggle').removeClass('pushed');
+                $('.toggle-toc').removeClass('pushed');
                 $('main .container').removeClass('toc-show');
             };
             $.each($('.toc-link'), function(i, item){
@@ -352,7 +352,7 @@ var VOID = {
             if(window.innerWidth >= 1200) {
                 toggleToc();
             } 
-            $('article.post').click(function(){
+            $('.contents-wrap').click(function(){
                 if(window.innerWidth < 1200) {
                     closeTOC();
                 }

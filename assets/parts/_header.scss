@@ -4,7 +4,7 @@ header{
     left: 0;
     width: 100%;
     position: fixed;
-    transition: 0.5s ease all;
+    transition: $animationTime-slow ease all;
     background: #111;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     .theme-dark &{

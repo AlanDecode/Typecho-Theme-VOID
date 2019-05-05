@@ -449,14 +449,17 @@ article {
     right: -280px;
     background: rgba($color: #000000, $alpha: 0.92);
     padding: 1rem;
-    padding-top: 50px;
+    padding-top: 60px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &::before {
         content: "Contents";
         position: absolute;
         left: 0;
         top: 0;
-        line-height: 50px;
-        height: 50px;
+        line-height: 60px;
+        height: 60px;
         width: 100%;
         font-size: 20px;
         font-weight: 600;
@@ -467,7 +470,7 @@ article {
         box-sizing: border-box;
     }
     bottom: 0;
-    transition: 0.5s ease right;
+    transition: $animationTime ease right;
     .theme-dark &::-webkit-scrollbar{
         background: none;
     }
@@ -489,10 +492,12 @@ article {
     }
 }
 
-@media screen and (min-width: 1199.5px) and (max-width: 1366px){
-    main .container.toc-show {
-        margin-left: calc(50vw - 565px);
-        margin-right: calc(50vw - 295px);
+@media screen and (min-width: 1199.5px) {
+    main .container div.contents-wrap {
+        transition: 0.2s ease all;
+    }
+    main .container.toc-show div.contents-wrap{
+        transform: translateX(-135px);
     }
 }
 
@@ -500,12 +505,20 @@ article {
     position: fixed;
     right: 1.5rem;
     bottom: 1.5rem;
-    padding: 0.4rem;
     background: black;
     z-index: 4;
-    transition: 0.5s ease transform;
+    transition: $animationTime ease transform;
+    a{
+        display: block;
+        padding: 0.65rem;
+        color: #ddd;
+    }
     &.pushed {
         transform: translateX(calc(-240px - 1rem));
+        a {
+            transform: rotate(180deg);
+            animation-fill-mode: forwards;
+        }
     }
 }
 .social-button {
