@@ -184,6 +184,9 @@ article {
     div[itemprop=articleBody] > figure {
         width: calc(100% + 2rem);
         margin-left: -1rem;
+        figcaption {
+            padding: 0 1rem;
+        }
     }
     .photos {
         display: flex;
