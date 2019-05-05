@@ -211,9 +211,9 @@ article {
             position: relative;
             margin: 2.5px;
             @media screen and (max-width: 767px) {
-                margin: 2.5px 0;
-                min-width: 100%;
-                flex: 1;
+                figcaption {
+                    display: none;
+                }
             }
             &:first-child {
                 margin-left: 0;
