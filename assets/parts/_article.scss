@@ -495,7 +495,7 @@ article {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            &:hover {
+            &:hover, &.is-active-link {
                 color: #54bc4b;
             }
         }
