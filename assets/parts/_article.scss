@@ -184,6 +184,9 @@ article {
     div[itemprop=articleBody] > figure {
         width: calc(100% + 2rem);
         margin-left: -1rem;
+        figcaption {
+            padding: 0 1rem;
+        }
     }
     .photos {
         display: flex;
@@ -207,10 +210,11 @@ article {
         figure {
             position: relative;
             margin: 2.5px;
+            min-height: unset;
             @media screen and (max-width: 767px) {
-                margin: 2.5px 0;
-                min-width: 100%;
-                flex: 1;
+                figcaption {
+                    display: none;
+                }
             }
             &:first-child {
                 margin-left: 0;
