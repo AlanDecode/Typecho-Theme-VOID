@@ -181,6 +181,9 @@ article {
             max-height: 150vh;
         }
     }
+    div[itemprop=articleBody] {
+        text-align: justify;
+    }
     div[itemprop=articleBody] > figure {
         width: calc(100% + 2rem);
         margin-left: -1rem;

@@ -130,7 +130,13 @@ var VOID = {
             // initialise
             headroom.init();
         }
+        // hyphen
+        VOID.hyphenate();
         AjaxComment.init();
+    },
+
+    hyphenate: function() {
+        $('div[itemprop=articleBody] p, div[itemprop=articleBody] blockquote').hyphenate('en-us');
     },
 
     // 解析照片集
@@ -250,6 +256,8 @@ var VOID = {
         VOID.initCopyLink();
         VOID.reload();
         VOID.handleLike();
+        // hyphen
+        VOID.hyphenate();
         AjaxComment.init();
     },
 
