@@ -411,13 +411,7 @@ var VOID = {
     },
 
     goTop: function () {
-        var a = document.documentElement.scrollTop || document.body.scrollTop;
-        if (a > 0) {
-            requestAnimationFrame(VOID.goTop);
-            window.scrollTo(0, a - (a / 5));
-        } else {
-            cancelAnimationFrame(VOID.goTop);
-        }
+        $.scrollTo(0, 500);
     },
 
     like: function (sel) {
