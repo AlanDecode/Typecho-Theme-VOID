@@ -76,7 +76,6 @@
             align-items: center;
             #comment-submit-button{
                 position: relative;
-                z-index: 12;
                 background: none;
                 &:hover{
                     background: $darkColor;
@@ -114,11 +113,9 @@
                         }
                     }
                     max-width:100%;
-                    z-index: 2;
                     min-width: 245px;
                     .OwO-body{
                         max-width:100%;
-                        z-index: 2
                     }
                     .OwO-items{
                         -webkit-overflow-scrolling: touch;
@@ -133,7 +130,6 @@
                 display:inline;
                 text-align:right;
                 margin-right: 1.3em;
-                z-index: 2;
             }  
         }
     }

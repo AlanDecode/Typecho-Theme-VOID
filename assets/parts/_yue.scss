@@ -277,7 +277,7 @@
         top: 10px;
         -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
         box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-        z-index: 2;
+        z-index: 1;
     }
     &::after {
         content: attr(data-lang);

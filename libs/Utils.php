@@ -119,9 +119,6 @@ class Utils
        
         echo '<style>#custom-field textarea,#custom-field input{width:100%}
         .OwO span{background:none!important;width:unset!important;height:unset!important}
-        .OwO .OwO-logo{
-            z-index: unset!important;
-        }
         .OwO .OwO-body .OwO-items{
             -webkit-overflow-scrolling: touch;
             overflow-x: hidden;

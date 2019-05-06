@@ -62,38 +62,20 @@ function getCookie(name) {
         return null;
 }
 
-function adjustTOC() {
-    var top = 0;
-    var bottom = 0;
-    var bottom1 = 24;
-    if($('main > .lazy-wrap').length) {
-        var t = $('main > .lazy-wrap').offset().top + $('main > .lazy-wrap').outerHeight() - $(document).scrollTop();
-        if(t >= 0) top = t;
+var closeTOC = function(){
+    if($('.TOC').length) {
+        $('.TOC').removeClass('show');
+        $('.toggle-toc').removeClass('pushed');
+        $('body').removeClass('toc-show');
     }
-    if($('footer').length) {
-        var b = -$('footer').offset().top + window.innerHeight + $(document).scrollTop();
-        if(b >= 0){
-            bottom = b;
-            bottom1 = b + 32;
-        }
-    }
-    requestAnimationFrame(function(){
-        $('.TOC').css('top', String(top) + 'px');
-        $('.TOC').css('bottom', String(bottom) + 'px');
-        $('.toggle-toc').css('bottom', String(bottom1) + 'px');
-    });
-}
+};
 
-$(document).scroll(function () {
-    adjustTOC();
-});
 
 function toggleToc() {
     if($('.TOC').length) {
-        requestAnimationFrame(adjustTOC);
         $('.TOC').toggleClass('show');
         $('.toggle-toc').toggleClass('pushed');
-        $('main .container').toggleClass('toc-show');
+        $('body').toggleClass('toc-show');
     }
 }
 
@@ -202,6 +184,7 @@ var VOID = {
         $('header').removeClass('opened');
         if ($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
+        closeTOC();
         if ($('.TOC').length > 0) {
             tocbot.destroy();
         }
@@ -340,11 +323,6 @@ var VOID = {
                 collapseDepth: 6
             };
             tocbot.init(toc_option);
-            var closeTOC = function(){
-                $('.TOC').removeClass('show');
-                $('.toggle-toc').removeClass('pushed');
-                $('main .container').removeClass('toc-show');
-            };
             $.each($('.toc-link'), function(i, item){
                 $(item).click(function(){
                     var target = $(document.getElementById($(this).attr('href').replace('#', '')));
@@ -836,6 +814,7 @@ function toggleSearch() {
 function toggleNav(item) {
     $(item).toggleClass('pushed');
     $('header').toggleClass('opened');
+    closeTOC();
     if ($(item).hasClass('pushed')) {
         $('#nav-mobile').fadeIn(200);
         VOID.openModal();

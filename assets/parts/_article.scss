@@ -455,7 +455,8 @@ article {
 .TOC {
     position: fixed;
     top: 0;
-    z-index: 13;
+    bottom: 0;
+    z-index: 3;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     width: 280px;
@@ -506,12 +507,24 @@ article {
 }
 
 @media screen and (min-width: 1199.5px) {
-    main .container div.contents-wrap {
-        transition: 0.2s ease all;
+    div.contents-wrap,
+    main>.lazy-wrap,
+    body>footer {
+        transition: $animationTime ease transform;
     }
-    main .container.toc-show div.contents-wrap{
-        transform: translateX(-135px);
+    body>header{
+        transition: $animationTime ease all;
     }
+    .toc-show{
+        div.contents-wrap,
+        main>.lazy-wrap,
+        >footer{
+            transform: translateX(-135px);
+        }
+        >header{
+            padding-right: 270px;
+        }
+    } 
 }
 
 .toggle-toc {
@@ -519,7 +532,7 @@ article {
     right: 1.5rem;
     bottom: 1.5rem;
     background: black;
-    z-index: 4;
+    z-index: 1;
     transition: $animationTime ease transform;
     a{
         display: block;
