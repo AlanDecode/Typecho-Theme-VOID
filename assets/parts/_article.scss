@@ -449,7 +449,7 @@ article {
 }
 
 [itemprop=headline], .headline, .post-meta-index {
-    font-family: $void-sans-serif!important;
+    font-family: $void-font-default!important;
 }
 
 .TOC {
@@ -483,7 +483,7 @@ article {
         width: 100%;
         font-size: 20px;
         font-weight: 600;
-        font-family: $void-sans-serif;
+        font-family: $void-font-sans;
         text-transform: uppercase;
         text-align: center;
         background: #03030f;
