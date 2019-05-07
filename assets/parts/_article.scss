@@ -542,6 +542,7 @@ article {
         width: calc(100% + 1rem);
         border-left: 2px solid #54BC4B;
         z-index: -1;
+        box-sizing: border-box;
     }
     @media screen and (min-width: 1199.5px){
         .toc-link:hover::before {
@@ -559,6 +560,7 @@ article {
             width: calc(100% + 1rem);
             border-left: 2px solid #54BC4B;
             z-index: -1;
+            box-sizing: border-box;
         }
     }
     &.show {
