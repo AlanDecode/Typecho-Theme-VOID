@@ -14,15 +14,18 @@
 
 .toc-list {
 	margin: 0;
-    padding-left: 10px;
+    padding-left: 0;
     list-style: none;
-    line-height: 1.8;
+    line-height: 2.1;
+}
+
+.toc-list .toc-list{
+	padding-left: 1rem;
 }
 
 a.toc-link {
 	color: currentColor;
     height: 100%;
-    position: relative;
 }
 
 .is-collapsible {
@@ -42,28 +45,4 @@ a.toc-link {
 
 .is-active-link {
 	font-weight: 700
-}
-
-.is-active-link::before {
-    content: "";
-    background-color: #54BC4B;
-	display: block;
-	height: 1.5rem;
-	left: -0.6rem;
-    top: 0;
-	position: absolute;
-	width: 2px
-}
-
-@media screen and (min-width: 1366px){
-	.toc-link:hover::before {
-		content: "";
-		background-color: #54BC4B;
-		display: block;
-		height: 1.5rem;
-		left: -0.6rem;
-		top: 0;
-		position: absolute;
-		width: 2px
-	}
 }

@@ -461,8 +461,14 @@ article {
     -webkit-overflow-scrolling: touch;
     width: 280px;
     right: -280px;
-    background: rgba($color: #000000, $alpha: 0.92);
+    background: #03030f;
+    body:not(.theme-dark) &{
+        @media screen and (min-width: 1199.5px) {
+            background: #f1f3f4;
+        }
+    }
     padding: 1rem;
+    padding-right: 0;
     padding-top: 60px;
     &::-webkit-scrollbar {
         display: none;
@@ -480,7 +486,14 @@ article {
         font-family: $void-sans-serif;
         text-transform: uppercase;
         text-align: center;
-        color: #ddd;
+        background: #03030f;
+        color: $td-textColor;
+        body:not(.theme-dark) &{
+            @media screen and (min-width: 1199.5px) {
+                color: $textColor;
+                background: #f1f3f4;
+            }
+        }
         box-sizing: border-box;
     }
     bottom: 0;
@@ -489,16 +502,63 @@ article {
         background: none;
     }
     * {
-        color: #eee;
+        color: $td-textColor;
+    }
+    body:not(.theme-dark) & *{
+        @media screen and (min-width: 1199.5px) {
+            color: $textColor;
+        }
+    }
+    .toc-list {
+        position: relative;
+        .toc-list {
+            position: unset;
+        }
     }
     li {
         a {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            display: block;
+            width: 100%;
             &:hover, &.is-active-link {
                 color: #54bc4b;
             }
+        }
+    }
+    .is-active-link::before {
+        content: "";
+        background-color: $td-bgColor-light;
+        body:not(.theme-dark) &{
+            @media screen and (min-width: 1199.5px) {
+                background-color: #efefef;
+            }
+        }
+        display: block;
+        height: 2.1rem;
+        left: -1rem;
+        position: absolute;
+        width: calc(100% + 1rem);
+        border-left: 2px solid #54BC4B;
+        z-index: -1;
+    }
+    @media screen and (min-width: 1199.5px){
+        .toc-link:hover::before {
+            content: "";
+            background-color: $td-bgColor-light;
+            body:not(.theme-dark) &{
+                @media screen and (min-width: 1199.5px) {
+                    background-color: #efefef;
+                }
+            }
+            display: block;
+            height: 2.1rem;
+            left: -1rem;
+            position: absolute;
+            width: calc(100% + 1rem);
+            border-left: 2px solid #54BC4B;
+            z-index: -1;
         }
     }
     &.show {
@@ -531,13 +591,23 @@ article {
     position: fixed;
     right: 1.5rem;
     bottom: 1.5rem;
-    background: black;
+    background: #03030f;
+    body:not(.theme-dark) &{
+        @media screen and (min-width: 1199.5px) {
+            background: #f1f3f4;
+        }
+    }
     z-index: 1;
     transition: $animationTime ease transform;
     a{
         display: block;
         padding: 0.65rem;
-        color: #ddd;
+        color: $td-textColor-light;
+        body:not(.theme-dark) &{
+            @media screen and (min-width: 1199.5px) {
+                color: $textColor;
+            }
+        }
     }
     &.pushed {
         transform: translateX(calc(-240px - 1rem));
