@@ -106,15 +106,10 @@ $setting = $GLOBALS['VOIDSetting'];
         <!--目录，可选-->
         <?php if($this->fields->showTOC == '1'): ?>
             <div aria-label="文章目录" class="TOC"></div>
-            <div role=button aria-label="展开或关闭文章目录" class="toggle-toc">
-                <a target="_self" href="javascript:void(0);" onclick="toggleToc();">←</a>
-            </div>
             <style>
-            .photos {
-                width: calc(100% + 2rem)!important;
-                margin-left: -1rem!important;
-            }
+            .photos { width: calc(100% + 2rem)!important; margin-left: -1rem!important; }
+            #toggle-toc { display: block; }
             </style>
-        <?php endif; ?>
+        <?php endif;?>
     </div>
 </main>

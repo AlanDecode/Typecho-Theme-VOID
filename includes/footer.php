@@ -38,6 +38,16 @@ $setting = $GLOBALS['VOIDSetting'];
             </div>
         </footer>
 
+        <!--侧边控制按钮-->
+        <aside id="ctrler-panel">
+            <div class="ctrler-item" id="go-top">
+                <a target="_self" aria-label="返回顶部" href="javascript:void(0);" onclick="$.scrollTo(0, 300);">↑</a>
+            </div>
+            <div role=button aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
+                <a target="_self" href="javascript:void(0);" onclick="TOC.toggle()">←</a>
+            </div>
+        </aside>
+
         <?php if(!empty($setting['serviceworker'])): ?>
         <script>
             var serviceWorkerUri = '/<?php echo $setting['serviceworker']; ?>';

@@ -62,22 +62,31 @@ function getCookie(name) {
         return null;
 }
 
-var closeTOC = function(){
-    if($('.TOC').length) {
-        $('.TOC').removeClass('show');
-        $('.toggle-toc').removeClass('pushed');
-        $('body').removeClass('toc-show');
+var TOC = {
+    toggle: function() {
+        if($('.TOC').length) {
+            $('.TOC').toggleClass('show');
+            $('#ctrler-panel').toggleClass('pull-left');
+            $('body').toggleClass('toc-show');
+        }
+    },
+
+    close: function() {
+        if($('.TOC').length) {
+            $('.TOC').removeClass('show');
+            $('#ctrler-panel').removeClass('pull-left');
+            $('body').removeClass('toc-show');
+        }
+    },
+
+    open: function() {
+        if($('.TOC').length) {
+            $('.TOC').addClass('show');
+            $('#ctrler-panel').addClass('pull-left');
+            $('body').addClass('toc-show');
+        }
     }
 };
-
-
-function toggleToc() {
-    if($('.TOC').length) {
-        $('.TOC').toggleClass('show');
-        $('.toggle-toc').toggleClass('pushed');
-        $('body').toggleClass('toc-show');
-    }
-}
 
 var VOID = {
     // 初始化单页应用
@@ -184,7 +193,7 @@ var VOID = {
         $('header').removeClass('opened');
         if ($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
-        closeTOC();
+        TOC.close();
         if ($('.TOC').length > 0) {
             tocbot.destroy();
         }
@@ -329,18 +338,18 @@ var VOID = {
                     var posi = target.offset().top - 60;
                     $.scrollTo(posi, 300);
                     if(window.innerWidth < 1200) {
-                        closeTOC();
+                        TOC.close();
                     }
                     return false;
                 });
             });
             // 检查目录
             if(window.innerWidth >= 1200) {
-                toggleToc();
+                TOC.toggle();
             } 
             $('.contents-wrap').click(function(){
                 if(window.innerWidth < 1200) {
-                    closeTOC();
+                    TOC.close();
                 }
             });
         }
@@ -761,7 +770,16 @@ setInterval(function () {
     $('#uptime').html(days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分 ' + seconds + ' 秒 ');
 }, 1000);
 
+function checkGoTop() {
+    if($(document).scrollTop() > window.innerHeight) {
+        $('#go-top').addClass('show');
+    } else {
+        $('#go-top').removeClass('show');
+    }
+}
+
 window.addEventListener('scroll', function () {
+    checkGoTop();
     if (VOIDConfig.headerColorScheme && !$('body>header').hasClass('no-banner') && VOIDConfig.headerMode != 2) {
         var tr = $(window).width() > 767 ? 150 : 80;
         if ($(document).scrollTop() > tr) {
@@ -814,7 +832,7 @@ function toggleSearch() {
 function toggleNav(item) {
     $(item).toggleClass('pushed');
     $('header').toggleClass('opened');
-    closeTOC();
+    TOC.close();
     if ($(item).hasClass('pushed')) {
         $('#nav-mobile').fadeIn(200);
         VOID.openModal();

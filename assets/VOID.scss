@@ -234,6 +234,49 @@ body{
     }
 }
 
+#ctrler-panel {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 40px;
+    z-index: 1;
+    transition: $animationTime ease transform;
+    display: flex;
+    flex-direction: column;
+    &.pull-left {
+        transform: translateX(calc(-240px - 1rem));
+    }
+    .ctrler-item {
+        height: 40px;
+        width: 40px;
+        background: #03030f;
+        body:not(.theme-dark) &{
+            @media screen and (min-width: 1199.5px) {
+                background: #f1f3f4;
+            }
+        }
+        a{
+            display: block;
+            padding: 0.65rem;
+            color: $td-textColor-light;
+            text-align: center;
+            body:not(.theme-dark) &{
+                @media screen and (min-width: 1199.5px) {
+                    color: $textColor;
+                }
+            }
+        }
+        &#go-top{
+            display: none;
+            @media screen and (min-width: 1199.5px){
+                &.show {
+                    display: block;
+                }   
+            }
+        }
+    }
+}
+
 .msg{
     position: fixed;
     top: 70px;
