@@ -342,22 +342,23 @@ article {
             display: none;
         }
     }
+    span.copy-link {
+        display: none;
+    }
     span.copy-link.loaded {
         margin-left: 0.5em;
         cursor: pointer;
         font-size: 0.9em;
         opacity: 0.2;
         @media screen and (min-width:1023.5px) {
-            display: block;
-            width: 25px;
-            position: absolute;
-            left: -35px;
-            margin-left: 0;
-            bottom: 0;
-            text-align: right;
             &:hover {
                 opacity: 1;
             }
+        }
+    }
+    h1, h2, h3, h4, h5, h6 {
+        &:hover span.copy-link.loaded{
+            display: inline;
         }
     }
 }
