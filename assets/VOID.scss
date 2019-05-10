@@ -249,22 +249,12 @@ body{
     .ctrler-item {
         height: 40px;
         width: 40px;
-        background: #03030f;
-        body:not(.theme-dark) &{
-            @media screen and (min-width: 1199.5px) {
-                background: #f1f3f4;
-            }
-        }
+        @include sidebar;
         a{
             display: block;
             padding: 0.65rem;
             color: $td-textColor-light;
             text-align: center;
-            body:not(.theme-dark) &{
-                @media screen and (min-width: 1199.5px) {
-                    color: $textColor;
-                }
-            }
         }
         &#go-top{
             display: none;
