@@ -569,6 +569,15 @@ article {
     }
 }
 
+@media screen and (max-width: 1199.5px) {
+    div.contents-wrap {
+        transition: $animationTime ease opacity;
+    }
+    .toc-show div.contents-wrap{
+        opacity: 0.5;
+    }
+}
+
 @media screen and (min-width: 1199.5px) {
     div.contents-wrap,
     main>.lazy-wrap,

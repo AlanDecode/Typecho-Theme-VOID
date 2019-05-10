@@ -69,6 +69,10 @@ var TOC = {
             $('#ctrler-panel').toggleClass('pull-left');
             $('body').toggleClass('toc-show');
         }
+        if(window.innerWidth < 1200) {
+            if($('body').hasClass('toc-show')) VOID.openModal();
+            else VOID.closeModal();
+        }
     },
 
     close: function() {
@@ -76,6 +80,9 @@ var TOC = {
             $('.TOC').removeClass('show');
             $('#ctrler-panel').removeClass('pull-left');
             $('body').removeClass('toc-show');
+            if(window.innerWidth < 1200) {
+                VOID.closeModal();
+            }
         }
     },
 
@@ -84,6 +91,9 @@ var TOC = {
             $('.TOC').addClass('show');
             $('#ctrler-panel').addClass('pull-left');
             $('body').addClass('toc-show');
+            if(window.innerWidth < 1200) {
+                VOID.openModal();
+            }
         }
     }
 };
@@ -334,6 +344,9 @@ var VOID = {
             tocbot.init(toc_option);
             $.each($('.toc-link'), function(i, item){
                 $(item).click(function(){
+                    if($('body').hasClass('modal-open')) {
+                        VOID.closeModal();
+                    }
                     var target = $(document.getElementById($(this).attr('href').replace('#', '')));
                     var posi = target.offset().top - 60;
                     $.scrollTo(posi, 300);
@@ -345,7 +358,7 @@ var VOID = {
             });
             // 检查目录
             if(window.innerWidth >= 1200) {
-                TOC.toggle();
+                TOC.open();
             } 
             $('.contents-wrap').click(function(){
                 if(window.innerWidth < 1200) {
