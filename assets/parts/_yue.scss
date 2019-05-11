@@ -255,7 +255,7 @@
     line-height: 1.5;
     font-size: 0.96em;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    background: rgb(29, 31, 33);
+    background: #f1f3f3;
     border-radius: 5px;
     .theme-dark & {
         background: $td-bgColor-dark;
@@ -280,14 +280,18 @@
     &::after {
         content: attr(data-lang);
         text-align: right;
-        background: #21252b;
+        background: #ebeded;
+        color: $td-textColor-light;
+        .theme-dark & {
+            background: #21252b;
+            color: #eee;
+        }
         width: 100%;
         height: 32px;
         display: block;
         position: absolute;
         top: 0;
         left: 0;
-        color: #eee;
         line-height: 32px;
         font-size: 16px;
         font-weight: bold;
@@ -297,9 +301,13 @@
         box-sizing: border-box;
     }
     > code {
-        color: #ccc;
+        color: #4d4d4c;
+        .theme-dark & {
+            color: $td-textColor;
+        }
         padding: 10px;
         padding-top: 0;
+        padding-right: 0;
     }
     table {
         &, & * {
@@ -310,11 +318,17 @@
         width: 100%;
         @media screen and (min-width: 1199.5px) {
             .hljs-ln-code:hover{
-                background: #343638!important;
+                background: #ebeded!important;
+                .theme-dark & {
+                    background: #343638!important;
+                }
             }
         }
     }
 }
+
+@import "hljs";
+
 .yue pre code,
 .yue pre tt {
     border: none;

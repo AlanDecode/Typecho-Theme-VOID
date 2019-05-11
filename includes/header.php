@@ -16,8 +16,7 @@ if($this->is('post') || $this->is('page')){
 }
 ?>
 
-<body class="line-numbers 
-    <?php 
+<body class="<?php 
         if($setting['colorScheme'] == 0){
             echo($_COOKIE['theme_dark'] == '1' ? 'theme-dark' : '');
         } 
