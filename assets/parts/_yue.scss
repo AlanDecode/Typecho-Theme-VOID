@@ -348,9 +348,9 @@
 
         text-align: center;
         color: #ccc;
-        border-right: 1px solid rgba(255, 255, 255, 0.25);
-        .theme-dark &{
-            border-color: $td-borderColor;
+        border-right: 1px solid rgba(0,0,0,0.05);
+        .theme-dark & {
+            border-color: rgba(255, 255, 255, 0.05);
         }
         vertical-align: top;
         padding-right: 8px;
