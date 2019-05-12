@@ -1,0 +1,58 @@
+main {
+    div.app-1 {
+        .mask {
+            @include bg;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: $td-bgColor-dark;
+            .mask {
+                opacity: 0;
+            }
+            &.loaded .mask {
+                background-color: rgba($color: #000000, $alpha: 0.6);
+                animation: exp-fade-in 0.7s forwards;
+            }
+        }
+        .brand {
+            display: flex;
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            color: $td-textColor;
+            font-size: 1.7rem;
+            @media screen and (max-width: 1199.5px) {
+                font-size: 1.5rem;
+            }
+            transition: 0.2s ease color;
+            &:hover {
+                color: $td-textColor-light
+            }
+        }
+        article {
+            opacity: 0;
+            animation: exp-fade-in 0.7s forwards;
+            animation-delay: 0.3s;
+            * {
+                color: white!important;
+                font-size: 36px;
+            }
+            @media screen and (max-width: 1199.5px) {
+                font-size: 28px;
+            }
+            font-weight: 700;
+            line-height: 1.67;
+        }
+    }
+}
+
+@keyframes exp-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
