@@ -47,5 +47,9 @@ $setting = $GLOBALS['VOIDSetting'];
                 }
             })();
         </script>
+        <div class="container">
+            <!--评论区，可选-->
+            <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
+        </div>
     </div>
 </main>
