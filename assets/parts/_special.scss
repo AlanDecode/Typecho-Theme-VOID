@@ -46,6 +46,9 @@ main {
             }
             font-weight: 700;
             line-height: 1.67;
+            @media screen and (min-width: 1199.5px) {
+                letter-spacing: .03em;
+            }
         }
     }
 }
