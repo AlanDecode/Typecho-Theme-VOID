@@ -87,7 +87,7 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $layout->addItem($showfullcontent);
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);
-    $posttype = new Typecho_Widget_Helper_Form_Element_Select('posttype',array('0'=>'一般文章', '1'=>'大型摘录页'),'0','文章类型','选择展示方式');
+    $posttype = new Typecho_Widget_Helper_Form_Element_Select('posttype',array('0'=>'一般文章', '1'=>'Landscape'),'0','文章类型','选择展示方式');
     $layout->addItem($posttype);
     $bannerasheadimg = new Typecho_Widget_Helper_Form_Element_Select('bannerasheadimg',array('1'=>'是','0'=>'否'),'1','主图显示在文章顶部','默认显示。但你可以强行不显示，转而使用默认头图。');
     $layout->addItem($bannerasheadimg);
