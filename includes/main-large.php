@@ -18,9 +18,9 @@ $setting = $GLOBALS['VOIDSetting'];
     </title>
     <style>
         body > header, body > footer { display: none; }
-        main {display: flex; flex-direction: column; justify-content: center; padding: 50px 0;}
+        main {display: flex; flex-direction: column; justify-content: center; padding: 20vh 0 50px 0;}
     </style>
-    <div class="app-1">
+    <div class="app-1 theme-dark">
         <div class="mask" id="bg"><div class="mask"></div></div>
         <div class="container">
             <a class="brand" href="<?php Utils::indexHome('/'); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
