@@ -185,29 +185,29 @@ article {
         text-align: justify;
     }
     div[itemprop=articleBody] > figure {
-        width: calc(100% + 2rem);
-        margin-left: -1rem;
+        width: calc(100% + 40px);
+        margin-left: -20px;
         figcaption {
-            padding: 0 1rem;
+            padding: 0 20px;
         }
     }
     .photos {
         display: flex;
         flex-wrap: wrap;
-        width: calc(100% + 2rem);
-        margin-left: -1rem;
+        width: calc(100% + 40px);
+        margin-left: -20px;
         &.large {
             @media screen and (min-width: 859.5px) {
                 width: 100vw;
-                margin-left: calc(-50vw + 414px);
+                margin-left: calc(-50vw + 410px);
             }
             @media screen and (min-width: 1023.5px) {
                 width: 1024px;
-                margin-left: -98px;
+                margin-left: -102px;
             }
             @media screen and (min-width: 1199.5px) {
                 width: 1200px;
-                margin-left: -186px;
+                margin-left: -190px;
             }
         }
         figure {
