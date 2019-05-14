@@ -46,7 +46,7 @@ if(!Utils::isPjax()){
                                 <span hidden itemprop="author"><?php $this->author(); ?></span>
                                 <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
                                 <?php if($setting['VOIDPlugin']): ?>
-                                    <span class="word-count">, <?php echo $this->wordCount; ?> 字</span>
+                                    <span class="word-count">+ <?php echo $this->wordCount; ?> 字</span>
                                 <?php endif; ?>
                             </div>
 
