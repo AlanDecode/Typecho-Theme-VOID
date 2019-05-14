@@ -45,10 +45,13 @@ if(!Utils::isPjax()){
                             <div class="post-meta-index">
                                 <span hidden itemprop="author"><?php $this->author(); ?></span>
                                 <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
+                                <?php if($setting['VOIDPlugin']): ?>
+                                    <span class="word-count">, <?php echo $this->wordCount; ?> 字</span>
+                                <?php endif; ?>
                             </div>
 
                             <a class="title" href="<?php $this->permalink(); ?>">
-                                <h1 itemprop="name" class="<?php if($setting['VOIDPlugin']) echo 'show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $this->wordCount; ?>"><?php $this->title(); ?></h1>
+                                <h1 itemprop="name"><?php $this->title(); ?></h1>
                             </a>
                             <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
                             
