@@ -168,6 +168,7 @@
 .yue ol {
     margin: 0 0 24px 6px;
     padding-left: 32px;
+    word-break: break-all;
 }
 .yue ul {
     list-style-type: square;
@@ -245,6 +246,7 @@
     border-radius: 3px;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     word-wrap: break-word;
+    word-break: break-all;
 }
 .yue pre {
     position: relative;
