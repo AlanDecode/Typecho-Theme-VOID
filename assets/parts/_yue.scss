@@ -166,8 +166,8 @@
 }
 .yue ul,
 .yue ol {
-    margin: 0 0 24px 6px;
-    padding-left: 32px;
+    margin: 0 0 24px 18px;
+    padding-left: 0;
     word-break: break-all;
 }
 .yue ul {
@@ -183,7 +183,6 @@
 .yue li ol {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 14px;
 }
 .yue li ul {
     list-style-type: disc;
