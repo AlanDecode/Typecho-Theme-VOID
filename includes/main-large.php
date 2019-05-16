@@ -17,13 +17,13 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php Contents::title($this); ?>
     </title>
     <style>
-        body > header, body > footer { display: none; }
-        main {display: flex; flex-direction: column; justify-content: center; padding: 20vh 0 50px 0;}
+        body > footer { display: none; }
+        body > header, body > header.dark, body > header.no-banner { background: none!important }
+        main {display: flex; flex-direction: column; justify-content: center; padding: 17.5vh 0 50px 0;}
     </style>
     <div class="app-1 theme-dark">
         <div class="mask" id="bg"><div class="mask"></div></div>
         <div class="container">
-            <a class="brand" href="<?php Utils::indexHome('/'); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
             <article class="yue"  itemscope itemtype="http://schema.org/Article">
                 <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
                 <span hidden itemprop="author"><?php $this->author(); ?></span>

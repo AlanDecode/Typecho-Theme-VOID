@@ -16,21 +16,6 @@ main {
                 animation: exp-fade-in 0.7s forwards;
             }
         }
-        .brand {
-            display: flex;
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            color: $td-textColor;
-            font-size: 1.7rem;
-            @media screen and (max-width: 1199.5px) {
-                font-size: 1.5rem;
-            }
-            transition: 0.2s ease color;
-            &:hover {
-                color: $td-textColor-light
-            }
-        }
         article {
             opacity: 0;
             animation: exp-fade-in 0.7s forwards;
