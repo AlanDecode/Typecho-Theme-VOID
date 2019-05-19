@@ -745,6 +745,13 @@ if (VOIDConfig.PJAX) {
     });
 
     $(document).on('pjax:end', function () {
+        if ($('.TOC').length < 1) {
+            $('#ctrler-panel').removeClass('pull-left');
+            $('body').removeClass('toc-show');
+        }
+    });
+
+    $(document).on('pjax:end', function () {
         NProgress.done();
         setTimeout(function () {
             var hash = new URL(window.location.href).hash;
