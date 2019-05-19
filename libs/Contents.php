@@ -64,9 +64,18 @@ Class Contents
      */
     static public function parseContent($data, $widget, $last)
     {
+        $setting = $GLOBALS['VOIDSetting'];
+
         $text = empty($last)?$data:$last;
         if ($widget instanceof Widget_Archive) {
-            $text = self::parseAll($text);
+            if($widget->parameter->__get('type') == 'feed') {
+                if($setting['rssPicProtect'])
+                    $text = self::parseAll($text, 1);
+                else
+                    $text = self::parseAll($text, 2);
+            } else {
+                $text = self::parseAll($text, 0);
+            }
         }
         return $text;
     }
@@ -76,9 +85,16 @@ Class Contents
      * 
      * @return string
      */
-    static public function parseAll($content)
+    static public function parseAll($content, $photoMode = 0)
     {
-        return self::parseHeader(self::parseNotice(self::parsePhotoSet(self::parseBiaoQing(self::parseFancyBox(self::parseRuby($content))))));
+        $content = self::parseRuby($content);
+        $content = self::parseFancyBox($content, $photoMode);
+        $content = self::parseBiaoQing($content);
+        $content = self::parsePhotoSet($content);
+        $content = self::parseNotice($content);
+        $content = self::parseHeader($content);
+
+        return $content;
     }
 
     /**
@@ -178,20 +194,24 @@ Class Contents
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
+    static private $photoMode = 0;
+
     /**
      * 解析 fancybox
      * 
      * @return string
+     * @param photoMode 0:普通解析，1:RSS保护原图，2:RSS不保护原图
      */
-    static public function parseFancyBox($content)
+    static public function parseFancyBox($content, $photoMode = 0)
     {
         $reg = '/<img.*?src="(.*?)".*?alt="(.*?)".*?>/s';
+        self::$photoMode = $photoMode;
         $new = preg_replace_callback($reg, array('Contents', 'parseFancyBoxCallback'), $content);
         return $new;
     }
 
     /**
-     * 解析图片
+     * 解析图片（正常文章）
      * 
      * @return string
      */
@@ -200,14 +220,28 @@ Class Contents
         $src_ori = $match[1];
         $src = $src_ori;
 
-        if(Helper::options()->lazyload == '1') {
-            $src = Helper::options()->themeUrl.'/assets/imgs/placeholder.jpg';
+        if(self::$photoMode == 0) {
+            if(Helper::options()->lazyload == '1') {
+                $src = Helper::options()->themeUrl.'/assets/imgs/placeholder.jpg';
+            }
+        } else {
+            if(self::$photoMode == 1) {
+                $src = 'https://i.loli.net/2019/05/19/5ce1302c840d379473.png';
+            }
         }
 
-        if($match[2] == '')
-            return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
-        else
-            return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
+        if(self::$photoMode == 1) {
+            $match[2] = '请前往原网页查看图片';
+        }
+
+        if(self::$photoMode == 0) {
+            if($match[2] == '')
+                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
+            else
+                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
+        } else {
+            return '<figure><img src="'.$src.'" alt="'.$match[2].'"><figcaption>'.$match[2].'</figcaption></figure>';
+        }
     }
 
     /**

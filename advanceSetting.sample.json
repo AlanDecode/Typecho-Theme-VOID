@@ -32,6 +32,9 @@
     // 大图集
     "largePhotoSet": true,
 
+    // RSS原图保护
+    "rssPicProtect": true,
+
     // 自定义添加栏下拉列表
     "nav" : [
         {

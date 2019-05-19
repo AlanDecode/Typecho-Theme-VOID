@@ -269,6 +269,7 @@ class Utils
             "useNotoSerif" => false,
             "showRecentGuest" => false,
             "largePhotoSet" => true,
+            "rssPicProtect" => false,
 
             //插件是否启用
             'VOIDPlugin' => false
