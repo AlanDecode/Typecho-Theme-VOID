@@ -64,6 +64,7 @@
 }
 .yue a {
     word-wrap: break-word;
+    word-break: break-all;
     &:not([data-fancybox="gallery"]):not(.post-like):not(.edit-button) {
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         .theme-dark & {
