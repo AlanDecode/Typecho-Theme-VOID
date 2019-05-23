@@ -208,6 +208,7 @@ section#index-list{
             a.title{
                 display: block;
                 border: none;
+                word-break: break-word;
                 h1{
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif, -webkit-body;
                     line-height: 1.35;
