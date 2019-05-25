@@ -177,7 +177,7 @@ var VOID = {
     // 一言
     hitokoto: function () {
         $.ajax({
-            url: 'https://v1.hitokoto.cn/?c=a&encode=json',
+            url: 'https://v1.hitokoto.cn/?encode=json',
             async: true,
             success: function (data) {
                 $('#hitokoto').html(data.hitokoto + ' - 「' + data.from + '」');
