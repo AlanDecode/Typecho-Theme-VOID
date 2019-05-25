@@ -45,8 +45,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <span class="OwO" aria-label="表情按钮" role="button"></span>
                 <?php if(Utils::isPluginAvailable('CommentToMail') || Utils::isPluginAvailable('Mailer')): ?>
                 <span class="comment-mail-me">
-                    <input aria-label="接收邮件通知" name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
-                    <label for="receiveMail"><strong>接收</strong>邮件通知</label>
+                    <input aria-label="有回复时通知我" name="receiveMail" type="checkbox" value="yes" id="receiveMail" checked />
+                    <label for="receiveMail">有回复时通知我</label>
                 </span>
                 <?php endif; ?>
                 <button id="comment-submit-button" type="submit" class="submit btn btn-normal">提交评论</button>
