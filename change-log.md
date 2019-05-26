@@ -1,5 +1,22 @@
 # Change log | 更新日志
 
+**2019-05-26 Version 2.3.2**
+
+* 新的文章版式：Landscape，适合公告、摘录
+* 修复 RSS 中图片输出的问题
+* 适配 [Mailer](https://github.com/AlanDecode/Typecho-Plugin-Mailer) 插件
+* 更换一言类型
+* 优化与修复一些小问题
+
+高级设置：
+
+* `rssPicProtect`：RSS 原图保护，启用后 RSS 输出的内容中图片会被替换为禁止符
+* `macStyleCodeBlock`：是否启用 Mac 风格代码块
+* `lineNumbers`：是否启用代码行号
+* `lineNumbersOnMobile`：是否在移动端启用代码行号
+
+注意，2.3.2 版本主题依赖 1.00 及以上版本插件。若之前已经成功安装启用插件（1.00 版）则不用处理，若之前安装插件出现问题可以尝试使用新版（1.01）插件。
+
 **2019-05-11 Version 2.3.1**
 
 * 优化文章目录树
