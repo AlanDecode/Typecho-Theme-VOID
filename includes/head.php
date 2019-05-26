@@ -104,10 +104,9 @@ $setting = $GLOBALS['VOIDSetting'];
     </style>
 
     <?php if($setting['serifincontent']): ?>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">
     <style>div[itemprop=articleBody], .yue {
-        font-family: 'Merriweather', 'Noto Serif SC', 
+        font-family: 'Noto Serif SC', 
             -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC","Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;}</style>
     <?php else: ?>
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">
