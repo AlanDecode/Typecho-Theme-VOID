@@ -72,6 +72,8 @@ $setting = $GLOBALS['VOIDSetting'];
                 } else {
                     echo 'false';
                 }
+            } else {
+                echo 'false';
             } ?>
     }
     function registerLazyLoadImg(url, target){
