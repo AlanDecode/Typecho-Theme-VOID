@@ -251,7 +251,9 @@
 .yue pre {
     position: relative;
     width: 100%;
-    padding-top: 42px;
+    .macStyleCodeBlock & {
+        padding-top: 42px;
+    }
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     line-height: 1.5;
@@ -265,7 +267,7 @@
     .theme-dark &::-webkit-scrollbar{
         background: $td-bgColor-dark;
     }
-    &::before {
+    .macStyleCodeBlock &::before {
         content: " ";
         position: absolute;
         -webkit-border-radius: 50%;
@@ -279,7 +281,7 @@
         box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
         z-index: 1;
     }
-    &::after {
+    .macStyleCodeBlock &::after {
         content: attr(data-lang);
         text-align: right;
         background: #ebeded;
@@ -304,12 +306,15 @@
     }
     > code {
         color: #4d4d4c;
+        word-wrap: unset;
         .theme-dark & {
             color: $td-textColor;
         }
         padding: 10px;
-        padding-top: 0;
-        padding-right: 0;
+        .macStyleCodeBlock & {
+            padding-top: 0;
+            padding-right: 0;
+        }
     }
     table {
         &, & * {

@@ -65,7 +65,9 @@ $setting = $GLOBALS['VOIDSetting'];
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
         accurateDarkMode: <?php echo $setting['accurateDarkMode'] ? 'true' : 'false'; ?>,
         VOIDPlugin: <?php echo $setting['VOIDPlugin'] ? 'true' : 'false'; ?>,
-        likePath: "<?php Utils::index('/action/void_like?up'); ?>"
+        likePath: "<?php Utils::index('/action/void_like?up'); ?>",
+        lineNumbers: <?php echo $setting['lineNumbers'] ? 'true' : 'false'; ?>,
+        lineNumbersOnMobile: <?php echo $setting['lineNumbersOnMobile'] ? 'true' : 'false'; ?>
     }
     function registerLazyLoadImg(url, target){
         let background = new Image();

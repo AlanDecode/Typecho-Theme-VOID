@@ -32,6 +32,13 @@
     // 大图集
     "largePhotoSet": true,
 
+    // Mac 风格代码块
+    "macStyleCodeBlock": true,
+
+    // 代码块行号支持
+    "lineNumbers": true,
+    "lineNumbersOnMobile": true,
+
     // RSS原图保护
     "rssPicProtect": true,
 

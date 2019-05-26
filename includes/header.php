@@ -23,8 +23,16 @@ if($this->is('post') || $this->is('page')){
         elseif ($setting['colorScheme'] == 2) {
             echo 'theme-dark';
         }
-        if($setting['headerMode'] == 2){
+        if ($setting['headerMode'] == 2) {
             echo ' moving-header';
+        }
+        if($setting['macStyleCodeBlock']) {
+            echo ' macStyleCodeBlock';
+        }
+        if ($setting['lineNumbers']) {
+            if (!Utils::isMobile() || $setting['lineNumbersOnMobile']) {
+                echo ' lineNumbers';   
+            }
         }
     ?>">
     <header class="<?php if(empty($banner)) echo 'no-banner dark'; ?>">

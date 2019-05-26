@@ -269,6 +269,9 @@ class Utils
             "useNotoSerif" => false,
             "showRecentGuest" => false,
             "largePhotoSet" => true,
+            "macStyleCodeBlock" => true,
+            "lineNumbers" => true,
+            "lineNumbersOnMobile" => true,
             "rssPicProtect" => false,
 
             //插件是否启用

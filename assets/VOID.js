@@ -365,9 +365,12 @@ var VOID = {
             }
             $(item).parent().attr('data-lang', lang);
             hljs.highlightBlock(item);
-            hljs.lineNumbersBlock(item, {
-                singleLine: true
-            });
+            
+            if ($('body').hasClass('lineNumbers')) {
+                hljs.lineNumbersBlock(item, {
+                    singleLine: true
+                });   
+            }
         });
     },
 
