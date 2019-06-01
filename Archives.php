@@ -34,6 +34,17 @@ if(!Utils::isPjax()){
                 ?>
             </p>
             <?php endif; ?>
+            <div class="tag-cloud">
+                <h1>Tags</h1>
+                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=0&limit=50')->to($tags); ?>
+                <?php if($tags->have()): ?>
+                <?php while ($tags->next()): ?>
+                    <a href="<?php $tags->permalink(); ?>" rel="tag" class="tag-item btn btn-normal btn-narrow" title="<?php $tags->count(); ?> 个话题"><?php $tags->name(); ?></a>
+                <?php endwhile; ?>
+                <?php else: ?>
+                    <?php echo('还没有标签哦～'); ?>
+                <?php endif; ?>
+            </div>
             <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
                 <section aria-label="<?php echo $year; ?>年归档列表"  class="year<?php if($index > 0) echo ' shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
                     <ul>

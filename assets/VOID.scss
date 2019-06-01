@@ -120,6 +120,11 @@ body{
             background: #ff5268;
         }
     }
+    &.btn-narrow {
+        padding: 0 8px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
 }
 
 #reward, #reward img{
