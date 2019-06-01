@@ -107,7 +107,7 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php if($this->fields->showTOC == '1'): ?>
             <div aria-label="文章目录" class="TOC"></div>
             <style>
-            .photos { width: calc(100% + 2rem)!important; margin-left: -1rem!important; }
+            .photos { width: calc(100% + 40px)!important; margin-left: -20px!important; }
             #toggle-toc { display: block; }
             </style>
         <?php endif;?>
