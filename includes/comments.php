@@ -11,7 +11,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
 <section id="comments">
-    <div class="section-title">Comments</div>
     <?php
     $parameter = array(
         'parentId'      => $this->hidden ? 0 : $this->cid,
