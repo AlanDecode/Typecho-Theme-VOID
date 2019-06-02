@@ -308,13 +308,17 @@ var VOID = {
     },
 
     toggleArchive: function (item) {
-        if ($(item).parent().hasClass('shrink')) {
+        var year = '#year-' + $(item).attr('data-year');
+        if ($(year).hasClass('shrink')) {
             $(item).html('-');
-            $(item).parent().removeClass('shrink');
+            $(year).removeClass('shrink');
+            var num = parseInt($(item).attr('data-num'));
+            $(year).css('max-height',  num * 46 + 32 + 'px');
         }
         else {
             $(item).html('+');
-            $(item).parent().addClass('shrink');
+            $(year).addClass('shrink');
+            $(year).css('max-height', '0');
         }
     },
 

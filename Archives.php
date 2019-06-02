@@ -25,6 +25,17 @@ if(!Utils::isPjax()){
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
+        <div class="tag-cloud yue">
+            <h2>Tags</h2>
+            <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=50')->to($tags); ?>
+            <?php if($tags->have()): ?>
+            <?php while ($tags->next()): ?>
+                <a href="<?php $tags->permalink(); ?>" rel="tag" class="tag-item btn btn-normal btn-narrow" title="<?php $tags->count(); ?> 个话题"><?php $tags->name(); ?></a>
+            <?php endwhile; ?>
+            <?php else: ?>
+                <?php echo('还没有标签哦～'); ?>
+            <?php endif; ?>
+        </div>
         <section id="archive-list" class="yue">
             <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->title(); ?></h1>
             <?php if(!$setting['titleinbanner']): ?>
@@ -34,25 +45,29 @@ if(!Utils::isPjax()){
                 ?>
             </p>
             <?php endif; ?>
-            <div class="tag-cloud">
-                <h1>Tags</h1>
-                <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=50')->to($tags); ?>
-                <?php if($tags->have()): ?>
-                <?php while ($tags->next()): ?>
-                    <a href="<?php $tags->permalink(); ?>" rel="tag" class="tag-item btn btn-normal btn-narrow" title="<?php $tags->count(); ?> 个话题"><?php $tags->name(); ?></a>
-                <?php endwhile; ?>
-                <?php else: ?>
-                    <?php echo('还没有标签哦～'); ?>
-                <?php endif; ?>
-            </div>
             <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
-                <section aria-label="<?php echo $year; ?>年归档列表"  class="year<?php if($index > 0) echo ' shrink'; ?>" data-year="<?php echo $year; ?>" data-num="<?php echo count($posts); ?>">
+                <h2><?php echo $year; ?>
+                    <span class="num-posts"><?php $post_num = count($posts); echo $post_num; ?> 篇</span>
+                    <a no-pjax data-num="<?php echo $post_num; ?>" 
+                        data-year="<?php echo $year; ?>" 
+                        class="toggle-archive" href="javascript:void(0);" 
+                        onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?>
+                    </a>
+                </h2>
+                <section id="year-<?php echo $year; ?>" 
+                    class="year<?php if($index > 0) echo ' shrink'; ?>" 
+                    style="max-height: <?php if($index > 0) echo '0'; else echo $post_num*46 + 32; ?>px">
                     <ul>
-                <?php foreach($posts as $created => $post): ?>
-                        <li data-date="<?php echo date('m-d', $created); ?>"><a class="archive-title<?php if($setting['VOIDPlugin']) echo ' show-word-count'; ?>" data-words="<?php if($setting['VOIDPlugin']) echo $post['words']; ?>" href="<?php echo $post['permalink']; ?>"><?php echo $post['title']; ?></a></li>
-                <?php endforeach; ?>
+                    <?php foreach($posts as $created => $post): ?>
+                        <li>
+                            <a class="archive-title<?php if($setting['VOIDPlugin']) echo ' show-word-count'; ?>" 
+                                data-words="<?php if($setting['VOIDPlugin']) echo $post['words']; ?>" 
+                                href="<?php echo $post['permalink']; ?>">
+                                <span class="date"><?php echo date('m-d', $created); ?></span><?php echo $post['title']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                     </ul>
-                    <a role=button aria-label="收起与展开列表" class="toggle-archive" target="_self" href="javascript:void(0);" onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?></a>
                 </section>
             <?php $index = $index + 1; endforeach; ?>
         </section>

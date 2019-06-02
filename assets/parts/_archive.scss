@@ -1,48 +1,54 @@
 section#archive-list{
-    margin-left: -0.5rem;
-    h1.post-title{
-        text-align: center;
+    margin-top: 1rem;
+    h2 {
+        margin: 0.875rem 0 0.125rem;
     }
     p.post-meta{
         text-align: center;
     }
-    section.year{
-        position: relative;
-        padding-top: 3rem;
-        padding-left: 5rem;
-        margin-bottom: 1rem;
-        &.shrink{
-            overflow-y: hidden;
-            max-height: 3rem;
+    span.num-posts {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: $fadeColor;
+        .theme-dark &{
+            color: $td-textColor-dark;
         }
-        &:first-of-type{
-            margin-top: 2rem;
+    }
+    a.toggle-archive{
+        font-size: 0.9rem;
+        display: block;
+        background: #eee;
+        font-weight: 400;
+        .theme-dark &{
+            background: $td-bgColor-dark;
         }
-        &::before{
-            content: attr(data-year);
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            display: block;
-            width: 4.15rem;
-            text-align: right;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        display: inline-block;
+        line-height: 1;
+        border: none!important;
+        border-radius: 0.3rem;
+        padding: 0.3rem;
+        width: 1.5rem;
+        text-align: center;
+        transition: 0.3s ease all;
+        color: $textColor;
+        .theme-dark &{
+            background: $td-bgColor-dark;
+            color: $td-textColor;
         }
-        &::after{
-            content: attr(data-num) " 篇";
-            position: absolute;
-            top: 0.6rem;
-            left: 5rem;
-            font-size: 0.9rem;
-            color: $fadeColor;
+        &:hover{
+            background: $darkColor;
+            color: #dddddd;
             .theme-dark &{
-                color: $td-textColor-dark;
+                background: $td-textColor-light;
+                color: $darkColor;
             }
         }
+    }
+    section.year {
+        position: relative;
+        transition: $animationTime-slow ease all;
+        margin: 0;
+        overflow-y: hidden;
         ul{
             list-style: none;
             padding: 0;
@@ -50,15 +56,33 @@ section#archive-list{
             li{
                 position: relative;
                 line-height: 1.78;
-                padding-bottom: 0.5rem;
-                margin-bottom: 0.5rem;
+                padding: 0;
+                margin: 0;
                 border-bottom: 1px dotted #ddd;
+                transition: $animationTime-slow ease border;
                 .theme-dark &{
                     border-color: $td-borderColor;
+                }
+                &:hover {
+                    border-color: $textColor;
+                }
+                .theme-dark &:hover{
+                    border-color: $td-textColor;
                 }
                 a{
                     display: block;
                     border: none!important;
+                    padding: 0.5rem 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    span.date {
+                        margin-right: 1rem;
+                        color: $fadeColor;
+                        .theme-dark &{
+                            color: $td-textColor-dark;
+                        }
+                    }
                     h4{
                         display: inline;
                     }
@@ -70,53 +94,6 @@ section#archive-list{
                             color: $td-textColor-dark;
                         }
                     }
-                }
-                &::before{
-                    content: attr(data-date);
-                    font-size: 0.9rem;
-                    color: rgba(0, 0, 0, 0.3);
-                    .theme-dark &{
-                        color: $td-textColor-dark;
-                    }
-                    position: absolute;
-                    display: inline-block;
-                    width: 4rem;
-                    line-height: 1;
-                    left: -4rem;
-                    top: 0.4rem;
-                }
-            }
-        }
-        a.toggle-archive{
-            position: absolute;
-            top: 0.5rem;
-            left: 0;
-            font-size: 0.9rem;
-            display: block;
-            background: #eee;
-            .theme-dark &{
-                background: $td-bgColor-dark;
-            }
-            display: inline-block;
-            line-height: 1;
-            left: 8.5rem;
-            border: none!important;
-            border-radius: 0.3rem;
-            padding: 0.3rem;
-            width: 1.5rem;
-            text-align: center;
-            transition: 0.3s ease all;
-            color: $textColor;
-            .theme-dark &{
-                background: $td-bgColor-dark;
-                color: $td-textColor;
-            }
-            &:hover{
-                background: $darkColor;
-                color: #dddddd;
-                .theme-dark &{
-                    background: $td-textColor-light;
-                    color: $darkColor;
                 }
             }
         }
