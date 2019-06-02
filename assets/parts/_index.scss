@@ -145,6 +145,19 @@ main{
                     margin-top: calc(60px + 2rem);
                 }
             }
+            &.tags {
+                margin: 1rem 0;
+                margin-bottom: calc(1rem - 10px);
+                padding-top: 1rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                .theme-dark & {
+                    border-color: $td-borderColor;
+                }
+                .tag-item {
+                    margin-right: 5px;
+                    margin-bottom: 10px;
+                }
+            }
             .not-found{
                 height: 300px;
                 display: flex;

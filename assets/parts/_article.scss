@@ -183,6 +183,9 @@ article {
     }
     div[itemprop=articleBody] {
         text-align: justify;
+        &.full {        
+            margin-bottom: 2rem;
+        }
     }
     div[itemprop=articleBody] > figure {
         width: calc(100% + 40px);

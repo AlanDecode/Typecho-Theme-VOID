@@ -43,6 +43,22 @@ Class Contents
     }
 
     /**
+     * 根据 mid 返回 meta 对象
+     * 
+     * @return Widget_Abstract_Metas
+     */
+    public static function getMeta($mid)
+    {
+        $db = Typecho_Db::get();
+        $meta = new Widget_Abstract_Metas(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $db->fetchRow($meta->select()
+            ->where("mid = ?", $mid)
+            ->limit(1),
+            array($meta, 'push'));
+        return $meta;
+    }
+
+    /**
      * 输出完备的标题
      * 
      * @return void
@@ -410,5 +426,30 @@ Class Contents
             $stat[date('Y', $row['created'])][$row['created']] = $arr;
         }
         return $stat;
+    }
+
+    /**
+     * 文章标签
+     * 
+     * @return array
+     */
+    public static function getTags($cid)
+    {
+        $db = Typecho_Db::get();
+        $rows = $db->fetchAll($db->select('mid')
+            ->from('table.relationships')
+            ->where("cid = ?", $cid));
+        
+        $metas = array();
+        foreach ($rows as $row) {
+            $meta = self::getMeta($row['mid']);
+            if ($meta->type == 'tag') {
+                $meta = array('name' => $meta->name,
+                    'permalink' => $meta->permalink);
+                $metas[] = $meta;
+            }
+        }
+
+        return $metas;
     }
 }

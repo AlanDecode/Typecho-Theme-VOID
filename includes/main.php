@@ -41,9 +41,16 @@ $setting = $GLOBALS['VOIDSetting'];
                     <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                     <?php endif; ?>
                     <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
-                    <div itemprop="articleBody">
+                    <div itemprop="articleBody" class="full">
                     <?php $this->content(); ?>
                     </div>
+                    <?php $tags = Contents::getTags($this->cid); if (count($tags) > 0) { 
+                        echo '<section class="tags">';
+                        foreach ($tags as $tag) {
+                            echo '<a href="'.$tag['permalink'].'" rel="tag" class="tag-item btn btn-normal btn-narrow">'.$tag['name'].'</a>';
+                        }
+                        echo '</section>';
+                    } ?>
                     <?php if($this->fields->banner != ''): ?>
                     <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                         <img src="<?php echo $this->fields->banner; ?>" />
