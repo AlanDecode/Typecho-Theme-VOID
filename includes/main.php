@@ -65,11 +65,11 @@ $setting = $GLOBALS['VOIDSetting'];
                         data-url="<?php $this->permalink(); ?>"
                         <?php if($this->fields->banner != '') echo 'data-image="'.$this->fields->banner.'"';?>>
                         <?php if(!empty($setting['reward'])):?>
-                            <a data-fancybox="gallery" role=button aria-label="赞赏" data-src="#reward" href="javascript:;" class="btn btn-normal btn-narrow btn-highlight">赏杯咖啡</a>
+                            <a data-fancybox="gallery" role=button aria-label="赞赏" data-src="#reward" href="javascript:;" class="btn btn-normal btn-highlight">赏杯咖啡</a>
                             <div hidden id="reward"><img src="<?php echo $setting['reward']; ?>"></div>
                         <?php endif; ?>
                         <?php if($setting['VOIDPlugin']):?>
-                            <a role=button aria-label="点赞" id="social" href="javascript:void(0);" data-cid="<?php echo $this->cid;?>" onclick="VOID.like(this);" class="btn btn-normal btn-narrow post-like">ENJOY <span class="like-num"><?php echo $this->likes; ?></span></a>
+                            <a role=button aria-label="点赞" id="social" href="javascript:void(0);" data-cid="<?php echo $this->cid;?>" onclick="VOID.like(this);" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php echo $this->likes; ?></span></a>
                         <?php endif; ?>
                     </div>
                 </article>
