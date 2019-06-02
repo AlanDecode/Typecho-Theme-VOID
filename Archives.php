@@ -56,7 +56,7 @@ if(!Utils::isPjax()){
                 </h2>
                 <section id="year-<?php echo $year; ?>" 
                     class="year<?php if($index > 0) echo ' shrink'; ?>" 
-                    style="max-height: <?php if($index > 0) echo '0'; else echo $post_num*46 + 32; ?>px">
+                    style="max-height: <?php if($index > 0) echo '0'; else echo $post_num*47; ?>px; transition-duration: <?php echo $post_num * 0.03 > 0.8 ? 0.8:$post_num * 0.03; ?>s">
                     <ul>
                     <?php foreach($posts as $created => $post): ?>
                         <li>

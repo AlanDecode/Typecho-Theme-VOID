@@ -46,7 +46,8 @@ section#archive-list{
     }
     section.year {
         position: relative;
-        transition: $animationTime-slow ease all;
+        transition-property: max-height;
+        transition-timing-function: ease;
         margin: 0;
         overflow-y: hidden;
         ul{
