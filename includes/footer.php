@@ -10,28 +10,13 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
-        <footer <?php if(!$setting['showRecentGuest']) echo 'class="no-rg"' ?>>
+        <footer>
             <div class="container">
                 <section>
-                    <?php if($setting['showRecentGuest']): ?>
-                        <div class="avatar-list">
-                            <?php 
-                                $recentComments=Contents::getRecentComments(14);
-                                foreach ($recentComments as $comment){ ?>
-                                    <a href="<?php echo $comment['permalink']; ?>"><img class="avatar" alt="<?php echo $comment['author'] ?>" src="<?php Utils::gravatar($comment['mail'], 64, ''); ?>" width="64" height="64"></a>
-                            <?php } ?>
-                        </div>
-                    <?php else: ?>
-                        <p>感谢陪伴：<span id="uptime"></span></p>
-                        <p id="hitokoto"></p>
-                    <?php endif; ?>
+                    <p>感谢陪伴：<span id="uptime"></span></p>
+                    <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
                 </section>
                 <section>
-                    <?php if($setting['showRecentGuest']): ?>
-                        <p>感谢陪伴：<span id="uptime"></span></p>
-                        <p id="hitokoto"></p>
-                    <?php endif; ?>
-                    <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
                     <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
                     <p><?php echo $setting['footer']; ?></p>
                 </section>

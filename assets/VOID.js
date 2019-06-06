@@ -96,7 +96,6 @@ var VOID = {
         VOID.parsePhotos();
         VOID.parseUrl();
         VOID.initCopyLink();
-        VOID.hitokoto();
         VOID.handleLike();
         pangu.spacingElementByTagName('p');
         // 高亮
@@ -172,17 +171,6 @@ var VOID = {
                 scrollTo: false
             });
         }
-    },
-
-    // 一言
-    hitokoto: function () {
-        $.ajax({
-            url: 'https://v1.hitokoto.cn/?encode=json',
-            async: true,
-            success: function (data) {
-                $('#hitokoto').html(data.hitokoto + ' - 「' + data.from + '」');
-            }
-        });
     },
 
     // PJAX 开始前

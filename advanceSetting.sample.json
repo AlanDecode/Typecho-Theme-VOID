@@ -26,9 +26,6 @@
     // 夜间模式精确切换（需要用户允许网站访问位置）
     "accurateDarkMode": true,
 
-    // 底部显示最近访客
-    "showRecentGuest": true,
-
     // 大图集
     "largePhotoSet": true,
 

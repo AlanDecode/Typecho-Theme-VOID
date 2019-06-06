@@ -266,8 +266,6 @@ class Utils
             'headerMode' => 1,
             'followSystemColorScheme' => false,
             'accurateDarkMode' => false,
-            "useNotoSerif" => false,
-            "showRecentGuest" => false,
             "largePhotoSet" => true,
             "macStyleCodeBlock" => true,
             "lineNumbers" => true,
