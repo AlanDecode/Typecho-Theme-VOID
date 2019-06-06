@@ -286,10 +286,6 @@
         text-align: right;
         background: #ebeded;
         color: $td-textColor-light;
-        .theme-dark & {
-            background: #21252b;
-            color: #eee;
-        }
         width: 100%;
         height: 32px;
         display: block;
@@ -303,6 +299,10 @@
         letter-spacing: 0.05em;
         padding: 0 12px;
         box-sizing: border-box;
+    }
+    .theme-dark.macStyleCodeBlock &::after {
+        background: #21252b;
+        color: #eee;
     }
     > code {
         color: #4d4d4c;
