@@ -198,7 +198,6 @@ body{
     background: #eee;
     .theme-dark &{
         background: $td-textColor-dark;
-        filter: brightness(0.85);
     }
 }
 

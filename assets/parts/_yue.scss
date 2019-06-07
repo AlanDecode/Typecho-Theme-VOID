@@ -97,9 +97,6 @@
     max-width: 100%;
     height: auto;
     margin: 0.2em 0;
-    .theme-dark & {
-        filter: brightness(0.85);
-    }
 }
 .yue a img {
     /* Remove border on IE */

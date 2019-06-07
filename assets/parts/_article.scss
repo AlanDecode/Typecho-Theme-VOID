@@ -67,6 +67,9 @@ section#post {
                     width: 1px;
                     height: calc(100% - 1rem);
                     background: #ddd;
+                    .theme-dark & {
+                        background: rgba(255, 255, 255, 0.1);
+                    }
                     position: absolute;
                     right: -1rem;
                     top: 0.5rem;
