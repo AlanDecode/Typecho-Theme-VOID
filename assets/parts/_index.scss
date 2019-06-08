@@ -245,6 +245,7 @@ section#index-list{
             p[itemprop=headline] {
                 margin: 0.6rem 0;
                 color: #999;
+                font-weight: 300;
                 .theme-dark &{
                     color: $td-textColor-dark
                 }
