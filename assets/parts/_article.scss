@@ -98,6 +98,9 @@ section#post {
                     padding-bottom: 0.8rem;
                     margin-bottom: 0.8rem;
                     border-bottom: 1px solid #ddd;
+                    .theme-dark & {
+                        border-color: rgba(255, 255, 255, 0.1);
+                    }
                 }
             }
         }
