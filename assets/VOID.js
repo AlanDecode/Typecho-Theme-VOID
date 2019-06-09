@@ -301,7 +301,7 @@ var VOID = {
             $(item).html('-');
             $(year).removeClass('shrink');
             var num = parseInt($(item).attr('data-num'));
-            $(year).css('max-height',  num * 47 + 'px');
+            $(year).css('max-height',  num * 49 + 'px');
         }
         else {
             $(item).html('+');
