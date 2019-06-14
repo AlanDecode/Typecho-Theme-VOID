@@ -120,6 +120,12 @@ var VOID = {
             // initialise
             headroom.init();
         }
+        // Mathjax
+        if (VOIDConfig.enableMath) {
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        }
         // hyphen
         VOID.hyphenate();
         AjaxComment.init();
@@ -246,7 +252,7 @@ var VOID = {
         // 重载代码高亮
         VOID.highlight();
         // 重载 MathJax
-        if (typeof MathJax !== 'undefined') {
+        if (VOIDConfig.enableMath && typeof MathJax !== 'undefined') {
             MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
         }
         // 重载百度统计

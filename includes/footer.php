@@ -63,15 +63,10 @@ $setting = $GLOBALS['VOIDSetting'];
         </script>
         <?php endif; ?>
         <script src="<?php Utils::indexTheme('/assets/bundle.js'); ?>"></script>
-        <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
         <?php if($setting['enableMath']): ?>
         <script src='<?php Utils::indexTheme('/assets/libs/mathjax/2.7.4/MathJax.js'); ?>' async></script>
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-            });
-        </script>
         <?php endif; ?>
+        <script src="<?php Utils::indexTheme('/assets/VOID.js'); ?>"></script>
         <script>
         if($(".OwO").length > 0){
             new OwO({
