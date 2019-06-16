@@ -25,15 +25,15 @@ if(!Utils::isPjax()){
     
     <?php $this->need('includes/banner.php'); ?>
 
-    <div class="wrapper container">
+    <div class="wrapper container wide">
         <section id="index-list">
-            <ul>
+            <ul id="masonry">
             <?php while($this->next()): ?>
-                <li>
+                <li class="masonry-item">
                     <article class="yue <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0') echo 'has-banner'; ?>" itemscope itemtype="http://schema.org/Article">
                         <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
                         <a href="<?php $this->permalink(); ?>" class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                            <img src="<?php echo $this->fields->banner;?>">
+                            <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
                             <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                         </a>
                         <?php else: ?>
@@ -42,6 +42,10 @@ if(!Utils::isPjax()){
                         </div>
                         <?php endif; ?>
                         <div class="content-wrap">
+                            <a class="title" href="<?php $this->permalink(); ?>">
+                                <h1 itemprop="name"><?php $this->title(); ?></h1>
+                            </a>
+
                             <div class="post-meta-index">
                                 <span hidden itemprop="author"><?php $this->author(); ?></span>
                                 <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
@@ -50,11 +54,8 @@ if(!Utils::isPjax()){
                                 <?php endif; ?>
                             </div>
 
-                            <a class="title" href="<?php $this->permalink(); ?>">
-                                <h1 itemprop="name"><?php $this->title(); ?></h1>
-                            </a>
                             <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
-                            
+
                             <div itemprop="articleBody">
                             <?php if($this->fields->showfullcontent != '1'): ?>
                                 <?php if($this->fields->excerpt == ''): ?>

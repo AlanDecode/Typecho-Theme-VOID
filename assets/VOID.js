@@ -91,6 +91,7 @@ var TOC = {
 var VOID = {
     // 初始化单页应用
     init: function () {
+        reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -230,6 +231,7 @@ var VOID = {
 
     // PJAX 结束后
     afterPjax: function () {
+        reloadMasonry();
         if ($('#banner').length) {
             $('body>header').removeClass('no-banner');
         } else {

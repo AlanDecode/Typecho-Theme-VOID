@@ -50,7 +50,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <!--CSS-->
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.css');?>">
-    
+
     <script>
     VOIDConfig = {
         PJAX : <?php echo $setting['pjax'] ? 'true' : 'false'; ?>,
@@ -84,6 +84,17 @@ $setting = $GLOBALS['VOIDSetting'];
             el.style.backgroundImage = "url("+url+")";
             el.parentElement.classList.remove("loading");
             el.classList.add("loaded");
+        }
+    }
+    function reloadMasonry() {
+        if (typeof(Masonry) == "function") {
+            if ($('#masonry').length && window.innerWidth > 768) {
+                $('#masonry').masonry({
+                    itemSelector: '.masonry-item',
+                    gutter: 20,
+                    isAnimated: true,
+                });
+            }
         }
     }
     </script>

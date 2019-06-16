@@ -281,23 +281,26 @@ section#index-list{
                 margin-bottom: 3px;
             }
             @media screen and (min-width: 767.5px) {
-                .has-banner{
-                    display: flex;
-                    flex-direction: row;
-                    .banner{
-                        flex: 0.5;
-                        margin-right: 1.5rem;
-                        margin-bottom: 0;
+                div.content-wrap {
+                    padding: 16px 20px;
+                }
+                &.masonry-item {
+                    width: calc(50% - 10px);
+                    padding-bottom: 0;
+                    border: solid 3px $darkColor;
+                    .theme-dark & {
+                        border-color: $td-borderColor;
                     }
-                    .content-wrap{
-                        flex: 0.5;
-                        h1 {
-                            font-size: 36px;
-                            font-weight: 400;
+                    .has-banner {
+                        .banner {
+                            margin-bottom: 0;
                         }
-                        p.headline {
-                            font-size: 24px;
+                        div.content-wrap {
+                            padding-top: 8px;
                         }
+                    }
+                    p[itemprop=headline], .headline {
+                        margin-bottom: 0;
                     }
                 }   
             }
