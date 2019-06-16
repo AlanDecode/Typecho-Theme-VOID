@@ -93,6 +93,9 @@
                     color: $td-textColor;
                     border-color: $td-textColor-dark;
                 }
+                .OwO-logo {
+                    z-index: 1;
+                }
                 .OwO-body{
                     .OwO-bar{
                         overflow-y: hidden;
