@@ -91,7 +91,7 @@ $setting = $GLOBALS['VOIDSetting'];
             if ($('#masonry').length && window.innerWidth > 768) {
                 $('#masonry').masonry({
                     itemSelector: '.masonry-item',
-                    gutter: 20,
+                    gutter: 30,
                     isAnimated: true,
                 });
             }

@@ -285,8 +285,9 @@ section#index-list{
                     padding: 16px 20px;
                 }
                 &.masonry-item {
-                    width: calc(50% - 10px);
+                    width: calc(50% - 15px);
                     padding-bottom: 0;
+                    margin-bottom: 30px;
                     border: solid 3px $darkColor;
                     .theme-dark & {
                         border-color: $td-borderColor;
