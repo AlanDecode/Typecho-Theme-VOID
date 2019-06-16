@@ -71,10 +71,6 @@ main{
             }
         }
         &.no-banner{
-            border-bottom: 1px dotted #ddd;
-            .theme-dark &{
-                border-color: $td-borderColor;
-            }
             .banner-title{
                 &,& *{
                     color: #333;
