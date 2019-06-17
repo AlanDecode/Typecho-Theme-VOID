@@ -204,6 +204,7 @@ section#index-list{
                 display: block;
                 position: relative;
                 margin-bottom: 0.6rem;
+                line-height: 0;
                 padding: unset;
                 height: unset;
                 img{
@@ -288,7 +289,7 @@ section#index-list{
                     width: calc(50% - 15px);
                     padding-bottom: 0;
                     margin-bottom: 30px;
-                    border: solid 3px $darkColor;
+                    border: solid 2px $textColor;
                     .theme-dark & {
                         border-color: $td-borderColor;
                     }
