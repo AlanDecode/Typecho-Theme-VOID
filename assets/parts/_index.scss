@@ -287,7 +287,7 @@ section#index-list{
                 }
                 &.masonry-item {
                     opacity: 0;
-                    transition: $animationTime ease-in;
+                    transition: $animationTime ease-in opacity;
                     &.ready {
                         width: calc(50% - 15px);
                     }
