@@ -232,6 +232,9 @@ section#index-list{
                     .theme-dark &{
                         color: $td-textColor-light!important;
                     }
+                    &:hover {
+                        color: #bd6262!important;
+                    }
                 }
             }
             p{
@@ -306,6 +309,12 @@ section#index-list{
                         }
                         div.content-wrap {
                             padding-top: 8px;
+                        }
+                    }
+                    a.banner {
+                        border-bottom: solid 2px $textColor;
+                        .theme-dark & {
+                            border-color: $td-borderColor;
                         }
                     }
                     p[itemprop=headline], .headline {
