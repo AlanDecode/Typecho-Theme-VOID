@@ -87,14 +87,18 @@ $setting = $GLOBALS['VOIDSetting'];
         }
     }
     function reloadMasonry() {
-        if (typeof(Masonry) == "function") {
-            if ($('#masonry').length && window.innerWidth > 768) {
-                $('#masonry').masonry({
-                    itemSelector: '.masonry-item',
-                    gutter: 30,
-                    isAnimated: true,
-                });
+        if (typeof($) == "function") {
+            if (typeof(Masonry) == "function") {
+                $('.masonry-item').addClass('ready');
+                if ($('#masonry').length && window.innerWidth > 768) {
+                    $('#masonry').masonry({
+                        itemSelector: '.masonry-item',
+                        gutter: 30,
+                        isAnimated: true,
+                    });
+                }
             }
+            $('.masonry-item').addClass('done');
         }
     }
     </script>

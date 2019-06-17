@@ -286,7 +286,14 @@ section#index-list{
                     padding: 16px 20px;
                 }
                 &.masonry-item {
-                    width: calc(50% - 15px);
+                    opacity: 0;
+                    transition: $animationTime ease-in;
+                    &.ready {
+                        width: calc(50% - 15px);
+                    }
+                    &.done {
+                        opacity: 1;
+                    }
                     padding-bottom: 0;
                     margin-bottom: 30px;
                     border: solid 2px $textColor;
