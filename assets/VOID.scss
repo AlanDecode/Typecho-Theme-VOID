@@ -316,15 +316,6 @@ body{
     top: 75px;
 }
 
-.moving-header {
-    #nprogress .spinner{
-        top: 1rem;
-    }
-    .msg{
-        top: 20px;
-    }
-}
-
 @media screen and (max-width: 767px){
     #nprogress .spinner{
         top: 65px;

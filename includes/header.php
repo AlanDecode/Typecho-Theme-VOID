@@ -23,9 +23,6 @@ if($this->is('post') || $this->is('page')){
         elseif ($setting['colorScheme'] == 2) {
             echo 'theme-dark';
         }
-        if ($setting['headerMode'] == 2) {
-            echo ' moving-header';
-        }
         if($setting['macStyleCodeBlock']) {
             echo ' macStyleCodeBlock';
         }

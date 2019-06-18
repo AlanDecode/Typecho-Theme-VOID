@@ -13,8 +13,8 @@
     // 移动端头图高度，数值为高度占屏幕高度的百分比
     "mobileBannerHeight" : 30,
 
-    // 导航栏模式，随滚动显隐(0)，固定(1)，无处理(2)
-    "headerMode": 0,
+    // 导航栏模式，随滚动显隐(0)，固定(1)
+    "headerMode": 1,
 
     // 社交 ID，用于生成分享链接
     "twitterId": "AlanDecode",
