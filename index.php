@@ -31,16 +31,12 @@ if(!Utils::isPjax()){
             <?php while($this->next()): ?>
                 <li class="masonry-item">
                     <a href="<?php $this->permalink();?>">
-                        <article class="yue <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0') echo 'has-banner'; ?>" itemscope itemtype="http://schema.org/Article">
-                            <?php if($this->fields->banner != '' && $this->fields->bannerascover != '0'): ?>
-                            <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
-                                <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
-                            </div>
-                            <?php else: ?>
-                            <div hidden itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <meta itemprop="url" content="<?php if($this->fields->banner != '') echo $this->fields->banner; else Utils::gravatar($this->author->mail, 200);  ?>">
-                            </div>
+                        <article class="yue style-<?php echo $this->fields->bannerascover; ?>" itemscope itemtype="http://schema.org/Article">
+                            <?php if($this->fields->banner != ''): ?>
+                                <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                    <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
+                                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
+                                </div>
                             <?php endif; ?>
                             <div class="content-wrap">
                                 <div class="post-meta-index">

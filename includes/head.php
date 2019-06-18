@@ -89,7 +89,7 @@ $setting = $GLOBALS['VOIDSetting'];
     function reloadMasonry() {
         if (typeof($) == "function") {
             if (typeof(Masonry) == "function") {
-                $('.masonry-item').addClass('ready');
+                $('.masonry-item').addClass('masonry-ready');
                 if ($('#masonry').length && window.innerWidth >= 768) {
                     $('#masonry').masonry({
                         itemSelector: '.masonry-item',
