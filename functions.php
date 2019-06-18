@@ -41,7 +41,7 @@ function themeConfig($form) {
     if(!Utils::hasVOIDPlugin($GLOBALS['VOIDPluginREQ'])) {
         echo '<p><mark>未检测到合适的 VOID 插件！主题部分功能依赖插件支持，推荐安装以获得最佳体验。VOID 插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。</mark></p>';
     }
-    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, 'https://i.loli.net/2019/01/16/5c3e0b5c98bfd.jpeg', '默认顶部大图', '可以填写随机图 API。');
+    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, '', '默认顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
     $titleinbanner=new Typecho_Widget_Helper_Form_Element_Radio('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
     $form->addInput($titleinbanner);
