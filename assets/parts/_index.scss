@@ -199,7 +199,7 @@ section#index-list{
             .theme-dark &{
                 border-color: $td-borderColor;
             }
-            a.banner{
+            .banner{
                 border: none;
                 display: block;
                 position: relative;
@@ -214,27 +214,20 @@ section#index-list{
                     margin: 0;
                 }
             }
-            a.title{
-                display: block;
-                border: none;
+            .title{
                 word-break: break-word;
-                h1{
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif, -webkit-body;
-                    line-height: 1.35;
-                    font-size: 1.71rem;
-                    @media screen and (min-width: 767.5px){
-                        font-size: 1.85rem;
-                    }
-                    font-weight: bolder;
-                    margin: 0;
-                    margin-bottom: 0.6rem;
-                    color: $darkColor!important;
-                    .theme-dark &{
-                        color: $td-textColor-light!important;
-                    }
-                    &:hover {
-                        color: #bd6262!important;
-                    }
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif, -webkit-body;
+                line-height: 1.35;
+                font-size: 1.71rem;
+                @media screen and (min-width: 767.5px){
+                    font-size: 1.85rem;
+                }
+                font-weight: bolder;
+                margin: 0;
+                margin-bottom: 0.6rem;
+                color: $darkColor!important;
+                .theme-dark &{
+                    color: $td-textColor-light!important;
                 }
             }
             p{
@@ -302,6 +295,12 @@ section#index-list{
                     border: solid 2px $textColor;
                     .theme-dark & {
                         border-color: $td-borderColor;
+                    }
+                    &:hover {
+                        .title{
+                            color: #bd6262!important;
+                        }
+                        border-color: #bd6262;
                     }
                     .has-banner {
                         .banner {
