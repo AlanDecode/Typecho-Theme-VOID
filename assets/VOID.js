@@ -126,6 +126,7 @@ var VOID = {
             MathJax.Hub.Config({
                 tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             });
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
         }
         // hyphen
         VOID.hyphenate();
