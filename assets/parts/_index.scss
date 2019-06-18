@@ -12,6 +12,12 @@ main{
         @media screen and (max-width:767px) {
             min-height: $bannerHeight_mobile;
         }
+        &.no-banner {
+            min-height: 0;
+            .banner-title {
+                padding-bottom: 30px;
+            }
+        }
         position: relative;
         @include bg;
         &.loading{
@@ -303,7 +309,7 @@ section#index-list{
             }
             @media screen and (min-width: 1024.5px) {
                 &:hover {
-                    .title{
+                    article:not(.style-2) .title{
                         color: $highlightColor!important;
                     }
                     border-color: $highlightColor;
