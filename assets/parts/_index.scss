@@ -301,13 +301,15 @@ section#index-list{
                     }
                 }
             }
-            &:hover {
-                .title{
-                    color: $highlightColor!important;
-                }
-                border-color: $highlightColor;
-                article.style-2 .banner img {
-                    filter: brightness(0.42);
+            @media screen and (min-width: 1024.5px) {
+                &:hover {
+                    .title{
+                        color: $highlightColor!important;
+                    }
+                    border-color: $highlightColor;
+                    article.style-2 .banner img {
+                        filter: brightness(0.42);
+                    }
                 }
             }
         }

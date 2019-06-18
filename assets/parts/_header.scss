@@ -28,8 +28,10 @@ header{
         padding: 0.3rem 0.55rem;
         transition: 0.3s ease all;
         color: $headerTextColor;
-        &:hover{
-            color: $headerTextColor-highlight;
+        @media screen and (min-width: 1024.5px) {
+            &:hover{
+                color: $headerTextColor-highlight;
+            }
         }
         &.brand{
             font-weight: 600;
@@ -244,8 +246,10 @@ header{
         color: $td-headerTextColor;
         a, span.dropdown {
             color: $td-headerTextColor;
-            &:hover{
-                color: $headerTextColor-highlight;
+            @media screen and (min-width: 1024.5px) {
+                &:hover{
+                    color: $headerTextColor-highlight;
+                }
             }
         }
         span.dropdown {
