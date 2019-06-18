@@ -30,7 +30,7 @@ if($this->is('post') || $this->is('page')){
             echo ' macStyleCodeBlock';
         }
     ?>">
-    <header class="<?php if(empty($banner)) echo 'no-banner dark'; ?>">
+    <header>
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
@@ -57,10 +57,10 @@ if($this->is('post') || $this->is('page')){
                 </span>
                 <?php endforeach; } ?>
                 <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
-                <span class="hidden-xs search-desktop">
-                    <label for="search">搜索</label>
-                    <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
-                </span>
+                    <span class="hidden-xs search-desktop">
+                        <label for="search">搜索</label>
+                        <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
+                    </span>
                 <?php endif; ?>
                 <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
                     <div></div>

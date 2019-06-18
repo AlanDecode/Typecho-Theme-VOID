@@ -1,6 +1,7 @@
 $textColor: #333;
 $fadeColor: #666;
 $darkColor: #111;
+$highlightColor: #bd6262;
 $mainWidth: 860px;
 $mainWidth-wide: 1024px;
 $mainWidth-wider: 100%;
@@ -15,6 +16,18 @@ $td-textColor: #b0b0b0;
 $td-textColor-light: #cececf;
 $td-textColor-dark: #aaa;
 $td-borderColor: rgba(255,255,255,0.1);
+
+/****/
+$headerBgColor: rgba(255, 255, 255, 0.65);
+$headerBgColor-light: rgba(255, 255, 255, 0.95);
+$headerTextColor: $textColor;
+$headerTextColor-fade: $fadeColor;
+$headerTextColor-highlight: $highlightColor;
+$td-headerBgColor: rgba(0,0,0,0.65);
+$td-headerBgColor-dark: rgba(0,0,0,0.95);
+$td-headerTextColor: $td-textColor;
+$td-headerTextColor-light: $td-textColor-light;
+$td-headerTextColor-fade: $fadeColor;
 
 $animationTime-very-slow: 0.5s;
 $animationTime-slow: 0.35s;

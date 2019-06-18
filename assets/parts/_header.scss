@@ -5,24 +5,14 @@ header{
     width: 100%;
     position: fixed;
     transition: $animationTime-slow ease all;
-    background: #111;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    .theme-dark &{
-        border-color: $td-borderColor;
-    }
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     &.headroom--pinned{
         transform: translateY(0);
     }
     &.headroom--unpinned{
         transform: translateY(-80px);
     }
-    &.dark, &.no-banner{
-        background: #111!important;
-    }
-    &.opened{
-        background: rgba(0, 0, 0, 0.9)!important;
-    }
+    background-color: $headerBgColor;
+    color: $headerTextColor;
     .container{
         height: 58px;
         @media screen and (max-width:767px)  {
@@ -31,18 +21,15 @@ header{
         display: flex;
         align-items: center;
     }
-    a,span.dropdown{
+    a, span.dropdown{
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0.3rem 0.55rem;
-        color: #eee;
-        .theme-dark &{
-            color: $td-textColor-light;
-        }
         transition: 0.3s ease all;
+        color: $headerTextColor;
         &:hover{
-            color: #eee!important;
+            color: $headerTextColor-highlight;
         }
         &.brand{
             font-weight: 600;
@@ -83,34 +70,25 @@ header{
             list-style: none;
             padding: 0;
             margin: 0;
+            min-width: 100%;
             top: 100%;
-            color: #eee;
-            .theme-dark &{
-                color: $td-textColor-light;
-            }
             left: 50%;
             transform: translateX(-50%);
-            min-width: 100%;
+            color: $textColor;
+            background: $headerBgColor;
             li{
                 text-align: left;
                 padding: 0.5em;
                 transition: 0.3s all;
                 white-space: nowrap;
                 &:hover{
-                    background: rgba(0, 0, 0, 0.75);
-                    color: #eee;
-                    .theme-dark &{
-                        color: $td-textColor-light;
-                    }
+                    background: $headerBgColor-light;
+                    color: $headerTextColor-highlight;
                 }
             }
         }
-        &:hover{
-            background: rgba(0, 0, 0, 0.75);
-            ul{
-                background: rgba(0, 0, 0, 0.75);
-                display: block;
-            }
+        &:hover ul {
+            display: block;
         }
     }
     span.search-desktop{
@@ -126,9 +104,7 @@ header{
         justify-content: center;
         position: relative;
         @media screen and (max-width: 767px) {
-            &{
-                justify-content: space-around;
-            }
+            justify-content: space-around;
         }
         >.brand.pull-left{
             position: absolute;
@@ -140,12 +116,13 @@ header{
                 display: none;
             }
         }
+        .toggle {
+            span, span::before, span::after {
+                background-color: $headerTextColor;
+            }
+        }
     }
     label{
-        color: #eee;
-        .theme-dark &{
-            color: $td-textColor-light;
-        }
         position: absolute;
         display: block;
         height: 100%;
@@ -160,13 +137,10 @@ header{
             width: 11rem;
         }
         &::-webkit-input-placeholder{
-            color:#ddd;
+            color:$headerTextColor-fade;
             font-size: 1rem;
         }
-        color: #eee;
-        .theme-dark &{
-            color: $td-textColor-light;
-        }
+        color: $textColor;
         outline: none;
         height: 1.5rem;
         background: none;
@@ -176,7 +150,7 @@ header{
             radius: 1rem;
             width: 1px;
             style: solid;
-            color: rgba(255,255,255,0.8);
+            color: $headerTextColor-fade;
         }
         @media screen and (max-width: 767px) {
             display: none;
@@ -197,10 +171,7 @@ header{
         > div{
             width: 17px;
             height: 17px;
-            border: 3px solid #eee;
-            .theme-dark &{
-                border-color: $td-textColor;
-            }
+            border: 3px solid $headerTextColor;
             border-radius: 50%;
         }
         > span{
@@ -213,10 +184,7 @@ header{
                 width: 8px;
                 height: 3px;
                 border-radius: 2px;
-                background: #eee;
-                .theme-dark &{
-                    background: $td-textColor;
-                }
+                background: $headerTextColor;
                 left: 14px;
                 transform: rotate(42deg);
                 top: -3px;
@@ -234,41 +202,94 @@ header{
         width: 100%;
         display: flex;
         padding: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        background: $td-bgColor-dark;
+        background: $headerBgColor;
         label{
             top: 0;
-            color: #eee;
-            .theme-dark &{
-                color: $td-textColor-light;
-            }
         }
         input{
             display: block;
-            color: #eee;
-            .theme-dark &{
-                color: $td-textColor-light;
-            }
             flex: 1;
             border-radius: 0;
             border: none;
             &::placeholder{
-                color: rgba(255, 255, 255, 0.37);
+                color: $headerTextColor-fade;
             }
         }
         button{
             background: none;
             outline: none;
             border: none;
-            color: #eee;
-            .theme-dark &{
-                color: $td-textColor-light;
-            }
         }
         &.opened{
             transform: translateY(0);
             visibility: visible;
             opacity: 1;
+        }
+    }
+
+    &.pull-up {
+        background: $headerBgColor-light;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        span.dropdown ul {
+            background: $headerBgColor-light;
+            box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.7);
+        }
+        .mobile-search {
+            background: $headerBgColor-light;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+    }
+    .theme-dark &, &.opened {
+        background: $td-headerBgColor;
+        color: $td-headerTextColor;
+        a, span.dropdown {
+            color: $td-headerTextColor;
+            &:hover{
+                color: $headerTextColor-highlight;
+            }
+        }
+        span.dropdown {
+            ul {
+                li:hover {
+                    background: $td-headerBgColor;
+                    color: $headerTextColor-highlight;
+                }
+            }
+            &:hover{
+                background: $td-headerBgColor;
+                ul{
+                    background: $td-headerBgColor;
+                    display: block;
+                }
+            }
+        }
+        input {
+            border-color: $headerTextColor-fade;
+        }
+        input, label, button{
+            color: $td-headerTextColor-light;
+        }
+        .mobile-search {
+            background: $td-headerBgColor;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+        #toggle-mobile-search {
+            >span::before {
+                background: $td-headerTextColor;
+            }
+            >div {
+                border-color: $td-headerTextColor;
+            }
+        }
+        &.pull-up {
+            &, .mobile-search {
+                background: $td-headerBgColor-dark!important;
+            }
+        }
+    }
+    &.opened {
+        .mobile-search {
+            background: $td-headerBgColor-dark!important;
         }
     }
 }

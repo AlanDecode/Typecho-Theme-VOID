@@ -60,7 +60,6 @@ $setting = $GLOBALS['VOIDSetting'];
         enableMath : <?php echo $setting['enableMath'] ? 'true' : 'false'; ?>,
         lazyload : <?php echo $setting['lazyload'] ? 'true' : 'false'; ?>,
         colorScheme:  <?php echo $setting['colorScheme']; ?>,
-        headerColorScheme: <?php echo $setting['headerColorScheme']; ?>,
         headerMode: <?php echo $setting['headerMode']; ?>,
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
         accurateDarkMode: <?php echo $setting['accurateDarkMode'] ? 'true' : 'false'; ?>,
@@ -114,14 +113,6 @@ $setting = $GLOBALS['VOIDSetting'];
     @media screen and (max-width: 768px){
         main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
     }
-    <?php endif; ?>
-
-    <?php if($setting['headerMode'] == 2): ?>
-    body>header{ position: absolute }
-    <?php endif; ?>
-
-    <?php if($setting['headerColorScheme']): ?>
-    body>header{background: transparent;}
     <?php endif; ?>
     </style>
 

@@ -303,9 +303,9 @@ section#index-list{
             }
             &:hover {
                 .title{
-                    color: #bd6262!important;
+                    color: $highlightColor!important;
                 }
-                border-color: #bd6262;
+                border-color: $highlightColor;
                 article.style-2 .banner img {
                     filter: brightness(0.42);
                 }
