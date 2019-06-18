@@ -90,7 +90,7 @@ $setting = $GLOBALS['VOIDSetting'];
         if (typeof($) == "function") {
             if (typeof(Masonry) == "function") {
                 $('.masonry-item').addClass('ready');
-                if ($('#masonry').length && window.innerWidth > 768) {
+                if ($('#masonry').length && window.innerWidth >= 768) {
                     $('#masonry').masonry({
                         itemSelector: '.masonry-item',
                         gutter: 30,
