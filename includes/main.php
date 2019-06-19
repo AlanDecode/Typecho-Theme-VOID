@@ -112,6 +112,7 @@ $setting = $GLOBALS['VOIDSetting'];
         </div> <!--end .contents-wrap-->
         <!--目录，可选-->
         <?php if($this->fields->showTOC == '1'): ?>
+            <div class="toc-mask" onclick="TOC.close();"></div>
             <div aria-label="文章目录" class="TOC"></div>
             <style>
             .photos { width: calc(100% + 40px)!important; margin-left: -20px!important; }

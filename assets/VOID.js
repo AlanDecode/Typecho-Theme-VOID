@@ -353,11 +353,6 @@ var VOID = {
             if(window.innerWidth >= 1200) {
                 TOC.open();
             } 
-            $('.contents-wrap').click(function(){
-                if(window.innerWidth < 1200) {
-                    TOC.close();
-                }
-            });
         }
     },
 

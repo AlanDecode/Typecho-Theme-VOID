@@ -461,6 +461,26 @@ article {
     font-family: $void-font-sans!important;
 }
 
+.toc-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 3;
+    opacity: 0.85;
+    transition: $animationTime ease-in-out;
+    .theme-dark & {
+        background: $td-bgColor;
+    }
+    display: none;
+    @media screen and (max-width: 1199.5px) {
+        .toc-show & {
+            display: block;
+        }   
+    }
+}
 .TOC {
     position: fixed;
     top: 0;
@@ -554,9 +574,6 @@ article {
     div.contents-wrap {
         transition: $animationTime ease opacity;
     }
-    .toc-show div.contents-wrap{
-        opacity: 0.5;
-    }
 }
 
 @media screen and (min-width: 1199.5px) {
@@ -573,6 +590,9 @@ article {
         main>.lazy-wrap,
         >footer{
             transform: translateX(-135px);
+            .banner-title {
+                padding: 70px 150px;
+            }
         }
         >header{
             padding-right: 270px;

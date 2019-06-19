@@ -55,11 +55,6 @@ main{
             align-items: center;
             justify-content: center;
             padding: 70px 45px;
-            @media screen and (min-width: 1199.5px) {
-                .toc-show &{
-                    padding: 70px 150px;
-                }
-            }
             @media screen and (max-width: 767px) {
                 padding: 50px 1rem;
             }
