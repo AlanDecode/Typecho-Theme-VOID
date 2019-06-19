@@ -75,6 +75,59 @@ main{
                 font-weight: 300;
                 margin-bottom: 0;
             }
+            &.index {
+                .post-title {
+                    font-size: 2rem;
+                }
+                span.brand {
+                    user-select: none;
+                    position: relative;
+                    border: 2px solid $td-bgColor-light;
+                    padding: 20px 16px;
+                    z-index: 1;
+                    &::before {
+                        background-color: #00ffff;
+                        content: "";
+                        height: 100%;
+                        left: 10px;
+                        top: 6px;
+                        position: absolute;
+                        transition: .3s;
+                        width: 100%;
+                        z-index: -1;
+                    }
+                    span {
+                        transition: .3s;
+                        transform: translate(10px, 6px);
+                        display: inline-block;
+                        white-space: nowrap;
+                    }
+                    &:hover {
+                        span {
+                            transform: translate(0, 0);
+                        }
+                        &::before {
+                            left: 0;
+                            top: 0;
+                        }
+                    }
+                }
+                .theme-dark & {
+                    span.brand::before {
+                        background: $td-bgColor-light
+                    }
+                }
+                .subtitle {
+                    font-size: 1rem;
+                    display: block;
+                    margin-top: 1.8rem;
+                    font-weight: normal;
+                    color: #999;
+                    .theme-dark & {
+                        color: $td-textColor-dark;
+                    }
+                }
+            }
         }
         &.no-banner{
             .banner-title{

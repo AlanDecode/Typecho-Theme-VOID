@@ -63,9 +63,15 @@ $lazyID = rand(1,10000);
                 </p>
             <?php endif;?>
         </div>
-    <?php elseif($setting['indexBannerTitle']!='' && $this->is('index')): ?>
+    <?php elseif($this->is('index')): ?>
+        <?php 
+            $title = Helper::options()->title; 
+            if($setting['indexBannerTitle']!='') $title = $setting['indexBannerTitle'];
+            $subtitle = Helper::options()->description;
+            if($setting['indexBannerSubtitle']!='') $subtitle = $setting['indexBannerSubtitle'];
+        ?>
         <div class="banner-title index">
-            <h1 class="post-title"><?php echo $setting['indexBannerTitle']; ?></h1>
+            <h1 class="post-title"><span class="brand"><span><?php echo $title; ?></span></span><br><span class="subtitle"><?php echo $subtitle; ?></span></h1>
         </div>
     <?php endif; ?>
 </div>

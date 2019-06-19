@@ -251,6 +251,7 @@ class Utils
             'titleinbanner' => false,
             'lazyload' => false,
             'indexBannerTitle' => '',
+            'indexBannerSubtitle' => '',
             'serviceworker' => '',
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
             'reward' => '',
@@ -305,6 +306,10 @@ class Utils
 
         if(!empty($options->indexBannerTitle)){
             $output['indexBannerTitle'] = $options->indexBannerTitle;
+        }
+
+        if(!empty($options->indexBannerSubtitle)){
+            $output['indexBannerSubtitle'] = $options->indexBannerSubtitle;
         }
 
         if(!empty($options->footer)){
