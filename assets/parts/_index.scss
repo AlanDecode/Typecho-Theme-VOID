@@ -277,6 +277,7 @@ section#index-list{
                 }
                 .content-wrap {
                     padding: 16px 20px;
+                    position: relative;
                 }
                 &.style-0 {
                     .banner {
@@ -286,16 +287,14 @@ section#index-list{
                 &.style-2 {
                     .content-wrap {
                         padding: 100px 20px 40px;
+                        background: rgba(0, 0, 0, 0.4);
+                        transition: $animationTime-slow ease-in-out;
                     }
                     .banner {
                         position: absolute;
                         width: 100%;
                         height: 100%;
                         left: 0;
-                        img {
-                            transition: $animationTime-slow ease-in-out filter;
-                            filter: brightness(0.6);
-                        }
                     }
                     .title, p, .post-meta-index {
                         color: #fff!important;
@@ -313,8 +312,8 @@ section#index-list{
                         color: $highlightColor!important;
                     }
                     border-color: $highlightColor;
-                    article.style-2 .banner img {
-                        filter: brightness(0.42);
+                    article.style-2 .content-wrap {
+                        background: rgba(0, 0, 0, 0.62);
                     }
                 }
             }
