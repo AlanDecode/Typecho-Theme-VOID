@@ -267,7 +267,7 @@ header{
                         color: $headerTextColor-highlight;
                     }
                     &:not(.brand):hover{
-                        background: $td-headerBgColor-dark;
+                        background: rgba(0, 0, 0, 0.2);
                     }
                 }
                 &.toggle{
