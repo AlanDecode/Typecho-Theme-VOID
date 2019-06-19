@@ -9,9 +9,9 @@ $bannerHeight: 450px;
 $bannerHeight_mobile: 300px;
 
 /*****/
-$td-bgColor: #2C2A2A;
-$td-bgColor-light: #333;
-$td-bgColor-dark: #222;
+$td-bgColor: #1a1a1a;
+$td-bgColor-light: #222;
+$td-bgColor-dark: #111;
 $td-textColor: #b0b0b0;
 $td-textColor-light: #cececf;
 $td-textColor-dark: #aaa;
@@ -49,7 +49,7 @@ $void-font-sans: -apple-system, BlinkMacSystemFont, "Droid Sans", "Helvetica Neu
 
 @mixin sidebar {
     color: $td-textColor;
-    background: #222222;
+    background: $td-bgColor-dark;
 }
 
 @keyframes fade-in {
