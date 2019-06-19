@@ -33,8 +33,7 @@ if($this->is('post') || $this->is('page')){
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
                     <span></span>
                 </a>
-                <a class="brand hidden-xs pull-left" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
-                <a class="brand show-xs" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
+                <a class="brand" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
                 <a href="<?php Utils::index(''); ?>">首页</a>
                 <?php $this->widget('Widget_Contents_Page_List')->parse('<a href="{permalink}">{title}</a>'); ?>
                 <span class="dropdown">分类
@@ -54,9 +53,9 @@ if($this->is('post') || $this->is('page')){
                 </span>
                 <?php endforeach; } ?>
                 <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
-                    <span class="hidden-xs search-desktop">
+                    <span class="hidden-xs search-form-desktop">
                         <label for="search">搜索</label>
-                        <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" class="text" required />
+                        <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" required />
                     </span>
                 <?php endif; ?>
                 <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
@@ -65,9 +64,9 @@ if($this->is('post') || $this->is('page')){
                 </a>
             </nav>
         </div>
-        <div class="mobile-search">
-            <label for="search">搜索</label>
-            <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" class="text" required placeholder="输入内容然后 Go!" />
+        <div class="mobile-search-form">
+            <label for="search_new">搜索</label>
+            <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" required placeholder="输入内容然后 Go!" />
             <button onclick="startSearch('#search_new');">Go!</button>
         </div>
     </header>

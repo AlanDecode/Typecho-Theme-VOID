@@ -1,10 +1,10 @@
 header{
     z-index: 3;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    position: fixed;
-    transition: $animationTime-slow ease all;
+    transition: $animationTime-slow ease-in-out all;
     &.headroom--pinned{
         transform: translateY(0);
     }
@@ -20,180 +20,180 @@ header{
         }
         display: flex;
         align-items: center;
-    }
-    a, span.dropdown{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0.3rem 0.55rem;
-        transition: 0.3s ease all;
-        color: $headerTextColor;
-        @media screen and (min-width: 1024.5px) {
-            &:hover{
-                color: $headerTextColor-highlight;
-            }
-        }
-        &.brand{
-            font-weight: 600;
-            margin-right: 1rem;
-            font-size: 1.7rem;
-            letter-spacing: 0.075rem;
-        }
-        &.toggle{
-            display: none;
+        nav{
+            flex: 1;
             height: 100%;
-        }
-        @media screen and (max-width: 767px){
-            &.brand{
-                font-size: 1.5rem;
-                margin-right: 0;
-            }
-            &:not(.brand){
-                display: none;
-            }
-            &.toggle{
-                display: block;
-                position: absolute;
-                left: 1rem;
-                @media screen and (max-width: 767px) {
-                    left: 0;
-                }
-            }
-        }
-    }
-    span.dropdown{
-        position: relative;
-        cursor: pointer;
-        transition: 0.3s ease all;
-        ul{
-            transition: 0.3s ease all;
-            position: absolute;
-            display: none;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            min-width: 100%;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: $textColor;
-            background: $headerBgColor;
-            li{
-                text-align: left;
-                padding: 0.5em;
-                transition: 0.3s all;
-                white-space: nowrap;
-                &:hover{
-                    background: $headerBgColor-light;
-                    color: $headerTextColor-highlight;
-                }
-            }
-        }
-        &:hover ul {
-            display: block;
-        }
-    }
-    span.search-desktop{
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    nav{
-        flex: 1;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        @media screen and (max-width: 767px) {
-            justify-content: space-around;
-        }
-        >.brand.pull-left{
-            position: absolute;
-            left: 1rem;
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            @media screen and (max-width: 1023.5px) {
-                display: none;
-            }
-        }
-        .toggle {
-            span, span::before, span::after {
-                background-color: $headerTextColor;
-            }
-        }
-    }
-    label{
-        position: absolute;
-        display: block;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        left: 0.5rem;
-    }
-    input{
-        width: 7rem;
-        transition: 0.3s ease all;
-        &:focus{
-            width: 11rem;
-        }
-        &::-webkit-input-placeholder{
-            color:$headerTextColor-fade;
-            font-size: 1rem;
-        }
-        color: $textColor;
-        outline: none;
-        height: 1.5rem;
-        background: none;
-        padding: 0.85rem;
-        padding-left: 3rem;
-        border: {
-            radius: 1rem;
-            width: 1px;
-            style: solid;
-            color: $headerTextColor-fade;
-        }
-        @media screen and (max-width: 767px) {
-            display: none;
-        }
-    }
-    #toggle-mobile-search{
-        display: none;
-        padding: 0;
-        display: none;
-        position: absolute;
-        right: 1rem;
-        @media screen and (max-width: 767px) {
-            right: 0;
-            display: block;
-        }
-        top: 45%;
-        transform: translateY(-50%);
-        > div{
-            width: 17px;
-            height: 17px;
-            border: 3px solid $headerTextColor;
-            border-radius: 50%;
-        }
-        > span{
+            display: flex;
+            justify-content: center;
             position: relative;
-            display: block;
-            &::before{
-                content: "";
-                display: block;
+            @media screen and (max-width: 767px) {
+                justify-content: space-around;
+            }
+
+            a, span.dropdown {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0.3rem 0.55rem;
+                transition: 0.3s ease all;
+                color: $headerTextColor;
+                @media screen and (min-width: 1024.5px) {
+                    &:hover {
+                        color: $headerTextColor-highlight;
+                    }
+                    &:not(.brand):hover{
+                        background: rgba(0, 0, 0, 0.08);
+                    }
+                }
+                &.brand{
+                    font-weight: 600;
+                    margin-right: 1rem;
+                    font-size: 1.7rem;
+                    letter-spacing: 0.075rem;
+                    position: absolute;
+                    left: 1rem;
+                    padding: 0;
+                    margin: 0;
+                    height: 100%;
+                    @media screen and (max-width: 767px) {
+                        position: relative;
+                        left: unset;
+                    }
+                }
+                &.toggle{
+                    display: none;
+                    height: 100%;
+                    span {
+                        left: 0;
+                    }
+                    span, span::before, span::after {
+                        background-color: $headerTextColor;
+                    }
+                }
+                @media screen and (max-width: 767px){
+                    &.brand{
+                        font-size: 1.5rem;
+                        margin-right: 0;
+                    }
+                    &:not(.brand){
+                        display: none;
+                    }
+                    &.toggle{
+                        display: block;
+                        position: absolute;
+                        left: 1rem;
+                        @media screen and (max-width: 767px) {
+                            left: 0;
+                        }
+                    }
+                }
+            }
+            span.dropdown{
+                position: relative;
+                cursor: pointer;
+                transition: 0.3s ease all;
+                ul{
+                    transition: 0.3s ease all;
+                    position: absolute;
+                    display: none;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    min-width: 100%;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: $headerBgColor-light;
+                    border: 1px solid rgba(0, 0, 0, 0.08);
+                    li{
+                        text-align: left;
+                        padding: 0.5em;
+                        transition: 0.3s all;
+                        white-space: nowrap;
+                        &:hover{
+                            color: $headerTextColor-highlight;
+                        }
+                    }
+                }
+                &:hover ul {
+                    display: block;
+                }
+            }
+            span.search-form-desktop{
                 position: absolute;
-                width: 8px;
-                height: 3px;
-                border-radius: 2px;
-                background: $headerTextColor;
-                left: 14px;
-                transform: rotate(42deg);
-                top: -3px;
-            } 
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                label{
+                    position: absolute;
+                    display: block;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    left: 0.5rem;
+                }
+                input{
+                    width: 7rem;
+                    height: 1.5rem;
+                    padding: 0.85rem;
+                    padding-left: 3rem;
+                    transition: 0.3s ease all;
+                    outline: none;
+                    background: none;
+                    border: solid 1px $headerTextColor-fade;
+                    border-radius: 1rem;
+                    color: inherit;
+                    &:focus{
+                        width: 11rem;
+                    }
+                    &::-webkit-input-placeholder{
+                        color: $headerTextColor-fade;
+                        font-size: 1rem;
+                    }
+                }
+                @media screen and (max-width: 767px) {
+                    display: none;
+                }
+            }
+
+            #toggle-mobile-search{
+                display: none;
+                padding: 0;
+                display: none;
+                position: absolute;
+                right: 1rem;
+                @media screen and (max-width: 767px) {
+                    right: 0;
+                    display: block;
+                }
+                top: 45%;
+                transform: translateY(-50%);
+                > div{
+                    width: 17px;
+                    height: 17px;
+                    border: 3px solid $headerTextColor;
+                    border-radius: 50%;
+                }
+                > span{
+                    position: relative;
+                    display: block;
+                    &::before{
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        width: 8px;
+                        height: 3px;
+                        border-radius: 2px;
+                        background: $headerTextColor;
+                        left: 14px;
+                        transform: rotate(42deg);
+                        top: -3px;
+                    } 
+                }
+            }
         }
     }
-    .mobile-search{
+    .mobile-search-form{
         position: absolute;
         top: 100%;
         left: 0;
@@ -204,8 +204,15 @@ header{
         width: 100%;
         display: flex;
         padding: 0.5rem;
-        background: $headerBgColor;
+        background: inherit;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         label{
+            position: absolute;
+            display: block;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            left: 0.5rem;
             top: 0;
         }
         input{
@@ -213,6 +220,14 @@ header{
             flex: 1;
             border-radius: 0;
             border: none;
+            outline: none;
+            background: none;
+            padding-left: 3rem;
+            color: inherit;
+            &::-webkit-input-placeholder{
+                color:$headerTextColor-fade;
+                font-size: 1rem;
+            }
             &::placeholder{
                 color: $headerTextColor-fade;
             }
@@ -228,56 +243,50 @@ header{
             opacity: 1;
         }
     }
-
     &.pull-up {
         background: $headerBgColor-light;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-        span.dropdown ul {
-            background: $headerBgColor-light;
+        .container nav span.dropdown ul {
+            border: none;
             box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.7);
         }
-        .mobile-search {
-            background: $headerBgColor-light;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-        }
     }
+
     .theme-dark &, &.opened {
         background: $td-headerBgColor;
         color: $td-headerTextColor;
-        a, span.dropdown {
-            color: $td-headerTextColor;
-            @media screen and (min-width: 1024.5px) {
+        .container nav {
+            a, span.dropdown {
+                color: $td-headerTextColor;
+                @media screen and (min-width: 1024.5px) {
+                    &:hover {
+                        color: $headerTextColor-highlight;
+                    }
+                    &:not(.brand):hover{
+                        background: $td-headerBgColor-dark;
+                    }
+                }
+                &.toggle{
+                    span, span::before, span::after {
+                        background-color: $td-headerTextColor;
+                    }
+                }
+            }
+            span.dropdown {
+                ul {
+                    li:hover {
+                        color: $headerTextColor-highlight;
+                    }
+                }
                 &:hover{
-                    color: $headerTextColor-highlight;
+                    ul{
+                        background: $td-headerBgColor-dark;
+                        display: block;
+                    }
                 }
             }
         }
-        span.dropdown {
-            ul {
-                li:hover {
-                    background: $td-headerBgColor;
-                    color: $headerTextColor-highlight;
-                }
-            }
-            &:hover{
-                background: $td-headerBgColor;
-                ul{
-                    background: $td-headerBgColor;
-                    display: block;
-                }
-            }
-        }
-        input {
-            border-color: $headerTextColor-fade;
-        }
-        input, label, button{
-            color: $td-headerTextColor-light;
-        }
-        .mobile-search {
-            background: $td-headerBgColor;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-        }
-        #toggle-mobile-search {
+        .container nav #toggle-mobile-search {
             >span::before {
                 background: $td-headerTextColor;
             }
@@ -285,18 +294,10 @@ header{
                 border-color: $td-headerTextColor;
             }
         }
-        &.pull-up {
-            &, .mobile-search {
-                background: $td-headerBgColor-dark!important;
-            }
-        }
-    }
-    &.opened {
-        .mobile-search {
-            background: $td-headerBgColor-dark!important;
-        }
     }
 }
+
+
 #nav-mobile{
     position: fixed;
     width: 100vw;

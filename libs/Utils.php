@@ -241,7 +241,7 @@ class Utils
     {
         $output = array(
             // 主题设置
-            'defaultBanner' => 'https://i.loli.net/2019/02/11/5c614078f2263.png',
+            'defaultBanner' => '',
             'enableMath' => false,
             'head' => '',
             'footer' => '',

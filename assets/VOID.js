@@ -827,12 +827,12 @@ function enterSearch(item) {
 }
 
 function toggleSearch() {
-    $('.mobile-search').toggleClass('opened');
+    $('.mobile-search-form').toggleClass('opened');
     setTimeout(function () {
-        if ($('.mobile-search').hasClass('opened')) {
-            $('.mobile-search input').focus();
+        if ($('.mobile-search-form').hasClass('opened')) {
+            $('.mobile-search-form input').focus();
         } else {
-            $('.mobile-search input').blur();
+            $('.mobile-search-form input').blur();
         }
     }, 400);
 }
