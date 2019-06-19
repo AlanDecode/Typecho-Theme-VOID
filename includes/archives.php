@@ -20,7 +20,7 @@ $setting = $GLOBALS['VOIDSetting'];
 
     <div class="wrapper container wide">
         <section id="index-list">
-            <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->archiveTitle(array(
+            <h1 hidden class="post-title"><?php $this->archiveTitle(array(
                 'category'  =>  _t('分类 "%s" 下的文章'),
                 'search'    =>  _t('包含关键字 "%s" 的文章'),
                 'tag'       =>  _t('包含标签 "%s" 的文章'),
