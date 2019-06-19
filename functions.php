@@ -41,7 +41,7 @@ function themeConfig($form) {
     if(!Utils::hasVOIDPlugin($GLOBALS['VOIDPluginREQ'])) {
         echo '<p><mark>未检测到合适的 VOID 插件！主题部分功能依赖插件支持，推荐安装以获得最佳体验。VOID 插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。</mark></p>';
     }
-    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, '', '默认顶部大图', '可以填写随机图 API。');
+    $defaultBanner=new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', NULL, '', '首页顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
     $titleinbanner=new Typecho_Widget_Helper_Form_Element_Radio('titleinbanner',array('0'=>'否','1'=>'是'),'1','将标题显示在头图中','是否将标题显示在头图中。');
     $form->addInput($titleinbanner);
@@ -86,8 +86,6 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $layout->addItem($posttype);
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);
-    $bannerasheadimg = new Typecho_Widget_Helper_Form_Element_Select('bannerasheadimg',array('1'=>'是','0'=>'否'),'1','主图显示在文章顶部','默认显示。但你可以强行不显示，转而使用默认头图。');
-    $layout->addItem($bannerasheadimg);
     $bannerascover = new Typecho_Widget_Helper_Form_Element_Select('bannerascover',array('2'=>'主图作为标题背景', '1'=>'主图显示在标题上方', '0'=>'否'),'1','首页主图样式','主图作为标题背景时会添加暗色遮罩，但仍然建议仅对暗色的主图采用该方式展示。否则请选择「主图显示在标题上方」。');
     $layout->addItem($bannerascover);
     $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('0'=>'否', '1'=>'是'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');

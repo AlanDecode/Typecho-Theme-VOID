@@ -22,28 +22,27 @@ $setting = $GLOBALS['VOIDSetting'];
         <div class="contents-wrap"> <!--start .contents-wrap-->
             <section id="post">
                 <article class="post yue" itemscope itemtype="http://schema.org/Article">
-                    <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> itemprop="name" class="post-title"><?php $this->title(); ?></h1>
-                    <p <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-meta">
-                        <span itemprop="author"><?php $this->author(); ?></span>&nbsp;•&nbsp;
-                        <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
-                        &nbsp;•&nbsp;
-                        <a href="#comments"><?php $this->commentsNum(); ?>&nbsp;评论</a>
-                        <?php if($setting['VOIDPlugin']) echo '&nbsp;•&nbsp;'.$this->viewsNum.'&nbsp;阅读'; ?>
-                        <?php if($this->user->hasLogin()): ?>
-                            <?php if($this->is('post')): ?>
-                            &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-post.php?cid='.$this->cid;?>">编辑</a>
-                            <?php else: ?>
-                            &nbsp;•&nbsp;<a target="_blank" href="<?php echo $this->options->adminUrl.'write-page.php?cid='.$this->cid;?>">编辑</a>
-                            <?php endif;?>
-                        <?php endif;?>
-                    </p>
-                    <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
-                    <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
+                    <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
+                    <span hidden itemprop="author"><?php $this->author(); ?></span>
+                    <time hidden datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
+                    
+                    <?php if($this->fields->banner != ''): ?>
+                        <div <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                            <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>"><img src="<?php echo $this->fields->banner; ?>" /></a>
+                            <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
+                        </div>
                     <?php endif; ?>
+                    
+                    <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
+                        <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
+                    <?php endif; ?>
+                    
                     <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
+                    
                     <div itemprop="articleBody" class="full">
-                    <?php $this->content(); ?>
+                        <?php $this->content(); ?>
                     </div>
+                    
                     <?php $tags = Contents::getTags($this->cid); if (count($tags) > 0) { 
                         echo '<section class="tags">';
                         foreach ($tags as $tag) {
@@ -51,12 +50,7 @@ $setting = $GLOBALS['VOIDSetting'];
                         }
                         echo '</section>';
                     } ?>
-                    <?php if($this->fields->banner != ''): ?>
-                    <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                        <img src="<?php echo $this->fields->banner; ?>" />
-                        <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
-                    </div>
-                    <?php endif; ?>
+
                     <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
                         <meta itemprop="name" content="<?php echo $this->options->title; ?>">
                         <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">

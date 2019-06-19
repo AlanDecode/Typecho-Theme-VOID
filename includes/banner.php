@@ -10,8 +10,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 $banner = $setting['defaultBanner'];
 if($this->is('post') || $this->is('page')){
-    if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
+    if($this->fields->banner != '')
         $banner = $this->fields->banner;
+    if(!$setting['titleinbanner'])
+        $banner = '';
 }
 $lazyID = rand(1,10000);
 ?>
@@ -19,8 +21,7 @@ $lazyID = rand(1,10000);
 <div class="lazy-wrap
     <?php 
         if(empty($banner)) echo ' no-banner';
-        else echo ' loading';
-        if(($setting['titleinbanner'] && !$this->is('index')) || ($setting['indexBannerTitle']!='' && $this->is('index'))) echo ' dark';
+        else echo ' loading dark';
         if($this->is('index')) echo ' index';?>">
 
     <?php if(!empty($banner)): ?>
@@ -28,7 +29,7 @@ $lazyID = rand(1,10000);
         <script>registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
     <?php endif;?>
 
-    <?php if($setting['titleinbanner'] && !$this->is('index')): ?>
+    <?php if(!$this->is('index')): ?>
         <div class="banner-title">
             <h1 class="post-title">
                 <?php if(!$this->is('archive')): ?>
@@ -70,7 +71,7 @@ $lazyID = rand(1,10000);
             $subtitle = Helper::options()->description;
             if($setting['indexBannerSubtitle']!='') $subtitle = $setting['indexBannerSubtitle'];
         ?>
-        <div class="banner-title index">
+        <div class="banner-title index<?php if(!empty($banner)) echo ' force-normal'; ?>">
             <h1 class="post-title"><span class="brand"><span><?php echo $title; ?></span></span><br><span class="subtitle"><?php echo $subtitle; ?></span></h1>
         </div>
     <?php endif; ?>

@@ -12,12 +12,6 @@ main{
         @media screen and (max-width:767px) {
             min-height: $bannerHeight_mobile;
         }
-        &.no-banner {
-            min-height: 0;
-            .banner-title {
-                padding-bottom: 40px;
-            }
-        }
         position: relative;
         @include bg;
         &.loading{
@@ -75,7 +69,17 @@ main{
                 font-weight: 300;
                 margin-bottom: 0;
             }
-            &.index {
+            .subtitle {
+                font-size: 1rem;
+                display: block;
+                margin-top: 1rem;
+                font-weight: normal;
+                color: $td-textColor;
+                .theme-dark & {
+                    color: $td-textColor;
+                }
+            }
+            &.index:not(.force-normal) {
                 .post-title {
                     font-size: 2rem;
                 }
@@ -118,10 +122,6 @@ main{
                     }
                 }
                 .subtitle {
-                    font-size: 1rem;
-                    display: block;
-                    margin-top: 1.8rem;
-                    font-weight: normal;
                     color: #999;
                     .theme-dark & {
                         color: $td-textColor-dark;
@@ -131,6 +131,8 @@ main{
         }
         &.no-banner{
             .banner-title{
+                min-height: 0;
+                padding-bottom: 25px;
                 &,& *{
                     color: #333;
                 }

@@ -9,11 +9,6 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
-$banner = $setting['defaultBanner'];
-if($this->is('post') || $this->is('page')){
-    if($this->fields->banner != '' && $this->fields->bannerasheadimg != '0')
-        $banner = $this->fields->banner;
-}
 ?>
 
 <body class="<?php 
