@@ -41,7 +41,7 @@ header{
                     &:hover {
                         color: $headerTextColor-highlight;
                     }
-                    &:not(.brand):hover{
+                    &:not(.brand):not(#toggle-mobile-search):hover{
                         background: rgba(0, 0, 0, 0.08);
                     }
                 }
@@ -157,7 +157,6 @@ header{
             }
 
             #toggle-mobile-search{
-                display: none;
                 padding: 0;
                 display: none;
                 position: absolute;
