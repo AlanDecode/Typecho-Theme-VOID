@@ -236,6 +236,7 @@ header{
             background: none;
             outline: none;
             border: none;
+            color: inherit;
         }
         &.opened{
             transform: translateY(0);
@@ -298,6 +299,10 @@ header{
             }
         }
     }
+
+    &.opened {
+        background: rgba(0, 0, 0, 0.92);
+    }
 }
 
 
@@ -309,7 +314,7 @@ header{
     -webkit-overflow-scrolling: touch;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,0.92);
+    background: rgba(0, 0, 0, 0.92);
     z-index: 2;
     display: flex;
     display: none;
