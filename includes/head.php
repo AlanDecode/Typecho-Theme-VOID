@@ -103,16 +103,20 @@ $setting = $GLOBALS['VOIDSetting'];
     </script>
     <?php echo $setting['head']; ?>
     <style>
-    <?php if(!empty($setting['desktopBannerHeight'])): ?>
-    @media screen and (min-width: 768px){
-        main>.lazy-wrap{min-height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
-    }
-    <?php endif; ?>
+    <?php if(!$setting['titleinbanner']): ?>
+        main>.lazy-wrap{min-height: 0;}
+    <?php else: ?>
+        <?php if(!empty($setting['desktopBannerHeight'])): ?>
+        @media screen and (min-width: 768px){
+            main>.lazy-wrap{min-height: <?php echo $setting['desktopBannerHeight']; ?>vh;}
+        }
+        <?php endif; ?>
 
-    <?php if(!empty($setting['mobileBannerHeight'])): ?>
-    @media screen and (max-width: 768px){
-        main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
-    }
+        <?php if(!empty($setting['mobileBannerHeight'])): ?>
+        @media screen and (max-width: 768px){
+            main>.lazy-wrap{min-height: <?php echo $setting['mobileBannerHeight']; ?>vh;}
+        }
+        <?php endif; ?>
     <?php endif; ?>
     </style>
 
