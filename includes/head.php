@@ -62,7 +62,6 @@ $setting = $GLOBALS['VOIDSetting'];
         colorScheme:  <?php echo $setting['colorScheme']; ?>,
         headerMode: <?php echo $setting['headerMode']; ?>,
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
-        accurateDarkMode: <?php echo $setting['accurateDarkMode'] ? 'true' : 'false'; ?>,
         VOIDPlugin: <?php echo $setting['VOIDPlugin'] ? 'true' : 'false'; ?>,
         likePath: "<?php Utils::index('/action/void_like?up'); ?>",
         lineNumbers: <?php if ($setting['lineNumbers']) {
@@ -73,7 +72,11 @@ $setting = $GLOBALS['VOIDSetting'];
                 }
             } else {
                 echo 'false';
-            } ?>
+            } ?>,
+        darkModeTime: {
+            'start': <?php echo $setting['darkModeTime'][start]; ?>,
+            'end': <?php echo $setting['darkModeTime'][end]; ?>
+        }
     }
     function registerLazyLoadImg(url, target){
         let background = new Image();

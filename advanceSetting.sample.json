@@ -20,11 +20,14 @@
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",
 
-    // 当操作系统为深色主题时主题颜色自动切换，仅在 macOS 10.14.4 及以上版本的 Safari 中可用
-    "followSystemColorScheme" : true,
+    // 夜间模式时间段
+    "darkModeTime" : {
+        "start": 22.5,  // 晚 22 点 30 分开始
+        "end": 7.0      // 直到早 6 点 59 分
+    },
 
-    // 夜间模式精确切换（需要用户允许网站访问位置）
-    "accurateDarkMode": true,
+    // 当操作系统为深色主题时主题颜色自动切换，仅在 macOS 10.14.4 及以上版本的 Safari 中可用
+    "followSystemColorScheme" : true, 
 
     // 大图集
     "largePhotoSet": true,

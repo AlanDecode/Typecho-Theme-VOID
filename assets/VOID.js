@@ -464,107 +464,52 @@ var VOID = {
 };
 
 var DarkModeSwitcher = {
-    // TimeZone => [lat, lon]
-    mapTzGeo: {
-        'America/Denver': [39.7645187, -104.9951977],
-        'Europe/London': [51.5287352, -0.3817843],
-        'America/Chicago': [41.8339042, -88.0121562],
-        'America/Asuncion': [-25.2966809, -57.6681298],
-        'America/Montevideo': [-34.8207362, -56.3765247],
-        'Asia/Beirut': [33.8892846, 35.4692627],
-        'Pacific/Auckland': [-36.8621448, 174.5852782],
-        'America/Los_Angeles': [34.0207305, -118.6919292],
-        'America/New_York': [40.6976701, -74.2598739],
-        'America/Halifax': [43.7085882, -63.475903],
-        'America/Godthab': [64.1791647, -51.7768494],
-        'Asia/Dubai': [25.0757073, 54.9475461],
-        'Asia/Jakarta': [-6.2293867, 106.6894293],
-        'Asia/Shanghai': [31.2243084, 120.9162622],
-        'Australia/Sydney': [-33.8473567, 150.6517817],
-        'Asia/Tokyo': [35.5062896, 138.6484937],
-        'Asia/Dhaka': [23.7808875, 90.2792377],
-        'Asia/Baku': [40.3947695, 49.7148734],
-        'Australia/Brisbane': [-27.3798035, 152.4327106],
-        'Pacific/Noumea': [-22.2642742, 166.4098471],
-        'Pacific/Majuro': [7.1045756, 171.3526867],
-        'Pacific/Tongatapu': [-21.1695566, -175.3350296],
-        'Asia/Baghdad': [33.3118944, 44.2158179],
-        'Asia/Karachi': [25.1933895, 66.5949598],
-        'Africa/Johannesburg': [-26.1713505, 27.9699839],
-        'default': [39.9390731, 116.1172655] // BeiJing as default
-    },
-
-    // sunset、sunrise 为格式化至当日的 Date 对象
-    switchColorScheme: function (sunset, sunrise) {
-        var current = new Date();
-        // 格式化为小时
-        var sunset_s = sunset.getHours() + sunset.getMinutes() / 60;
-        var sunrise_s = sunrise.getHours() + sunrise.getMinutes() / 60;
-        var current_s = current.getHours() + current.getMinutes() / 60;
-        // 若不存在 cookie，根据时间判断，并设置 cookie
-        if (getCookie('theme_dark') == null) {
-            if (current_s > sunset_s || current_s < sunrise_s) {
-                document.body.classList.add('theme-dark');
-                if (current_s > sunset_s) // 如果当前为夜晚，日出时间应该切换至第二日
-                    sunrise = new Date(sunrise.getTime() + 3600000 * 24);
-                // 现在距日出还有 (s)
-                var toSunrise = (sunrise.getTime() - current.getTime()) / 1000;
-                // 设置 cookie
-                setCookie('theme_dark', '1', parseInt(toSunrise));
-                VOID.alert('日落了，夜间模式已开启。');
-            } else {
-                document.body.classList.remove('theme-dark');
-            }
-        } else {
-            // 若存在 cookie，根据 cookie 判断
-            var night = getCookie('theme_dark');
-            if (night == '0') {
-                document.body.classList.remove('theme-dark');
-            } else if (night == '1') {
-                document.body.classList.add('theme-dark');
-            }
-        }
-    },
-
-    checkColorSchemeFallback: function () {
-        var TimeZone = jstz.determine();
-        TimeZone = TimeZone.name();
-        if (DarkModeSwitcher.mapTzGeo.hasOwnProperty(TimeZone)) TimeZone = DarkModeSwitcher.mapTzGeo[TimeZone];
-        else TimeZone = DarkModeSwitcher.mapTzGeo['default'];
-        sunset = new Date().sunset(TimeZone[0], TimeZone[1]);
-        sunrise = new Date().sunrise(TimeZone[0], TimeZone[1]);
-        // 全部转换至当天
-        sunset = new Date(new Date().setHours(sunset.getHours(), sunset.getMinutes(), 0));
-        sunrise = new Date(new Date().setHours(sunrise.getHours(), sunrise.getMinutes(), 0));
-        DarkModeSwitcher.switchColorScheme(sunset, sunrise);
-    },
-
     checkColorScheme: function () {
+        // 非自动模式
         if (VOIDConfig.colorScheme != 0) return;
-        if (getPrefersDarkModeState() && VOIDConfig.followSystemColorScheme) {
+
+        if (VOIDConfig.followSystemColorScheme && getPrefersDarkModeState()) { // 自动模式跟随系统
             document.body.classList.add('theme-dark');
             var night = getCookie('theme_dark');
             if (night != '1') {
                 VOID.alert('已为您开启深色模式。');
             }
             setCookie('theme_dark', '1', 7200);
-        } else {
-            if (!VOIDConfig.accurateDarkMode) {
-                DarkModeSwitcher.checkColorSchemeFallback();
-            } else {
-                if ('geolocation' in navigator) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-                        sunrise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-                        // 全部转换至当天
-                        sunset = new Date(new Date().setHours(sunset.getHours(), sunset.getMinutes(), 0));
-                        sunrise = new Date(new Date().setHours(sunrise.getHours(), sunrise.getMinutes(), 0));
-                        DarkModeSwitcher.checkColorScheme(sunset, sunrise);
-                    }, function () {
-                        DarkModeSwitcher.checkColorSchemeFallback();
-                    });
+        } else { // 自动模式，定时            
+            // 全部转换至当天
+            sunset = new Date(new Date().setHours(
+                Math.floor(VOIDConfig.darkModeTime.start), 
+                60 * (VOIDConfig.darkModeTime.start - Math.floor(VOIDConfig.darkModeTime.start)), 0));
+            sunrise = new Date(new Date().setHours(
+                Math.floor(VOIDConfig.darkModeTime.end), 
+                60 * (VOIDConfig.darkModeTime.end - Math.floor(VOIDConfig.darkModeTime.end)), 0));
+
+            var current = new Date();
+            // 格式化为小时
+            var sunset_s = VOIDConfig.darkModeTime.start;
+            var sunrise_s = VOIDConfig.darkModeTime.end;
+            var current_s = current.getHours() + current.getMinutes() / 60;
+            // 若不存在 cookie，根据时间判断，并设置 cookie
+            if (getCookie('theme_dark') == null) {
+                if (current_s > sunset_s || current_s < sunrise_s) {
+                    document.body.classList.add('theme-dark');
+                    if (current_s > sunset_s) // 如果当前为夜晚，日出时间应该切换至第二日
+                        sunrise = new Date(sunrise.getTime() + 3600000 * 24);
+                    // 现在距日出还有 (s)
+                    var toSunrise = (sunrise.getTime() - current.getTime()) / 1000;
+                    // 设置 cookie
+                    setCookie('theme_dark', '1', parseInt(toSunrise));
+                    VOID.alert('日落了，夜间模式已开启。');
                 } else {
-                    DarkModeSwitcher.checkColorSchemeFallback();
+                    document.body.classList.remove('theme-dark');
+                }
+            } else {
+                // 若存在 cookie，根据 cookie 判断
+                night = getCookie('theme_dark');
+                if (night == '0') {
+                    document.body.classList.remove('theme-dark');
+                } else if (night == '1') {
+                    document.body.classList.add('theme-dark');
                 }
             }
         }

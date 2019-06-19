@@ -265,12 +265,15 @@ class Utils
             'weiboId' => '',
             'headerMode' => 1,
             'followSystemColorScheme' => false,
-            'accurateDarkMode' => false,
-            "largePhotoSet" => true,
-            "macStyleCodeBlock" => true,
-            "lineNumbers" => true,
-            "lineNumbersOnMobile" => true,
-            "rssPicProtect" => false,
+            'largePhotoSet' => true,
+            'macStyleCodeBlock' => true,
+            'lineNumbers' => true,
+            'lineNumbersOnMobile' => true,
+            'rssPicProtect' => false,
+            'darkModeTime' => array (
+                'start' => 22.0,
+                'end' => 7.0
+            ),
 
             //插件是否启用
             'VOIDPlugin' => false
@@ -279,7 +282,7 @@ class Utils
         $options = Helper::options();
 
         if(!empty($options->advance)){
-            $settings = json_decode($options->advance);
+            $settings = json_decode($options->advance, true);
             foreach ($settings as $key => $value) {
                 $output[$key] = $value;
             }
