@@ -99,6 +99,8 @@ main{
                         transition: .3s;
                         width: 100%;
                         z-index: -1;
+                        border-right: 2px solid #0ff;
+                        border-bottom: 2px solid #0ff;
                     }
                     span {
                         transition: .3s;
@@ -118,7 +120,8 @@ main{
                 }
                 .theme-dark & {
                     span.brand::before {
-                        background: $td-bgColor-light
+                        background: $td-bgColor-light;
+                        border-color: $td-bgColor-light;
                     }
                 }
                 .subtitle {
