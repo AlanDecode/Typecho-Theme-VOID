@@ -27,7 +27,7 @@ $setting = $GLOBALS['VOIDSetting'];
                     <time hidden datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                     
                     <?php if($this->fields->banner != ''): ?>
-                        <div <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                        <div <?php if($setting['titleinbanner'] || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                             <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>"><img src="<?php echo $this->fields->banner; ?>" /></a>
                             <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                         </div>

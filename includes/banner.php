@@ -12,7 +12,7 @@ $banner = $setting['defaultBanner'];
 if($this->is('post') || $this->is('page')){
     if($this->fields->banner != '')
         $banner = $this->fields->banner;
-    if(!$setting['titleinbanner'])
+    if(!$setting['titleinbanner'] && !$this->is('page'))
         $banner = '';
 }
 $lazyID = rand(1,10000);
@@ -27,7 +27,9 @@ $lazyID = rand(1,10000);
     <?php if(!empty($banner)): ?>
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
         <script>registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
-    <?php endif;?>
+    <?php else:  ?>
+        <style>main>.lazy-wrap{min-height: 0;}</style>
+    <?php endif; ?>
 
     <?php if(!$this->is('index')): ?>
         <div class="banner-title">
