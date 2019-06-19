@@ -145,6 +145,7 @@ article {
         }
     }
     .post-banner {
+        transition: $animationTime ease all;
         img {
             margin: 0!important;
         }
@@ -163,6 +164,10 @@ article {
         @media screen and (min-width: 1023.5px) {
             width: 1024px;
             margin-left: -102px;
+        }
+        .toc-show & {
+            width: calc(100% + 40px);
+            margin-left: -20px;
         }
     }
     img.biaoqing {
