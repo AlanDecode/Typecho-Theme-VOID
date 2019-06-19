@@ -37,14 +37,6 @@ if(!Utils::isPjax()){
             <?php endif; ?>
         </div>
         <section id="archive-list" class="yue">
-            <h1 <?php if($setting['titleinbanner']) echo 'hidden'; ?> class="post-title"><?php $this->title(); ?></h1>
-            <?php if(!$setting['titleinbanner']): ?>
-            <p class="post-meta">
-                <?php 
-                    echo Utils::getCatNum()." 分类 × ".Utils::getPostNum()." 文章 × ".Utils::getTagNum()." 标签 × <span id=\"totalWordCount\"></span> 字";
-                ?>
-            </p>
-            <?php endif; ?>
             <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
                 <h2><?php echo $year; ?>
                     <span class="num-posts"><?php $post_num = count($posts); echo $post_num; ?> 篇</span>
