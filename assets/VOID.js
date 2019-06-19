@@ -238,6 +238,11 @@ var VOID = {
         } else {
             $('body>header').addClass('no-banner');
         }
+        if ($('.app-landscape').length) {
+            $('body>header').addClass('force-dark');
+        } else {
+            $('body>header').removeClass('force-dark');
+        }
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();

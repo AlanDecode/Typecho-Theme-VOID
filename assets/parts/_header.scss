@@ -252,9 +252,12 @@ header{
         }
     }
 
-    .theme-dark &, &.opened {
+    .theme-dark &, &.opened, &.force-dark {
         background: $td-headerBgColor;
         color: $td-headerTextColor;
+        &.pull-up {
+            background: $td-headerBgColor-dark;
+        }
         .container nav {
             a, span.dropdown {
                 color: $td-headerTextColor;

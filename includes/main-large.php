@@ -13,15 +13,15 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <main id="pjax-container" class="main-excerpt">
+    <script>document.querySelector('body>header').classList.add('force-dark')</script>
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
     <style>
         body > footer { display: none; }
-        body > header, body > header.dark, body > header.no-banner { background: none!important }
         main {display: flex; flex-direction: column; justify-content: center; padding: 17.5vh 0 50px 0;}
     </style>
-    <div class="app-1 theme-dark">
+    <div class="app-landscape theme-dark">
         <div class="mask" id="bg"><div class="mask"></div></div>
         <div class="container">
             <article class="yue"  itemscope itemtype="http://schema.org/Article">
