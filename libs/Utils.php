@@ -282,7 +282,7 @@ class Utils
         $options = Helper::options();
 
         if(!empty($options->advance)){
-            $settings = json_decode($options->advance);
+            $settings = json_decode($options->advance, true);
             foreach ($settings as $key => $value) {
                 $output[$key] = $value;
             }
