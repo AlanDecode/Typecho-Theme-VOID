@@ -77,12 +77,12 @@ $setting = $GLOBALS['VOIDSetting'];
             </nav>
         </section>
         <?php if($setting['nav']){ foreach ($setting['nav'] as $listItem): ?>
-        <section data-title="<?php echo $listItem->name; ?>">
+        <section data-title="<?php echo $listItem['name']; ?>">
             <nav>
-                <?php foreach ($listItem->items as $item) {
+                <?php foreach ($listItem['items'] as $item) {
                     $target = '_blank';
-                    if(isset($item->target)) $target = $item->target;
-                    echo "<a target=\"{$target}\" href=\"{$item->link}\">{$item->title}</a>";
+                    if(isset($item['target'])) $target = $item['target'];
+                    echo "<a target=\"{$target}\" href=\"{$item['link']}\">{$item['title']}</a>";
                 }?>
             </nav>
         </section>
