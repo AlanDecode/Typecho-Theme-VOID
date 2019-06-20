@@ -67,7 +67,7 @@ var TOC = {
         if($('.TOC').length) {
             $('.TOC').toggleClass('show');
             $('#ctrler-panel').toggleClass('pull-left');
-            $('body').toggleClass('toc-show');
+            $('body').toggleClass('sidebar-show');
         }
     },
 
@@ -75,7 +75,7 @@ var TOC = {
         if($('.TOC').length) {
             $('.TOC').removeClass('show');
             $('#ctrler-panel').removeClass('pull-left');
-            $('body').removeClass('toc-show');
+            $('body').removeClass('sidebar-show');
         }
     },
 
@@ -83,7 +83,7 @@ var TOC = {
         if($('.TOC').length) {
             $('.TOC').addClass('show');
             $('#ctrler-panel').addClass('pull-left');
-            $('body').addClass('toc-show');
+            $('body').addClass('sidebar-show');
         }
     }
 };
@@ -695,7 +695,7 @@ if (VOIDConfig.PJAX) {
     $(document).on('pjax:end', function () {
         if ($('.TOC').length < 1) {
             $('#ctrler-panel').removeClass('pull-left');
-            $('body').removeClass('toc-show');
+            $('body').removeClass('sidebar-show');
         }
     });
 

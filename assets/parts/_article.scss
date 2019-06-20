@@ -165,9 +165,11 @@ article {
             width: 1024px;
             margin-left: -102px;
         }
-        .toc-show & {
-            width: calc(100% + 40px);
-            margin-left: -20px;
+        @media screen and (min-width: 1200px) and (max-width: 1599.5px) {
+            .sidebar-show & {
+                width: calc(100% + 40px)!important;
+                margin-left: -20px!important;
+            }   
         }
     }
     img.biaoqing {
@@ -201,6 +203,7 @@ article {
     .photos {
         display: flex;
         flex-wrap: wrap;
+        transition: $animationTime ease all;
         width: calc(100% + 40px);
         margin-left: -20px;
         &.large {
@@ -215,6 +218,12 @@ article {
             @media screen and (min-width: 1199.5px) {
                 width: 1200px;
                 margin-left: -190px;
+            }
+        }
+        @media screen and (min-width: 1200px) and (max-width: 1599.5px) {
+            .sidebar-show & {
+                width: calc(100% + 40px)!important;
+                margin-left: -20px!important;
             }
         }
         figure {
@@ -475,7 +484,7 @@ article {
     }
     display: none;
     @media screen and (max-width: 1199.5px) {
-        .toc-show & {
+        .sidebar-show & {
             display: block;
         }   
     }
@@ -584,7 +593,7 @@ article {
     body>header{
         transition: $animationTime ease all;
     }
-    .toc-show{
+    .sidebar-show{
         div.contents-wrap,
         main>.lazy-wrap,
         >footer{

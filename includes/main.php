@@ -109,7 +109,6 @@ $setting = $GLOBALS['VOIDSetting'];
             <div class="toc-mask" onclick="TOC.close();"></div>
             <div aria-label="文章目录" class="TOC"></div>
             <style>
-            .photos { width: calc(100% + 40px)!important; margin-left: -20px!important; }
             #toggle-toc { display: block; }
             </style>
         <?php endif;?>
