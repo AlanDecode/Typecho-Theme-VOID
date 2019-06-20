@@ -64,6 +64,8 @@ $setting = $GLOBALS['VOIDSetting'];
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
         VOIDPlugin: <?php echo $setting['VOIDPlugin'] ? 'true' : 'false'; ?>,
         likePath: "<?php Utils::index('/action/void_like?up'); ?>",
+        lightBg: "",
+        darkBg: "",
         lineNumbers: <?php if ($setting['lineNumbers']) {
                 if (!Utils::isMobile() || $setting['lineNumbersOnMobile']) {
                     echo 'true';   

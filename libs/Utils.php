@@ -274,6 +274,10 @@ class Utils
                 'start' => 22.0,
                 'end' => 7.0
             ),
+            'siteBg' => array (
+                'light' => '',
+                'dark' => ''
+            ),
 
             //插件是否启用
             'VOIDPlugin' => false
@@ -309,6 +313,10 @@ class Utils
 
         if(!empty($options->indexBannerTitle)){
             $output['indexBannerTitle'] = $options->indexBannerTitle;
+        }
+
+        if(!empty($options->globalBg)){
+            $output['globalBg'] = $options->globalBg;
         }
 
         if(!empty($options->indexBannerSubtitle)){

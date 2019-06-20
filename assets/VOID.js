@@ -526,10 +526,24 @@ var DarkModeSwitcher = {
                 }
             }
         }
+    },
+
+    tuneBg: function() {
+        if ($('body').hasClass('theme-dark') && $('#bg-style').attr('data-darkBg') != '') {
+            $('body').addClass('with-bg');
+            $('#bg-style').html('main::before{background-image: url('+ $('#bg-style').attr('data-darkBg') +')}');
+        } else if (!$('body').hasClass('theme-dark') && $('#bg-style').attr('data-lightBg') != '') {
+            $('body').addClass('with-bg');
+            $('#bg-style').html('main::before{background-image: url('+ $('#bg-style').attr('data-lightBg') +')}');
+        } else {
+            $('body').removeClass('with-bg');
+            $('#bg-style').html('');
+        }
     }
 };
 
 DarkModeSwitcher.checkColorScheme();
+DarkModeSwitcher.tuneBg();
 
 var AjaxComment = {
     noName: '必须填写用户名',

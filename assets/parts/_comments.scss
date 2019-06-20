@@ -91,7 +91,7 @@
                 .theme-dark & .OwO-logo{
                     background: $td-bgColor-dark;
                     color: $td-textColor;
-                    border-color: $td-textColor-dark;
+                    border-color: rgba(#fff, 0.1);
                 }
                 .OwO-logo {
                     z-index: 1;
@@ -102,7 +102,7 @@
                     }
                     .theme-dark &, .theme-dark & .OwO-bar{
                         background: $td-bgColor-dark;
-                        border-color: $td-textColor-dark;
+                        border-color: rgba(#fff, 0.1);
                         color: $td-textColor;
                     }
                     .theme-dark & li.OwO-item{

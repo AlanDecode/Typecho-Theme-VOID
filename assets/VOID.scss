@@ -43,10 +43,6 @@ body{
     display: flex;
     flex-direction: column;
     transition: 0.15s ease background;
-    background-color: #fff;
-    &.theme-dark{
-        background-color: $td-bgColor;
-    }
     &.modal-open{
         position: fixed;
         width: 100%;

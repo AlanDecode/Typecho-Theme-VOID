@@ -22,6 +22,12 @@ $setting = $GLOBALS['VOIDSetting'];
             echo ' macStyleCodeBlock';
         }
     ?>">
+
+    <style 
+        id="bg-style" 
+        data-lightBg="<?php echo $setting['siteBg']['light']?>" 
+        data-darkBg="<?php echo $setting['siteBg']['dark']?>"></style>
+    
     <header>
         <div class="container wider">
             <nav>
