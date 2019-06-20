@@ -54,7 +54,6 @@
 
 .bigfoot-footnote__container {
   display: inline-block;
-  z-index: 10;
   position: relative;
   text-indent: 0;
   -webkit-transform: translateY(-0.3rem);
