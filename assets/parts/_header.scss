@@ -255,9 +255,6 @@ header{
     .theme-dark &, &.opened, &.force-dark {
         background: $td-headerBgColor;
         color: $td-headerTextColor;
-        &.pull-up {
-            background: $td-headerBgColor-dark;
-        }
         .container nav {
             a, span.dropdown {
                 color: $td-headerTextColor;
@@ -266,7 +263,7 @@ header{
                         color: $headerTextColor-highlight;
                     }
                     &:not(.brand):not(#toggle-mobile-search):hover{
-                        background: $td-headerBgColor-dark;
+                        background:rgba(0, 0, 0, 0.25);
                     }
                 }
                 &.toggle{
@@ -277,15 +274,25 @@ header{
             }
             span.dropdown {
                 ul {
+                    background: $td-headerBgColor;
+                    border: 1px solid rgba(#fff, 0.08);
                     li:hover {
                         color: $headerTextColor-highlight;
                     }
                 }
                 &:hover{
                     ul{
-                        background: $td-headerBgColor-dark;
                         display: block;
                     }
+                }
+            }
+        }
+        &.pull-up {
+            background: $td-headerBgColor-dark;
+            .container span.dropdown {
+                ul {
+                    border: none;
+                    background: $td-headerBgColor-dark;
                 }
             }
         }
