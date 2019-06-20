@@ -25,8 +25,8 @@ $headerTextColor-fade: $fadeColor;
 $headerTextColor-highlight: $highlightColor;
 $td-headerBgColor: rgba(#000, 0.15);
 $td-headerBgColor-dark: rgba(#000, 0.95);
-$td-headerTextColor: $td-textColor-light;
-$td-headerTextColor-light: $td-textColor-light;
+$td-headerTextColor: #dfdfdf;
+$td-headerTextColor-light: #efefef;
 $td-headerTextColor-fade: $fadeColor;
 
 $animationTime-very-slow: 0.5s;
