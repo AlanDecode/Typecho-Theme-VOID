@@ -62,6 +62,23 @@ function getCookie(name) {
         return null;
 }
 
+function checkGoTop() {
+    if($(document).scrollTop() > window.innerHeight) {
+        $('#go-top').addClass('show');
+    } else {
+        $('#go-top').removeClass('show');
+    }
+}
+
+function checkHeader () {
+    var tr = $(window).width() > 767 ? 150 : 60;
+    if ($(document).scrollTop() > tr) {
+        $('body>header').addClass('pull-up');
+    } else {
+        $('body>header').removeClass('pull-up');
+    }
+}
+
 var TOC = {
     toggle: function() {
         if($('.TOC').length) {
@@ -91,6 +108,7 @@ var TOC = {
 var VOID = {
     // 初始化单页应用
     init: function () {
+        checkHeader();
         reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
@@ -720,22 +738,9 @@ setInterval(function () {
     $('#uptime').html(days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分 ' + seconds + ' 秒 ');
 }, 1000);
 
-function checkGoTop() {
-    if($(document).scrollTop() > window.innerHeight) {
-        $('#go-top').addClass('show');
-    } else {
-        $('#go-top').removeClass('show');
-    }
-}
-
 window.addEventListener('scroll', function () {
     checkGoTop();
-    var tr = $(window).width() > 767 ? 150 : 60;
-    if ($(document).scrollTop() > tr) {
-        $('body>header').addClass('pull-up');
-    } else {
-        $('body>header').removeClass('pull-up');
-    }
+    checkHeader();
 });
 
 function startSearch(item) {

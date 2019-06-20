@@ -10,8 +10,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 $banner = $setting['defaultBanner'];
 if($this->is('post') || $this->is('page')){
-    if($this->fields->banner != '')
-        $banner = $this->fields->banner;
+    $banner = $this->fields->banner;  
     if(!$setting['titleinbanner'] && !$this->is('page'))
         $banner = '';
 }
