@@ -147,6 +147,7 @@ article {
     .post-banner {
         transition: $animationTime ease all;
         img {
+            width: 100%;
             margin: 0!important;
         }
         margin-bottom: calc(1.5em + 25px);
