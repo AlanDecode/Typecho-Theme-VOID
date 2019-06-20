@@ -29,7 +29,13 @@ if(!Utils::isPjax()){
         <section id="index-list">
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li class="masonry-item style-<?php echo $this->fields->bannerascover; ?>">
+                <li class="masonry-item style-<?php 
+                        if($this->fields->showfullcontent=='1' && $this->fields->bannerascover == '2') {
+                            echo '1';
+                        } else {
+                            echo $this->fields->bannerascover;
+                        } 
+                    ?>">
                     <a href="<?php $this->permalink();?>">
                         <article class="yue" itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
