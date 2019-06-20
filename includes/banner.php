@@ -27,7 +27,9 @@ $lazyID = rand(1,10000);
     <?php if(!empty($banner)): ?>
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
         <script>registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
-    <?php else:  ?>
+        <script>document.querySelector('body>header').classList.add('force-dark');</script>
+    <?php else: ?>
+        <script>document.querySelector('body>header').classList.remove('force-dark')</script>
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 
