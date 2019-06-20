@@ -74,8 +74,8 @@ $setting = $GLOBALS['VOIDSetting'];
                 echo 'false';
             } ?>,
         darkModeTime: {
-            'start': <?php echo $setting['darkModeTime']->start; ?>,
-            'end': <?php echo $setting['darkModeTime']->end; ?>
+            'start': <?php echo $setting['darkModeTime']['start']; ?>,
+            'end': <?php echo $setting['darkModeTime']['end']; ?>
         }
     }
     function registerLazyLoadImg(url, target){
