@@ -37,12 +37,12 @@ $setting = $GLOBALS['VOIDSetting'];
                     </ul>
                 </span>
                 <?php if($setting['nav']){ foreach ($setting['nav'] as $listItem): ?>
-                <span class="dropdown"><?php echo $listItem->name; ?>
+                <span class="dropdown"><?php echo $listItem['name']; ?>
                     <ul>
-                        <?php foreach ($listItem->items as $item) {
+                        <?php foreach ($listItem['items'] as $item) {
                             $target = '_blank';
-                            if(isset($item->target)) $target = $item->target;
-                            echo "<li><a target=\"{$target}\" href=\"{$item->link}\">{$item->title}</a></li>";
+                            if(isset($item['target'])) $target = $item['target'];
+                            echo "<li><a target=\"{$target}\" href=\"{$item['link']}\">{$item['title']}</a></li>";
                         }?>
                     </ul>
                 </span>
