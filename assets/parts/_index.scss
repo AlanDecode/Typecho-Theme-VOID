@@ -238,22 +238,26 @@ section#index-list{
         margin: 0;
         >li{
             line-height: 1.25;
-            padding-bottom: 0;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             margin-bottom: 30px;
-            border-bottom: 1px dotted #ddd;
             opacity: 0;
-            transition: $animationTime ease-in opacity;
+            transition: $animationTime-fast ease-in-out opacity, $animationTime-fast ease-in-out border;
             &.done {
                 opacity: 1;
             }
             @media screen and (min-width: 767.5px) {
+                padding-bottom: 0;
+                border: none;
                 &.masonry-ready {
                     width: calc(50% - 15px);
                 }
-            }
-            border: solid 2px $textColor;
-            .theme-dark & {
-                border-color: $td-borderColor;
+                &:not(.style-2) {
+                    border: solid 2px $textColor;
+                    .theme-dark & {
+                        border-color: $td-borderColor;
+                    }
+                }
             }
             article {
                 position: relative;
@@ -268,6 +272,7 @@ section#index-list{
                     font-weight: bolder;
                     margin: 0;
                     margin-bottom: 0.6rem;
+                    transition: $animationTime-fast ease-in-out color;
                     color: $darkColor!important;
                     .theme-dark &{
                         color: $td-textColor-light!important;
@@ -335,43 +340,45 @@ section#index-list{
                     }
                 }
                 .content-wrap {
-                    padding: 16px 20px;
                     position: relative;
-                }
-                &.style-0 {
-                    .banner {
-                        display: none;
+                    @media screen and (min-width: 767.5px) {
+                        padding: 16px 20px;
                     }
                 }
-                &.style-2 {
-                    .content-wrap {
-                        padding: 100px 20px 40px;
-                        background: rgba(0, 0, 0, 0.4);
-                        transition: $animationTime-slow ease-in-out;
-                    }
-                    .banner {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        left: 0;
-                    }
+            }
+            &.style-0 article {
+                .banner {
+                    display: none;
+                }
+            }
+            &.style-2 article {
+                .content-wrap {
+                    padding: 100px 20px 40px;
+                    background: rgba(0, 0, 0, 0.4);
+                    transition: $animationTime-slow ease-in-out;
+                }
+                .banner {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                }
+                .title, p, .post-meta-index {
+                    color: #fff!important;
+                }
+                .theme-dark {
                     .title, p, .post-meta-index {
-                        color: #fff!important;
-                    }
-                    .theme-dark {
-                        .title, p, .post-meta-index {
-                            color: $td-textColor-light!important;
-                        }   
-                    }
+                        color: $td-textColor-light!important;
+                    }   
                 }
             }
             @media screen and (min-width: 1024.5px) {
                 &:hover {
-                    article:not(.style-2) .title{
+                    &:not(.style-2) article .title{
                         color: $highlightColor!important;
                     }
                     border-color: $highlightColor;
-                    article.style-2 .content-wrap {
+                    &.style-2 article .content-wrap {
                         background: rgba(0, 0, 0, 0.62);
                     }
                 }

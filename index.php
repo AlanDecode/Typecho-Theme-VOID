@@ -29,9 +29,9 @@ if(!Utils::isPjax()){
         <section id="index-list">
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li class="masonry-item">
+                <li class="masonry-item style-<?php echo $this->fields->bannerascover; ?>">
                     <a href="<?php $this->permalink();?>">
-                        <article class="yue style-<?php echo $this->fields->bannerascover; ?>" itemscope itemtype="http://schema.org/Article">
+                        <article class="yue" itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                     <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
