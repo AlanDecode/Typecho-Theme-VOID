@@ -240,6 +240,9 @@ section#index-list{
             line-height: 1.25;
             padding-bottom: 30px;
             border-bottom: 1px solid rgba(0,0,0,0.1);
+            .theme-dark & {
+                border-color: rgba($color: #fff, $alpha: 0.1);
+            }
             margin-bottom: 30px;
             opacity: 0;
             transition: $animationTime-fast ease-in-out opacity, $animationTime-fast ease-in-out border;
