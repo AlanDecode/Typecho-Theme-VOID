@@ -1,3 +1,4 @@
+$bgColor: #fafafa;
 $textColor: #333;
 $fadeColor: #666;
 $darkColor: #111;
@@ -18,8 +19,8 @@ $td-textColor-dark: #aaa;
 $td-borderColor: rgba(255,255,255,0.1);
 
 /****/
-$headerBgColor: rgba(255, 255, 255, 0.65);
-$headerBgColor-light: rgba(255, 255, 255, 0.95);
+$headerBgColor: rgba($bgColor, 0.65);
+$headerBgColor-light: rgba($bgColor, 0.95);
 $headerTextColor: $textColor;
 $headerTextColor-fade: $fadeColor;
 $headerTextColor-highlight: $highlightColor;

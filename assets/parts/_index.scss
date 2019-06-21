@@ -1,7 +1,7 @@
 main{
     flex: 1;
     /* 普通模式下使用background来控制主题色 */
-    background: #fff;
+    background: $bgColor;
     .theme-dark & {
         background: $td-bgColor;
     }
