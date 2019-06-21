@@ -51,7 +51,7 @@ header{
                     font-size: 1.7rem;
                     letter-spacing: 0.075rem;
                     position: absolute;
-                    left: 1rem;
+                    left: 0;
                     padding: 0;
                     margin: 0;
                     height: 100%;
@@ -121,7 +121,7 @@ header{
             }
             span.search-form-desktop{
                 position: absolute;
-                right: 1rem;
+                right: 0;
                 top: 50%;
                 transform: translateY(-50%);
                 label{
@@ -160,9 +160,8 @@ header{
                 padding: 0;
                 display: none;
                 position: absolute;
-                right: 1rem;
+                right: 5px;
                 @media screen and (max-width: 767px) {
-                    right: 5px;
                     display: block;
                 }
                 top: 45%;
