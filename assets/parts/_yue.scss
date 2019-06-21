@@ -258,6 +258,20 @@
     word-wrap: break-word;
     word-break: break-all;
 }
+
+.yue code {
+    background: #ebeded;
+    .with-bg & {
+        background: rgba(#ebeded, 0.4);
+    }
+    .theme-dark & {
+        background: $td-bgColor-dark;
+    }
+    .theme-dark.with-bg & {
+        background: rgba(#000, 0.4);
+    }
+}
+
 .yue pre {
     position: relative;
     width: 100%;
@@ -329,6 +343,7 @@
     > code {
         color: #4d4d4c;
         word-wrap: unset;
+        background: none!important;
         .theme-dark & {
             color: $td-textColor;
         }
