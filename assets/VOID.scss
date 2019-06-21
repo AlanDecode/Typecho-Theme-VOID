@@ -12,7 +12,6 @@
 html{
     font-size: 16px;
     font-family: sans-serif;
-    background: #fff;
 }
 
 ::selection {
@@ -335,7 +334,7 @@ body{
 .theme-dark .aplayer{
     color: #222;
     ol::-webkit-scrollbar-track{
-        background: #fff;
+        background: $bgColor;
     }
 }
 #MathJax_Message {
