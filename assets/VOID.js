@@ -549,13 +549,19 @@ var DarkModeSwitcher = {
     },
 
     toggleByHand: function () {
-        $('body').toggleClass('theme-dark');
-        DarkModeSwitcher.tuneBg();
-        if($('body').hasClass('theme-dark')) {
-            setCookie('theme_dark', '1', 0);
-        } else {
-            setCookie('theme_dark', '0', 0);
-        }
+        $('#toggle-night').addClass('switching');
+        setTimeout(function(){
+            $('body').toggleClass('theme-dark');
+            DarkModeSwitcher.tuneBg();
+            if($('body').hasClass('theme-dark')) {
+                setCookie('theme_dark', '1', 0);
+            } else {
+                setCookie('theme_dark', '0', 0);
+            }
+            setTimeout(function () {
+                $('#toggle-night').removeClass('switching'); 
+            }, 1000);
+        }, 600);
     }
 };
 
@@ -732,6 +738,13 @@ function clickIn(e, el) {
 }
 
 $('body').on('click', function(e) {
+    if (!clickIn(e, '.mobile-search-form') && !clickIn(e, '#toggle-mobile-search')) {
+        if ($('.mobile-search-form').hasClass('opened')) {
+            $('.mobile-search-form').removeClass('opened');
+            return false;
+        }
+    }
+
     if (!clickIn(e, '#toggle-setting-pc') && !clickIn(e, '#toggle-setting')) {
         if ($('#setting-panel').hasClass('show') && !clickIn(e, '#setting-panel')) {
             $('#setting-panel').removeClass('show');

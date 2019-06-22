@@ -317,6 +317,9 @@ body{
             .theme-dark & {
                 border-color: rgba(#fff, 0.1);
             }
+            &.switching a {
+                animation: switch 1.2s ease;
+            }
             a {
                 display: block;
                 width: 62px;
