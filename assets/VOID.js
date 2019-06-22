@@ -263,8 +263,8 @@ var VOID = {
         } else {
             $('body>header').addClass('no-banner');
         }
-        if ($('#toggleLoginForm').length) {
-            $('#toggleLoginForm').attr('data-refresh', 'true');
+        if ($('#loggin-form').length) {
+            $('#loggin-form').addClass('need-refresh');
         }
         VOID.countWords();
         VOID.parseTOC();
@@ -928,10 +928,22 @@ function adjustTextsize(up) {
 }
 
 function toggleLoginForm() {
-    if ($('#toggleLoginForm').attr('data-refresh') == 'true') {
-        location.reload();
-        return;
-    }
     $('#login-panel').toggleClass('show');
     $('#login-panel input[name=referer]').val(window.location.href);
+
+    if ($('#loggin-form').hasClass('need-refresh') && $('#login-panel').hasClass('show')) {
+        $.get({
+            url: location.href,
+            success: function (data) {
+                $('form#loggin-form').attr('action', $(data).find('form#loggin-form').attr('action'));
+                $('#loggin-form').removeClass('need-refresh');
+            },
+            error: function () {
+                VOID.alert('请求登陆参数错误。请在刷新后尝试登陆。');
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            }
+        });
+    }
 }

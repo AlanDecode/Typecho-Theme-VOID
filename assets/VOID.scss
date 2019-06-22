@@ -438,11 +438,6 @@ body{
                         background: $td-bgColor;
                     }
                 }
-                &#toggleLoginForm[data-refresh="true"] {
-                    i::before {
-                        content: '\e80a';
-                    }
-                }
             }
         }
 
@@ -497,6 +492,25 @@ body{
                         &:last-of-type {
                             margin-left: 3px;
                         }
+                    }
+                }
+                div {
+                    button {
+                        display: inline-block;
+                    }
+                    button:last-of-type {
+                        display: none;
+                    }
+                }
+                &.need-refresh div {
+                    &:first-of-type {
+                        display: none;
+                    }
+                    button {
+                        display: none;
+                    }
+                    button:last-of-type {
+                        display: inline-block;
                     }
                 }
             }
