@@ -51,12 +51,6 @@
     // 自定义添加社交链接
     "link" : [
         {
-            "name": "RSS",
-            "icon": "rss",
-            "href": "https:\/\/blog.imalan.cn\/feed",
-            "target": "_blank"
-        },
-        {
             "name": "GitHub",
             "icon": "github",
             "href": "https:\/\/github.com\/AlanDecode",
