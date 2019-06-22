@@ -263,6 +263,9 @@ var VOID = {
         } else {
             $('body>header').addClass('no-banner');
         }
+        if ($('#toggleLoginForm').length) {
+            $('#toggleLoginForm').attr('data-refresh', 'true');
+        }
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -748,6 +751,8 @@ $('body').on('click', function(e) {
     if (!clickIn(e, '#toggle-setting-pc') && !clickIn(e, '#toggle-setting')) {
         if ($('#setting-panel').hasClass('show') && !clickIn(e, '#setting-panel')) {
             $('#setting-panel').removeClass('show');
+            if($('#login-panel').length)
+                $('#login-panel').removeClass('show');
             return false;
         }
     }
@@ -853,24 +858,34 @@ function toggleNav(item) {
     }
 }
 
+function placeSettingPanel(direction) {
+
+}
+
 function toggleSettingPanel(item, direction) {
     if ($('#setting-panel').hasClass('show')) {
         $('#setting-panel').removeClass('show');
+        if($('#login-panel').length)
+            $('#login-panel').removeClass('show');
     } else {
-        var h = $('#setting-panel').height();
         var w = $('#setting-panel').outerWidth();
-        var top, left;
+        var left, top, bottom;
 
-        if (direction) { // 左向上
+        $('#setting-panel').css('top', 'unset');
+        $('#setting-panel').css('bottom', 'unset');
+
+        if (direction) { // 左向上，使用 bottom 定位
             left =  $(item).offset().left - w - 10;
-            top = $(item).offset().top - $(document).scrollTop() + $(item).height() - h;
+            bottom = $(document).scrollTop() + window.innerHeight - $(item).offset().top - $(item).outerHeight();
+            $('#setting-panel').css('left', left + 'px');
+            $('#setting-panel').css('bottom', bottom + 'px');
         } else { // 左向下
             left =  $(item).offset().left - w + $(item).width();
             top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
+            $('#setting-panel').css('left', left + 'px');
+            $('#setting-panel').css('top', top + 'px');
         }
 
-        $('#setting-panel').css('left', left + 'px');
-        $('#setting-panel').css('top', top + 'px');
         $('#setting-panel').addClass('show');
     }
 }
@@ -910,4 +925,13 @@ function adjustTextsize(up) {
 
     reloadMasonry();
     setCookie('textsize', $('body').attr('fontsize'), 604800);
+}
+
+function toggleLoginForm() {
+    if ($('#toggleLoginForm').attr('data-refresh') == 'true') {
+        location.reload();
+        return;
+    }
+    $('#login-panel').toggleClass('show');
+    $('#login-panel input[name=referer]').val(window.location.href);
 }

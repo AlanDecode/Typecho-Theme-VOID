@@ -54,15 +54,38 @@ $setting = $GLOBALS['VOIDSetting'];
                     </div>
                 </div>
             </section>
-            <?php if(count($setting['link']) > 0): ?>
-                <section id="links">
-                    <?php
-                        foreach ($setting['link'] as $link) {
-                            echo "<a class=\"link\" title=\"{$link['name']}\" target=\"{$link['target']}\" href=\"{$link['href']}\"><i class=\"voidicon-{$link['icon']}\"></i></a>";
-                        }
-                    ?>
+            <section id="links">
+            <?php if($this->user->hasLogin()): ?>
+                <a class="link" no-pjax title="登出" href="<?php $this->options->logoutUrl(); ?>"><i class="voidicon-logout"></i></a>
+            <?php else: ?>   
+                <a class="link" id="toggleLoginForm" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-login"></i></a>       
+            <?php endif; ?> 
+            
+                <a class="link" title="RSS" target="_blank" href="<?php $this->options->feedUrl(); ?>"><i class="voidicon-rss"></i></a>
+                <?php
+                    foreach ($setting['link'] as $link) {
+                        echo "<a class=\"link\" title=\"{$link['name']}\" target=\"{$link['target']}\" href=\"{$link['href']}\"><i class=\"voidicon-{$link['icon']}\"></i></a>";
+                    }
+                ?>
+            </section>
+            <?php if(!$this->user->hasLogin()): ?>
+                <section id="login-panel">
+                    <form action="<?php $this->options->loginAction()?>" method="post" name="login" role="form">
+                        <div>
+                            <input type="text" name="name" autocomplete="username" placeholder="请输入用户名" required/>
+                            <input type="password" name="password" autocomplete="current-password" placeholder="请输入密码" required/>
+                            <input type="hidden" name="referer" value="<?php 
+                                if($this->is('index')) $this->options->siteUrl();
+                                else $this->permalink();
+                            ?>">
+                        </div>
+                        <div>
+                            <button class="btn btn-normal" type="button" onclick="$('#login-panel').removeClass('show');">关闭</button>
+                            <button class="btn btn-normal" type="submit">登录</button>
+                        </div>
+                    </form>
                 </section>
-            <?php endif; ?>
+            <?php endif; ?> 
         </aside>
 
         <?php if(!empty($setting['serviceworker'])): ?>

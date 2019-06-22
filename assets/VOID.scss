@@ -438,6 +438,67 @@ body{
                         background: $td-bgColor;
                     }
                 }
+                &#toggleLoginForm[data-refresh="true"] {
+                    i::before {
+                        content: '\e80a';
+                    }
+                }
+            }
+        }
+
+        &#login-panel {
+            display: none;
+            &.show {
+                display: flex;
+            }
+            flex-direction: column;
+            border-top: 1px solid rgba(#000, 0.1);
+            .theme-dark & {
+                border-color: rgba(#fff, 0.1)
+            }
+            form {
+                display: flex;
+                &.show {
+                    display: flex;
+                }
+                flex-direction: column;
+                >div {
+                    display: flex;
+                    width: 100%;
+                }
+                > div:first-of-type {
+                    flex-direction: column;
+                    input {
+                        padding: 7.5px;
+                        outline: none;
+                        background: none;
+                        border: solid 2px rgba(#000, 0.1);
+                        .theme-dark & {
+                            border-color: rgba(#fff, 0.1);
+                        }
+                        margin-bottom: 6px;
+                        border-radius: 8px;
+                        color: inherit;
+                        &::-webkit-input-placeholder{
+                            color: $headerTextColor-fade;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+                > div:last-of-type {
+                    justify-content: flex-end;
+                    button {
+                        outline: none;
+                        flex: 1;
+                        max-width: unset;
+                        &:first-of-type {
+                            margin-right: 3px;
+                        }
+                        &:last-of-type {
+                            margin-left: 3px;
+                        }
+                    }
+                }
             }
         }
     }
