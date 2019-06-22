@@ -57,6 +57,7 @@ $setting = $GLOBALS['VOIDSetting'];
             <section id="links">
             <?php if($this->user->hasLogin()): ?>
                 <a class="link" no-pjax title="登出" href="<?php $this->options->logoutUrl(); ?>"><i class="voidicon-logout"></i></a>
+                <a class="link" title="后台管理" target="_blank" href="<?php $this->options->adminUrl(); ?>"><i class="voidicon-user"></i></a>
             <?php else: ?>   
                 <a class="link" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-login"></i></a>       
             <?php endif; ?> 
