@@ -895,5 +895,6 @@ function adjustTextsize(up) {
         $('body').attr('fontsize', String(current - 1));
     }
 
+    reloadMasonry();
     setCookie('textsize', $('body').attr('fontsize'), 604800);
 }
