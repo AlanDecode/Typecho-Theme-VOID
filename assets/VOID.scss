@@ -424,6 +424,7 @@ body{
             font-size: 1.2rem;
             max-width: 100%;
             overflow-x: auto;
+            -webkit-overflow-scrolling:touch
             a {
                 display: flex;
                 justify-content: center;
