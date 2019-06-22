@@ -57,6 +57,18 @@ body{
             border-radius: 4px;
         }
     }
+    &[fontsize="1"] {
+        font-size: 14px;
+    }
+    &[fontsize="2"] {
+        font-size: 16px;
+    }
+    &[fontsize="4"] {
+        font-size: 18px;
+    }
+    &[fontsize="5"] {
+        font-size: 18px;
+    }
 }
 
 .container{
@@ -356,7 +368,24 @@ body{
                         }
                     }
                 }
-                a {
+                #current_textsize {
+                    &::before {
+                        content: '18';
+                    }
+                    [fontsize="1"] &::before {
+                        content: '14';
+                    }
+                    [fontsize="2"] &::before {
+                        content: '16';
+                    }
+                    [fontsize="4"] &::before {
+                        content: '20';
+                    }
+                    [fontsize="5"] &::before {
+                        content: '22';
+                    }
+                }
+                a, span {
                     flex: 1;
                     display: flex;
                     justify-content: center;

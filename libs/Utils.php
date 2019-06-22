@@ -73,6 +73,31 @@ class Utils
     }
 
     /**
+     * 使用衬线体判定
+     */
+    public static function isSerif($setting)
+    {
+        if(isset($_COOKIE['serif'])) {
+            if ($_COOKIE['serif']=='1') return true; 
+        } else {
+            if ($setting['serifincontent']) return true;
+        }
+        return false;
+    }
+
+    /**
+     * 界面大小风格
+     * xs: 14px, s: 16px, n: 18px, l: 20px, xl: 22px
+     */
+    public static function getTextSize() {
+        if(isset($_COOKIE['textsize'])) {
+            return $_COOKIE['textsize'];
+        } else {
+            return '3';
+        }
+    }
+
+    /**
      * 移动端判定
      * 
      * @return bool
@@ -278,6 +303,7 @@ class Utils
                 'light' => '',
                 'dark' => ''
             ),
+            'link' => array(),
 
             //插件是否启用
             'VOIDPlugin' => false

@@ -8,6 +8,22 @@
 
 .yue {
     font: 400 18px/1.75 $void-font-default;
+    [fontsize="1"] & {
+        font-size: 14px;
+    }
+    [fontsize="2"] & {
+        font-size: 16px;
+    }
+    [fontsize="4"] & {
+        font-size: 20px;
+    }
+    [fontsize="5"] & {
+        font-size: 22px;
+    }
+
+    .serif & {
+        font-family: $void-font-serif;
+    }
     color: #333332;
     .theme-dark & {
         color: $td-textColor;

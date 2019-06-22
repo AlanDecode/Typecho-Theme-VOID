@@ -11,15 +11,17 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
 
-<body class="<?php 
+<body fontsize="<?php echo Utils::getTextSize(); ?>" class="<?php 
         if($setting['colorScheme'] == 0){
-            echo($_COOKIE['theme_dark'] == '1' ? 'theme-dark' : '');
-        } 
-        elseif ($setting['colorScheme'] == 2) {
+            echo((isset($_COOKIE['theme_dark']) && $_COOKIE['theme_dark'] == '1') ? 'theme-dark' : '');
+        } elseif ($setting['colorScheme'] == 2) {
             echo 'theme-dark';
         }
         if($setting['macStyleCodeBlock']) {
             echo ' macStyleCodeBlock';
+        }
+        if(Utils::isSerif($setting)) {
+            echo ' serif';
         }
     ?>">
 

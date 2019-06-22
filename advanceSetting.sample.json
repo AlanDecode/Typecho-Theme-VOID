@@ -48,7 +48,41 @@
     // RSS原图保护
     "rssPicProtect": true,
 
-    // 自定义添加栏下拉列表
+    // 自定义添加社交链接
+    "link" : [
+        {
+            "name": "RSS",
+            "icon": "rss",
+            "href": "https:\/\/blog.imalan.cn\/feed",
+            "target": "_blank"
+        },
+        {
+            "name": "GitHub",
+            "icon": "github",
+            "href": "https:\/\/github.com\/AlanDecode",
+            "target": "_blank"
+        },
+        {
+            "name": "微博",
+            "icon": "weibo",
+            "href": "https:\/\/weibo.com\/5245109677",
+            "target": "_blank"
+        },
+        {
+            "name": "Twitter",
+            "icon": "twitter",
+            "href": "https://twitter.com/AlanDecode",
+            "target": "_blank"
+        },
+        {
+            "name": "QQ",
+            "icon": "qq",
+            "href": "https://shang.qq.com/wpa/qunwpa?idkey=4ed2406c1d84b70c319c8ee79752d1704702b770aa0da405ca0f274e4d4db5f8",
+            "target": "_blank"
+        }
+    ],
+
+    // 自定义添加导航栏下拉列表
     "nav" : [
         {
             "name" : "捉迷藏",

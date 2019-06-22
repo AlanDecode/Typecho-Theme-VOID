@@ -36,48 +36,48 @@ if(!Utils::isPjax()){
                             echo $this->fields->bannerascover;
                         } 
                     ?>">
-                    <a href="<?php $this->permalink();?>">
-                        <article class="yue" itemscope itemtype="http://schema.org/Article">
-                            <?php if($this->fields->banner != ''): ?>
+                    <article class="yue" itemscope itemtype="http://schema.org/Article">
+                        <?php if($this->fields->banner != ''): ?>
+                            <a href="<?php $this->permalink(); ?>">
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                     <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
                                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                                 </div>
-                            <?php endif; ?>
-                            <div class="content-wrap">
-                                <div class="post-meta-index">
-                                    <span hidden itemprop="author"><?php $this->author(); ?></span>
-                                    <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
-                                    <?php if($setting['VOIDPlugin']): ?>
-                                        <span class="word-count">+ <?php echo $this->wordCount; ?> 字</span>
-                                    <?php endif; ?>
-                                </div>
-                            
-                                <h1 class="title" itemprop="name"><?php $this->title(); ?></h1>
-
-                                <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
-
-                                <div itemprop="articleBody">
-                                <?php if($this->fields->showfullcontent != '1'): ?>
-                                    <?php if($this->fields->excerpt == ''): ?>
-                                        <p itemprop="headline"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(80); ?></p>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <?php $this->content(); ?>
+                            </a>
+                        <?php endif; ?>
+                        <div class="content-wrap">
+                            <div class="post-meta-index">
+                                <span hidden itemprop="author"><?php $this->author(); ?></span>
+                                <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
+                                <?php if($setting['VOIDPlugin']): ?>
+                                    <span class="word-count">+ <?php echo $this->wordCount; ?> 字</span>
                                 <?php endif; ?>
-                                </div>
+                            </div>
+                        
+                            <a href="<?php $this->permalink();?>"><h1 class="title" itemprop="name"><?php $this->title(); ?></h1></a>
 
-                                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
-                                <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                                <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                                    <meta itemprop="name" content="<?php $this->options->title(); ?>">
-                                    <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
-                                    </div>
+                            <?php if($this->fields->excerpt != '') echo "<p itemprop=\"headline\" class=\"headline content\">{$this->fields->excerpt}</p>"; ?>
+
+                            <div itemprop="articleBody">
+                            <?php if($this->fields->showfullcontent != '1'): ?>
+                                <?php if($this->fields->excerpt == ''): ?>
+                                    <p itemprop="headline"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(80); ?></p>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php $this->content(); ?>
+                            <?php endif; ?>
+                            </div>
+
+                            <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
+                            <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
+                            <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                                <meta itemprop="name" content="<?php $this->options->title(); ?>">
+                                <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                                    <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
                                 </div>
                             </div>
-                        </article>
-                    </a>
+                        </div>
+                    </article>
                 </li>
             <?php endwhile; ?>
             </ul>

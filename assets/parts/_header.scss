@@ -70,6 +70,9 @@ header{
                         background-color: $headerTextColor;
                     }
                 }
+                &#toggle-setting {
+                    display: none;
+                }
                 @media screen and (max-width: 767px){
                     &.brand{
                         font-size: 1.5rem;
@@ -89,7 +92,7 @@ header{
                     &#toggle-setting {
                         display: block;
                         position: absolute;
-                        right: 1.5rem;;
+                        right: 1.75rem;;
                         font-size: 1.4rem;
                         line-height: 1.7;
                     }
@@ -164,12 +167,13 @@ header{
             }
 
             #toggle-mobile-search{
+                display: none;
+                position: absolute;
+                right: -0.55rem;
+                font-size: 1.4rem;
+                line-height: 1.7;
                 @media screen and (max-width: 767px) {
                     display: block;
-                    position: absolute;
-                    right: -0.55rem;
-                    font-size: 1.4rem;
-                    line-height: 1.7;
                 }
             }
         }

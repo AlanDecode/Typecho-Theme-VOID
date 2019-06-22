@@ -728,8 +728,16 @@ $(document).ready(function () {
     VOID.init();
 });
 
-$(window).resize(function() {
-    $('#setting-panel').removeClass('show');
+function clickIn(e, el) {
+    return $(el).has(e.target).length || $(el).get(0) === e.target;
+}
+
+$('body').on('click', function(e) {
+    if (!clickIn(e, '#toggle-setting-pc') && !clickIn(e, '#toggle-setting')) {
+        if ($('#setting-panel').hasClass('show') && !clickIn(e, '#setting-panel')) {
+            $('#setting-panel').removeClass('show');
+        }
+    }
 });
 
 if (VOIDConfig.PJAX) {
@@ -816,7 +824,6 @@ function toggleSearch() {
             $('.mobile-search-form input').blur();
         }
     }, 400);
-    $('#setting-panel').removeClass('show');
 }
 
 function toggleNav(item) {
@@ -831,7 +838,6 @@ function toggleNav(item) {
         VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
     }
-    $('#setting-panel').removeClass('show');
 }
 
 function toggleSettingPanel(item, direction) {
@@ -854,4 +860,40 @@ function toggleSettingPanel(item, direction) {
         $('#setting-panel').css('top', top + 'px');
         $('#setting-panel').addClass('show');
     }
+}
+
+function toggleSerif (item, serif) {
+    $('.font-indicator').removeClass('checked');
+    $(item).addClass('checked');
+    if (serif) {
+        if ($('#stylesheet_noto').length < 1)
+            $('body').append('<link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">');
+        $('body').addClass('serif');
+        setCookie('serif', '1', 604800);
+    } else {
+        if ($('#stylesheet_droid').length < 1)
+            $('body').append('<link id="stylesheet_droid" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">');
+        $('body').removeClass('serif');
+        setCookie('serif', '0', 604800);
+    }
+}
+
+function adjustTextsize(up) {
+    var current = parseInt($('body').attr('fontsize'));
+    
+    if (up) {
+        if (current >= 5) {
+            VOID.alert('已经是最大了！');
+            return;
+        }
+        $('body').attr('fontsize', String(current + 1));
+    } else {
+        if (current <= 1) {
+            VOID.alert('已经是最小了！');
+            return;
+        }
+        $('body').attr('fontsize', String(current - 1));
+    }
+
+    setCookie('textsize', $('body').attr('fontsize'), 604800);
 }

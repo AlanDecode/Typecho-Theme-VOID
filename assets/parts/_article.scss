@@ -192,6 +192,9 @@ article {
         &.full {        
             margin-bottom: 2rem;
         }
+        .serif & {
+            font-family: $void-font-serif;
+        }
     }
     div[itemprop=articleBody] > figure {
         width: calc(100% + 40px);

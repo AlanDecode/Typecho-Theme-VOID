@@ -28,8 +28,8 @@ $setting = $GLOBALS['VOIDSetting'];
             <div class="ctrler-item" id="go-top">
                 <a target="_self" aria-label="返回顶部" href="javascript:void(0);" onclick="$.scrollTo(0, 300);">↑</a>
             </div>
-            <div role=button aria-hidden="true" class="ctrler-item hidden-xs">
-                <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="toggleSettingPanel(this), 2;"><i class="voidicon-cog"></i></a>
+            <div role=button aria-hidden="true" id="toggle-setting-pc" class="ctrler-item hidden-xs">
+                <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="toggleSettingPanel(this, 1);"><i class="voidicon-cog"></i></a>
             </div>
             <div role=button aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
                 <a target="_self" href="javascript:void(0);" onclick="TOC.toggle()">←</a>
@@ -44,22 +44,25 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
                 <div id="adjust-text-container">
                     <div class="adjust-text-item">
-                        <a href="#"><i class="voidicon-font"></i>-</a>
-                        <a href="#"><i class="voidicon-font"></i>+</a>
+                        <a href="javascript:void(0)" onclick="adjustTextsize(false);"><i class="voidicon-font"></i>-</a>
+                        <span id="current_textsize"></span>
+                        <a href="javascript:void(0)" onclick="adjustTextsize(true);"><i class="voidicon-font"></i>+</a>
                     </div>
                     <div class="adjust-text-item">
-                        <a href="#" class="checked">Sans</a>
-                        <a href="#">Serif</a>
+                        <a class="font-indicator <?php if(!Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, false);">Sans</a>
+                        <a class="font-indicator <?php if(Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, true);">Serif</a>
                     </div>
                 </div>
             </section>
-            <section id="links">
-                <a class="link" target="_blank" href="https://blog.imalan.cn/feed"><i class="voidicon-rss"></i></a>
-                <a class="link" target="_blank" href="https://github.com/AlanDecode"><i class="voidicon-github"></i></a>
-                <a class="link" target="_blank" href="https://twitter.com/AlanDecode"><i class="voidicon-twitter"></i></a>
-                <a class="link" target="_blank" href="https://weibo.com/5245109677"><i class="voidicon-weibo"></i></a>
-                <a class="link" target="_blank" href="https://shang.qq.com/wpa/qunwpa?idkey=4ed2406c1d84b70c319c8ee79752d1704702b770aa0da405ca0f274e4d4db5f8"><i class="voidicon-qq"></i></a>
-            </section>
+            <?php if(count($setting['link']) > 0): ?>
+                <section id="links">
+                    <?php
+                        foreach ($setting['link'] as $link) {
+                            echo "<a class=\"link\" title=\"{$link['name']}\" target=\"{$link['target']}\" href=\"{$link['href']}\"><i class=\"voidicon-{$link['icon']}\"></i></a>";
+                        }
+                    ?>
+                </section>
+            <?php endif; ?>
         </aside>
 
         <?php if(!empty($setting['serviceworker'])): ?>

@@ -121,12 +121,9 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php endif; ?>
     </style>
 
-    <?php if($setting['serifincontent']): ?>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">
-    <style>div[itemprop=articleBody], .yue, .subtitle {
-        font-family: 'Noto Serif SC', 
-            -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC","Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;}</style>
+    <?php if(Utils::isSerif($setting)): ?>
+        <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">
     <?php else: ?>
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">
+        <link id="stylesheet_droid" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">
     <?php endif; ?>
     </head>

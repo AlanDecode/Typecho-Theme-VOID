@@ -1,6 +1,7 @@
 main{
     flex: 1;
     /* 普通模式下使用background来控制主题色 */
+    transition: $animationTime ease-in-out background;
     background: $bgColor;
     .theme-dark & {
         background: $td-bgColor;
@@ -19,6 +20,7 @@ main{
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            transition: $animationTime ease-in-out background;
         }
     }
     .lazy-wrap{
@@ -96,6 +98,9 @@ main{
                 margin-top: 1rem;
                 font-weight: normal;
                 color: $td-textColor;
+                .serif & {
+                    font-family: $void-font-serif;
+                }
                 .theme-dark & {
                     color: $td-textColor;
                 }
@@ -405,10 +410,10 @@ section#index-list{
                 }
             }
             @media screen and (min-width: 1024.5px) {
+                &:not(.style-2) article .title:hover {
+                    color: $highlightColor!important;
+                }
                 &:hover {
-                    &:not(.style-2) article .title{
-                        color: $highlightColor!important;
-                    }
                     border-color: $highlightColor;
                     &.style-2 article .content-wrap {
                         background: rgba(0, 0, 0, 0.62);
