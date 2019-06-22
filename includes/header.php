@@ -23,6 +23,9 @@ $setting = $GLOBALS['VOIDSetting'];
         if(Utils::isSerif($setting)) {
             echo ' serif';
         }
+        if(Utils::isMobile()) {
+            echo ' mobile';
+        }
     ?>">
 
     <style 

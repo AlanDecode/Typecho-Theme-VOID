@@ -212,7 +212,6 @@ var VOID = {
         $('.mobile-search').removeClass('opened');
         $('header').removeClass('opened');
         $('#setting-panel').removeClass('show');
-        $('.mobile-search-form').removeClass('opened');
         if ($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
         TOC.close();
@@ -736,6 +735,7 @@ $('body').on('click', function(e) {
     if (!clickIn(e, '#toggle-setting-pc') && !clickIn(e, '#toggle-setting')) {
         if ($('#setting-panel').hasClass('show') && !clickIn(e, '#setting-panel')) {
             $('#setting-panel').removeClass('show');
+            return false;
         }
     }
 });
