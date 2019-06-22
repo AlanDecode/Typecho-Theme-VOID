@@ -86,6 +86,13 @@ header{
                             left: 0;
                         }
                     }
+                    &#toggle-setting {
+                        display: block;
+                        position: absolute;
+                        right: 1.5rem;;
+                        font-size: 1.4rem;
+                        line-height: 1.7;
+                    }
                 }
             }
             span.dropdown{
@@ -157,36 +164,12 @@ header{
             }
 
             #toggle-mobile-search{
-                padding: 0;
-                display: none;
-                position: absolute;
-                right: 5px;
                 @media screen and (max-width: 767px) {
                     display: block;
-                }
-                top: 45%;
-                transform: translateY(-50%);
-                > div{
-                    width: 17px;
-                    height: 17px;
-                    border: 3px solid $headerTextColor;
-                    border-radius: 50%;
-                }
-                > span{
-                    position: relative;
-                    display: block;
-                    &::before{
-                        content: "";
-                        display: block;
-                        position: absolute;
-                        width: 8px;
-                        height: 3px;
-                        border-radius: 2px;
-                        background: $headerTextColor;
-                        left: 14px;
-                        transform: rotate(42deg);
-                        top: -3px;
-                    } 
+                    position: absolute;
+                    right: -0.55rem;
+                    font-size: 1.4rem;
+                    line-height: 1.7;
                 }
             }
         }

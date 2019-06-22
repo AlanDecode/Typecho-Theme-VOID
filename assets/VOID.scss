@@ -267,6 +267,142 @@ body{
     }
 }
 
+#setting-panel {
+    display: none;
+    &.show {
+        display: block;
+    }
+    position: fixed;
+    z-index: 4;
+    border: solid 8px rgba(#eee, 0.8);
+    border-radius: 4px;
+    background: #fafafa;
+    .theme-dark & {
+        border-color: $td-headerBgColor-dark;
+        background: $td-bgColor;
+        color: $td-textColor-light;
+    }
+    width: 250px;
+    section {
+        padding: 12px 5px;
+        display: flex;
+        > * {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        #toggle-night {
+            font-size: 2.8rem;
+            margin-right: 10px;
+            a {
+                display: block;
+                width: 62px;
+                height: 62px;
+                line-height: 62px;
+                color: #ffe150;
+                border-radius: 50%;
+                &:hover {
+                    background: #f5f5f5;
+                    .theme-dark & {
+                        background: $td-headerBgColor-dark;
+                    }
+                }
+                i:before {
+                    content: '\f185';
+                    font-family: "void-icon";
+                    font-style: normal;
+                    font-weight: normal;
+                    display: inline-block;
+                    text-decoration: inherit;
+                    width: 1em;
+                    margin-right: .2em;
+                    text-align: center;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1em;
+                    margin-left: .2em;
+                }
+                .theme-dark & {
+                    color: $td-textColor-light;
+                    i:before {
+                        content: '\f186';
+                    }
+                }
+                
+            }
+        }
+
+        #adjust-text-container {
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-around;
+            .adjust-text-item {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                &:first-of-type {
+                    margin-bottom: 5px;
+                    a:first-of-type {
+                        font-size: 0.8rem
+                    }
+                    a:hover {
+                        background: #eee;
+                        .theme-dark & {
+                            background: $td-headerBgColor-dark;
+                        }
+                    }
+                }
+                a {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    padding: 5px;
+                    border-radius: 4px;
+                    &.checked {
+                        background: #ffe150;
+                        .theme-dark & {
+                            background: $td-headerBgColor-dark;
+                        }
+                    }
+                }
+            }
+        }
+
+        &#links {
+            border-top: 1px solid rgba(#000, 0.1);
+            .theme-dark & {
+                border-color: rgba(#fff, 0.1)
+            }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            max-width: 100%;
+            overflow-x: auto;
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px;
+                width: 37px;
+                height: 37px;
+                border-radius: 50%;
+                &:hover {
+                    background: #f5f5f5;
+                    .theme-dark & {
+                        background: $td-bgColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .msg{
     position: fixed;
     top: 70px;
@@ -347,4 +483,5 @@ body{
 @import "parts/archive";
 @import "parts/comments";
 @import "parts/footer";
-@import "parts/special"
+@import "parts/special";
+@import "parts/voidicon"

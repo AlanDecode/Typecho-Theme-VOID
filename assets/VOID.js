@@ -50,7 +50,12 @@ var getPrefersDarkModeState = function () {
 };
 
 function setCookie(name, value, time) {
-    document.cookie = name + '=' + escape(value) + ';max-age=' + String(time) + ';path=/';
+    if (time > 0) {
+        document.cookie = name + '=' + escape(value) + ';max-age=' + String(time) + ';path=/';
+    } else {
+        // session
+        document.cookie = name + '=' + escape(value) + ';path=/';
+    }   
 }
 
 function getCookie(name) {
@@ -86,6 +91,7 @@ var TOC = {
             $('#ctrler-panel').toggleClass('pull-left');
             $('body').toggleClass('sidebar-show');
         }
+        $('#setting-panel').removeClass('show');
     },
 
     close: function() {
@@ -205,6 +211,8 @@ var VOID = {
         $('.toggle').removeClass('pushed');
         $('.mobile-search').removeClass('opened');
         $('header').removeClass('opened');
+        $('#setting-panel').removeClass('show');
+        $('.mobile-search-form').removeClass('opened');
         if ($('body').hasClass('modal-open')) VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
         TOC.close();
@@ -539,6 +547,16 @@ var DarkModeSwitcher = {
             $('body').removeClass('with-bg');
             $('#bg-style').html('');
         }
+    },
+
+    toggleByHand: function () {
+        $('body').toggleClass('theme-dark');
+        DarkModeSwitcher.tuneBg();
+        if($('body').hasClass('theme-dark')) {
+            setCookie('theme_dark', '1', 0);
+        } else {
+            setCookie('theme_dark', '0', 0);
+        }
     }
 };
 
@@ -710,6 +728,10 @@ $(document).ready(function () {
     VOID.init();
 });
 
+$(window).resize(function() {
+    $('#setting-panel').removeClass('show');
+});
+
 if (VOIDConfig.PJAX) {
     $(document).on('pjax:send', function () {
         VOID.beforePjax();
@@ -794,6 +816,7 @@ function toggleSearch() {
             $('.mobile-search-form input').blur();
         }
     }, 400);
+    $('#setting-panel').removeClass('show');
 }
 
 function toggleNav(item) {
@@ -807,5 +830,28 @@ function toggleNav(item) {
     else {
         VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
+    }
+    $('#setting-panel').removeClass('show');
+}
+
+function toggleSettingPanel(item, direction) {
+    if ($('#setting-panel').hasClass('show')) {
+        $('#setting-panel').removeClass('show');
+    } else {
+        var h = $('#setting-panel').height();
+        var w = $('#setting-panel').outerWidth();
+        var top, left;
+
+        if (direction) { // 左向上
+            left =  $(item).offset().left - w - 10;
+            top = $(item).offset().top - $(document).scrollTop() + $(item).height() - h;
+        } else { // 左向下
+            left =  $(item).offset().left - w + $(item).width();
+            top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
+        }
+
+        $('#setting-panel').css('left', left + 'px');
+        $('#setting-panel').css('top', top + 'px');
+        $('#setting-panel').addClass('show');
     }
 }
