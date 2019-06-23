@@ -257,7 +257,11 @@ var VOID = {
 
     // PJAX 结束后
     afterPjax: function () {
-        reloadMasonry();
+        NProgress.done();
+        if ($('.TOC').length < 1) {
+            $('#ctrler-panel').removeClass('pull-left');
+            $('body').removeClass('sidebar-show');
+        }
         if ($('#banner').length) {
             $('body>header').removeClass('no-banner');
         } else {
@@ -266,6 +270,16 @@ var VOID = {
         if ($('#loggin-form').length) {
             $('#loggin-form').addClass('need-refresh');
         }
+
+        setTimeout(function () {
+            var hash = new URL(window.location.href).hash;
+            if (hash != '') {
+                $.scrollTo($(hash).offset().top - 80, 500);
+            } else {
+                VOID.goTop();
+            }
+        }, 50);
+        reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -765,25 +779,6 @@ if (VOIDConfig.PJAX) {
 
     $(document).on('pjax:complete', function () {
         VOID.afterPjax();
-    });
-
-    $(document).on('pjax:end', function () {
-        if ($('.TOC').length < 1) {
-            $('#ctrler-panel').removeClass('pull-left');
-            $('body').removeClass('sidebar-show');
-        }
-    });
-
-    $(document).on('pjax:end', function () {
-        NProgress.done();
-        setTimeout(function () {
-            var hash = new URL(window.location.href).hash;
-            if (hash != '') {
-                $.scrollTo($(hash).offset().top - 80, 500);
-            } else {
-                VOID.goTop();
-            }
-        }, 50);
     });
 }
 
