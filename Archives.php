@@ -40,10 +40,10 @@ if(!Utils::isPjax()){
             <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
                 <h2><?php echo $year; ?>
                     <span class="num-posts"><?php $post_num = count($posts); echo $post_num; ?> 篇</span>
-                    <a no-pjax data-num="<?php echo $post_num; ?>" 
+                    <a no-pjax target="_self" data-num="<?php echo $post_num; ?>" 
                         data-year="<?php echo $year; ?>" 
                         class="toggle-archive" href="javascript:void(0);" 
-                        onclick="VOID.toggleArchive(this);"><?php if($index > 0) echo '+'; else echo '-'; ?>
+                        onclick="VOID.toggleArchive(this); return false;"><?php if($index > 0) echo '+'; else echo '-'; ?>
                     </a>
                 </h2>
                 <section id="year-<?php echo $year; ?>" 
