@@ -258,10 +258,6 @@ var VOID = {
     // PJAX 结束后
     afterPjax: function () {
         NProgress.done();
-        if ($('.TOC').length < 1) {
-            $('#ctrler-panel').removeClass('pull-left');
-            $('body').removeClass('sidebar-show');
-        }
         if ($('#banner').length) {
             $('body>header').removeClass('no-banner');
         } else {
@@ -497,6 +493,10 @@ var VOID = {
             });
             VOID.clipboards.push(clipboard);
         }
+    },
+
+    rememberPos: function () {
+        setCookie('void_pos', String($(document).scrollTop()));
     }
 };
 
@@ -748,6 +748,10 @@ var AjaxComment = {
 
 $(document).ready(function () {
     VOID.init();
+    if(getCookie('void_pos') != null && parseFloat(getCookie('void_pos')) != -1) {
+        $(document).scrollTop(parseFloat(getCookie('void_pos')));
+        setCookie('void_pos', -1);
+    } 
 });
 
 function clickIn(e, el) {
@@ -779,6 +783,13 @@ if (VOIDConfig.PJAX) {
 
     $(document).on('pjax:complete', function () {
         VOID.afterPjax();
+    });
+
+    $(document).on('pjax:end', function () {	
+        if ($('.TOC').length < 1) {	
+            $('#ctrler-panel').removeClass('pull-left');	
+            $('body').removeClass('sidebar-show');	
+        }	
     });
 }
 
@@ -851,10 +862,6 @@ function toggleNav(item) {
         VOID.closeModal();
         $('#nav-mobile').fadeOut(200);
     }
-}
-
-function placeSettingPanel(direction) {
-
 }
 
 function toggleSettingPanel(item, direction) {

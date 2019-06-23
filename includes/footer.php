@@ -78,14 +78,14 @@ $setting = $GLOBALS['VOIDSetting'];
                         </div>
                         <div class="buttons" id="loggin-buttons">
                             <button class="btn btn-normal" type="button" onclick="$('#login-panel').removeClass('show');$('#setting-panel').removeClass('show')">关闭</button>
-                            <button class="btn btn-normal" type="submit">登录</button>
+                            <button class="btn btn-normal" type="submit" onclick="VOID.rememberPos()">登录</button>
                             <span hidden id="wait" class="btn btn-normal">请稍等……</span>
                         </div>
                     </form>
                 <?php else: ?>
                     <div class="buttons" id="manage-buttons">
                         <a class="btn btn-normal" no-pjax target="_blank" href="<?php $this->options->adminUrl(); ?>">后台</a>
-                        <a class="btn btn-normal" no-pjax title="登出" href="<?php $this->options->logoutUrl(); ?>">登出</a>
+                        <a class="btn btn-normal" no-pjax title="登出" onclick="VOID.rememberPos()" href="<?php $this->options->logoutUrl(); ?>">登出</a>
                     </div>
                 <?php endif; ?> 
             </section> 
