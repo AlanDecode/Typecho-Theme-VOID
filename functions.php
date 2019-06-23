@@ -86,7 +86,7 @@ function themeFields(Typecho_Widget_Helper_Layout $layout) {
     $layout->addItem($posttype);
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', NULL, NULL, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);
-    $bannerascover = new Typecho_Widget_Helper_Form_Element_Select('bannerascover',array('2'=>'主图作为标题背景', '1'=>'主图显示在标题上方', '0'=>'不显示'),'1','首页主图样式','主图作为标题背景时会添加暗色遮罩，但仍然建议仅对暗色的主图采用该方式展示。否则请选择「主图显示在标题上方」。');
+    $bannerascover = new Typecho_Widget_Helper_Form_Element_Select('bannerascover',array('1'=>'主图显示在标题上方', '2'=>'主图作为标题背景', '0'=>'不显示'), '1','首页主图样式','主图作为标题背景时会添加暗色遮罩，但仍然建议仅对暗色的主图采用该方式展示。否则请选择「主图显示在标题上方」。');
     $layout->addItem($bannerascover);
     $showfullcontent = new Typecho_Widget_Helper_Form_Element_Select('showfullcontent',array('0'=>'否', '1'=>'是'),'0','在首页显示完整内容','是否在首页展示完整内容。适合比较短的文章。');
     $layout->addItem($showfullcontent);
