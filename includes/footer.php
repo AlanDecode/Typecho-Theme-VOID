@@ -55,13 +55,9 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
             </section>
             <section id="links">
-            <?php if($this->user->hasLogin()): ?>
-                <a class="link" no-pjax title="登出" href="<?php $this->options->logoutUrl(); ?>"><i class="voidicon-logout"></i></a>
-                <a class="link" title="后台管理" target="_blank" href="<?php $this->options->adminUrl(); ?>"><i class="voidicon-user"></i></a>
-            <?php else: ?>   
-                <a class="link" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-login"></i></a>       
-            <?php endif; ?> 
-            
+                <?php if(!$this->user->hasLogin()): ?>
+                    <a class="link" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-user"></i></a>       
+                <?php endif; ?>
                 <a class="link" title="RSS" target="_blank" href="<?php $this->options->feedUrl(); ?>"><i class="voidicon-rss"></i></a>
                 <?php
                     foreach ($setting['link'] as $link) {
@@ -69,10 +65,10 @@ $setting = $GLOBALS['VOIDSetting'];
                     }
                 ?>
             </section>
-            <?php if(!$this->user->hasLogin()): ?>
-                <section id="login-panel">
+            <section id="login-panel" <?php if($this->user->hasLogin()) echo 'class="force-show"'; ?>>
+                <?php if(!$this->user->hasLogin()): ?>
                     <form action="<?php $this->options->loginAction()?>" id="loggin-form" method="post" name="login" role="form">
-                        <div>
+                        <div id="loggin-inputs">
                             <input type="text" name="name" autocomplete="username" placeholder="请输入用户名" required/>
                             <input type="password" name="password" autocomplete="current-password" placeholder="请输入密码" required/>
                             <input type="hidden" name="referer" value="<?php 
@@ -80,14 +76,19 @@ $setting = $GLOBALS['VOIDSetting'];
                                 else $this->permalink();
                             ?>">
                         </div>
-                        <div id="login-buttons">
-                            <button class="btn btn-normal" type="button" onclick="$('#login-panel').removeClass('show');">关闭</button>
+                        <div class="buttons" id="loggin-buttons">
+                            <button class="btn btn-normal" type="button" onclick="$('#login-panel').removeClass('show');$('#setting-panel').removeClass('show')">关闭</button>
                             <button class="btn btn-normal" type="submit">登录</button>
-                            <button hidden class="btn btn-normal" disabled="disabled">请稍等……</button>
+                            <span hidden id="wait" class="btn btn-normal">请稍等……</span>
                         </div>
                     </form>
-                </section>
-            <?php endif; ?> 
+                <?php else: ?>
+                    <div class="buttons" id="manage-buttons">
+                        <a class="btn btn-normal" no-pjax target="_blank" href="<?php $this->options->adminUrl(); ?>">后台</a>
+                        <a class="btn btn-normal" no-pjax title="登出" href="<?php $this->options->logoutUrl(); ?>">登出</a>
+                    </div>
+                <?php endif; ?> 
+            </section> 
         </aside>
 
         <?php if(!empty($setting['serviceworker'])): ?>

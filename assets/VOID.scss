@@ -444,7 +444,7 @@ body{
 
         &#login-panel {
             display: none;
-            &.show {
+            &.show, &.force-show {
                 display: flex;
             }
             flex-direction: column;
@@ -452,17 +452,39 @@ body{
             .theme-dark & {
                 border-color: rgba(#fff, 0.1)
             }
+
+            div {
+                display: flex;
+                width: 100%;
+                &.buttons {
+                    flex-direction: row;
+                }
+                .btn {
+                    outline: none;
+                    flex: 1;
+                    max-width: unset;
+                    &:first-of-type {
+                        margin-right: 3px;
+                    }
+                    &:last-of-type {
+                        margin-left: 3px;
+                    }
+                }
+            }
+
+            .buttons {
+                display: flex;
+                width: 100%;
+
+            }
+
             form {
                 display: flex;
+                flex-direction: column;
                 &.show {
                     display: flex;
                 }
-                flex-direction: column;
-                >div {
-                    display: flex;
-                    width: 100%;
-                }
-                > div:first-of-type {
+                div#loggin-inputs {
                     flex-direction: column;
                     input {
                         padding: 7.5px;
@@ -481,37 +503,21 @@ body{
                         }
                     }
                 }
-                > div:last-of-type {
+                div#loggin-buttons {
                     justify-content: flex-end;
-                    button {
-                        outline: none;
-                        flex: 1;
-                        max-width: unset;
-                        &:first-of-type {
-                            margin-right: 3px;
-                        }
-                        &:last-of-type {
-                            margin-left: 3px;
-                        }
-                    }
-                }
-                div {
-                    button {
-                        display: inline-block;
-                    }
-                    button:last-of-type {
+                    .btn#wait {
                         display: none;
                     }
                 }
-                &.need-refresh div {
-                    &:first-of-type {
+                &.need-refresh {
+                    div#loggin-inputs {
                         display: none;
                     }
-                    button {
+                    div#loggin-buttons .btn {
                         display: none;
-                    }
-                    button:last-of-type {
-                        display: inline-block;
+                        &#wait {
+                            display: inline-block;
+                        }
                     }
                 }
             }
