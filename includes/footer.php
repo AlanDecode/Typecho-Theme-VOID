@@ -40,23 +40,23 @@ $setting = $GLOBALS['VOIDSetting'];
         <aside id="setting-panel">
             <section>
                 <div id="toggle-night">
-                    <a href="javascript:void(0)" onclick="DarkModeSwitcher.toggleByHand();"><i></i></a>
+                    <a target="_self" href="javascript:void(0)" onclick="DarkModeSwitcher.toggleByHand();"><i></i></a>
                 </div>
                 <div id="adjust-text-container">
                     <div class="adjust-text-item">
-                        <a href="javascript:void(0)" onclick="adjustTextsize(false);"><i class="voidicon-font"></i>-</a>
+                        <a target="_self" href="javascript:void(0)" onclick="adjustTextsize(false);"><i class="voidicon-font"></i>-</a>
                         <span id="current_textsize"></span>
-                        <a href="javascript:void(0)" onclick="adjustTextsize(true);"><i class="voidicon-font"></i>+</a>
+                        <a target="_self" href="javascript:void(0)" onclick="adjustTextsize(true);"><i class="voidicon-font"></i>+</a>
                     </div>
                     <div class="adjust-text-item">
-                        <a class="font-indicator <?php if(!Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, false);">Sans</a>
-                        <a class="font-indicator <?php if(Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, true);">Serif</a>
+                        <a target="_self" class="font-indicator <?php if(!Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, false);">Sans</a>
+                        <a target="_self" class="font-indicator <?php if(Utils::isSerif($setting)) echo ' checked'; ?>" href="javascript:void(0)" onclick="toggleSerif(this, true);">Serif</a>
                     </div>
                 </div>
             </section>
             <section id="links">
                 <?php if(!$this->user->hasLogin()): ?>
-                    <a class="link" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-user"></i></a>       
+                    <a target="_self" class="link" href="javascript:void(0)" onclick="toggleLoginForm()"><i class="voidicon-user"></i></a>       
                 <?php endif; ?>
                 <a class="link" title="RSS" target="_blank" href="<?php $this->options->feedUrl(); ?>"><i class="voidicon-rss"></i></a>
                 <?php

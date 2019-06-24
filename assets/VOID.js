@@ -267,14 +267,17 @@ var VOID = {
             $('#loggin-form').addClass('need-refresh');
         }
 
-        setTimeout(function () {
-            var hash = new URL(window.location.href).hash;
-            if (hash != '') {
-                $.scrollTo($(hash).offset().top - 80, 500);
-            } else {
-                VOID.goTop();
-            }
-        }, 50);
+        if(getCookie('void_pos') == null || parseFloat(getCookie('void_pos')) == -1) {
+            setTimeout(function () {
+                var hash = new URL(window.location.href).hash;
+                if (hash != '') {
+                    $.scrollTo($(hash).offset().top - 80, 500);
+                } else {
+                    VOID.goTop();
+                }
+            }, 50);
+        } 
+
         reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
@@ -497,6 +500,13 @@ var VOID = {
 
     rememberPos: function () {
         setCookie('void_pos', String($(document).scrollTop()));
+    },
+
+    manageComment: function(item) {
+        if (window.confirm($(item).attr('data-lang'))) {
+            VOID.rememberPos();
+            window.location.href = $(item).attr('data-action');
+        }
     }
 };
 
@@ -747,11 +757,11 @@ var AjaxComment = {
 };
 
 $(document).ready(function () {
-    VOID.init();
     if(getCookie('void_pos') != null && parseFloat(getCookie('void_pos')) != -1) {
         $(document).scrollTop(parseFloat(getCookie('void_pos')));
         setCookie('void_pos', -1);
     } 
+    VOID.init();
 });
 
 function clickIn(e, el) {
@@ -789,7 +799,11 @@ if (VOIDConfig.PJAX) {
         if ($('.TOC').length < 1) {	
             $('#ctrler-panel').removeClass('pull-left');	
             $('body').removeClass('sidebar-show');	
-        }	
+        }
+        if(getCookie('void_pos') != null && parseFloat(getCookie('void_pos')) != -1) {
+            $(document).scrollTop(parseFloat(getCookie('void_pos')));
+            setCookie('void_pos', -1);
+        } 
     });
 }
 

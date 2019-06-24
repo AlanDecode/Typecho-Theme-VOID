@@ -64,6 +64,11 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
     private $_commentAuthors = array();
 
     /**
+     * 安全组件
+     */
+    private $_security = NULL;
+
+    /**
      * 构造函数,初始化组件
      *
      * @access public
@@ -77,6 +82,8 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         parent::__construct($request, $response, $params);
         $this->parameter->setDefault('parentId=0&commentPage=0&commentsNum=0&allowComment=1');
         
+        Typecho_Widget::widget('Widget_Security')->to($this->_security);
+
         /** 初始化回调函数 */
         if (function_exists('threadedComments')) {
             $this->_customThreadedCommentsCallback = true;
@@ -122,6 +129,15 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <b><cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
                 $this->author();
                 $singleCommentOptions->afterAuthor(); ?></cite></b><span><?php echo $this->getParent(); ?></span>
+                <?php if($this->user->hasLogin()): ?>
+                    <span class="manage-comments">[ <a target="_self" onclick="VOID.manageComment(this);" no-pjax data-lang="确定删除此条评论？" href="javascript:void(0)" onclick="VOID.manageComment(this)" data-action="<?php $this->_security->index('/action/comments-edit?do=delete&coid=' . $this->coid); ?>">删除</a> | 
+                    <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" onclick="VOID.manageComment(this)" data-lang="确定标记此条评论为垃圾评论？" data-action="<?php $this->_security->index('/action/comments-edit?do=spam&coid=' . $this->coid); ?>">垃圾</a> | 
+                    <?php if ($this->status == 'approved'): ?>
+                        <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" onclick="VOID.manageComment(this)" data-lang="确定标记为待审评论？" data-action="<?php $this->_security->index('/action/comments-edit?do=waiting&coid=' . $this->coid); ?>">待审</a>
+                    <?php else: ?>
+                        <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" onclick="VOID.manageComment(this)" data-lang="确定标记为通过？" data-action="<?php $this->_security->index('/action/comments-edit?do=approved&coid=' . $this->coid); ?>">通过</a>
+                    <?php endif; ?>]</span>
+                <?php endif; ?>
             </div>
             <span>
                 <a href="<?php $this->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $this->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
@@ -155,6 +171,8 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         if($parentID=='0') return '';
         else {
             $author=$db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $parentID));
+            if (!array_key_exists('author', $author) || empty($author['author']))
+                $author['author'] = '已删除的评论';
             return ' <span style="font-size: 0.9rem">回复</span> <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
         }
     }  
@@ -244,8 +262,16 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
 
         $commentsAuthor = Typecho_Cookie::get('__typecho_remember_author');
         $commentsMail = Typecho_Cookie::get('__typecho_remember_mail');
-        $select = $this->select()->where('table.comments.cid = ?', $this->parameter->parentId)
-        ->where('table.comments.status = ? OR (table.comments.author = ? AND table.comments.mail = ? AND table.comments.status = ?)', 'approved', $commentsAuthor, $commentsMail, 'waiting');
+
+        // 对已登录用户显示待审核评论，方便前台管理
+        if ($this->user->hasLogin()) {
+            $select = $this->select()->where('table.comments.cid = ?', $this->parameter->parentId)
+                ->where('table.comments.status = ? OR table.comments.status = ?', 'approved', 'waiting');
+        } else {
+            $select = $this->select()->where('table.comments.cid = ?', $this->parameter->parentId)
+                ->where('table.comments.status = ? OR (table.comments.author = ? AND table.comments.mail = ? AND table.comments.status = ?)', 'approved', $commentsAuthor, $commentsMail, 'waiting');
+        }
+
         $threadedSelect = NULL;
         
         if ($this->options->commentsShowCommentOnly) {
@@ -442,7 +468,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             'afterDate'     =>  '',
             'dateFormat'    =>  $this->options->commentDateFormat,
             'replyWord'     =>  '回复',
-            'commentStatus' =>  '您的评论正等待审核!',
+            'commentStatus' =>  '评论正等待审核!',
             'avatarSize'    =>  32,
             'defaultAvatar' =>  NULL
         ));
