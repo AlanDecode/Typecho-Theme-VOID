@@ -410,14 +410,17 @@ section#index-list{
                 }
             }
             @media screen and (min-width: 1024.5px) {
-                &:not(.style-2) article .title:hover {
-                    color: $highlightColor!important;
-                }
                 &:hover {
                     border-color: $highlightColor;
                     &.style-2 article .content-wrap {
                         background: rgba(0, 0, 0, 0.62);
                     }
+                    &:not(.style-2):not(.full-content) article .title {
+                        color: $highlightColor!important;
+                    }
+                }
+                &.full-content article .title:hover {
+                    color: $highlightColor!important;
                 }
             }
         }
