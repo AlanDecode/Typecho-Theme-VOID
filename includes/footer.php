@@ -28,10 +28,20 @@ $setting = $GLOBALS['VOIDSetting'];
             <div class="ctrler-item" id="go-top">
                 <a target="_self" aria-label="返回顶部" href="javascript:void(0);" onclick="$.scrollTo(0, 300);">↑</a>
             </div>
-            <div role=button aria-hidden="true" id="toggle-setting-pc" class="ctrler-item hidden-xs">
+
+            <?php if($this->user->hasLogin()): ?>
+                <div class="ctrler-item hidden-xs">
+                    <a target="_blank" aria-label="进入后台" href="<?php $this->options->adminUrl(); ?>" style="transform: translateX(-2px);"><i class="voidicon-login"></i></a>
+                </div>
+                <div class="ctrler-item hidden-xs">
+                    <a target="_blank" aria-label="管理评论" href="<?php $this->options->adminUrl('manage-comments.php'); ?>" style="transform: translateX(-2px);"><i class="voidicon-comment"></i></a>
+                </div>
+            <?php endif; ?>
+
+            <div id="toggle-setting-pc" class="ctrler-item hidden-xs">
                 <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="VOID_Ui.toggleSettingPanel(this, 1);"><i class="voidicon-cog"></i></a>
             </div>
-            <div role=button aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
+            <div aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
                 <a target="_self" href="javascript:void(0);" onclick="TOC.toggle()">←</a>
             </div>
         </aside>
