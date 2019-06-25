@@ -9,6 +9,13 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting']; 
+
+if (isset($_POST['void_action'])) {
+    if ($_POST['void_action'] == 'getLoginAction') {
+        echo $this->options->loginAction;
+        exit;
+    }
+}
 ?>
 <!DOCTYPE HTML>
 <html>

@@ -66,7 +66,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 <?php if(!Utils::isPluginAvailable('ExSearch')): ?>
                     <span class="hidden-xs search-form-desktop">
                         <label for="search">搜索</label>
-                        <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" required />
+                        <input onkeydown="VOID.enterSearch(this);" type="text" name="search-content" id="search" required />
                     </span>
                 <?php endif; ?>
                 <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'VOID_Ui.toggleSearch(this);'; ?>">

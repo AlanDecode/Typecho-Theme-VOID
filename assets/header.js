@@ -215,10 +215,12 @@ VOID_Ui = {
         $('#login-panel input[name=referer]').val(window.location.href);
 
         if ($('#loggin-form').hasClass('need-refresh') && $('#login-panel').hasClass('show')) {
-            $.get({
-                url: location.href,
+            $.ajax({
+                type: 'POST',
+                url: window.location.href,
+                data: {void_action: 'getLoginAction'},
                 success: function (data) {
-                    $('form#loggin-form').attr('action', $(data).find('form#loggin-form').attr('action'));
+                    $('form#loggin-form').attr('action', data);
                     $('#loggin-form').removeClass('need-refresh');
                 },
                 error: function () {
