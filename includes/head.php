@@ -97,7 +97,7 @@ $setting = $GLOBALS['VOIDSetting'];
         masonry: function () {
             if ($('#masonry').length && window.innerWidth >= 768) {
                 $('.masonry-item').addClass('masonry-ready');
-                $('#masonry').masonry({
+                $('#masonry').addClass('masonry-init').masonry({
                     itemSelector: '.masonry-item',
                     gutter: 30,
                     isAnimated: true,
@@ -108,16 +108,18 @@ $setting = $GLOBALS['VOIDSetting'];
         watch: function (id) {
             var el = document.getElementById(id);
             new ResizeSensor(el, function () {
-                if ($('#masonry').length && window.innerWidth >= 768) {
+                if ($('#masonry').length && $('#masonry').hasClass('masonry-init') && window.innerWidth >= 768) {
                     $('#masonry').masonry({
                         itemSelector: '.masonry-item',
                         gutter: 30,
                         isAnimated: true,
                     });
                 }
-            });
+            }); 
         }
     };
+    $(document).ready(MasonryCtrler.masonry);
+    $(document).on('pjax:complete', MasonryCtrler.masonry);
     </script>
     <?php echo $setting['head']; ?>
     <style>
