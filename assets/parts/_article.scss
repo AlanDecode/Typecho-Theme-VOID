@@ -582,7 +582,7 @@ article {
             box-sizing: border-box;
         }
     }
-    &.show {
+    .sidebar-show & {
         right: 0;
     }
 }
@@ -621,7 +621,7 @@ article {
     display: none;
 }
 
-#ctrler-panel.pull-left {
+.sidebar-show #ctrler-panel {
     #toggle-toc {
         a {
             transform: rotate(180deg);

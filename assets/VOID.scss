@@ -258,7 +258,7 @@ body{
     transition: $animationTime ease transform;
     display: flex;
     flex-direction: column;
-    &.pull-left {
+    .sidebar-show & {
         transform: translateX(calc(-240px - 1rem));
     }
     .ctrler-item {

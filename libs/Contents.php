@@ -121,7 +121,7 @@ Class Contents
     static public function parseHeader($content)
     {
         $reg='/\<h([2-6])(.*?)\>(.*?)\<\/h.*?\>/s';
-        $rp='<h${1}${2} id="${3}">${3}<span class="copy-link"></span></h${1}>';
+        $rp='<h${1}${2} id="${3}">${3}</h${1}>';
         $new=preg_replace($reg,$rp,$content);
         return $new;
     }

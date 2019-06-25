@@ -53,7 +53,6 @@ $setting = $GLOBALS['VOIDSetting'];
 
     <!--JS-->
     <script src="<?php Utils::indexTheme('/assets/bundle-header.js'); ?>"></script>
-
     <script>
     VOIDConfig = {
         PJAX : <?php echo $setting['pjax'] ? 'true' : 'false'; ?>,
@@ -83,44 +82,9 @@ $setting = $GLOBALS['VOIDSetting'];
             'end': <?php echo $setting['darkModeTime']['end']; ?>
         }
     }
-    function registerLazyLoadImg(url, target){
-        let background = new Image();
-        background.src = url;
-        background.onload = function () {
-            let el = document.querySelector(target);
-            el.style.backgroundImage = "url("+url+")";
-            el.parentElement.classList.remove("loading");
-            el.classList.add("loaded");
-        }
-    }
-    var MasonryCtrler = {
-        masonry: function () {
-            if ($('#masonry').length && window.innerWidth >= 768) {
-                $('.masonry-item').addClass('masonry-ready');
-                $('#masonry').addClass('masonry-init').masonry({
-                    itemSelector: '.masonry-item',
-                    gutter: 30,
-                    isAnimated: true,
-                });
-            }
-            $('.masonry-item').addClass('done');
-        },
-        watch: function (id) {
-            var el = document.getElementById(id);
-            new ResizeSensor(el, function () {
-                if ($('#masonry').length && $('#masonry').hasClass('masonry-init') && window.innerWidth >= 768) {
-                    $('#masonry').masonry({
-                        itemSelector: '.masonry-item',
-                        gutter: 30,
-                        isAnimated: true,
-                    });
-                }
-            }); 
-        }
-    };
-    $(document).ready(MasonryCtrler.masonry);
-    $(document).on('pjax:complete', MasonryCtrler.masonry);
     </script>
+    <script src="<?php Utils::indexTheme('/assets/header.js'); ?>"></script>
+    
     <?php echo $setting['head']; ?>
     <style>
         <?php if(!empty($setting['desktopBannerHeight'])): ?>

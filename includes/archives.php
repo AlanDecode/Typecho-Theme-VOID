@@ -28,12 +28,12 @@ $setting = $GLOBALS['VOIDSetting'];
             ), '', '');  ?></h1>
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li class="masonry-item">
+                <li id="<?php $this->cid(); ?>"  class="masonry-item">
                     <article class="yue style-<?php echo $this->fields->bannerascover; ?>" itemscope itemtype="http://schema.org/Article">
                         <?php if($this->fields->banner != ''): ?>
                             <a href="<?php $this->permalink(); ?>">
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                    <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
+                                    <img src="<?php echo $this->fields->banner;?>">
                                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                                 </div>
                             </a>
@@ -65,6 +65,7 @@ $setting = $GLOBALS['VOIDSetting'];
                         </div>
                     </article>
                 </li>
+                <script>VOID_Ui.MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
             <?php endwhile; ?>
             </ul>
         </section>

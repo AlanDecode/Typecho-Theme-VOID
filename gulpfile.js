@@ -50,7 +50,7 @@ gulp.task('pack:js:dep', function(){
         .pipe(rev())
         .pipe(gulp.dest('./build/assets/'))
         .pipe(rev.manifest())
-        .pipe(gulp.dest('temp/rev/js_bundle_header'));
+        .pipe(gulp.dest('temp/rev/js_bundle-header'));
     
     return gulp.src(['./assets/libs/**/*.js', '!./assets/libs/header/**/*', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
@@ -65,7 +65,8 @@ gulp.task('pack:js:dep', function(){
 gulp.task('pack:js:main', function(){
     return  gulp.src([
         './assets/VOID.js',
-        './assets/editor.js'])
+        './assets/editor.js',
+        './assets/header.js'])
         .pipe(uglify())
         .pipe(rev())
         .pipe(gulp.dest('./build/assets/'))

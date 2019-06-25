@@ -36,7 +36,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <header>
         <div class="container wider">
             <nav>
-                <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="toggleNav(this);">
+                <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="VOID_Ui.toggleNav(this);">
                     <span></span>
                 </a>
                 <a class="brand" href="<?php Utils::index(''); ?>"><?php if($setting['name']) echo $setting['name']; else echo $this->options->title; ?></a>
@@ -64,16 +64,16 @@ $setting = $GLOBALS['VOIDSetting'];
                         <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search" required />
                     </span>
                 <?php endif; ?>
-                <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'toggleSearch(this);'; ?>">
+                <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'VOID_Ui.toggleSearch(this);'; ?>">
                     <i class="voidicon-search"></i>
                 </a>
-                <a target="_self" href="javascript:void(0);" id="toggle-setting" onclick="toggleSettingPanel(this, 0);"><i class="voidicon-cog"></i></a>
+                <a target="_self" href="javascript:void(0);" id="toggle-setting" onclick="VOID_Ui.toggleSettingPanel(this, 0);"><i class="voidicon-cog"></i></a>
             </nav>
         </div>
         <div class="mobile-search-form">
             <label for="search_new">搜索</label>
-            <input onkeydown="enterSearch(this);" type="text" name="search-content" id="search_new" required placeholder="输入内容然后 Go!" />
-            <button onclick="startSearch('#search_new');">Go!</button>
+            <input onkeydown="VOID.enterSearch(this);" type="text" name="search-content" id="search_new" required placeholder="输入内容然后 Go!" />
+            <button onclick="VOID.startSearch('#search_new');">Go!</button>
         </div>
     </header>
     <div id="nav-mobile">

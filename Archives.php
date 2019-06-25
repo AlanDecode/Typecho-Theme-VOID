@@ -43,7 +43,7 @@ if(!Utils::isPjax()){
                     <a no-pjax target="_self" data-num="<?php echo $post_num; ?>" 
                         data-year="<?php echo $year; ?>" 
                         class="toggle-archive" href="javascript:void(0);" 
-                        onclick="VOID.toggleArchive(this); return false;"><?php if($index > 0) echo '+'; else echo '-'; ?>
+                        onclick="VOID_Ui.toggleArchive(this); return false;"><?php if($index > 0) echo '+'; else echo '-'; ?>
                     </a>
                 </h2>
                 <section id="year-<?php echo $year; ?>" 

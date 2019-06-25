@@ -1,0 +1,437 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+
+TOC = {
+    toggle: function () {
+        $('body').toggleClass('sidebar-show');
+    },
+
+    close: function () {
+        $('body').removeClass('sidebar-show');
+    },
+
+    open: function () {
+        $('body').addClass('sidebar-show');
+    }
+};
+
+VOID_Util = {
+    throttle: function (fun, delay, time) {
+        var timeout,
+            startTime = new Date();
+
+        return function () {
+            var context = this,
+                args = arguments,
+                curTime = new Date();
+
+            clearTimeout(timeout);
+            // 如果达到了规定的触发时间间隔，触发 handler
+            if (curTime - startTime >= time) {
+                fun.apply(context, args);
+                startTime = curTime;
+                // 没达到触发间隔，重新设定定时器
+            } else {
+                timeout = setTimeout(fun, delay);
+            }
+        };
+    },
+
+    clickIn: function (e, el) {
+        if (!$(el).length) return false;
+        return $(el).has(e.target).length || $(el).get(0) === e.target;
+    },
+
+    getDeviceState: function (element) {
+        var zIndex;
+        if (window.getComputedStyle) {
+            // 现代浏览器
+            zIndex = window.getComputedStyle(element).getPropertyValue('z-index');
+        } else if (element.currentStyle) {
+            // ie8-
+            zIndex = element.currentStyle['z-index'];
+        }
+        return parseInt(zIndex, 10);
+    },
+
+    getPrefersDarkModeState: function () {
+        var indicator = document.createElement('div');
+        indicator.className = 'dark-mode-state-indicator';
+        document.body.appendChild(indicator);
+        return VOID_Util.getDeviceState(indicator) === 11;
+    },
+
+    setCookie: function (name, value, time) {
+        if (time > 0) {
+            document.cookie = name + '=' + escape(value) + ';max-age=' + String(time) + ';path=/';
+        } else {
+            // session
+            document.cookie = name + '=' + escape(value) + ';path=/';
+        }
+    },
+
+    getCookie: function (name) {
+        var reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
+        var arr = document.cookie.match(reg);
+        if (arr)
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+};
+
+VOID_Ui = {
+    registerLazyLoadImg: function (url, target) {
+        var background = new Image();
+        background.src = url;
+        background.onload = function () {
+            var el = document.querySelector(target);
+            el.style.backgroundImage = 'url(' + url + ')';
+            el.parentElement.classList.remove('loading');
+            el.classList.add('loaded');
+        };
+    },
+
+    checkGoTop: function () {
+        if ($(document).scrollTop() > window.innerHeight) {
+            $('#go-top').addClass('show');
+        } else {
+            $('#go-top').removeClass('show');
+        }
+    },
+
+    checkHeader: function () {
+        var tr = $(window).width() > 767 ? 150 : 60;
+        if ($(document).scrollTop() > tr) {
+            $('body>header').addClass('pull-up');
+        } else {
+            $('body>header').removeClass('pull-up');
+        }
+    },
+
+    checkScrollTop: function () {
+        if (VOID_Util.getCookie('void_pos') != null && parseFloat(VOID_Util.getCookie('void_pos')) != -1) {
+            $(document).scrollTop(parseFloat(VOID_Util.getCookie('void_pos')));
+            VOID_Util.setCookie('void_pos', -1);
+        } else {
+            setTimeout(function () {
+                var hash = new URL(window.location.href).hash;
+                if (hash != '') {
+                    $.scrollTo($(hash).offset().top - 80, 500);
+                } else {
+                    $.scrollTo(0, 500);
+                }
+            }, 50);
+        }
+    },
+
+    toggleSearch: function () {
+        $('.mobile-search-form').toggleClass('opened');
+        $('.mobile-search-form input').focus();
+    },
+
+    toggleNav: function (item) {
+        $(item).toggleClass('pushed');
+        $('header').toggleClass('opened');
+        TOC.close();
+        if ($(item).hasClass('pushed')) {
+            $('#nav-mobile').fadeIn(200);
+            VOID_Ui.openModal();
+        }
+        else {
+            VOID_Ui.closeModal();
+            $('#nav-mobile').fadeOut(200);
+        }
+    },
+
+    toggleSettingPanel: function (item, direction) {
+        if ($('#setting-panel').hasClass('show')) {
+            $('#setting-panel').removeClass('show');
+            if ($('#login-panel').length)
+                $('#login-panel').removeClass('show');
+        } else {
+            var w = $('#setting-panel').outerWidth();
+            var left, top, bottom;
+
+            $('#setting-panel').css('top', 'unset');
+            $('#setting-panel').css('bottom', 'unset');
+
+            if (direction) { // 左向上，使用 bottom 定位
+                left = $(item).offset().left - w - 10;
+                bottom = $(document).scrollTop() + window.innerHeight - $(item).offset().top - $(item).outerHeight();
+                $('#setting-panel').css('left', left + 'px');
+                $('#setting-panel').css('bottom', bottom + 'px');
+            } else { // 左向下
+                left = $(item).offset().left - w + $(item).width();
+                top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
+                $('#setting-panel').css('left', left + 'px');
+                $('#setting-panel').css('top', top + 'px');
+            }
+
+            $('#setting-panel').addClass('show');
+        }
+    },
+
+    toggleSerif: function (item, serif) {
+        $('.font-indicator').removeClass('checked');
+        $(item).addClass('checked');
+        if (serif) {
+            if ($('#stylesheet_noto').length < 1)
+                $('body').append('<link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">');
+            $('body').addClass('serif');
+            VOID_Util.setCookie('serif', '1', 604800);
+        } else {
+            if ($('#stylesheet_droid').length < 1)
+                $('body').append('<link id="stylesheet_droid" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">');
+            $('body').removeClass('serif');
+            VOID_Util.setCookie('serif', '0', 604800);
+        }
+    },
+
+    adjustTextsize: function (up) {
+        var current = parseInt($('body').attr('fontsize'));
+
+        if (up) {
+            if (current >= 5) {
+                VOID.alert('已经是最大了！');
+                return;
+            }
+            $('body').attr('fontsize', String(current + 1));
+        } else {
+            if (current <= 1) {
+                VOID.alert('已经是最小了！');
+                return;
+            }
+            $('body').attr('fontsize', String(current - 1));
+        }
+
+        VOID_Util.setCookie('textsize', $('body').attr('fontsize'), 604800);
+    },
+
+    toggleLoginForm: function () {
+        $('#login-panel').toggleClass('show');
+        $('#login-panel input[name=referer]').val(window.location.href);
+
+        if ($('#loggin-form').hasClass('need-refresh') && $('#login-panel').hasClass('show')) {
+            $.get({
+                url: location.href,
+                success: function (data) {
+                    $('form#loggin-form').attr('action', $(data).find('form#loggin-form').attr('action'));
+                    $('#loggin-form').removeClass('need-refresh');
+                },
+                error: function () {
+                    VOID.alert('请求登陆参数错误。请在刷新后尝试登陆。');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+            });
+        }
+    },
+
+    lazyload: function () {
+        if (VOIDConfig.lazyload) {
+            window.addEventListener('scroll', VOID_Util.throttle(function () {
+                var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+                $.each($('img.lazyload'), function (i, item) {
+                    if ($(item).offset().top < viewPortHeight + scrollTop && $(item).offset().top + $(item).height() > scrollTop) {
+                        if (!$(item).hasClass('loaded') && !$(item).hasClass('error')) {
+                            var img = new Image();
+                            img.src = $(item).attr('data-src');
+                            img.onload = function () {
+                                $(item).animate({ opacity: 0 }, 150);
+                                setTimeout(function () {
+                                    $(item).attr('src', $(item).attr('data-src'));
+                                    $(item).addClass('loaded');
+                                    $(item).animate({ opacity: 1 }, 180);
+                                }, 180);
+                            };
+                            img.onerror = function () {
+                                $(item).addClass('error');
+                            };
+                        }
+                    }
+                });
+            }, 100, 1000));
+        }
+    },
+
+    headroom: function () {
+        if (VOIDConfig.headerMode == 0) {
+            var header = document.querySelector('body>header');
+            var headroom = new Headroom(header, { offset: 60 });
+            headroom.init();
+        }
+    },
+
+    toggleArchive: function (item) {
+        var year = '#year-' + $(item).attr('data-year');
+        if ($(year).hasClass('shrink')) {
+            $(item).html('-');
+            $(year).removeClass('shrink');
+            var num = parseInt($(item).attr('data-num'));
+            $(year).css('max-height',  num * 49 + 'px');
+        }
+        else {
+            $(item).html('+');
+            $(year).addClass('shrink');
+            $(year).css('max-height', '0');
+        }
+    },
+
+    rememberPos: function () {
+        VOID_Util.setCookie('void_pos', String($(document).scrollTop()));
+    },
+
+    scrollTop: 0,
+
+    // 开启模态框
+    openModal: function () {
+        VOID_Ui.scrollTop = document.scrollingElement.scrollTop;
+        document.body.classList.add('modal-open');
+        document.body.style.top = -VOID_Ui.scrollTop + 'px';
+    },
+
+    // 关闭模态框
+    closeModal: function () {
+        document.body.classList.remove('modal-open');
+        document.scrollingElement.scrollTop = VOID_Ui.scrollTop;
+    },
+
+    reset: function () {
+        $('.toggle').removeClass('pushed');
+        $('.mobile-search').removeClass('opened');
+        $('header').removeClass('opened');
+        $('#setting-panel').removeClass('show');
+        if ($('body').hasClass('modal-open')) {
+            VOID_Ui.closeModal();
+        }
+        $('#nav-mobile').fadeOut(200);
+        TOC.close();
+        if ($('.TOC').length > 0) {
+            tocbot.destroy();
+        }
+    },
+
+    MasonryCtrler: {
+        masonry: function () {
+            $('#masonry').addClass('masonry').masonry({
+                itemSelector: '.masonry-item',
+                gutter: 30,
+                isAnimated: true,
+            });
+        },
+        init: function () {
+            if (VOID_Ui.MasonryCtrler.check()) {
+                $('.masonry-item').addClass('masonry-ready');
+                VOID_Ui.MasonryCtrler.masonry();
+            }
+            $('.masonry-item').addClass('done');
+        },
+        check: function () {
+            return $('#masonry').length && window.innerWidth >= 768;
+        },
+        watch: function (id) {
+            var el = document.getElementById(id);
+            new ResizeSensor(el, function () {
+                if (VOID_Ui.MasonryCtrler.check() && $('#masonry').hasClass('masonry')) {
+                    VOID_Ui.MasonryCtrler.masonry();
+                }
+            });
+        }
+    },
+
+    DarkModeSwitcher: {
+        checkColorScheme: function () {
+            // 非自动模式
+            if (VOIDConfig.colorScheme != 0) {
+                VOID_Ui.DarkModeSwitcher.tuneBg();
+                return;
+            }
+    
+            if (VOIDConfig.followSystemColorScheme && VOID_Util.getPrefersDarkModeState()) { // 自动模式跟随系统
+                document.body.classList.add('theme-dark');
+                var night = VOID_Util.getCookie('theme_dark');
+                if (night != '1') {
+                    VOID.alert('已为您开启深色模式。');
+                }
+                VOID_Util.setCookie('theme_dark', '1', 7200);
+            } else { // 自动模式，定时            
+                // 全部转换至当天
+                sunset = new Date(new Date().setHours(
+                    Math.floor(VOIDConfig.darkModeTime.start),
+                    60 * (VOIDConfig.darkModeTime.start - Math.floor(VOIDConfig.darkModeTime.start)), 0));
+                sunrise = new Date(new Date().setHours(
+                    Math.floor(VOIDConfig.darkModeTime.end),
+                    60 * (VOIDConfig.darkModeTime.end - Math.floor(VOIDConfig.darkModeTime.end)), 0));
+    
+                var current = new Date();
+                // 格式化为小时
+                var sunset_s = VOIDConfig.darkModeTime.start;
+                var sunrise_s = VOIDConfig.darkModeTime.end;
+                var current_s = current.getHours() + current.getMinutes() / 60;
+                // 若不存在 cookie，根据时间判断，并设置 cookie
+                if (VOID_Util.getCookie('theme_dark') == null) {
+                    if (current_s > sunset_s || current_s < sunrise_s) {
+                        document.body.classList.add('theme-dark');
+                        if (current_s > sunset_s) // 如果当前为夜晚，日出时间应该切换至第二日
+                            sunrise = new Date(sunrise.getTime() + 3600000 * 24);
+                        // 现在距日出还有 (s)
+                        var toSunrise = (sunrise.getTime() - current.getTime()) / 1000;
+                        // 设置 cookie
+                        VOID_Util.setCookie('theme_dark', '1', parseInt(toSunrise));
+                        VOID.alert('日落了，夜间模式已开启。');
+                    } else {
+                        document.body.classList.remove('theme-dark');
+                    }
+                } else {
+                    // 若存在 cookie，根据 cookie 判断
+                    night = VOID_Util.getCookie('theme_dark');
+                    if (night == '0') {
+                        document.body.classList.remove('theme-dark');
+                    } else if (night == '1') {
+                        document.body.classList.add('theme-dark');
+                    }
+                }
+            }
+            VOID_Ui.DarkModeSwitcher.tuneBg();
+        },
+    
+        tuneBg: function () {
+            if ($('body').hasClass('theme-dark') && $('#bg-style').attr('data-darkBg') != '') {
+                $('body').addClass('with-bg');
+                $('#bg-style').html('main::before{background-image: url(' + $('#bg-style').attr('data-darkBg') + ')}');
+            } else if (!$('body').hasClass('theme-dark') && $('#bg-style').attr('data-lightBg') != '') {
+                $('body').addClass('with-bg');
+                $('#bg-style').html('main::before{background-image: url(' + $('#bg-style').attr('data-lightBg') + ')}');
+            } else {
+                $('body').removeClass('with-bg');
+                $('#bg-style').html('');
+            }
+        },
+    
+        toggleByHand: function () {
+            $('#toggle-night').addClass('switching');
+            setTimeout(function () {
+                $('body').toggleClass('theme-dark');
+                VOID_Ui.DarkModeSwitcher.tuneBg();
+                if ($('body').hasClass('theme-dark')) {
+                    VOID_Util.setCookie('theme_dark', '1', 0);
+                } else {
+                    VOID_Util.setCookie('theme_dark', '0', 0);
+                }
+                setTimeout(function () {
+                    $('#toggle-night').removeClass('switching');
+                }, 1000);
+            }, 600);
+        }
+    }
+};
+
+(function () {
+    $(document).on('scroll', function () {
+        VOID_Ui.checkGoTop();
+        VOID_Ui.checkHeader();
+    });
+})();

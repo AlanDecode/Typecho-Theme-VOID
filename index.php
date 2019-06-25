@@ -79,7 +79,7 @@ if(!Utils::isPjax()){
                         </div>
                     </article>
                 </li>
-                <script>MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
+                <script>VOID_Ui.MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
             <?php endwhile; ?>
             </ul>
         </section>
