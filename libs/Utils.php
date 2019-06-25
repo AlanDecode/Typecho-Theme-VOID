@@ -279,6 +279,7 @@ class Utils
             'indexBannerSubtitle' => '',
             'serviceworker' => '',
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
+            'siteBg' => '',
             'reward' => '',
 
             // 高级设置
@@ -299,11 +300,9 @@ class Utils
                 'start' => 22.0,
                 'end' => 7.0
             ),
-            'siteBg' => array (
-                'light' => '',
-                'dark' => ''
-            ),
             'link' => array(),
+            'bgMaskColor' => array(),
+            'grayscaleBg' => true,
 
             //插件是否启用
             'VOIDPlugin' => false
@@ -339,6 +338,10 @@ class Utils
 
         if(!empty($options->indexBannerTitle)){
             $output['indexBannerTitle'] = $options->indexBannerTitle;
+        }
+
+        if(!empty($options->siteBg)){
+            $output['siteBg'] = $options->siteBg;
         }
 
         if(!empty($options->globalBg)){

@@ -348,7 +348,6 @@ VOID_Ui = {
         checkColorScheme: function () {
             // 非自动模式
             if (VOIDConfig.colorScheme != 0) {
-                VOID_Ui.DarkModeSwitcher.tuneBg();
                 return;
             }
     
@@ -397,27 +396,12 @@ VOID_Ui = {
                     }
                 }
             }
-            VOID_Ui.DarkModeSwitcher.tuneBg();
-        },
-    
-        tuneBg: function () {
-            if ($('body').hasClass('theme-dark') && $('#bg-style').attr('data-darkBg') != '') {
-                $('body').addClass('with-bg');
-                $('#bg-style').html('main::before{background-image: url(' + $('#bg-style').attr('data-darkBg') + ')}');
-            } else if (!$('body').hasClass('theme-dark') && $('#bg-style').attr('data-lightBg') != '') {
-                $('body').addClass('with-bg');
-                $('#bg-style').html('main::before{background-image: url(' + $('#bg-style').attr('data-lightBg') + ')}');
-            } else {
-                $('body').removeClass('with-bg');
-                $('#bg-style').html('');
-            }
         },
     
         toggleByHand: function () {
             $('#toggle-night').addClass('switching');
             setTimeout(function () {
                 $('body').toggleClass('theme-dark');
-                VOID_Ui.DarkModeSwitcher.tuneBg();
                 if ($('body').hasClass('theme-dark')) {
                     VOID_Util.setCookie('theme_dark', '1', 0);
                 } else {

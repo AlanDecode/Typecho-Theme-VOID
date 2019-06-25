@@ -137,6 +137,22 @@ body{
     }
 }
 
+#bg-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(#fff, 0.925);
+    .theme-dark & {
+        background: rgba(#000, 0.925);
+    }
+    .with-bg & {
+        display: block;
+    }
+}
+
 #reward, #reward img{
     max-width: 100%;
     max-height: 100%;

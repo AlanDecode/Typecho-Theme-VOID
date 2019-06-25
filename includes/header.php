@@ -26,12 +26,17 @@ $setting = $GLOBALS['VOIDSetting'];
         if(Utils::isMobile()) {
             echo ' mobile';
         }
+        if(!empty($setting['siteBg'])) {
+            echo ' with-bg';
+        }
     ?>">
 
-    <style 
-        id="bg-style" 
-        data-lightBg="<?php echo $setting['siteBg']['light']?>" 
-        data-darkBg="<?php echo $setting['siteBg']['dark']?>"></style>
+    <style>
+        main::before{background-image: url("<?php echo $setting['siteBg']; ?>")}
+        <?php if(array_key_exists('light', $setting['bgMaskColor'])) echo "div#bg-mask{background: {$setting['bgMaskColor']['light']}}"; ?>
+        <?php if(array_key_exists('dark', $setting['bgMaskColor'])) echo ".theme-dark div#bg-mask{background: {$setting['bgMaskColor']['dark']}}"; ?>
+        <?php if($setting['grayscaleBg']) echo '.with-bg main::before{filter: grayscale(100%);}'; ?>
+    </style>
     
     <header>
         <div class="container wider">
@@ -99,3 +104,4 @@ $setting = $GLOBALS['VOIDSetting'];
         </section>
         <?php endforeach;} ?>
     </div>
+    <div id="bg-mask"></div>
