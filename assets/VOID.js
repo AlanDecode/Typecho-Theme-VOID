@@ -367,7 +367,7 @@ var AjaxComment = {
         }
         $('.comment-num .num').html(parseInt($('.comment-num .num').html()) + 1);
         AjaxComment.bindClick();
-        VOID.highlight();
+        VOID_Content.highlight();
     },
 
     init: function () {
