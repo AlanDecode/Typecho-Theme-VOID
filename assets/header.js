@@ -109,19 +109,21 @@ VOID_Ui = {
         }
     },
 
-    checkScrollTop: function () {
+    checkScrollTop: function (forceGotop) {
         if (VOID_Util.getCookie('void_pos') != null && parseFloat(VOID_Util.getCookie('void_pos')) != -1) {
             $(document).scrollTop(parseFloat(VOID_Util.getCookie('void_pos')));
             VOID_Util.setCookie('void_pos', -1);
         } else {
-            setTimeout(function () {
-                var hash = new URL(window.location.href).hash;
-                if (hash != '') {
-                    $.scrollTo($(hash).offset().top - 80, 500);
-                } else {
-                    $.scrollTo(0, 500);
-                }
-            }, 50);
+            if (forceGotop) {
+                setTimeout(function () {
+                    var hash = new URL(window.location.href).hash;
+                    if (hash != '') {
+                        $.scrollTo($(hash).offset().top - 80, 500);
+                    } else {
+                        $.scrollTo(0, 500);
+                    }
+                }, 50);
+            }
         }
     },
 

@@ -141,7 +141,7 @@ var VOID = {
         VOID_Ui.checkHeader();
         VOID_Ui.MasonryCtrler.init();
         VOID_Ui.DarkModeSwitcher.checkColorScheme();
-        VOID_Ui.checkScrollTop();
+        VOID_Ui.checkScrollTop(false);
         VOID_Ui.lazyload();
         VOID_Ui.headroom();
 
@@ -191,7 +191,7 @@ var VOID = {
         }
 
         VOID_Ui.MasonryCtrler.init();
-        VOID_Ui.checkScrollTop();
+        VOID_Ui.checkScrollTop(true);
 
         VOID_Content.countWords();
         VOID_Content.parseTOC();
