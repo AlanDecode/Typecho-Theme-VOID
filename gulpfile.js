@@ -44,7 +44,15 @@ gulp.task('pack:css:main', function(){
 
 // 依赖 JS 压缩混淆，除 Mathjax
 gulp.task('pack:js:dep', function(){
-    return gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
+    gulp.src(['./assets/libs/header/jquery/jquery.min.js', './assets/libs/header/**/*.js'])
+        .pipe(concat('bundle-header.js'))
+        .pipe(uglify())
+        .pipe(rev())
+        .pipe(gulp.dest('./build/assets/'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('temp/rev/js_bundle_header'));
+    
+    return gulp.src(['./assets/libs/**/*.js', '!./assets/libs/header/**/*', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
         .pipe(uglify())
         .pipe(rev())
@@ -97,7 +105,12 @@ gulp.task('dev', function(){
     gulp.src(['./assets/libs/**/*.css', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.css'))
         .pipe(gulp.dest('./assets/'));
-    return gulp.src(['./assets/libs/jquery/jquery.min.js', './assets/libs/**/*.js', '!./assets/libs/mathjax/**/*'])
+    
+    gulp.src(['./assets/libs/header/jquery/jquery.min.js', './assets/libs/header/**/*.js'])
+        .pipe(concat('bundle-header.js'))
+        .pipe(gulp.dest('./assets/'));
+
+    return gulp.src(['./assets/libs/**/*.js', '!./assets/libs/header/**/*', '!./assets/libs/mathjax/**/*'])
         .pipe(concat('bundle.js'))
         .pipe(gulp.dest('./assets/'));
 });

@@ -51,6 +51,9 @@ $setting = $GLOBALS['VOIDSetting'];
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/bundle.css');?>">
     <link rel="stylesheet" href="<?php Utils::indexTheme('/assets/VOID.css');?>">
 
+    <!--JS-->
+    <script src="<?php Utils::indexTheme('/assets/bundle-header.js'); ?>"></script>
+
     <script>
     VOIDConfig = {
         PJAX : <?php echo $setting['pjax'] ? 'true' : 'false'; ?>,
@@ -90,10 +93,21 @@ $setting = $GLOBALS['VOIDSetting'];
             el.classList.add("loaded");
         }
     }
-    function reloadMasonry() {
-        if (typeof($) == "function") {
-            if (typeof(Masonry) == "function") {
+    var MasonryCtrler = {
+        masonry: function () {
+            if ($('#masonry').length && window.innerWidth >= 768) {
                 $('.masonry-item').addClass('masonry-ready');
+                $('#masonry').masonry({
+                    itemSelector: '.masonry-item',
+                    gutter: 30,
+                    isAnimated: true,
+                });
+            }
+            $('.masonry-item').addClass('done');
+        },
+        watch: function (id) {
+            var el = document.getElementById(id);
+            new ResizeSensor(el, function () {
                 if ($('#masonry').length && window.innerWidth >= 768) {
                     $('#masonry').masonry({
                         itemSelector: '.masonry-item',
@@ -101,10 +115,9 @@ $setting = $GLOBALS['VOIDSetting'];
                         isAnimated: true,
                     });
                 }
-            }
-            $('.masonry-item').addClass('done');
+            });
         }
-    }
+    };
     </script>
     <?php echo $setting['head']; ?>
     <style>

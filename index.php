@@ -29,7 +29,7 @@ if(!Utils::isPjax()){
         <section id="index-list">
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li class="masonry-item style-<?php 
+                <li id="<?php $this->cid(); ?>" class="masonry-item style-<?php 
                         if($this->fields->showfullcontent=='1' && $this->fields->bannerascover == '2') {
                             echo '1';
                         } else {
@@ -40,7 +40,7 @@ if(!Utils::isPjax()){
                         <?php if($this->fields->banner != ''): ?>
                             <a href="<?php $this->permalink(); ?>">
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                    <img src="<?php echo $this->fields->banner;?>" onload="reloadMasonry();">
+                                    <img src="<?php echo $this->fields->banner;?>">
                                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                                 </div>
                             </a>
@@ -79,11 +79,13 @@ if(!Utils::isPjax()){
                         </div>
                     </article>
                 </li>
+                <script>MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
             <?php endwhile; ?>
             </ul>
         </section>
         <?php $this->pageNav('<span aria-label="上一页">←</span>', '<span aria-label="下一页">→</span>', 1, '...', 'wrapClass=pager&prevClass=prev&nextClass=next'); ?>
     </div>
+    <script>MasonryCtrler.masonry()</script>
 </main>
 
 <?php

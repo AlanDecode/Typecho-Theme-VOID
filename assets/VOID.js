@@ -115,7 +115,6 @@ var VOID = {
     // 初始化单页应用
     init: function () {
         checkHeader();
-        reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -278,7 +277,6 @@ var VOID = {
             }, 50);
         } 
 
-        reloadMasonry();
         VOID.countWords();
         VOID.parseTOC();
         VOID.parsePhotos();
@@ -939,7 +937,6 @@ function adjustTextsize(up) {
         $('body').attr('fontsize', String(current - 1));
     }
 
-    reloadMasonry();
     setCookie('textsize', $('body').attr('fontsize'), 604800);
 }
 

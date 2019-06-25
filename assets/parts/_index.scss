@@ -275,7 +275,7 @@ section#index-list{
             }
             margin-bottom: 30px;
             opacity: 0;
-            transition: $animationTime-fast ease-in-out opacity, $animationTime-fast ease-in-out border;
+            transition: $animationTime ease-in-out opacity, $animationTime-fast ease-in-out border;
             &.done {
                 opacity: 1;
             }
