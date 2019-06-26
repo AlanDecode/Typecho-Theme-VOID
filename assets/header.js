@@ -426,6 +426,5 @@ VOID_Ui = {
     $(document).on('scroll', function () {
         VOID_Ui.checkGoTop();
         VOID_Ui.checkHeader();
-        $('body').removeClass('setting-panel-show');
     });
 })();
