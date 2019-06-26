@@ -38,8 +38,8 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
             <?php endif; ?>
 
-            <div id="toggle-setting-pc" class="ctrler-item hidden-xs">
-                <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="VOID_Ui.toggleSettingPanel(this, 1);"><i class="voidicon-cog"></i></a>
+            <div aria-label="展开或关闭设置面板" id="toggle-setting-pc" class="ctrler-item hidden-xs">
+                <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="VOID_Ui.toggleSettingPanel();"><i class="voidicon-cog"></i></a>
             </div>
             <div aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
                 <a target="_self" href="javascript:void(0);" onclick="TOC.toggle()">←</a>

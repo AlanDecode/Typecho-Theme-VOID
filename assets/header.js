@@ -146,32 +146,37 @@ VOID_Ui = {
         }
     },
 
-    toggleSettingPanel: function (item, direction) {
-        if ($('#setting-panel').hasClass('show')) {
-            $('#setting-panel').removeClass('show');
+    toggleSettingPanel: function () {
+        if(!$('body').hasClass('setting-panel-show'))
             if ($('#login-panel').length)
                 $('#login-panel').removeClass('show');
-        } else {
-            var w = $('#setting-panel').outerWidth();
-            var left, top, bottom;
+        $('body').toggleClass('setting-panel-show');
+        
+        // if ($('#setting-panel').hasClass('show')) {
+        //     $('#setting-panel').removeClass('show');
+        //     if ($('#login-panel').length)
+        //         $('#login-panel').removeClass('show');
+        // } else {
+        //     var w = $('#setting-panel').outerWidth();
+        //     var left, top, bottom;
 
-            $('#setting-panel').css('top', 'unset');
-            $('#setting-panel').css('bottom', 'unset');
+        //     $('#setting-panel').css('top', 'unset');
+        //     $('#setting-panel').css('bottom', 'unset');
 
-            if (direction) { // 左向上，使用 bottom 定位
-                left = $(item).offset().left - w - 10;
-                bottom = $(document).scrollTop() + window.innerHeight - $(item).offset().top - $(item).outerHeight();
-                $('#setting-panel').css('left', left + 'px');
-                $('#setting-panel').css('bottom', bottom + 'px');
-            } else { // 左向下
-                left = $(item).offset().left - w + $(item).width();
-                top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
-                $('#setting-panel').css('left', left + 'px');
-                $('#setting-panel').css('top', top + 'px');
-            }
+        //     if (direction) { // 左向上，使用 bottom 定位
+        //         left = $(item).offset().left - w - 10;
+        //         bottom = $(document).scrollTop() + window.innerHeight - $(item).offset().top - $(item).outerHeight();
+        //         $('#setting-panel').css('left', left + 'px');
+        //         $('#setting-panel').css('bottom', bottom + 'px');
+        //     } else { // 左向下
+        //         left = $(item).offset().left - w + $(item).width();
+        //         top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
+        //         $('#setting-panel').css('left', left + 'px');
+        //         $('#setting-panel').css('top', top + 'px');
+        //     }
 
-            $('#setting-panel').addClass('show');
-        }
+        //     $('#setting-panel').addClass('show');
+        // }
     },
 
     toggleSerif: function (item, serif) {
@@ -421,5 +426,6 @@ VOID_Ui = {
     $(document).on('scroll', function () {
         VOID_Ui.checkGoTop();
         VOID_Ui.checkHeader();
+        $('body').removeClass('setting-panel-show');
     });
 })();

@@ -299,12 +299,37 @@ body{
 }
 
 #setting-panel {
-    display: none;
-    &.show {
-        display: block;
-    }
     position: fixed;
-    z-index: 4;
+    transition: $animationTime-slow ease-in-out all;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+
+    /* large screen */
+    right: 80px;
+    .sidebar-show & {
+        right: 330px;
+    }
+    bottom: 1.5rem;
+    transform: translate(0, calc(100% + 50px));
+    .setting-panel-show & {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    /* small screen */
+    @media screen and (max-width: 767.5px){
+        right: unset;
+        bottom: unset;
+        top: 70px;
+        left: 50%;
+        transform: translate(-50%, calc(-100% - 80px))!important;
+        .setting-panel-show & {
+            top: 70px;
+            transform: translate(-50%, 0)!important;
+        }
+    }
+
+    z-index: 2;
     border: solid 8px rgba(#eee, 0.8);
     border-radius: 4px;
     background: #fafafa;

@@ -166,10 +166,8 @@ var VOID = {
                 }
             }
             if (!VOID_Util.clickIn(e, '#toggle-setting-pc') && !VOID_Util.clickIn(e, '#toggle-setting')) {
-                if ($('#setting-panel').hasClass('show') && !VOID_Util.clickIn(e, '#setting-panel')) {
-                    $('#setting-panel').removeClass('show');
-                    if ($('#login-panel').length)
-                        $('#login-panel').removeClass('show');
+                if ($('body').hasClass('setting-panel-show') && !VOID_Util.clickIn(e, '#setting-panel')) {
+                    $('body').removeClass('setting-panel-show');
                     return false;
                 }
             }
