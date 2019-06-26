@@ -151,32 +151,6 @@ VOID_Ui = {
             if ($('#login-panel').length)
                 $('#login-panel').removeClass('show');
         $('body').toggleClass('setting-panel-show');
-        
-        // if ($('#setting-panel').hasClass('show')) {
-        //     $('#setting-panel').removeClass('show');
-        //     if ($('#login-panel').length)
-        //         $('#login-panel').removeClass('show');
-        // } else {
-        //     var w = $('#setting-panel').outerWidth();
-        //     var left, top, bottom;
-
-        //     $('#setting-panel').css('top', 'unset');
-        //     $('#setting-panel').css('bottom', 'unset');
-
-        //     if (direction) { // 左向上，使用 bottom 定位
-        //         left = $(item).offset().left - w - 10;
-        //         bottom = $(document).scrollTop() + window.innerHeight - $(item).offset().top - $(item).outerHeight();
-        //         $('#setting-panel').css('left', left + 'px');
-        //         $('#setting-panel').css('bottom', bottom + 'px');
-        //     } else { // 左向下
-        //         left = $(item).offset().left - w + $(item).width();
-        //         top = $(item).offset().top - $(document).scrollTop() + $(item).outerHeight();
-        //         $('#setting-panel').css('left', left + 'px');
-        //         $('#setting-panel').css('top', top + 'px');
-        //     }
-
-        //     $('#setting-panel').addClass('show');
-        // }
     },
 
     toggleSerif: function (item, serif) {
@@ -419,12 +393,48 @@ VOID_Ui = {
                 }, 1000);
             }, 600);
         }
+    },
+
+    Swiper: {
+        clientX: null,
+        clientY: null,
+        // move: function (e) {
+        //     return;
+        // },
+
+        start: function(e) {
+            this.clientX = e.originalEvent.changedTouches[0].clientX;
+            this.clientY = e.originalEvent.changedTouches[0].clientY;
+        },
+
+        end: function (e) {
+            // 垂直滚动距离
+            if (Math.abs(this.clientY - e.originalEvent.changedTouches[0].clientY) > 30) {
+                $('body').removeClass('setting-panel-show');
+            }
+            this.clientX = null;
+            this.clientY = null;
+        }
     }
 };
 
 (function () {
+    if ('ontouchstart' in document) {
+        $(document).on('touchstart', function (e) {
+            VOID_Ui.Swiper.start(e);
+        });
+        // $(document).on('touchmove', function () {
+        //     VOID_Ui.checkHeader();
+        // });
+        $(document).on('touchend', function (e) {
+            VOID_Ui.Swiper.end(e);
+        });
+    }
     $(document).on('scroll', function () {
         VOID_Ui.checkGoTop();
         VOID_Ui.checkHeader();
+        if (!('ontouchstart' in document)) {
+            $('body').removeClass('setting-panel-show');
+        }
     });
 })();
