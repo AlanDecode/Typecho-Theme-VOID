@@ -340,21 +340,22 @@ VOID_Ui = {
                 }
                 VOID_Util.setCookie('theme_dark', '1', 7200);
             } else { // 自动模式，定时            
-                // 全部转换至当天
-                sunset = new Date(new Date().setHours(
-                    Math.floor(VOIDConfig.darkModeTime.start),
-                    60 * (VOIDConfig.darkModeTime.start - Math.floor(VOIDConfig.darkModeTime.start)), 0));
-                sunrise = new Date(new Date().setHours(
-                    Math.floor(VOIDConfig.darkModeTime.end),
-                    60 * (VOIDConfig.darkModeTime.end - Math.floor(VOIDConfig.darkModeTime.end)), 0));
-    
-                var current = new Date();
-                // 格式化为小时
-                var sunset_s = VOIDConfig.darkModeTime.start;
-                var sunrise_s = VOIDConfig.darkModeTime.end;
-                var current_s = current.getHours() + current.getMinutes() / 60;
                 // 若不存在 cookie，根据时间判断，并设置 cookie
                 if (VOID_Util.getCookie('theme_dark') == null) {
+                    // 全部转换至当天
+                    sunset = new Date(new Date().setHours(
+                        Math.floor(VOIDConfig.darkModeTime.start),
+                        60 * (VOIDConfig.darkModeTime.start - Math.floor(VOIDConfig.darkModeTime.start)), 0));
+                    sunrise = new Date(new Date().setHours(
+                        Math.floor(VOIDConfig.darkModeTime.end),
+                        60 * (VOIDConfig.darkModeTime.end - Math.floor(VOIDConfig.darkModeTime.end)), 0));
+        
+                    var current = new Date();
+                    // 格式化为小时
+                    var sunset_s = VOIDConfig.darkModeTime.start;
+                    var sunrise_s = VOIDConfig.darkModeTime.end;
+                    var current_s = current.getHours() + current.getMinutes() / 60;
+
                     if (current_s > sunset_s || current_s < sunrise_s) {
                         document.body.classList.add('theme-dark');
                         if (current_s > sunset_s) // 如果当前为夜晚，日出时间应该切换至第二日

@@ -15,8 +15,11 @@ section#post {
         .theme-dark & {
             background: $td-bgColor-dark;
         }
+        .with-bg & {
+            background: rgba(#f1f3f3, 0.5);
+        }
         .theme-dark.with-bg & {
-            background: rgba($td-bgColor-dark, 0.4);   
+            background: rgba($td-bgColor-dark, 0.5);   
         }
         border-radius: 4px;
         > div {
@@ -313,7 +316,7 @@ article {
             border-color: $td-bgColor-dark;
         }
         .theme-dark.with-bg & {
-            background: rgba($td-bgColor-dark, 0.4);
+            background: rgba(#fff, 0.075);
         }
         position: relative;
         &::before {

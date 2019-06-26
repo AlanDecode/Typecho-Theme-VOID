@@ -145,6 +145,7 @@ body{
     width: 100vw;
     height: 100vh;
     background: rgba(#fff, 0.925);
+    transition: $animationTime ease-in-out background;
     .theme-dark & {
         background: rgba(#000, 0.925);
     }
