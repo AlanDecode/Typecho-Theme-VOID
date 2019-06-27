@@ -376,14 +376,6 @@
         }
         margin: 0;
         width: 100%;
-        @media screen and (min-width: 1199.5px) {
-            .hljs-ln-code:hover{
-                background: #ebeded!important;
-                .theme-dark & {
-                    background: #343638!important;
-                }
-            }
-        }
     }
 }
 
