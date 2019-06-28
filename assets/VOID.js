@@ -501,6 +501,21 @@ var AjaxComment = {
         }
     });
 
+    if (window.innerHeight < window.innerWidth) {
+        $('body').addClass('screen-horizontal');
+    } else {
+        $('body').addClass('screen-vertical');
+    }
+    $(window).resize(function () {
+        if (window.innerHeight < window.innerWidth) {
+            $('body').addClass('screen-horizontal');
+            $('body').removeClass('screen-vertical');
+        } else {
+            $('body').addClass('screen-vertical');
+            $('body').removeClass('screen-horizontal');
+        }
+    });
+
     window.setInterval(function () {
         var times = new Date().getTime() - Date.parse(VOIDConfig.buildTime);
         times = Math.floor(times / 1000); // convert total milliseconds into total seconds

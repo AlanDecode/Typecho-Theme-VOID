@@ -20,7 +20,7 @@ main{
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            transition: $animationTime ease-in-out background;
+            transition: $animationTime ease-in-out all;
         }
     }
     .lazy-wrap{

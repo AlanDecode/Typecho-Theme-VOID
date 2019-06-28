@@ -32,10 +32,13 @@ $setting = $GLOBALS['VOIDSetting'];
     ?>">
 
     <style>
-        main::before{background-image: url("<?php echo $setting['siteBg']; ?>")}
-        <?php if(array_key_exists('light', $setting['bgMaskColor'])) echo "div#bg-mask{background: {$setting['bgMaskColor']['light']}}"; ?>
-        <?php if(array_key_exists('dark', $setting['bgMaskColor'])) echo ".theme-dark div#bg-mask{background: {$setting['bgMaskColor']['dark']}}"; ?>
-        <?php if($setting['grayscaleBg']) echo '.with-bg main::before{filter: grayscale(100%);}'; ?>
+        .screen-horizontal main::before{background-image: url("<?php echo $setting['siteBg']; ?>")}
+        .screen-vertical main::before{background-image: url("<?php echo $setting['siteBgVertical']; ?>")}
+        <?php if(!empty($setting['siteBg']) || !empty($setting['siteBgVertical'])): ?>
+            <?php if(array_key_exists('light', $setting['bgMaskColor'])) echo "div#bg-mask{background: {$setting['bgMaskColor']['light']}}"; ?>
+            <?php if(array_key_exists('dark', $setting['bgMaskColor'])) echo ".theme-dark div#bg-mask{background: {$setting['bgMaskColor']['dark']}}"; ?>
+            <?php if($setting['grayscaleBg']) echo '.with-bg main::before{filter: grayscale(100%);}'; ?>
+        <?php endif; ?>
     </style>
     
     <header>
