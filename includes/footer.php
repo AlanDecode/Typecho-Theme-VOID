@@ -47,7 +47,7 @@ $setting = $GLOBALS['VOIDSetting'];
         </aside>
 
         <!--站点设置面板-->
-        <aside id="setting-panel">
+        <aside hidden id="setting-panel">
             <section>
                 <div id="toggle-night">
                     <a target="_self" href="javascript:void(0)" onclick="VOID_Ui.DarkModeSwitcher.toggleByHand();"><i></i></a>

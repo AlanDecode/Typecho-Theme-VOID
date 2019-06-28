@@ -147,10 +147,19 @@ VOID_Ui = {
     },
 
     toggleSettingPanel: function () {
-        if(!$('body').hasClass('setting-panel-show'))
+        if(!$('body').hasClass('setting-panel-show')) {
             if ($('#login-panel').length)
                 $('#login-panel').removeClass('show');
-        $('body').toggleClass('setting-panel-show');
+            $('#setting-panel').show();
+            setTimeout(function () {
+                $('body').addClass('setting-panel-show');
+            }, 50); // 改变 display 时 transition 总是失效，需要延迟一下
+        } else {
+            $('body').removeClass('setting-panel-show');
+            setTimeout(function () {
+                $('#setting-panel').hide();
+            }, 300);
+        }
     },
 
     toggleSerif: function (item, serif) {
@@ -412,6 +421,9 @@ VOID_Ui = {
             // 垂直滚动距离
             if (Math.abs(this.clientY - e.originalEvent.changedTouches[0].clientY) > 30) {
                 $('body').removeClass('setting-panel-show');
+                setTimeout(function () {
+                    $('#setting-panel').hide();
+                }, 300);
             }
             this.clientX = null;
             this.clientY = null;
@@ -436,6 +448,9 @@ VOID_Ui = {
         VOID_Ui.checkHeader();
         if (!('ontouchstart' in document)) {
             $('body').removeClass('setting-panel-show');
+            setTimeout(function () {
+                $('#setting-panel').hide();
+            }, 300);
         }
     });
 })();

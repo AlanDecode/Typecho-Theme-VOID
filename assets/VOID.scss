@@ -301,7 +301,7 @@ body{
 
 #setting-panel {
     position: fixed;
-    transition: $animationTime-slow ease-in-out all;
+    transition: $animationTime ease-in-out transform, $animationTime ease-in-out opacity;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
     opacity: 0;
 
@@ -311,7 +311,7 @@ body{
         right: 330px;
     }
     bottom: 1.5rem;
-    transform: translate(0, calc(100% + 50px));
+    transform: translate(0, 1.5rem);
     .setting-panel-show & {
         opacity: 1;
         transform: translate(0, 0);
@@ -323,7 +323,7 @@ body{
         bottom: unset;
         top: 70px;
         left: 50%;
-        transform: translate(-50%, calc(-100% - 80px))!important;
+        transform: translate(-50%, -20px)!important;
         .setting-panel-show & {
             top: 70px;
             transform: translate(-50%, 0)!important;
