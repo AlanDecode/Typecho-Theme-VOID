@@ -301,7 +301,8 @@
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     background: #f1f3f3;
     .with-bg & {
-        background: rgba(#f1f3f3, 0.5);
+        background: rgba(#f1f3f3, 0.65);
+        border: 1px solid rgba(#000, 0.05);
     }
     border-radius: 5px;
     .theme-dark & {
