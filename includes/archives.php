@@ -28,7 +28,7 @@ $setting = $GLOBALS['VOIDSetting'];
             ), '', '');  ?></h1>
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li id="<?php $this->cid(); ?>"  class="masonry-item">
+                <li id="p-<?php $this->cid(); ?>"  class="masonry-item">
                     <a href="<?php $this->permalink(); ?>">    
                         <article class="yue style-<?php echo $this->fields->bannerascover; ?>" itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
@@ -67,7 +67,7 @@ $setting = $GLOBALS['VOIDSetting'];
                         </article>
                     </a>
                 </li>
-                <script>VOID_Ui.MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
+                <script>VOID_Ui.MasonryCtrler.watch("p-<?php $this->cid(); ?>");</script>
             <?php endwhile; ?>
             </ul>
         </section>

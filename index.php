@@ -29,7 +29,7 @@ if(!Utils::isPjax()){
         <section id="index-list">
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li id="<?php $this->cid(); ?>" class="masonry-item style-<?php 
+                <li id="p-<?php $this->cid(); ?>" class="masonry-item style-<?php 
                         if($this->fields->showfullcontent=='1') {
                             if($this->fields->bannerascover == '2')
                                 echo '1';
@@ -98,7 +98,7 @@ if(!Utils::isPjax()){
                         </a>
                     <?php endif; ?>
                 </li>
-                <script>VOID_Ui.MasonryCtrler.watch("<?php $this->cid(); ?>");</script>
+                <script>VOID_Ui.MasonryCtrler.watch("p-<?php $this->cid(); ?>");</script>
             <?php endwhile; ?>
             </ul>
         </section>

@@ -236,6 +236,7 @@ article {
             position: relative;
             margin: 2.5px;
             min-height: unset;
+            flex: 1;
             @media screen and (max-width: 767px) {
                 figcaption {
                     display: none;
