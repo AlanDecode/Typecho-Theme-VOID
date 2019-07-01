@@ -501,19 +501,9 @@ var AjaxComment = {
         }
     });
 
-    if (window.innerHeight < window.innerWidth) {
-        $('body').addClass('screen-horizontal');
-    } else {
-        $('body').addClass('screen-vertical');
-    }
+    VOID_Ui.tuneBg();
     $(window).resize(function () {
-        if (window.innerHeight < window.innerWidth) {
-            $('body').addClass('screen-horizontal');
-            $('body').removeClass('screen-vertical');
-        } else {
-            $('body').addClass('screen-vertical');
-            $('body').removeClass('screen-horizontal');
-        }
+        VOID_Ui.tuneBg();
     });
 
     window.setInterval(function () {

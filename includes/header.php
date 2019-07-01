@@ -26,9 +26,6 @@ $setting = $GLOBALS['VOIDSetting'];
         if(Utils::isMobile()) {
             echo ' mobile';
         }
-        if(!empty($setting['siteBg'])) {
-            echo ' with-bg';
-        }
     ?>">
 
     <style>
