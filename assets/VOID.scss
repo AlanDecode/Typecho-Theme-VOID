@@ -42,6 +42,10 @@ body{
     display: flex;
     flex-direction: column;
     transition: 0.15s ease background;
+    background: $bgColor;
+    .theme-dark & {
+        background: $td-bgColor;
+    }
     &.mobile {
         cursor: pointer; // iOS 需要这个属性来处理 click 事件
     }
