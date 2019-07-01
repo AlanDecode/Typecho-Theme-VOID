@@ -43,7 +43,7 @@ body{
     flex-direction: column;
     transition: 0.15s ease background;
     background: $bgColor;
-    .theme-dark & {
+    &.theme-dark {
         background: $td-bgColor;
     }
     &.mobile {
@@ -635,8 +635,21 @@ body{
 .douban-single{margin: 1rem auto}
 .MathJax_SVG_Display{overflow:hidden;max-width:100%}
 .aplayer .aplayer-list ol{-webkit-overflow-scrolling:touch}
-.theme-dark .aplayer{
-    color: #222;
+.theme-dark .aplayer {
+    color: $td-textColor;
+    background: rgba(#000, 0.925);
+    .aplayer-info {
+        border: none!important;
+    }
+    .aplayer-lrc::after, .aplayer-lrc::before {
+        display: none;
+    }
+    .aplayer-list ol li {
+        border-top: 1px solid rgba(#fff, 0.1)!important;
+        &:hover, &.aplayer-list-light {
+            background: $td-bgColor;
+        }
+    }
     ol::-webkit-scrollbar-track{
         background: $bgColor;
     }
