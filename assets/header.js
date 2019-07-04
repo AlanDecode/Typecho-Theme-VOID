@@ -169,12 +169,12 @@ VOID_Ui = {
             if ($('#stylesheet_noto').length < 1)
                 $('body').append('<link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">');
             $('body').addClass('serif');
-            VOID_Util.setCookie('serif', '1', 604800);
+            VOID_Util.setCookie('serif', '1', 2592000); // 一个月
         } else {
             if ($('#stylesheet_droid').length < 1)
                 $('body').append('<link id="stylesheet_droid" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">');
             $('body').removeClass('serif');
-            VOID_Util.setCookie('serif', '0', 604800);
+            VOID_Util.setCookie('serif', '0', 2592000);
         }
     },
 
@@ -195,7 +195,7 @@ VOID_Ui = {
             $('body').attr('fontsize', String(current - 1));
         }
 
-        VOID_Util.setCookie('textsize', $('body').attr('fontsize'), 604800);
+        VOID_Util.setCookie('textsize', $('body').attr('fontsize'), 2592000);
     },
 
     toggleLoginForm: function () {
