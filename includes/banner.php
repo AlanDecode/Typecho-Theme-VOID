@@ -9,10 +9,19 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 $banner = $setting['defaultBanner'];
-if($this->is('post') || $this->is('page')){
-    $banner = $this->fields->banner;  
-    if(!$setting['titleinbanner'] && !$this->is('page'))
-        $banner = '';
+$blur = false;
+
+if($this->is('post')) {
+    if($this->fields->bannerStyle > 0) {
+        $setting['bannerStyle'] = $this->fields->bannerStyle-1;
+    }
+    $banner = $this->fields->banner;
+    if($setting['bannerStyle'] == 1)
+        $banner = ''; 
+    $blur = $setting['bannerStyle'] >= 2;
+}
+if($this->is('page')){
+    $banner = $this->fields->banner;
 }
 $lazyID = rand(1,10000);
 ?>
@@ -24,11 +33,15 @@ $lazyID = rand(1,10000);
         if($this->is('index')) echo ' index';?>">
 
     <?php if(!empty($banner)): ?>
-        <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy"></div>
+        <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy <?php if($blur) echo 'blur'; ?>"></div>
         <script>VOID_Ui.registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
         <script>$('body>header').addClass('force-dark').removeClass('no-banner');</script>
     <?php else: ?>
         <script>$('body>header').removeClass('force-dark').addClass('no-banner');</script>
+        <style>main>.lazy-wrap{min-height: 0;}</style>
+    <?php endif; ?>
+
+    <?php if($setting['bannerStyle']>=2): ?>
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 

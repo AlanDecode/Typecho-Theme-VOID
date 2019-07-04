@@ -9,6 +9,9 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
+if($this->fields->bannerStyle > 0) {
+    $setting['bannerStyle'] = $this->fields->bannerStyle-1;
+}
 ?>
 
 <main id="pjax-container">
@@ -26,15 +29,15 @@ $setting = $GLOBALS['VOIDSetting'];
                     <span hidden itemprop="author"><?php $this->author(); ?></span>
                     <time hidden datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
                     
+                    <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
+                    
                     <?php if($this->fields->banner != ''): ?>
-                        <div <?php if($setting['titleinbanner'] || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                        <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                             <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>"><img src="<?php echo $this->fields->banner; ?>" /></a>
                             <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                         </div>
                     <?php endif; ?>
-                    
-                    <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
-                    
+
                     <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                         <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
                     <?php endif; ?>

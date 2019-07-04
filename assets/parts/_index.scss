@@ -60,6 +60,10 @@ main{
             width: 100%;
             height: 100%;
             @include bg;
+            &.blur {
+                filter: brightness(0.5) blur(5px)!important;
+                transform: scale(1.5)!important;
+            }
         }
         &.dark #banner{
             filter: brightness(0.6);

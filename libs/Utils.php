@@ -275,7 +275,7 @@ class Utils
             'serifincontent' => false,
             'pjax' => false,
             'pjaxreload' => '',
-            'titleinbanner' => false,
+            'bannerStyle' => 0,
             'lazyload' => false,
             'indexBannerTitle' => '',
             'indexBannerSubtitle' => '',
@@ -297,8 +297,7 @@ class Utils
         $themeSetting['colorScheme'] = intval($themeSetting['colorScheme']);
         $themeSetting['pjax'] = boolval($themeSetting['pjax']);
         $themeSetting['serifincontent'] = boolval($themeSetting['serifincontent']);
-        $themeSetting['titleinbanner'] = boolval($themeSetting['titleinbanner']);
-
+        $themeSetting['bannerStyle'] = intval($themeSetting['bannerStyle']);
 
         // 高级设置
         $advanceSetting = array(
