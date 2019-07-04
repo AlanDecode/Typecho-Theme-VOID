@@ -279,8 +279,6 @@ class Utils
             'indexBannerSubtitle' => '',
             'serviceworker' => '',
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
-            'siteBg' => '',
-            'siteBgVertical' => '',
             'reward' => '',
 
             // 高级设置
@@ -297,6 +295,8 @@ class Utils
             'lineNumbers' => true,
             'lineNumbersOnMobile' => true,
             'rssPicProtect' => false,
+            'siteBg' => '',
+            'siteBgVertical' => '',
             'darkModeTime' => array (
                 'start' => 22.0,
                 'end' => 7.0
@@ -339,14 +339,6 @@ class Utils
 
         if(!empty($options->indexBannerTitle)){
             $output['indexBannerTitle'] = $options->indexBannerTitle;
-        }
-
-        if(!empty($options->siteBg)){
-            $output['siteBg'] = $options->siteBg;
-        }
-
-        if(!empty($options->siteBgVertical)){
-            $output['siteBgVertical'] = $options->siteBgVertical;
         }
 
         if(!empty($options->globalBg)){

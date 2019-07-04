@@ -51,10 +51,7 @@ function themeConfig($form) {
     $form->addInput($titleinbanner);
     $colorScheme=new Typecho_Widget_Helper_Form_Element_Radio('colorScheme',array('0'=>'自动切换','1'=>'日间模式','2'=>'夜间模式'),'0','主题颜色模式','选择主题颜色模式。自动模式下每天 22:00 到次日 06:59 会显示为夜间模式。');
     $form->addInput($colorScheme);
-    $siteBg=new Typecho_Widget_Helper_Form_Element_Text('siteBg', NULL, '', '站点背景图（横屏）', '用于横向屏幕，例如电脑。可以填写随机 API，主题会自动为之加上遮罩。遮罩颜色与透明度可在高级设置中调整。');
-    $form->addInput($siteBg);
-    $siteBgVertical=new Typecho_Widget_Helper_Form_Element_Text('siteBgVertical', NULL, '', '站点背景图（竖屏）', '用于竖向屏幕，例如手机。可以填写随机 API，主题会自动为之加上遮罩。遮罩颜色与透明度可在高级设置中调整。');
-    $form->addInput($siteBgVertical);
+    
     // 高级设置
     $reward=new Typecho_Widget_Helper_Form_Element_Text('reward', NULL, '', '打赏二维码', '图片链接，只允许一张图片，更多请自行合成。');
     $form->addInput($reward);
