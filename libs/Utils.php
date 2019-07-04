@@ -264,8 +264,10 @@ class Utils
      */
     public static function getVOIDSettings()
     {
-        $output = array(
-            // 主题设置
+        $options = Helper::options();
+
+        // 主题设置
+        $themeSetting = array(
             'defaultBanner' => '',
             'enableMath' => false,
             'head' => '',
@@ -279,9 +281,27 @@ class Utils
             'indexBannerSubtitle' => '',
             'serviceworker' => '',
             'colorScheme' => 0, // 0: 自动，1: 日间，2: 夜间
-            'reward' => '',
+            'reward' => ''
+        );
 
-            // 高级设置
+        $keys = array_keys($themeSetting);
+        foreach ($keys as $key) {
+            if(!empty($options->{$key})){
+                $themeSetting[$key] = $options->{$key};
+            }
+        }
+
+        // 一些类型变换
+        $themeSetting['enableMath'] = boolval($themeSetting['enableMath']);
+        $themeSetting['lazyload'] = boolval($themeSetting['lazyload']);
+        $themeSetting['colorScheme'] = intval($themeSetting['colorScheme']);
+        $themeSetting['pjax'] = boolval($themeSetting['pjax']);
+        $themeSetting['serifincontent'] = boolval($themeSetting['serifincontent']);
+        $themeSetting['titleinbanner'] = boolval($themeSetting['titleinbanner']);
+
+
+        // 高级设置
+        $advanceSetting = array(
             'nav' => '',
             'name' => '',
             'desktopBannerHeight' => '',
@@ -297,89 +317,24 @@ class Utils
             'rssPicProtect' => false,
             'siteBg' => '',
             'siteBgVertical' => '',
+            'bgMaskColor' => array(),
+            'grayscaleBg' => true,
             'darkModeTime' => array (
                 'start' => 22.0,
                 'end' => 7.0
             ),
-            'link' => array(),
-            'bgMaskColor' => array(),
-            'grayscaleBg' => true,
-
-            //插件是否启用
-            'VOIDPlugin' => false
+            'link' => array()
         );
-
-        $options = Helper::options();
 
         if(!empty($options->advance)){
             $settings = json_decode($options->advance, true);
             foreach ($settings as $key => $value) {
-                $output[$key] = $value;
+                $advanceSetting[$key] = $value;
             }
         }
 
-        $output['defaultBanner'] = $options->defaultBanner;
-
-        if(!empty($options->enableMath)){
-            if($options->enableMath == '1') $output['enableMath'] = true;
-        }
-
-        if(!empty($options->lazyload)){
-            if($options->lazyload == '1') $output['lazyload'] = true;
-        }
-
-        if(!empty($options->colorScheme)){
-            if($options->colorScheme == '1') $output['colorScheme'] = 1;
-            if($options->colorScheme == '2') $output['colorScheme'] = 2;
-        }
-
-        if(!empty($options->head)){
-            $output['head'] = $options->head;
-        }
-
-        if(!empty($options->indexBannerTitle)){
-            $output['indexBannerTitle'] = $options->indexBannerTitle;
-        }
-
-        if(!empty($options->globalBg)){
-            $output['globalBg'] = $options->globalBg;
-        }
-
-        if(!empty($options->indexBannerSubtitle)){
-            $output['indexBannerSubtitle'] = $options->indexBannerSubtitle;
-        }
-
-        if(!empty($options->footer)){
-            $output['footer'] = $options->footer;
-        }
-
-        if(!empty($options->pjax)){
-            if($options->pjax == '1') $output['pjax'] = true;
-        }
-
-        if(!empty($options->serifincontent)){
-            if($options->serifincontent == '1') $output['serifincontent'] = true;
-        }
-        
-        if(!empty($options->pjaxreload)){
-            $output['pjaxreload'] = $options->pjaxreload;
-        }
-
-        if(!empty($options->reward)){
-            $output['reward'] = $options->reward;
-        }
-
-        if(!empty($options->titleinbanner)){
-            if($options->titleinbanner == '1') $output['titleinbanner'] = true;
-        }
-
-        if(!empty($options->serviceworker)){
-            $output['serviceworker'] = $options->serviceworker;
-        }
-
-        if(self::hasVOIDPlugin($GLOBALS['VOIDPluginREQ'])) {
-            $output['VOIDPlugin'] = true;
-        }
+        $output = array_merge($themeSetting, $advanceSetting);
+        $output['VOIDPlugin'] = self::hasVOIDPlugin($GLOBALS['VOIDPluginREQ']);
 
         return $output;
     }
