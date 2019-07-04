@@ -56,6 +56,7 @@
   display: inline-block;
   position: relative;
   text-indent: 0;
+  z-index: 1;
   -webkit-transform: translateY(-0.3rem);
           transform: translateY(-0.3rem);
 }
