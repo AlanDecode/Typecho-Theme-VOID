@@ -41,7 +41,7 @@ $lazyID = rand(1,10000);
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 
-    <?php if($setting['bannerStyle']>=2): ?>
+    <?php if($setting['bannerStyle']>=2 && $this->is('post')): ?>
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 
