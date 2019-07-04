@@ -38,7 +38,7 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php endif; ?>
     </style>
     
-    <header>
+    <header class="header-mode-<?php echo $setting['headerMode']; ?>">
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="VOID_Ui.toggleNav(this);">

@@ -1,6 +1,9 @@
 header{
     z-index: 3;
     position: fixed;
+    &.header-mode-2 {
+        position: absolute;
+    }
     top: 0;
     left: 0;
     width: 100%;
@@ -289,6 +292,9 @@ header{
             >div {
                 border-color: $td-headerTextColor;
             }
+        }
+        .container nav .search-form-desktop input {
+            border-color: $td-headerTextColor;
         }
     }
 

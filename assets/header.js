@@ -101,6 +101,7 @@ VOID_Ui = {
     },
 
     checkHeader: function () {
+        if (VOIDConfig.headerMode == 2) return;
         var tr = $(window).width() > 767 ? 150 : 60;
         if ($(document).scrollTop() > tr) {
             $('body>header').addClass('pull-up');
