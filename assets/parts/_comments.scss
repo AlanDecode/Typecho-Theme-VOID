@@ -1,3 +1,14 @@
+.comments-container {
+    position: relative;
+    padding: 1rem 0;
+    width: 100%;
+    background: rgba(#000, 0.025);
+    border-top: 1px solid rgba(#000, 0.1);
+    .theme-dark & {
+        background: none;
+        border-color: rgba(#fff, 0.1)
+    }
+}
 #comments{
     color: $textColor;
     .theme-dark &{

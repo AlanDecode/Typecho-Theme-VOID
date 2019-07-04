@@ -1,7 +1,7 @@
-$bgColor: #fafafa;
-$textColor: #333;
-$fadeColor: #666;
-$darkColor: #111;
+$bgColor: #fff;
+$textColor: rgba(#000, 0.86);
+$fadeColor: rgba(#000, 0.6);
+$darkColor: rgba(#000, 0.98);
 $highlightColor: #bd6262;
 $mainWidth: 860px;
 $mainWidth-wide: 1024px;
@@ -21,7 +21,7 @@ $td-borderColor: rgba(255,255,255,0.1);
 /****/
 $headerBgColor: rgba($bgColor, 0.65);
 $headerBgColor-light: rgba($bgColor, 0.95);
-$headerTextColor: $textColor;
+$headerTextColor: $darkColor;
 $headerTextColor-fade: $fadeColor;
 $headerTextColor-highlight: $highlightColor;
 $td-headerBgColor: rgba(#000, 0.15);

@@ -101,8 +101,6 @@ $setting = $GLOBALS['VOIDSetting'];
                 </div>
                 <?php endif; ?>
             </section>
-            <!--评论区，可选-->
-            <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
         </div> <!--end .contents-wrap-->
         <!--目录，可选-->
         <?php if($this->fields->showTOC == '1'): ?>
@@ -113,4 +111,6 @@ $setting = $GLOBALS['VOIDSetting'];
             </style>
         <?php endif;?>
     </div>
+    <!--评论区，可选-->
+    <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
 </main>

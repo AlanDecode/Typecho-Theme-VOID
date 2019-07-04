@@ -600,6 +600,7 @@ article {
 @media screen and (min-width: 1199.5px) {
     div.contents-wrap,
     main>.lazy-wrap,
+    #comments,
     body>footer {
         transition: $animationTime ease transform;
     }
@@ -609,6 +610,7 @@ article {
     .sidebar-show{
         div.contents-wrap,
         main>.lazy-wrap,
+        #comments,
         >footer{
             transform: translateX(-135px);
             .banner-title {

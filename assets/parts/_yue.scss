@@ -24,7 +24,7 @@
     .serif & {
         font-family: $void-font-serif;
     }
-    color: #333332;
+    color: $textColor;
     .theme-dark & {
         color: $td-textColor;
     }
@@ -38,7 +38,7 @@
 .yue h5,
 .yue h6 {
     font-family: $void-font-sans;
-    color: #222222;
+    color: $darkColor;
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -96,7 +96,7 @@
 .yue strong,
 .yue b {
     font-weight: 700;
-    color: #222222;
+    color: $darkColor;
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -104,7 +104,7 @@
 .yue em,
 .yue i {
     font-style: italic;
-    color: rgba($color: #222222, $alpha: 0.88);
+    color: $darkColor;
     .theme-dark & {
         color: $td-textColor-light;
     }
@@ -140,14 +140,14 @@
     margin-top: 10px;
     font-weight: 400;
     font-size: 14px;
-    color: #555554;
+    color: $fadeColor;
     .theme-dark & {
         color: $td-textColor-dark;
     }
 }
 .yue figure figcaption a {
     text-decoration: none;
-    color: #555554;
+    color: $fadeColor;
     .theme-dark & {
         color: $td-textColor-dark;
     }
@@ -166,14 +166,14 @@
     margin: 0.92em 0;
     border-left: 3px solid #dadada;
     padding-left: 12px;
-    color: #555553;
+    color: $fadeColor;
     .theme-dark & {
         color: $td-textColor-dark;
         border-color: $td-borderColor;
     }
 }
 .yue blockquote a {
-    color: #555553;
+    color: $fadeColor;
     .theme-dark & {
         color: $td-textColor-dark;
     }
