@@ -16,6 +16,10 @@
     // 导航栏模式，随滚动显隐(0)，固定(1)，不固定(2)
     "headerMode": 1,
 
+    // 文章字号。当用户在前端自己设置后，该选项会被覆盖。默认为 18px。
+    // 1: 14px, 2: 16px, 3: 18px, 4: 20px, 5: 22px
+    "defaultFontSize": 3,
+
     // 社交 ID，用于生成分享链接
     "twitterId": "AlanDecode",
     "weiboId" : "熊猫小AA",

@@ -87,13 +87,13 @@ class Utils
 
     /**
      * 界面大小风格
-     * xs: 14px, s: 16px, n: 18px, l: 20px, xl: 22px
+     * 1: 14px, 2: 16px, 3: 18px, 4: 20px, 5: 22px
      */
-    public static function getTextSize() {
+    public static function getTextSize($setting) {
         if(isset($_COOKIE['textsize'])) {
             return $_COOKIE['textsize'];
         } else {
-            return '3';
+            return $setting['defaultFontSize'];
         }
     }
 
@@ -308,6 +308,7 @@ class Utils
             'twitterId' => '',
             'weiboId' => '',
             'headerMode' => 1,
+            'defaultFontSize' => 3,
             'followSystemColorScheme' => false,
             'largePhotoSet' => true,
             'macStyleCodeBlock' => true,

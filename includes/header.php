@@ -11,7 +11,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
 
-<body fontsize="<?php echo Utils::getTextSize(); ?>" class="<?php 
+<body fontsize="<?php echo Utils::getTextSize($setting); ?>" class="<?php 
         if($setting['colorScheme'] == 0){
             echo((isset($_COOKIE['theme_dark']) && $_COOKIE['theme_dark'] == '1') ? 'theme-dark' : '');
         } elseif ($setting['colorScheme'] == 2) {
