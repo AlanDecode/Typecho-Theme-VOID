@@ -10,13 +10,17 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 $banner = $setting['defaultBanner'];
-if($this->is('post')) {
-    if($this->fields->bannerStyle > 0) {
+if ($this->is('post')) {
+    if ($this->fields->bannerStyle > 0) {
         $setting['bannerStyle'] = $this->fields->bannerStyle-1;
     }
-    $banner = $this->fields->banner;
-    if($setting['bannerStyle'] == 1)
+    if ($setting['bannerStyle'] == 4) { // 强制不显示
         $banner = '';
+    } else {
+        $banner = $this->fields->banner;
+        if($setting['bannerStyle'] == 1)
+            $banner = '';
+    }
 }
 if($this->is('page')){
     $banner = $this->fields->banner;

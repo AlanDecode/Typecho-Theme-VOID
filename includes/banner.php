@@ -15,10 +15,15 @@ if($this->is('post')) {
     if($this->fields->bannerStyle > 0) {
         $setting['bannerStyle'] = $this->fields->bannerStyle-1;
     }
-    $banner = $this->fields->banner;
-    if($setting['bannerStyle'] == 1)
-        $banner = ''; 
-    $blur = $setting['bannerStyle'] >= 2;
+    if($setting['bannerStyle'] == 4) { // 强制不显示
+        $banner = '';
+        $blur = false;
+    } else {
+        $banner = $this->fields->banner;
+        if($setting['bannerStyle'] == 1)
+            $banner = ''; 
+        $blur = $setting['bannerStyle'] >= 2;
+    }
 }
 if($this->is('page')){
     $banner = $this->fields->banner;

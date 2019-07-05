@@ -32,7 +32,7 @@ if($this->fields->bannerStyle > 0) {
                     <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
                     
                     <?php if($this->fields->banner != ''): ?>
-                        <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                        <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $setting['bannerStyle'] == 4 || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                             <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>"><img src="<?php echo $this->fields->banner; ?>" /></a>
                             <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                         </div>

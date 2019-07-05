@@ -101,7 +101,8 @@ function themeFields(Typecho_Widget_Helper_Layout $layout)
         1 => '显示在顶部',
         2 => '显示在文中',
         3 => '显示在顶部并添加模糊效果',
-        4 => '显示在顶部并添加模糊效果，同时显示于正文中'), 0, '文章头图展示方式', '仅针对文章，独立页面头图始终显示在顶部。此字段可以覆盖主题的全局设置。');
+        4 => '显示在顶部并添加模糊效果，同时显示于正文中',
+        5 => '不显示'), 0, '文章头图展示方式', '仅针对文章，独立页面头图始终显示在顶部。此字段可以覆盖主题的全局设置。');
     $layout->addItem($bannerStyle);
     $bannerascover = new Typecho_Widget_Helper_Form_Element_Select('bannerascover', array('1' => '主图显示在标题上方', '2' => '主图作为标题背景', '0' => '不显示'), '1', '首页主图样式', '主图作为标题背景时会添加暗色遮罩，但仍然建议仅对暗色的主图采用该方式展示。否则请选择「主图显示在标题上方」。');
     $layout->addItem($bannerascover);
