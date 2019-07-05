@@ -235,7 +235,7 @@ article {
         figure {
             position: relative;
             margin: 2.5px;
-            min-height: unset;
+            min-height: 100px;
             flex: 1;
             @media screen and (max-width: 767px) {
                 figcaption {
