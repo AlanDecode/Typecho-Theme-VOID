@@ -1,4 +1,4 @@
-# Typecho Theme VOID 3.0.0
+# Typecho Theme VOID 3.1.0
 
 > ✏ 一款简洁优雅的 Typecho 主题
 
@@ -15,10 +15,13 @@
 * 响应式设计
 * PJAX 无刷新体验
 * AJAX 评论
+* 前台管理评论（删除、待审、标为垃圾）
+* 前台无跳转登陆（兼容 PJAX）
 * 自动夜间模式
 * 优秀的可读性
 * 衬线、非衬线两种文字风格
 * 代码高亮（浅色暗色两种风格，随主题切换）
+* 站点样式设置面板（日夜转换、字体、字号）
 * Mac 风格代码块（可开启或关闭）
 * 代码行号（可分别针对桌面或移动端设置开启或关闭）
 * MathJax 公式
@@ -180,38 +183,30 @@ gulp build
 
 ## 更新日志
 
-**🎉 2019-06-20 Version 3.0.0**
+**🍰 2019-07-05 Version 3.1.0**
 
-3.0.0 版本是 VOID 主题的下一站，包含诸多改变与修复，包括：
-
-* 新增：全新设计的瀑布流风格首页
-* 新增：带标签云的新归档页
-* 新增：首页文章列表中将头图作为背景
-* 调整：现在可单独设置首页标题与小标题
-* 调整：文章页不再使用默认头图
-* 调整：当设置标题不显示在头图中时，头图转而显示在文中
-* 调整：取消夜间模式下图片暗色滤镜
-* 调整：夜间模式改为固定时间段
-* 调整：去除文章中图片高度限制
-* 优化：夜间模式效果
-* 优化：导航栏效果
-* 优化：无头图时首页标题效果
-* 优化：图集宽度自适应
-* 优化：导航栏在各种情况下的表现
-* 修复：目录遮挡标题
-* 修复：行号设置不生效
-* 修复：图集宽度问题
-* 修复：自动连字符导致数学公式渲染错误
-* 移除：页脚最近评论、一言
-* 其它细节调整与优化
+* 新增：站点设置面板，包括日间/夜间模式，字号，字体
+* 新增：前台登陆，兼容 PJAX
+* 新增：前台管理评论，支持删除、待审核、标为垃圾
+* 新增：优化的头图展示模式设置，支持全局设置与针对文章单独设置
+* 新增：可设置导航栏不固定在顶部
+* 优化：JS 加载顺序
+* 优化：跳转后的页面位置
+* 优化：响应式瀑布流，现在可以放心地加入图像等动态加载的元素
+* 优化：APlayer 样式适配夜间模式
+* 优化：默认头图高度
+* 修复：小尺寸主图宽度不足
+* 其它优化与修复
 
 高级设置：
 
-* 添加：`darkModeTime`，设置夜间模式时间段
-* 移除：`accurateDarkMode`，现采用固定时间段
-* 移除：`showRecentGuest`，不再支持显示最近访客
+* 新增：默认文章字号设置
+* 新增：站点背景图，横竖屏可单独设置
+* 新增：站点背景图遮罩颜色，日间夜间模式可单独设置
+* 新增：自动将背景图转为灰度模式
+* 新增：自定义的外部链接，显示在站点设置面板中。也可以嵌入 Javascript 代码。
 
-注意，3.0.0 版本主题依赖 1.00 及以上版本插件。若之前已经成功安装启用插件（1.00 版）则不用处理，若之前安装插件出现问题可以尝试使用新版（1.01）插件。
+注意，3.1.0 版本主题依赖 1.00 及以上版本插件。若之前已经成功安装启用插件（1.00 版）则不用处理，若之前安装插件出现问题可以尝试使用新版（1.01）插件。
 
 从 2.2 版本起，主题部分功能需要配套插件支持，例如文章点赞、浏览量统计、字数统计等。**请先卸载**原来的 Likes、TePostViews 插件，否则数据会出现错误！TePostViews 插件卸载前请设置为**卸载后保留数据**，以防丢失浏览数据。
 
@@ -221,7 +216,7 @@ gulp build
 
 ### 开源项目
 
-[JQuery](https://github.com/jquery/jquery) | [HighlightJS](https://highlightjs.org/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [clipboard.js](https://clipboardjs.com/) | [jquery.scrollTo](https://github.com/flesler/jquery.scrollTo) | [hypher](https://github.com/bramstein/hypher)
+[JQuery](https://github.com/jquery/jquery) | [HighlightJS](https://highlightjs.org/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [jquery.scrollTo](https://github.com/flesler/jquery.scrollTo) | [hypher](https://github.com/bramstein/hypher)
 
 ### 其他
 
