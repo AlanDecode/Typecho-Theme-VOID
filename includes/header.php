@@ -9,6 +9,18 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
+$banner = $setting['defaultBanner'];
+if($this->is('post')) {
+    if($this->fields->bannerStyle > 0) {
+        $setting['bannerStyle'] = $this->fields->bannerStyle-1;
+    }
+    $banner = $this->fields->banner;
+    if($setting['bannerStyle'] == 1)
+        $banner = '';
+}
+if($this->is('page')){
+    $banner = $this->fields->banner;
+}
 ?>
 
 <body fontsize="<?php echo Utils::getTextSize($setting); ?>" class="<?php 
@@ -38,7 +50,7 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php endif; ?>
     </style>
     
-    <header class="header-mode-<?php echo $setting['headerMode']; ?>">
+    <header class="header-mode-<?php echo $setting['headerMode']; ?> <?php if(!empty($banner)) echo 'force-dark'; else echo 'no-banner'; ?>">
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="VOID_Ui.toggleNav(this);">
