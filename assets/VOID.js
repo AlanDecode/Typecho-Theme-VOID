@@ -89,8 +89,7 @@ var VOID_Content = {
             $(document).pjax('a.pjax', {
                 container: '#pjax-container',
                 fragment: '#pjax-container',
-                timeout: 8000,
-                scrollTo: false
+                timeout: 8000
             });
         }
     },
@@ -189,7 +188,7 @@ var VOID = {
         }
 
         VOID_Ui.MasonryCtrler.init();
-        VOID_Ui.checkScrollTop(true);
+        VOID_Ui.checkScrollTop(false);
 
         VOID_Content.countWords();
         VOID_Content.parseTOC();

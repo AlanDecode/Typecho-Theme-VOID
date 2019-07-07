@@ -19,7 +19,7 @@ $setting = $GLOBALS['VOIDSetting'];
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container wide">
-        <section id="index-list">
+        <section id="index-list" class="float-up">
             <h1 hidden class="post-title"><?php $this->archiveTitle(array(
                 'category'  =>  _t('分类 "%s" 下的文章'),
                 'search'    =>  _t('包含关键字 "%s" 的文章'),

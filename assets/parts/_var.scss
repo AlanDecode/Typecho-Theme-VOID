@@ -30,6 +30,9 @@ $td-headerTextColor: #dfdfdf;
 $td-headerTextColor-light: #efefef;
 $td-headerTextColor-fade: $fadeColor;
 
+/****/
+$floatDistance: 18px;
+
 $animationTime-very-slow: 0.5s;
 $animationTime-slow: 0.35s;
 $animationTime: 0.2s;
@@ -76,6 +79,28 @@ $void-font-serif: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "Segoe UI"
         right: 20px;
         opacity: 0;
         transform: translateY(20px);
+    }
+}
+
+@keyframes float-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-$floatDistance);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 0;
+        transform: translateY($floatDistance);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

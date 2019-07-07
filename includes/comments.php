@@ -9,7 +9,7 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
-<div class="comments-container">
+<div class="comments-container float-up">
     <section id="comments" class="container">
         <?php
         $parameter = array(

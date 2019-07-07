@@ -23,7 +23,7 @@ $setting = $GLOBALS['VOIDSetting'];
     </style>
     <div class="app-landscape theme-dark">
         <div class="mask" id="bg"><div class="mask"></div></div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 2rem">
             <article class="yue"  itemscope itemtype="http://schema.org/Article">
                 <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
                 <span hidden itemprop="author"><?php $this->author(); ?></span>
@@ -67,9 +67,9 @@ $setting = $GLOBALS['VOIDSetting'];
                 }
             })();
         </script>
-        <div class="container">
-            <!--评论区，可选-->
-            <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
-        </div>
+    </div>
+    <!--评论区，可选-->
+    <div class="theme-dark" style="width: 100%">
+        <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
     </div>
 </main>

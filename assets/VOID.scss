@@ -537,15 +537,21 @@ body{
                         outline: none;
                         background: none;
                         border: solid 2px rgba(#000, 0.1);
-                        .theme-dark & {
-                            border-color: rgba(#fff, 0.1);
-                        }
                         margin-bottom: 6px;
                         border-radius: 8px;
                         color: inherit;
                         &::-webkit-input-placeholder{
                             color: $headerTextColor-fade;
                             font-size: 1rem;
+                        }
+                        .theme-dark & {
+                            border-color: rgba(#fff, 0.1);
+                            &::-webkit-input-placeholder{
+                                color: inherit;
+                            }
+                        }
+                        .theme-dark &::-webkit-input-placeholder {
+                            color: $td-textColor-dark;
                         }
                     }
                 }
@@ -613,6 +619,12 @@ body{
 }
 #nprogress .spinner{
     top: 75px;
+}
+
+.float-up {
+    opacity: 0;
+    transform: translateY($floatDistance);
+    animation: float-up $animationTime-very-slow cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @media screen and (max-width: 767px){

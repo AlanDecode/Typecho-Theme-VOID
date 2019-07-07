@@ -23,7 +23,7 @@ if($this->fields->bannerStyle > 0) {
 
     <div class="wrapper container">
         <div class="contents-wrap"> <!--start .contents-wrap-->
-            <section id="post">
+            <section id="post" class="float-up">
                 <article class="post yue" itemscope itemtype="http://schema.org/Article">
                     <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
                     <span hidden itemprop="author"><?php $this->author(); ?></span>

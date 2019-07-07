@@ -25,7 +25,7 @@ if(!Utils::isPjax()){
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
-        <div class="tag-cloud yue">
+        <div class="tag-cloud yue float-up">
             <h2>Tags</h2>
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=50')->to($tags); ?>
             <?php if($tags->have()): ?>
@@ -36,7 +36,7 @@ if(!Utils::isPjax()){
                 <?php echo('还没有标签哦～'); ?>
             <?php endif; ?>
         </div>
-        <section id="archive-list" class="yue">
+        <section id="archive-list" class="yue float-up">
             <?php $archives = Contents::archives($this); $index = 0; foreach ($archives as $year => $posts): ?>
                 <h2><?php echo $year; ?>
                     <span class="num-posts"><?php $post_num = count($posts); echo $post_num; ?> 篇</span>

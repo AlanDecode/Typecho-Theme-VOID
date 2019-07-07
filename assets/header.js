@@ -116,14 +116,14 @@ VOID_Ui = {
             VOID_Util.setCookie('void_pos', -1);
         } else {
             if (forceGotop) {
-                setTimeout(function () {
-                    var hash = new URL(window.location.href).hash;
-                    if (hash != '') {
-                        $.scrollTo($(hash).offset().top - 80, 500);
-                    } else {
-                        $.scrollTo(0, 500);
-                    }
-                }, 50);
+                // setTimeout(function () {
+                //     var hash = new URL(window.location.href).hash;
+                //     if (hash != '') {
+                //         $.scrollTo($(hash).offset().top - 80, 500);
+                //     } else {
+                //         $.scrollTo(0, 500);
+                //     }
+                // }, 50);
             }
         }
     },

@@ -79,6 +79,10 @@ main{
             @media screen and (max-width: 767px) {
                 padding: 50px 1rem;
             }
+            /* animation */
+            transform: translateY(-$floatDistance);
+            opacity: 0;
+            animation: float-down $animationTime-very-slow cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             .post-title{
                 text-align: center;
                 font-weight: 600;
