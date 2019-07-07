@@ -46,7 +46,7 @@ body{
     &.theme-dark {
         background: $td-bgColor;
     }
-    &.mobile {
+    &.ios-safari {
         cursor: pointer; // iOS 需要这个属性来处理 click 事件
     }
     &.modal-open{
