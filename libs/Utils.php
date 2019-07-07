@@ -124,6 +124,13 @@ class Utils
     }
 
     /**
+     * iOS 判定
+     */
+    public static function isIosSafari () {
+        return strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') || strpos($_SERVER['HTTP_USER_AGENT'], 'iPad');
+    }
+
+    /**
      * 编辑界面添加Button
      * 
      * @return void

@@ -42,6 +42,9 @@ if($this->is('page')){
         if(Utils::isMobile()) {
             echo ' mobile';
         }
+        if(Utils::isIosSafari()) {
+            echo ' ios-safari';
+        }
     ?>">
 
     <style>
