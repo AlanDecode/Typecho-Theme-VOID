@@ -14,9 +14,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
 // 看不见错误就是没有错误
 error_reporting(0);
 
-require_once "libs/Utils.php";
-require_once "libs/Contents.php";
-require_once "libs/Comments.php";
+require_once('libs/Utils.php');
+require_once('libs/Contents.php');
+require_once('libs/Comments.php');
 
 Typecho_Plugin::factory('admin/write-post.php')->bottom = array('Utils', 'addButton');
 Typecho_Plugin::factory('admin/write-page.php')->bottom = array('Utils', 'addButton');
