@@ -194,7 +194,7 @@ main{
         &:not(.no-banner){
             .banner-title{
                 &,& *{
-                    color: white;
+                    color: white!important;
                 }
                 & a{
                     border-bottom: 1px solid white;
