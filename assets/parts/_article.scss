@@ -147,7 +147,7 @@ article {
         }
     }
     .post-banner {
-        transition: $animationTime ease all;
+        transition: $animationTime $animationTimingFunc all;
         img {
             width: 100%;
             margin: 0!important;
@@ -209,7 +209,7 @@ article {
     .photos {
         display: flex;
         flex-wrap: wrap;
-        transition: $animationTime ease all;
+        transition: $animationTime $animationTimingFunc all;
         width: calc(100% + 40px);
         margin-left: -20px;
         &.large {
@@ -278,7 +278,7 @@ article {
                     rgba(0, 0, 0, 0.5)
                 );
                 opacity: 0.6;
-                transition: opacity 0.3s ease;
+                transition: opacity 0.3s $animationTimingFunc;
             }
             &:hover figcaption {
                 opacity: 1;
@@ -297,9 +297,9 @@ article {
         background-color: rgba(0, 0, 0, 0.18);
         border-radius: 14px;
         vertical-align: text-top;
-        -webkit-transition: all 0.1s ease;
-        -o-transition: all 0.1s ease;
-        transition: all 0.1s ease;
+        -webkit-transition: all 0.1s $animationTimingFunc;
+        -o-transition: all 0.1s $animationTimingFunc;
+        transition: all 0.1s $animationTimingFunc;
         &:hover {
             background: $darkColor;
         }
@@ -394,7 +394,7 @@ article {
 
 .yue {
     del {
-        transition: 0.3s ease all;
+        transition: 0.3s $animationTimingFunc all;
         text-decoration: none;
     }
     del:not(:hover) {
@@ -491,7 +491,7 @@ article {
     background: $bgColor;
     z-index: 3;
     opacity: 0.85;
-    transition: $animationTime ease-in-out;
+    transition: $animationTime $animationTimingFunc;
     .theme-dark & {
         background: $td-bgColor;
     }
@@ -535,7 +535,7 @@ article {
         box-sizing: border-box;
     }
     bottom: 0;
-    transition: $animationTime ease right;
+    transition: $animationTime $animationTimingFunc right;
     .theme-dark &::-webkit-scrollbar{
         background: none;
     }
@@ -593,7 +593,7 @@ article {
 
 @media screen and (max-width: 1199.5px) {
     div.contents-wrap {
-        transition: $animationTime ease opacity;
+        transition: $animationTime $animationTimingFunc opacity;
     }
 }
 
@@ -602,10 +602,10 @@ article {
     main>.lazy-wrap,
     #comments,
     body>footer {
-        transition: $animationTime ease transform;
+        transition: $animationTime $animationTimingFunc transform;
     }
     body>header{
-        transition: $animationTime ease all;
+        transition: $animationTime $animationTimingFunc all;
     }
     .sidebar-show{
         div.contents-wrap,

@@ -29,7 +29,7 @@ section#archive-list{
         padding: 0.3rem;
         width: 1.5rem;
         text-align: center;
-        transition: 0.3s ease all;
+        transition: 0.3s $animationTimingFunc all;
         color: $textColor;
         .theme-dark &{
             background: $td-bgColor-dark;
@@ -47,7 +47,7 @@ section#archive-list{
     section.year {
         position: relative;
         transition-property: max-height;
-        transition-timing-function: ease;
+        transition-timing-function: $animationTimingFunc;
         margin: 0;
         overflow-y: hidden;
         ul{
@@ -60,7 +60,7 @@ section#archive-list{
                 padding: 0;
                 margin: 0;
                 border-bottom: 1px dotted #ddd;
-                transition: $animationTime-slow ease border;
+                transition: $animationTime-slow $animationTimingFunc border;
                 .theme-dark &{
                     border-color: $td-borderColor;
                 }

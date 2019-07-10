@@ -1,7 +1,7 @@
 main{
     flex: 1;
     /* 普通模式下使用background来控制主题色 */
-    transition: $animationTime ease-in-out background;
+    transition: $animationTime $animationTimingFunc background;
     background: $bgColor;
     .theme-dark & {
         background: $td-bgColor;
@@ -20,7 +20,7 @@ main{
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            transition: $animationTime ease-in-out all;
+            transition: $animationTime $animationTimingFunc all;
         }
     }
     .lazy-wrap{
@@ -82,7 +82,7 @@ main{
             /* animation */
             transform: translateY(-$floatDistance);
             opacity: 0;
-            animation: float-down $animationTime-very-slow cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation: float-down $animationTime-very-slow $animationTimingFunc forwards;
             .post-title{
                 text-align: center;
                 font-weight: 600;
@@ -206,7 +206,7 @@ main{
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: 1.2s ease opacity;
+            transition: 1.2s $animationTimingFunc opacity;
             &.loaded{
                 opacity: 1;
             }
@@ -283,7 +283,7 @@ section#index-list{
             }
             margin-bottom: 30px;
             opacity: 0;
-            transition: $animationTime ease-in-out opacity, $animationTime-fast ease-in-out border;
+            transition: $animationTime-fast $animationTimingFunc opacity, $animationTime-fast $animationTimingFunc border;
             &.done {
                 opacity: 1;
             }
@@ -313,7 +313,7 @@ section#index-list{
                     font-weight: bolder;
                     margin: 0;
                     margin-bottom: 0.6rem;
-                    transition: $animationTime-fast ease-in-out color;
+                    transition: $animationTime-fast $animationTimingFunc color;
                     color: $darkColor!important;
                     .theme-dark &{
                         color: $td-textColor-light!important;
@@ -399,7 +399,7 @@ section#index-list{
                 .content-wrap {
                     padding: 100px 20px 40px;
                     background: rgba(0, 0, 0, 0.4);
-                    transition: $animationTime-slow ease-in-out;
+                    transition: $animationTime-slow $animationTimingFunc;
                 }
                 .banner {
                     margin: 0;
