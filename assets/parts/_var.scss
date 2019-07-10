@@ -37,6 +37,7 @@ $animationTime-very-slow: 0.5s;
 $animationTime-slow: 0.35s;
 $animationTime: 0.2s;
 $animationTime-fast: 0.1s;
+$animationTimingFunc: cubic-bezier(.25,.46,.45,.94);
 
 $void-font-default:  'Droid Serif', -apple-system, BlinkMacSystemFont, "Droid Sans", "Helvetica Neue", "PingFang SC",
 "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;

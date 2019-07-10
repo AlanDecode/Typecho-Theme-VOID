@@ -41,7 +41,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: 0.15s ease background;
+    transition: 0.15s $animationTimingFunc background;
     background: $bgColor;
     &.theme-dark {
         background: $td-bgColor;
@@ -107,7 +107,7 @@ body{
         border-color: $td-borderColor!important;
         color: $td-textColor-dark;
     }
-    transition: 0.3s ease all;
+    transition: 0.3s $animationTimingFunc all;
     cursor: pointer;
     &:hover,&.done{
         color: white!important;
@@ -149,7 +149,7 @@ body{
     width: 100vw;
     height: 100vh;
     background: rgba(#fff, 0.925);
-    transition: $animationTime ease-in-out background;
+    transition: $animationTime $animationTimingFunc background;
     .theme-dark & {
         background: rgba(#000, 0.925);
     }
@@ -221,7 +221,7 @@ body{
 .avatar{
     display: inline-block;
     border-radius: 50%;
-    transition: 0.3s ease all;
+    transition: 0.3s $animationTimingFunc all;
     &:hover{
         transform: scale(1.05);
     }
@@ -258,7 +258,7 @@ body{
             padding: 0.8rem;
             width: 2.6rem;
             height: 2.6rem;
-            transition: 0.3s ease all;
+            transition: 0.3s $animationTimingFunc all;
         }
         &.current a, a:hover{
             background: $darkColor;
@@ -276,7 +276,7 @@ body{
     bottom: 1.5rem;
     width: 40px;
     z-index: 3;
-    transition: $animationTime ease transform;
+    transition: $animationTime $animationTimingFunc transform;
     display: flex;
     flex-direction: column;
     .sidebar-show & {
@@ -305,7 +305,8 @@ body{
 
 #setting-panel {
     position: fixed;
-    transition: $animationTime ease-in-out transform, $animationTime ease-in-out opacity;
+    transition: $animationTime $animationTimingFunc transform, 
+                $animationTime $animationTimingFunc opacity;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
     opacity: 0;
 
@@ -364,7 +365,7 @@ body{
                 border-color: rgba(#fff, 0.1);
             }
             &.switching a {
-                animation: switch 1.2s ease;
+                animation: switch 1.2s $animationTimingFunc;
             }
             a {
                 display: block;
@@ -584,7 +585,7 @@ body{
     padding: 0.7rem;
     border-radius: 4px;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    transition: 0.5s ease all;
+    transition: 0.5s $animationTimingFunc all;
     opacity: 0;
     right: 0;
     line-height: 1.5;

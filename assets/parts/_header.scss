@@ -7,7 +7,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    transition: $animationTime-slow ease-in-out all;
+    transition: $animationTime-slow $animationTimingFunc all;
     &.headroom--pinned{
         transform: translateY(0);
     }
@@ -38,7 +38,7 @@ header{
                 justify-content: center;
                 align-items: center;
                 padding: 0.3rem 0.55rem;
-                transition: 0.3s ease all;
+                transition: 0.3s $animationTimingFunc all;
                 color: $headerTextColor;
                 @media screen and (min-width: 1024.5px) {
                     &:hover {
@@ -104,9 +104,9 @@ header{
             span.dropdown{
                 position: relative;
                 cursor: pointer;
-                transition: 0.3s ease all;
+                transition: 0.3s $animationTimingFunc all;
                 ul{
-                    transition: 0.3s ease all;
+                    transition: 0.3s $animationTimingFunc all;
                     position: absolute;
                     display: none;
                     list-style: none;
@@ -150,7 +150,7 @@ header{
                     height: 1.5rem;
                     padding: 0.85rem;
                     padding-left: 3rem;
-                    transition: 0.3s ease all;
+                    transition: 0.3s $animationTimingFunc all;
                     outline: none;
                     background: none;
                     border: solid 1px $headerTextColor-fade;
@@ -185,7 +185,7 @@ header{
         position: absolute;
         top: 100%;
         left: 0;
-        transition: 0.3s ease all;
+        transition: 0.3s $animationTimingFunc all;
         transform: translateY(-10px);
         visibility: hidden;
         opacity: 0;
