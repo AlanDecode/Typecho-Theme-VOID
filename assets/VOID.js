@@ -167,6 +167,9 @@ var VOID = {
             if (!VOID_Util.clickIn(e, '#toggle-setting-pc') && !VOID_Util.clickIn(e, '#toggle-setting')) {
                 if ($('body').hasClass('setting-panel-show') && !VOID_Util.clickIn(e, '#setting-panel')) {
                     $('body').removeClass('setting-panel-show');
+                    setTimeout(function () {
+                        $('#setting-panel').hide();
+                    }, 300);
                     return false;
                 }
             }
