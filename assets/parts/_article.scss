@@ -394,14 +394,20 @@ article {
 
 .yue {
     del {
-        transition: 0.3s $animationTimingFunc all;
-        text-decoration: none;
+        text-decoration: none!important;
+        transition: $animationTime $animationTimingFunc color, 
+                    $animationTime $animationTimingFunc background;
+        * {
+            transition: $animationTime-slow $animationTimingFunc opacity;
+        }
     }
     del:not(:hover) {
-        &,
-        & * {
-            color: rgba(0, 0, 0, 0) !important;
-            background: #111 !important;
+        color: transparent!important;
+        background: black!important;
+        * {
+            opacity: 0!important;
+        }
+        &, & * {
             border: none !important;
         }
     }
