@@ -394,14 +394,20 @@ article {
 
 .yue {
     del {
-        transition: 0.3s $animationTimingFunc all;
-        text-decoration: none;
+        text-decoration: none!important;
+        transition: $animationTime $animationTimingFunc color, 
+                    $animationTime $animationTimingFunc background;
+        * {
+            transition: $animationTime-slow $animationTimingFunc opacity;
+        }
     }
     del:not(:hover) {
-        &,
-        & * {
-            color: rgba(0, 0, 0, 0) !important;
-            background: #111 !important;
+        color: transparent!important;
+        background: black!important;
+        * {
+            opacity: 0!important;
+        }
+        &, & * {
             border: none !important;
         }
     }
@@ -645,6 +651,18 @@ article {
     }
     a.social-button-icon {
         border: none !important;
+        font-size: 1.5rem;
+        display: inline-flex;
+        vertical-align: bottom;
+        i {
+            color: $fadeColor;
+            .theme-dark &{
+                color: $td-textColor-dark;
+            }
+            &:hover {
+                color: #ff5268
+            }
+        }
     }
 }
 #social {

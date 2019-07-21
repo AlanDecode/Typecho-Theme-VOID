@@ -26,7 +26,7 @@ $setting = $GLOBALS['VOIDSetting'];
         <!--侧边控制按钮-->
         <aside id="ctrler-panel">
             <div class="ctrler-item" id="go-top">
-                <a target="_self" aria-label="返回顶部" href="javascript:void(0);" onclick="$.scrollTo(0, 300);">↑</a>
+                <a target="_self" aria-label="返回顶部" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="$.scrollTo(0, 300);"><i class="voidicon-up"></i></a>
             </div>
 
             <?php if($this->user->hasLogin()): ?>
@@ -42,7 +42,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 <a target="_self" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="VOID_Ui.toggleSettingPanel();"><i class="voidicon-cog"></i></a>
             </div>
             <div aria-label="展开或关闭文章目录" class="ctrler-item" id="toggle-toc">
-                <a target="_self" href="javascript:void(0);" onclick="TOC.toggle()">←</a>
+                <a target="_self" href="javascript:void(0);" style="margin-left: -2px" onclick="TOC.toggle()"><i class="voidicon-left"></i></a>
             </div>
         </aside>
 
@@ -167,7 +167,6 @@ $setting = $GLOBALS['VOIDSetting'];
             <?php endif; ?>
         </script>
         <?php endif; ?>
-        <link rel="stylesheet" href="https://lab.lepture.com/social/dist/widget.css">
         <?php $this->footer(); ?>
     </body>
 </html>
