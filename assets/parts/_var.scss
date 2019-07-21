@@ -8,6 +8,7 @@ $mainWidth-wide: 1024px;
 $mainWidth-wider: 100%;
 $bannerHeight: 350px;
 $bannerHeight_mobile: 250px;
+$borderColor: rgba(#000, 0.05);
 
 /*****/
 $td-bgColor: #1a1a1a;
@@ -16,7 +17,7 @@ $td-bgColor-dark: #111;
 $td-textColor: #b0b0b0;
 $td-textColor-light: #cececf;
 $td-textColor-dark: #aaa;
-$td-borderColor: rgba(255,255,255,0.1);
+$td-borderColor: rgba(#fff, 0.05);
 
 /****/
 $headerBgColor: rgba($bgColor, 0.65);

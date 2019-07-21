@@ -228,7 +228,7 @@ main{
                 margin: 1rem 0;
                 margin-bottom: calc(1rem - 10px);
                 padding-top: 1rem;
-                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-top: 1px solid $borderColor;
                 .theme-dark & {
                     border-color: $td-borderColor;
                 }
@@ -277,9 +277,9 @@ section#index-list{
         >li{
             line-height: 1.25;
             padding-bottom: 30px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid $borderColor;
             .theme-dark & {
-                border-color: rgba($color: #fff, $alpha: 0.1);
+                border-color: $td-borderColor;
             }
             margin-bottom: 30px;
             opacity: 0;
