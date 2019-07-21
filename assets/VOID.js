@@ -217,9 +217,6 @@ var VOID = {
                 maxHeight: '250px'
             });
         }
-
-        // 重载社交分享
-        getSocial();
         
         AjaxComment.init();
     },
@@ -321,6 +318,35 @@ var VOID = {
         if (event.keyCode == 13) {
             VOID.startSearch(item);
         }
+    }
+};
+
+var Share = {
+    parseItem: function (item) {
+        item = $(item).parent();
+        return {
+            url: $(item).attr('data-url'),
+            title: $(item).attr('data-title'),
+            excerpt: $(item).attr('data-excerpt'),
+            img: $(item).attr('data-img'),
+            twitter: $(item).attr('data-twitter'),
+            weibo: $(item).attr('data-weibo'),
+        };
+    },
+
+    toWeibo: function (item) {
+        var content = Share.parseItem(item);
+        var url = 'http://service.weibo.com/share/share.php?appkey=&title=分享《'+ content.title + '》 @' + content.weibo + '%0a%0a' + content.excerpt
+            +'&url='+content.url
+            +'&pic='+content.img+'&searchPic=false&style=simple';
+        window.open(url);
+    },
+
+    toTwitter: function (item) {
+        var content = Share.parseItem(item);
+        var url = 'http://twitter.com/home/?status=分享《'+ content.title + '》 @' + content.twitter + '%0a%0a' + content.excerpt
+            + '%20' + content.url;
+        window.open(url);
     }
 };
 

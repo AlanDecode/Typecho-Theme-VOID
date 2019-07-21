@@ -651,6 +651,18 @@ article {
     }
     a.social-button-icon {
         border: none !important;
+        font-size: 1.5rem;
+        display: inline-flex;
+        vertical-align: bottom;
+        i {
+            color: $fadeColor;
+            .theme-dark &{
+                color: $td-textColor-dark;
+            }
+            &:hover {
+                color: #ff5268
+            }
+        }
     }
 }
 #social {

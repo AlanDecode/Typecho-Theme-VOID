@@ -63,10 +63,12 @@ if($this->fields->bannerStyle > 0) {
                     <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                     <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
                     <div class="social-button" 
+                        data-url="<?php $this->permalink(); ?>"
+                        data-title="<?php Contents::title($this); ?>" 
+                        data-excerpt="<?php $this->fields->excerpt(); ?>"
+                        data-img="<?php $this->fields->banner(); ?>" 
                         data-twitter="<?php if($setting['twitterId']!='') echo $setting['twitterId']; else $this->author(); ?>"
                         data-weibo="<?php if($setting['weiboId']!='') echo $setting['weiboId']; else $this->author(); ?>"
-                        data-text="<?php $this->title(); ?>"
-                        data-url="<?php $this->permalink(); ?>"
                         <?php if($this->fields->banner != '') echo 'data-image="'.$this->fields->banner.'"';?>>
                         <?php if(!empty($setting['reward'])):?>
                             <a data-fancybox="gallery" role=button aria-label="赞赏" data-src="#reward" href="javascript:;" class="btn btn-normal btn-highlight">赏杯咖啡</a>
@@ -75,6 +77,9 @@ if($this->fields->bannerStyle > 0) {
                         <?php if($setting['VOIDPlugin']):?>
                             <a role=button aria-label="点赞" id="social" href="javascript:void(0);" data-cid="<?php echo $this->cid;?>" onclick="VOID.like(this);" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php echo $this->likes; ?></span></a>
                         <?php endif; ?>
+                        
+                        <a aria-label="分享到微博" href="javascript:void(0);" onclick="Share.toWeibo(this);" class="social-button-icon"><i class="voidicon-weibo"></i></a>
+                        <a aria-label="分享到Twitter" href="javascript:void(0);" onclick="Share.toTwitter(this);" class="social-button-icon"><i class="voidicon-twitter"></i></a>
                     </div>
                 </article>
                 
