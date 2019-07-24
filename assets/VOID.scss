@@ -14,7 +14,7 @@ html{
     font-family: sans-serif;
 }
 
-::selection {
+.theme-dark ::selection {
     color: white;
     background-color: #ffe150;
 }
