@@ -344,7 +344,7 @@ var Share = {
 
     toTwitter: function (item) {
         var content = Share.parseItem(item);
-        var url = 'http://twitter.com/home/?status=分享《'+ content.title + '》 @' + content.twitter + '%0a%0a' + content.excerpt
+        var url = 'https://twitter.com/intent/tweet?text=分享《'+ content.title + '》 @' + content.twitter + '%0a%0a' + content.excerpt
             + '%20' + content.url;
         window.open(url);
     }
