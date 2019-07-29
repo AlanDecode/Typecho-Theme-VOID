@@ -28,9 +28,9 @@ $setting = $GLOBALS['VOIDSetting'];
             ), '', '');  ?></h1>
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li id="p-<?php $this->cid(); ?>"  class="masonry-item">
+                <li id="p-<?php $this->cid(); ?>"  class="masonry-item style-<?php echo $this->fields->bannerascover; ?>"">
                     <a href="<?php $this->permalink(); ?>">    
-                        <article class="yue style-<?php echo $this->fields->bannerascover; ?>" itemscope itemtype="http://schema.org/Article">
+                        <article class="yue itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                     <img src="<?php echo $this->fields->banner;?>">
