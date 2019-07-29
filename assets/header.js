@@ -334,7 +334,7 @@ VOID_Ui = {
             });
         },
         init: function () {
-            if (VOID_Ui.MasonryCtrler.check()) {
+            if (VOID_Ui.MasonryCtrler.check() && VOIDConfig.indexStyle == 0) {
                 $('.masonry-item').addClass('masonry-ready');
                 VOID_Ui.MasonryCtrler.masonry();
             }

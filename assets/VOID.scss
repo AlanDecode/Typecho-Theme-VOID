@@ -89,6 +89,9 @@ body{
     &.wider{
         width: $mainWidth-wider;
     }
+    &.narrow {
+        width: $mainWidth-narrow;
+    }
 }
 
 .btn{

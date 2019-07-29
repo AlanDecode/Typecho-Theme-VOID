@@ -24,7 +24,7 @@ if(!Utils::isPjax()){
     
     <?php $this->need('includes/banner.php'); ?>
 
-    <div class="wrapper container">
+    <div class="wrapper container narrow">
         <div class="tag-cloud yue float-up">
             <h2>Tags</h2>
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=50')->to($tags); ?>

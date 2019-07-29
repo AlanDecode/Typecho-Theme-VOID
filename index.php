@@ -25,7 +25,7 @@ if(!Utils::isPjax()){
     
     <?php $this->need('includes/banner.php'); ?>
 
-    <div class="wrapper container wide">
+    <div class="wrapper container <?php if($setting['indexStyle'] == 1) echo 'narrow'; else echo 'wide'; ?>">
         <section id="index-list" class="float-up">
             <ul id="masonry">
             <?php while($this->next()): ?>

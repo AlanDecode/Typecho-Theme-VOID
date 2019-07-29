@@ -89,7 +89,8 @@ if (isset($_POST['void_action'])) {
             'end': <?php echo $setting['darkModeTime']['end']; ?>
         },
         horizontalBg: <?php echo empty($setting['siteBg']) ? 'false' : 'true'; ?>,
-        verticalBg: <?php echo empty($setting['siteBgVertical']) ? 'false' : 'true'; ?>
+        verticalBg: <?php echo empty($setting['siteBgVertical']) ? 'false' : 'true'; ?>,
+        indexStyle: <?php echo $setting['indexStyle']; ?>
     }
     </script>
     <script src="<?php Utils::indexTheme('/assets/header.js'); ?>"></script>

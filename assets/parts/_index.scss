@@ -300,6 +300,10 @@ section#index-list{
                     }
                 }
             }
+            .single-col & {
+                width: 100%;
+                opacity: 1;
+            }
             article {
                 position: relative;
                 .title{

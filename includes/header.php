@@ -45,6 +45,9 @@ if($this->is('page')){
         if(Utils::isIosSafari()) {
             echo ' ios-safari';
         }
+        if ($setting['indexStyle'] == 1) { // 强制不显示
+            echo ' single-col';
+        }
     ?>">
 
     <style>
