@@ -40,6 +40,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 <?php endif; ?>
                 <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
                     <meta itemprop="name" content="<?php echo $this->options->title; ?>">
+                    <meta itemprop="url" content="<?php $this->options->siteUrl(); ?>">
                     <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
                         <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 256, ''); ?>">
                     </div>

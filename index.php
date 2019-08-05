@@ -88,6 +88,7 @@ if(!Utils::isPjax()){
                                 <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
                                 <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
                                     <meta itemprop="name" content="<?php $this->options->title(); ?>">
+                                    <meta itemprop="url" content="<?php $this->options->siteUrl(); ?>">
                                     <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
                                         <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
                                     </div>
