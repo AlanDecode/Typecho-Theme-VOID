@@ -43,6 +43,9 @@ body{
     flex-direction: column;
     transition: 0.15s $animationTimingFunc background;
     background: $bgColor;
+    &:not(.mobile).compensate-for-scrollbar {
+        overflow: auto
+    }
     &.theme-dark {
         background: $td-bgColor;
     }
