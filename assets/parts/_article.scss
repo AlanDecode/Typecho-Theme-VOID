@@ -405,14 +405,12 @@ article {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    max-width: 100%;
     padding-top: 1em;
+    margin-left: -15px;
+    width: calc(100% + 15px);
     .board-item {
         position: relative;
         background: white;
-        .theme-dark & {
-            background: $td-bgColor-dark;
-        }
         box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
         transition: all 0.3s;
         overflow: hidden;
@@ -443,32 +441,25 @@ article {
             white-space: nowrap !important;
             text-align: center !important;
             color: $textColor !important;
-            .theme-dark & {
-                color: $td-textColor !important;
-            }
             font-weight: 700 !important;
             border: none;
             &:hover {
                 border: none;
             }
         }
+        margin-left: 15px;
+        margin-bottom: 15px;
         @media screen and (max-width: 767px) {
-            width: 30%;
-            min-width: 30%;
-            max-width: 30%;
-            margin: 1.6%;
+            /* 3个 */
+            width: calc(33.33333333% - 15px)
         }
         @media screen and (min-width: 768px) {
-            width: 22%;
-            min-width: 22%;
-            max-width: 22%;
-            margin: 1.5%;
+            /* 4个 */
+            width: calc(25% - 15px)
         }
         @media screen and (max-width: 400px) {
-            width: 45%;
-            min-width: 45%;
-            max-width: 45%;
-            margin: 2.5%;
+            /* 2个 */
+            width: calc(50% - 15px)
         }
     }
 }
