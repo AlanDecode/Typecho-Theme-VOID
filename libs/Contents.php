@@ -254,7 +254,7 @@ Class Contents
             if($match[2] == '')
                 return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
             else
-                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
+                return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
         } else {
             if($match[2] == '')
                 return '<figure><img src="'.$src.'" alt="'.$match[2].'"></figure>';
