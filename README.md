@@ -128,6 +128,18 @@
 [/photos]
 ```
 
+在某些 Typecho 版本中 HTML 会被转义后输出，请使用 `!!!` 包裹以上代码，例如：
+
+```
+!!!
+[photos]
+···
+[/photos]
+!!!
+```
+
+`!!!` 需要单独占一行。
+
 </details>
 
 <details><summary>增强的 Markdown 语法</summary><br>
