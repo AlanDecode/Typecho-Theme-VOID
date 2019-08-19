@@ -330,7 +330,8 @@ VOID_Ui = {
             $('#masonry').addClass('masonry').masonry({
                 itemSelector: '.masonry-item',
                 gutter: 30,
-                isAnimated: true,
+                isAnimated: false,
+                transitionDuration: 0
             });
         },
         init: function () {
