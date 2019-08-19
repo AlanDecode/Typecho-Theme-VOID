@@ -9,5 +9,6 @@
             "savePath": null
         }
     ],
+    "liveSassCompile.settings.showOutputWindow": false,
     "liveSassCompile.settings.generateMap": false,
 }
