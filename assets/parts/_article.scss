@@ -48,8 +48,8 @@ section#post {
                 color: rgba(0, 0, 0, 0.2);
                 border: 1px solid rgba(0, 0, 0, 0.1);
                 .theme-dark & {
-                    color: $td-borderColor;
-                    border-color: $td-borderColor;
+                    color: rgba(#fff, 0.2);
+                    border-color: rgba(#fff, 0.15);
                 }
                 border-radius: 4px;
             }
