@@ -21,16 +21,10 @@ $td-textColor-dark: #aaa;
 $td-borderColor: rgba(#fff, 0.05);
 
 /****/
-$headerBgColor: rgba($bgColor, 0.65);
-$headerBgColor-light: rgba($bgColor, 0.95);
-$headerTextColor: $darkColor;
-$headerTextColor-fade: $fadeColor;
+$headerBgColor: rgba(#000, 0.95);
+$headerBgColor-light: rgba(#000, 0.8);
+$headerTextColor: #dfdfdf;
 $headerTextColor-highlight: $highlightColor;
-$td-headerBgColor: rgba(#000, 0.15);
-$td-headerBgColor-dark: rgba(#000, 0.95);
-$td-headerTextColor: #dfdfdf;
-$td-headerTextColor-light: #efefef;
-$td-headerTextColor-fade: $fadeColor;
 
 /****/
 $floatDistance: 18px;

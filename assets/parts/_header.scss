@@ -14,6 +14,8 @@ header{
     &.headroom--unpinned{
         transform: translateY(-80px);
     }
+
+    /* fallback 时为深色底浅色字 */
     background-color: $headerBgColor;
     color: $headerTextColor;
     .container{
@@ -45,7 +47,7 @@ header{
                         color: $headerTextColor-highlight;
                     }
                     &:not(.brand):not(#toggle-mobile-search):hover{
-                        background: rgba(0, 0, 0, 0.08);
+                        background: $headerBgColor;
                     }
                 }
                 &.brand{
@@ -117,7 +119,6 @@ header{
                     left: 50%;
                     transform: translateX(-50%);
                     background: $headerBgColor-light;
-                    border: 1px solid rgba(0, 0, 0, 0.08);
                     li{
                         text-align: left;
                         padding: 0.5em;
@@ -153,14 +154,14 @@ header{
                     transition: 0.3s $animationTimingFunc all;
                     outline: none;
                     background: none;
-                    border: solid 1px $headerTextColor-fade;
+                    border: solid 1px $headerTextColor;
                     border-radius: 1rem;
                     color: inherit;
                     &:focus{
                         width: 11rem;
                     }
                     &::-webkit-input-placeholder{
-                        color: $headerTextColor-fade;
+                        color: $headerTextColor;
                         font-size: 1rem;
                     }
                 }
@@ -193,7 +194,7 @@ header{
         display: flex;
         padding: 0.5rem;
         background: inherit;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        border-top: 1px solid rgba(255,255,255,0.1);
         label{
             position: absolute;
             display: block;
@@ -213,11 +214,11 @@ header{
             padding-left: 3rem;
             color: inherit;
             &::-webkit-input-placeholder{
-                color:$headerTextColor-fade;
+                color:$headerTextColor;
                 font-size: 1rem;
             }
             &::placeholder{
-                color: $headerTextColor-fade;
+                color: $headerTextColor;
             }
         }
         button{
@@ -233,73 +234,10 @@ header{
         }
     }
     &.pull-up {
-        background: $headerBgColor-light;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         .container nav span.dropdown ul {
-            border: none;
             box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.7);
         }
-    }
-
-    .theme-dark &, &.opened, &.force-dark {
-        background: $td-headerBgColor;
-        color: $td-headerTextColor;
-        .container nav {
-            a, span.dropdown {
-                color: $td-headerTextColor;
-                @media screen and (min-width: 1024.5px) {
-                    &:hover {
-                        color: $headerTextColor-highlight;
-                    }
-                    &:not(.brand):not(#toggle-mobile-search):hover{
-                        background:rgba(0, 0, 0, 0.25);
-                    }
-                }
-                &.toggle{
-                    span, span::before, span::after {
-                        background-color: $td-headerTextColor;
-                    }
-                }
-            }
-            span.dropdown {
-                ul {
-                    background: $td-headerBgColor;
-                    border: 1px solid rgba(#fff, 0.08);
-                    li:hover {
-                        color: $headerTextColor-highlight;
-                    }
-                }
-                &:hover{
-                    ul{
-                        display: block;
-                    }
-                }
-            }
-        }
-        &.pull-up {
-            background: $td-headerBgColor-dark;
-            .container span.dropdown {
-                ul {
-                    border: none;
-                    background: $td-headerBgColor-dark;
-                }
-            }
-        }
-        .container nav #toggle-mobile-search {
-            >span::before {
-                background: $td-headerTextColor;
-            }
-            >div {
-                border-color: $td-headerTextColor;
-            }
-        }
-        .container nav .search-form-desktop input {
-            border-color: $td-headerTextColor;
-        }
-    }
-
-    &.opened {
-        background: rgba(0, 0, 0, 0.92);
     }
 }
 
