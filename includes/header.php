@@ -60,7 +60,7 @@ if($this->is('page')){
         <?php endif; ?>
     </style>
     
-    <header class="header-mode-<?php echo $setting['headerMode']; ?> <?php if(!empty($banner)) echo 'force-dark'; else echo 'no-banner'; ?>">
+    <header class="header-mode-<?php echo $setting['headerMode']; ?> <?php if(empty($banner)) echo 'force-dark no-banner'; ?>">
         <div class="container wider">
             <nav>
                 <a role=button aria-label="展开导航" class="toggle" target="_self" href="javascript:void(0);" onclick="VOID_Ui.toggleNav(this);">

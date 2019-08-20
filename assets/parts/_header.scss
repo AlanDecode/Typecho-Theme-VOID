@@ -18,6 +18,10 @@ header{
     /* fallback 时为深色底浅色字 */
     background-color: $headerBgColor;
     color: $headerTextColor;
+    @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
+        background-color: $headerBgColor-blur;
+        backdrop-filter: blur(10px);
+    }
     .container{
         height: 58px;
         @media screen and (max-width:767px)  {
@@ -34,7 +38,6 @@ header{
             @media screen and (max-width: 767px) {
                 justify-content: space-around;
             }
-
             a, span.dropdown {
                 display: flex;
                 justify-content: center;
@@ -48,6 +51,9 @@ header{
                     }
                     &:not(.brand):not(#toggle-mobile-search):hover{
                         background: $headerBgColor;
+                        @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
+                            background-color: rgba(0, 0, 0, 0.15);
+                        }
                     }
                 }
                 &.brand{
@@ -119,6 +125,9 @@ header{
                     left: 50%;
                     transform: translateX(-50%);
                     background: $headerBgColor-light;
+                    @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
+                        background: rgba(0, 0, 0, 0.5)
+                    }
                     li{
                         text-align: left;
                         padding: 0.5em;
@@ -237,6 +246,18 @@ header{
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         .container nav span.dropdown ul {
             box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.7);
+        }
+    }
+}
+
+body:not(.theme-dark) header {
+    &.force-dark, &.pull-up {
+        /* 强制深色，防止在浅色背景下表现差劲 */
+        @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
+            background: rgba(0, 0, 0, 0.86)
+        }
+        .container .dropdown ul {
+            background: rgba(0, 0, 0, 0.86)
         }
     }
 }

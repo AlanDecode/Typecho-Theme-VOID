@@ -40,9 +40,9 @@ $lazyID = rand(1,10000);
     <?php if(!empty($banner)): ?>
         <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy <?php if($blur) echo 'blur'; ?>"></div>
         <script>VOID_Ui.registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
-        <script>$('body>header').addClass('force-dark').removeClass('no-banner');</script>
+        <script>$('body>header').removeClass('force-dark').removeClass('no-banner');</script>
     <?php else: ?>
-        <script>$('body>header').removeClass('force-dark').addClass('no-banner');</script>
+        <script>$('body>header').addClass('force-dark').addClass('no-banner');</script>
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 

@@ -102,7 +102,7 @@ VOID_Ui = {
 
     checkHeader: function () {
         if (VOIDConfig.headerMode == 2) return;
-        var tr = $(window).width() > 767 ? 150 : 60;
+        var tr = $('.lazy-wrap').height();
         if ($(document).scrollTop() > tr) {
             $('body>header').addClass('pull-up');
         } else {

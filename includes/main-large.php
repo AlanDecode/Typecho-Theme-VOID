@@ -13,7 +13,7 @@ $setting = $GLOBALS['VOIDSetting'];
 ?>
 
 <main id="pjax-container" class="main-excerpt">
-    <script>document.querySelector('body>header').classList.add('force-dark')</script>
+    <script>document.querySelector('body>header').classList.remove('force-dark')</script>
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
