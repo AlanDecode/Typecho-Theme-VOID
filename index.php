@@ -29,13 +29,14 @@ if(!Utils::isPjax()){
         <section id="index-list" class="float-up">
             <ul id="masonry">
             <?php while($this->next()): ?>
+                <?php $bannerAsCover = $this->fields->bannerascover; if($this->fields->banner == '') $bannerAsCover='0'; ?>
                 <li id="p-<?php $this->cid(); ?>" class="masonry-item style-<?php 
                         if($this->fields->showfullcontent=='1') {
-                            if($this->fields->bannerascover == '2')
+                            if($bannerAsCover == '2')
                                 echo '1';
                             echo ' full-content';                        
                         } else {
-                            echo $this->fields->bannerascover;
+                            echo $bannerAsCover;
                         }
                     ?>">
                 

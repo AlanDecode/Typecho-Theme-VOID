@@ -28,7 +28,8 @@ $setting = $GLOBALS['VOIDSetting'];
             ), '', '');  ?></h1>
             <ul id="masonry">
             <?php while($this->next()): ?>
-                <li id="p-<?php $this->cid(); ?>"  class="masonry-item style-<?php echo $this->fields->bannerascover; ?>"">
+                <?php $bannerAsCover = $this->fields->bannerascover; if($this->fields->banner == '') $bannerAsCover='0'; ?>
+                <li id="p-<?php $this->cid(); ?>"  class="masonry-item style-<?php echo $bannerAsCover; ?>">
                     <a href="<?php $this->permalink(); ?>">    
                         <article class="yue itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
