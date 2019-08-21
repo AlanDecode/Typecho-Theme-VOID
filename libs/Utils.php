@@ -342,6 +342,10 @@ class Utils
             }
         }
 
+        if(self::isMobile() && array_key_exists('headerModeMobile', $advanceSetting)){
+            $advanceSetting['headerMode'] = $advanceSetting['headerModeMobile'];
+        }
+
         $output = array_merge($themeSetting, $advanceSetting);
         $output['VOIDPlugin'] = self::hasVOIDPlugin($GLOBALS['VOIDPluginREQ']);
 
