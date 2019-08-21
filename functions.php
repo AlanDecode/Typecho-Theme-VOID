@@ -22,8 +22,8 @@ Typecho_Plugin::factory('admin/write-post.php')->bottom = array('Utils', 'addBut
 Typecho_Plugin::factory('admin/write-page.php')->bottom = array('Utils', 'addButton');
 // 为防止友链解析与 Markdown 冲突，重写 Markdown 函数
 Typecho_Plugin::factory('Widget_Abstract_Contents')->markdown = array('Contents', 'markdown');
-Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Contents', 'parseContent');
-Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('Contents', 'parseContent');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Contents', 'contentEx');
+Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array('Contents', 'excerptEx');
 
 /**
  * 主题启用

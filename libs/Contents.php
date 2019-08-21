@@ -74,11 +74,14 @@ Class Contents
         Helper::options()->title();
     }
 
+    // 是否将图题解析到 figcaption 中
+    static private $parseFigcaption = true;
+
     /**
      * 内容解析点钩子
      * 目录解析移至前端完成
      */
-    static public function parseContent($data, $widget, $last)
+    static public function contentEx($data, $widget, $last)
     {
         $setting = $GLOBALS['VOIDSetting'];
 
@@ -93,6 +96,19 @@ Class Contents
                 $text = self::parseAll($text, 0);
             }
         }
+        return $text;
+    }
+
+    /**
+     * 摘要解析点钩子
+     * 摘要中不应解析图题
+     */
+    static public function excerptEx($data, $widget, $last)
+    {
+        self::$parseFigcaption = false;
+        $text = self::contentEx($data, $widget, $last);
+        self::$parseFigcaption = true; // 置回
+
         return $text;
     }
 
@@ -250,16 +266,21 @@ Class Contents
             $match[2] = '请前往原网页查看图片';
         }
 
+        $figcaption = $match[2];
+        if (!self::$parseFigcaption) {
+            $figcaption = '';
+        }
+
         if(self::$photoMode == 0) {
             if($match[2] == '')
-                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$match[2].'</figcaption></figure>';
+                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$figcaption.'</figcaption></figure>';
             else
-                return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'"><img class="lazyload" data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$match[2].'</figcaption></figure>';
+                return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'"><img class="lazyload"  data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$figcaption.'</figcaption></figure>';
         } else {
             if($match[2] == '')
                 return '<figure><img src="'.$src.'" alt="'.$match[2].'"></figure>';
             else
-                return '<figure><img src="'.$src.'" alt="'.$match[2].'"><figcaption>'.$match[2].'</figcaption></figure>';
+                return '<figure><img src="'.$src.'" alt="'.$match[2].'"><figcaption>'.$figcaption.'</figcaption></figure>';
         }
     }
 
