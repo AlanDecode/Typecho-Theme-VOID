@@ -323,6 +323,7 @@ class Utils
             'macStyleCodeBlock' => true,
             'lineNumbers' => true,
             'lineNumbersOnMobile' => true,
+            'parseFigcaption' => true,
             'rssPicProtect' => false,
             'siteBg' => '',
             'siteBgVertical' => '',

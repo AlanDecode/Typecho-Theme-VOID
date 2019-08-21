@@ -84,6 +84,8 @@ Class Contents
     static public function contentEx($data, $widget, $last)
     {
         $setting = $GLOBALS['VOIDSetting'];
+        if (!$setting['parseFigcaption'])
+            self::$parseFigcaption = false;
 
         $text = empty($last)?$data:$last;
         if ($widget instanceof Widget_Archive) {
