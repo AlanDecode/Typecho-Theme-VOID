@@ -5,3 +5,8 @@ input:not([type="checkbox"]), textarea {
 input:-webkit-autofill {  
     -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;  
 } 
+br {
+    content: ""; /* clears default height */
+    display: block; /* makes it have a width */
+    margin-top: 0; /* change this to whatever height you want it */
+}
