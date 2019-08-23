@@ -142,8 +142,10 @@ article {
             margin: 0!important;
         }
         margin-bottom: 25px;
-        width: calc(100% + 40px);
-        margin-left: -20px;
+        @media screen and (max-width: 860.5px){
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
         @media screen and (min-width: 859.5px) {
             padding: 6px;
             border: 3px solid rgba(0, 0, 0, 0.1);
@@ -189,8 +191,10 @@ article {
         }
     }
     div[itemprop=articleBody] > figure {
-        width: calc(100% + 40px);
-        margin-left: -20px;
+        @media screen and (max-width: 860.5px) {
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
         figcaption {
             padding: 0 20px;
         }
@@ -199,8 +203,10 @@ article {
         display: flex;
         flex-wrap: wrap;
         transition: $animationTime $animationTimingFunc all;
-        width: calc(100% + 40px);
-        margin-left: -20px;
+        @media screen and (max-width: 860.5px) {
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
         &.large {
             @media screen and (min-width: 859.5px) {
                 width: 100vw;
