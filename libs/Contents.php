@@ -90,10 +90,7 @@ Class Contents
         $text = empty($last)?$data:$last;
         if ($widget instanceof Widget_Archive) {
             if($widget->parameter->__get('type') == 'feed') {
-                if($setting['rssPicProtect'])
-                    $text = self::parseAll($text, 1);
-                else
-                    $text = self::parseAll($text, 2);
+                $text = self::parseAll($text, 1);
             } else {
                 $text = self::parseAll($text, 0);
             }
@@ -234,7 +231,7 @@ Class Contents
      * 解析 fancybox
      * 
      * @return string
-     * @param photoMode 0:普通解析，1:RSS保护原图，2:RSS不保护原图
+     * @param photoMode 0:普通解析，1:RSS(不包裹 a 标签)
      */
     static public function parseFancyBox($content, $photoMode = 0)
     {
@@ -254,35 +251,20 @@ Class Contents
         $src_ori = $match[1];
         $src = $src_ori;
 
-        if(self::$photoMode == 0) {
-            if(Helper::options()->lazyload == '1') {
-                $src = Helper::options()->themeUrl.'/assets/imgs/placeholder.jpg';
-            }
+        // 普通解析且开启懒加载
+        if(self::$photoMode == 0 && Helper::options()->lazyload == '1')
+            $src = Helper::options()->themeUrl.'/assets/imgs/placeholder.jpg';
+
+        $figcaption = '';
+        if ($match[2] != '' && self::$parseFigcaption)
+            $figcaption = '<figcaption>'.$match[2].'</figcaption>';
+
+        $img = '<img class="lazyload" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
+
+        if (self::$photoMode == 0) {
+            return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'">'.$img.'</a>'.$figcaption.'</figure>';
         } else {
-            if(self::$photoMode == 1) {
-                $src = 'https://i.loli.net/2019/05/19/5ce1302c840d379473.png';
-            }
-        }
-
-        if(self::$photoMode == 1) {
-            $match[2] = '请前往原网页查看图片';
-        }
-
-        $figcaption = $match[2];
-        if (!self::$parseFigcaption) {
-            $figcaption = '';
-        }
-
-        if(self::$photoMode == 0) {
-            if($match[2] == '')
-                return '<figure><a no-pjax data-fancybox="gallery" href="'.$src_ori.'"><img class="lazyload" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'"></a><figcaption hidden>'.$figcaption.'</figcaption></figure>';
-            else
-                return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'"><img class="lazyload"  data-src="'.$src_ori.'" src="'.$src.'" alt="'.$match[2].'"></a><figcaption>'.$figcaption.'</figcaption></figure>';
-        } else {
-            if($match[2] == '')
-                return '<figure><img src="'.$src.'" alt="'.$match[2].'"></figure>';
-            else
-                return '<figure><img src="'.$src.'" alt="'.$match[2].'"><figcaption>'.$figcaption.'</figcaption></figure>';
+            return '<figure>'.$img.$figcaption.'</figure>';
         }
     }
 

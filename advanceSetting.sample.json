@@ -52,9 +52,6 @@
     "lineNumbers": true,
     "lineNumbersOnMobile": true,
 
-    // RSS原图保护
-    "rssPicProtect": true,
-
     // 站点背景图，用于横向屏幕，例如电脑。可以填写随机 API，主题会自动为之加上遮罩。
     "siteBg": "",
     // 站点背景图,用于竖向屏幕，例如手机。可以填写随机 API，主题会自动为之加上遮罩。

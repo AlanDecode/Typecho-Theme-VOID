@@ -324,7 +324,6 @@ class Utils
             'lineNumbers' => true,
             'lineNumbersOnMobile' => true,
             'parseFigcaption' => true,
-            'rssPicProtect' => false,
             'siteBg' => '',
             'lightFont' => false,
             'siteBgVertical' => '',
