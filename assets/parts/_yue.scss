@@ -85,8 +85,14 @@
     word-break: break-all;
     &:not([data-fancybox="gallery"]):not(.post-like):not(.edit-button) {
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        &:hover {
+            border-color: #000;
+        }
         .theme-dark & {
-            border-color: $td-textColor-dark;
+            border-color: #909090;
+            &:hover {
+                border-color: #fff;
+            }
         }
     }
 }
