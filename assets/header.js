@@ -16,26 +16,26 @@ TOC = {
 };
 
 VOID_Util = {
-    throttle: function (fun, delay, time) {
-        var timeout,
-            startTime = new Date();
+    // throttle: function (fun, delay, time) {
+    //     var timeout,
+    //         startTime = new Date();
 
-        return function () {
-            var context = this,
-                args = arguments,
-                curTime = new Date();
+    //     return function () {
+    //         var context = this,
+    //             args = arguments,
+    //             curTime = new Date();
 
-            clearTimeout(timeout);
-            // 如果达到了规定的触发时间间隔，触发 handler
-            if (curTime - startTime >= time) {
-                fun.apply(context, args);
-                startTime = curTime;
-                // 没达到触发间隔，重新设定定时器
-            } else {
-                timeout = setTimeout(fun, delay);
-            }
-        };
-    },
+    //         clearTimeout(timeout);
+    //         // 如果达到了规定的触发时间间隔，触发 handler
+    //         if (curTime - startTime >= time) {
+    //             fun.apply(context, args);
+    //             startTime = curTime;
+    //             // 没达到触发间隔，重新设定定时器
+    //         } else {
+    //             timeout = setTimeout(fun, delay);
+    //         }
+    //     };
+    // },
 
     clickIn: function (e, el) {
         if (!$(el).length) return false;
@@ -80,18 +80,65 @@ VOID_Util = {
     }
 };
 
-VOID_Ui = {
-    registerLazyLoadImg: function (url, target) {
-        var background = new Image();
-        background.src = url;
-        background.onload = function () {
-            var el = document.querySelector(target);
-            el.style.backgroundImage = 'url(' + url + ')';
-            el.parentElement.classList.remove('loading');
-            el.classList.add('loaded');
-        };
+VOID_Lazyload = {
+    finish: function () {
+        return $('img.lazyload.loaded').length + $('img.lazyload.error').length == $('img.lazyload').length;
     },
 
+    addEventListener: function () {
+        if (!VOID_Lazyload.finish())
+            window.addEventListener('scroll', VOID_Lazyload.callback);
+    },
+
+    removeEventListener: function () {
+        if (VOID_Lazyload.finish())
+            window.removeEventListener('scroll', VOID_Lazyload.callback);
+    },
+
+    inViewport: function (item) {
+        var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+        var offset = 300; // 提前 200 px 加载
+        return $(item).offset().top - offset < viewPortHeight + scrollTop 
+                    && $(item).offset().top + $(item).height() + offset > scrollTop;
+    },
+
+    callback: function () {
+        $.each($('img.lazyload:not(.loaded):not(.error)'), function (i, item) {
+            if (VOID_Lazyload.inViewport(item)) {
+                var img = new Image();
+                img.src = $(item).attr('data-src');
+                img.onload = function () {
+                    if ($(item).hasClass('instant')) {
+                        $(item).attr('src', $(item).attr('data-src'));
+                        $(item).addClass('loaded');
+                        VOID_Lazyload.removeEventListener();
+                    } else {
+                        $(item).css('opacity', '0');
+                        setTimeout(function () {
+                            $(item).attr('src', $(item).attr('data-src'));
+                            $(item).addClass('loaded');
+                            VOID_Lazyload.removeEventListener();
+                        }, 550);
+                    }
+                };
+                img.onerror = function () {
+                    $(item).addClass('error');
+                    VOID_Lazyload.removeEventListener();
+                };
+            }
+        });
+        VOID_Lazyload.removeEventListener();
+    },
+
+    init: function () {
+        window.removeEventListener('scroll', VOID_Lazyload.callback);
+        VOID_Lazyload.callback();
+        VOID_Lazyload.addEventListener();
+    }
+};
+
+VOID_Ui = {
     checkGoTop: function () {
         if ($(document).scrollTop() > window.innerHeight) {
             $('#go-top').addClass('show');
@@ -223,33 +270,7 @@ VOID_Ui = {
     },
 
     lazyload: function () {
-        if (VOIDConfig.lazyload) {
-            window.addEventListener('scroll', VOID_Util.throttle(VOID_Ui.lazyloadCallback, 100, 1000));
-        }
-    },
-
-    lazyloadCallback: function () {
-        var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
-        $.each($('img.lazyload'), function (i, item) {
-            if ($(item).offset().top < viewPortHeight + scrollTop && $(item).offset().top + $(item).height() > scrollTop) {
-                if (!$(item).hasClass('loaded') && !$(item).hasClass('error')) {
-                    var img = new Image();
-                    img.src = $(item).attr('data-src');
-                    img.onload = function () {
-                        $(item).animate({ opacity: 0 }, 150);
-                        setTimeout(function () {
-                            $(item).attr('src', $(item).attr('data-src'));
-                            $(item).addClass('loaded');
-                            $(item).animate({ opacity: 1 }, 180);
-                        }, 180);
-                    };
-                    img.onerror = function () {
-                        $(item).addClass('error');
-                    };
-                }
-            }
-        });
+        VOID_Lazyload.init();
     },
 
     headroom: function () {

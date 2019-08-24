@@ -36,22 +36,8 @@ main{
             min-height: $bannerHeight_mobile;
         }
         position: relative;
-        @include bg;
-        &.loading{
-            background-color: #12121c;
-        }
         &:not(.no-banner){
             background-color: #12121c;
-        }
-        &.loading::before{
-            content: "";
-            @include bg;
-            background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkY2NzAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDUwIDUwIj48cGF0aCBkPSJNMjUuMjUxIDYuNDYxYy0xMC4zMTggMC0xOC42ODMgOC4zNjUtMTguNjgzIDE4LjY4M2g0LjA2OGMwLTguMDcxIDYuNTQzLTE0LjYxNSAxNC42MTUtMTQuNjE1VjYuNDYxeiI+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlVHlwZT0ieG1sIiBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgZnJvbT0iMCAyNSAyNSIgdG89IjM2MCAyNSAyNSIgZHVyPSIwLjZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPjwvcGF0aD48L3N2Zz4=);
-            position: absolute;
-            width: 40px;
-            height: 40px;;
-            top: calc(1rem + 60px);
-            right: 1rem;
         }
         #banner{
             position: absolute;
@@ -59,10 +45,22 @@ main{
             top: 0;
             width: 100%;
             height: 100%;
-            @include bg;
             &.blur {
                 filter: brightness(0.5) blur(5px)!important;
                 transform: scale(1.5)!important;
+            }
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transition: $animationTime-very-slow ease-in-out opacity;
+                &.loaded {
+                    opacity: 1!important;
+                }
             }
         }
         &.dark #banner{
@@ -199,16 +197,6 @@ main{
                 & a{
                     border-bottom: 1px solid white;
                 }
-            }
-        }
-        .lazy{
-            @include bg;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: 1.2s $animationTimingFunc opacity;
-            &.loaded{
-                opacity: 1;
             }
         }
     }
@@ -377,13 +365,22 @@ section#index-list{
                     @media screen and (max-width: 767.5px) {
                         margin-bottom: 8px;
                     }
+                    background: #eeeff1;
+                    .theme-dark & {
+                        background: rgba(#eeeff1, 0.1);
+                    }
                     img{
-                        @include bg;
                         width: 100%;
                         height: 100%;
                         max-width: 100%;
                         object-fit: cover;
                         margin: 0;
+                        &.lazyload {
+                            opacity: 0;
+                            &.loaded {
+                                opacity: 1!important;
+                            }
+                        }
                     }
                 }
                 .content-wrap {
@@ -410,6 +407,7 @@ section#index-list{
                     width: 100%;
                     height: 100%;
                     left: 0;
+                    background-color: #12121c!important;
                 }
                 .title, p, .post-meta-index {
                     color: #fff!important;

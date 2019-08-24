@@ -72,7 +72,7 @@ function themeConfig($form)
     $form->addInput($reward);
     $serifincontent = new Typecho_Widget_Helper_Form_Element_Radio('serifincontent', array('0' => '不启用', '1' => '启用'), '0', '文章内容使用衬线体', '是否对文章内容启用衬线体（思源宋体）。此服务由 Google Fonts 提供，可能会有加载较慢的情况。');
     $form->addInput($serifincontent);
-    $lazyload = new Typecho_Widget_Helper_Form_Element_Radio('lazyload', array('0' => '不启用', '1' => '启用'), '0', '图片懒加载', '是否启用图片懒加载。');
+    $lazyload = new Typecho_Widget_Helper_Form_Element_Radio('lazyload', array('1' => '启用', '0' => '不启用'), '1', '图片懒加载', '是否启用图片懒加载。');
     $form->addInput($lazyload);
     $enableMath = new Typecho_Widget_Helper_Form_Element_Radio('enableMath', array('0' => '不启用', '1' => '启用'), '0', '启用数学公式解析', '是否启用数学公式解析。启用后会多加载 1~2M 的资源。');
     $form->addInput($enableMath);

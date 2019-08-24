@@ -69,6 +69,16 @@ var VOID_Content = {
         });
     },
 
+    // 处理友链列表
+    parseBoardThumbs: function () {
+        $.each($('.board-thumb'), function(i, item) {
+            if (VOIDConfig.lazyload)
+                $(item).html('<img class="lazyload instant" data-src="' +$(item).attr('data-thumb')+ '">');
+            else
+                $(item).html('<img src="' +$(item).attr('data-thumb')+ '">');
+        });
+    },
+
     // 解析URL
     parseUrl: function () {
         var domain = document.domain;
@@ -141,9 +151,7 @@ var VOID = {
         VOID_Ui.MasonryCtrler.init();
         VOID_Ui.DarkModeSwitcher.checkColorScheme();
         VOID_Ui.checkScrollTop(false);
-        if (VOIDConfig.lazyload) {
-            VOID_Ui.lazyloadCallback();
-        }
+        VOID_Content.parseBoardThumbs();
         VOID_Ui.lazyload();
         VOID_Ui.headroom();
 
@@ -188,7 +196,10 @@ var VOID = {
     // PJAX 结束后
     afterPjax: function () {
         NProgress.done();
-        
+
+        VOID_Content.parseBoardThumbs();
+        VOID_Ui.lazyload();
+
         if ($('#loggin-form').length) {
             $('#loggin-form').addClass('need-refresh');
         }

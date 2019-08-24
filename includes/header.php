@@ -48,8 +48,8 @@ if($this->is('page')){
         if ($setting['indexStyle'] == 1) { // 强制不显示
             echo ' single-col';
         }
-        if($setting['lightFont']) {
-            echo ' light-font';
+        if(Helper::options()->lazyload == '1') {
+            echo ' lazyload-img';
         }
     ?>">
 

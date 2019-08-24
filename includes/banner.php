@@ -28,7 +28,6 @@ if($this->is('post')) {
 if($this->is('page')){
     $banner = $this->fields->banner;
 }
-$lazyID = rand(1,10000);
 ?>
 
 <div class="lazy-wrap
@@ -38,8 +37,9 @@ $lazyID = rand(1,10000);
         if($this->is('index')) echo ' index';?>">
 
     <?php if(!empty($banner)): ?>
-        <div id="banner" data-lazy-id=<?php echo $lazyID; ?> class="lazy <?php if($blur) echo 'blur'; ?>"></div>
-        <script>VOID_Ui.registerLazyLoadImg("<?php echo $banner; ?>",'[data-lazy-id="<?php echo $lazyID; ?>"]')</script>
+        <div id="banner" class="<?php if($blur) echo 'blur'; ?>">
+            <img class="lazyload instant" data-src="<?php echo $banner; ?>">
+        </div>
         <script>$('body>header').removeClass('force-dark').removeClass('no-banner');</script>
     <?php else: ?>
         <script>$('body>header').addClass('force-dark').addClass('no-banner');</script>

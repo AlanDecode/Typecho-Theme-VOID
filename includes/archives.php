@@ -34,7 +34,11 @@ $setting = $GLOBALS['VOIDSetting'];
                         <article class="yue itemscope itemtype="http://schema.org/Article">
                             <?php if($this->fields->banner != ''): ?>
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                    <img src="<?php echo $this->fields->banner;?>">
+                                    <?php if (Helper::options()->lazyload == '1'): ?>
+                                        <img class="lazyload instant" src="<?php echo Contents::getPlaceHolder(); ?>" data-src="<?php echo $this->fields->banner;?>">
+                                    <?php else: ?>
+                                        <img src="<?php echo $this->fields->banner;?>">
+                                    <?php endif; ?>
                                     <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                                 </div>
                             <?php endif; ?>

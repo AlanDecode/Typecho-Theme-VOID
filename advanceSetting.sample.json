@@ -36,9 +36,6 @@
         "end": 7.0      // 直到早 6 点 59 分
     },
 
-    // 在文章与评论内容中使用更细的字体
-    "lightFont": false,
-
     // 当操作系统为深色主题时主题颜色自动切换，仅在 macOS 10.14.4 及以上版本的 Safari 中可用
     "followSystemColorScheme" : true, 
 
