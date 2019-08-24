@@ -182,6 +182,9 @@ article {
         }
     }
     div[itemprop=articleBody] {
+        .light-font & {
+            font-weight: 300;
+        }
         text-align: justify;
         &.full {        
             margin-bottom: 2rem;

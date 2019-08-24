@@ -48,6 +48,9 @@ if($this->is('page')){
         if ($setting['indexStyle'] == 1) { // 强制不显示
             echo ' single-col';
         }
+        if($setting['lightFont']) {
+            echo ' light-font';
+        }
     ?>">
 
     <style>

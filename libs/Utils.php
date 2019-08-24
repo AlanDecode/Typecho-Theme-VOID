@@ -326,6 +326,7 @@ class Utils
             'parseFigcaption' => true,
             'rssPicProtect' => false,
             'siteBg' => '',
+            'lightFont' => false,
             'siteBgVertical' => '',
             'bgMaskColor' => array(),
             'grayscaleBg' => true,
