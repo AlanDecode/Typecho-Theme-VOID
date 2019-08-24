@@ -141,6 +141,9 @@ var VOID = {
         VOID_Ui.MasonryCtrler.init();
         VOID_Ui.DarkModeSwitcher.checkColorScheme();
         VOID_Ui.checkScrollTop(false);
+        if (VOIDConfig.lazyload) {
+            VOID_Ui.lazyloadCallback();
+        }
         VOID_Ui.lazyload();
         VOID_Ui.headroom();
 

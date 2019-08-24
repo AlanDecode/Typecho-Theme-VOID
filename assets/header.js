@@ -224,30 +224,32 @@ VOID_Ui = {
 
     lazyload: function () {
         if (VOIDConfig.lazyload) {
-            window.addEventListener('scroll', VOID_Util.throttle(function () {
-                var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
-                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
-                $.each($('img.lazyload'), function (i, item) {
-                    if ($(item).offset().top < viewPortHeight + scrollTop && $(item).offset().top + $(item).height() > scrollTop) {
-                        if (!$(item).hasClass('loaded') && !$(item).hasClass('error')) {
-                            var img = new Image();
-                            img.src = $(item).attr('data-src');
-                            img.onload = function () {
-                                $(item).animate({ opacity: 0 }, 150);
-                                setTimeout(function () {
-                                    $(item).attr('src', $(item).attr('data-src'));
-                                    $(item).addClass('loaded');
-                                    $(item).animate({ opacity: 1 }, 180);
-                                }, 180);
-                            };
-                            img.onerror = function () {
-                                $(item).addClass('error');
-                            };
-                        }
-                    }
-                });
-            }, 100, 1000));
+            window.addEventListener('scroll', VOID_Util.throttle(VOID_Ui.lazyloadCallback, 100, 1000));
         }
+    },
+
+    lazyloadCallback: function () {
+        var viewPortHeight = document.documentElement.clientHeight; //可见区域高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+        $.each($('img.lazyload'), function (i, item) {
+            if ($(item).offset().top < viewPortHeight + scrollTop && $(item).offset().top + $(item).height() > scrollTop) {
+                if (!$(item).hasClass('loaded') && !$(item).hasClass('error')) {
+                    var img = new Image();
+                    img.src = $(item).attr('data-src');
+                    img.onload = function () {
+                        $(item).animate({ opacity: 0 }, 150);
+                        setTimeout(function () {
+                            $(item).attr('src', $(item).attr('data-src'));
+                            $(item).addClass('loaded');
+                            $(item).animate({ opacity: 1 }, 180);
+                        }, 180);
+                    };
+                    img.onerror = function () {
+                        $(item).addClass('error');
+                    };
+                }
+            }
+        });
     },
 
     headroom: function () {
