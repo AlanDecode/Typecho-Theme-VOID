@@ -21,6 +21,8 @@
         font-size: 22px;
     }
 
+    -webkit-font-smoothing: antialiased;
+
     .serif & {
         font-family: $void-font-serif;
     }
@@ -441,24 +443,6 @@
     }
     .yue blockquote blockquote {
         margin-left: 0;
-    }
-}
-
-.yue blockquote.sp {
-    border: none;
-    margin-left: 0;
-    position: relative;
-    padding: 0 0 0 2.2em;
-    p:first-child {
-        margin-top: 0;
-    }
-    &::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: "\201c";
-        font: 700 62px/1 "Droid Serif",serif;
-        color: rgba(0,0,0,.1);
     }
 }
 

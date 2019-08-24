@@ -36,12 +36,9 @@ $animationTime: 0.2s;
 $animationTime-fast: 0.1s;
 $animationTimingFunc: cubic-bezier(.25,.46,.45,.94);
 
-$void-font-default:  'Droid Serif', -apple-system, BlinkMacSystemFont, "Droid Sans", "Helvetica Neue", "PingFang SC",
-"Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-$void-font-sans: -apple-system, BlinkMacSystemFont, "Droid Sans", "Helvetica Neue", "PingFang SC",
-"Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-$void-font-serif: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", 
-"PingFang SC","Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+$void-font-default: sans-serif;
+$void-font-sans: sans-serif;
+$void-font-serif: 'Noto Serif SC', sans-serif;
 
 @mixin bg {
     background: {

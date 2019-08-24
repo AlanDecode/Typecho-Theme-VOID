@@ -111,8 +111,6 @@ if (isset($_POST['void_action'])) {
     </style>
 
     <?php if(Utils::isSerif($setting)): ?>
-        <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified" rel="stylesheet">
-    <?php else: ?>
-        <link id="stylesheet_droid" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" rel="stylesheet">
+        <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700&amp;subset=chinese-simplified" rel="stylesheet">
     <?php endif; ?>
     </head>
