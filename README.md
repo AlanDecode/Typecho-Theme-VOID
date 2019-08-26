@@ -56,8 +56,7 @@
 
 ## **常见问题（请务必仔细阅读）**
 
-<details><summary>如何开启文章点赞？</summa修复错误的 `<br>` 标签高度
-* 其它细节调整
+<details><summary>如何开启文章点赞？</summary><br>
 
 文章点赞功能依赖配套插件，请上传至插件目录并启用。插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。
 

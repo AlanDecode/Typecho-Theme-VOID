@@ -111,6 +111,12 @@ if (isset($_POST['void_action'])) {
     </style>
 
     <?php if(Utils::isSerif($setting)): ?>
-        <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700&amp;subset=chinese-simplified" rel="stylesheet">
+        <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700&display=swap&subset=chinese-simplified" rel="stylesheet">
     <?php endif; ?>
+
+    <?php if($setting['useFiraCodeFont']): ?>
+        <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+        <style>.yue code, .yue tt {font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace}</style>
+    <?php endif; ?>
+
     </head>

@@ -23,6 +23,10 @@
     // 1: 14px, 2: 16px, 3: 18px, 4: 20px, 5: 22px
     "defaultFontSize": 3,
 
+    // 对代码启用 Fira Code 字体。Fira Code 字体有漂亮的 ligature 特性
+    // 由 Google Fonts 提供支持，可能延长页面加载时间
+    "useFiraCodeFont": false,
+
     // 在图片下方显示图题
     "parseFigcaption": true,
     

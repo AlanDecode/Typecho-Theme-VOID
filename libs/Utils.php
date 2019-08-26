@@ -318,6 +318,7 @@ class Utils
             'weiboId' => '',
             'headerMode' => 1,
             'defaultFontSize' => 3,
+            'useFiraCodeFont' => false,
             'followSystemColorScheme' => false,
             'largePhotoSet' => true,
             'macStyleCodeBlock' => true,
