@@ -28,9 +28,9 @@ if($this->fields->bannerStyle > 0) {
                     <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
                     <span hidden itemprop="author"><?php $this->author(); ?></span>
                     <time hidden datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
-                    
-                    <p <?php if($this->fields->excerpt=='') echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
-                    
+
+                    <p <?php if($this->fields->excerpt=='' || !$setting['showHeadlineInPost']) echo 'hidden'?> class="headline" itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
+
                     <?php if($this->fields->banner != ''): ?>
                         <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $setting['bannerStyle'] == 4 || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                             <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>">

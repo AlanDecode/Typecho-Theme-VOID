@@ -325,6 +325,7 @@ class Utils
             'lineNumbersOnMobile' => true,
             'parseFigcaption' => true,
             'siteBg' => '',
+            'showHeadlineInPost' => true,
             'siteBgVertical' => '',
             'bgMaskColor' => array(),
             'grayscaleBg' => true,
