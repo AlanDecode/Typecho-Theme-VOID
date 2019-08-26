@@ -142,20 +142,9 @@ article {
             margin: 0!important;
         }
         margin-bottom: 25px;
-        @media screen and (max-width: 860.5px){
-            width: calc(100% + 40px);
-            margin-left: -20px;
-        }
-        @media screen and (min-width: 859.5px) {
-            padding: 6px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            .theme-dark & {
-                border-color: $td-borderColor;
-            }
-            width: 100vw;
-            margin-left: calc(-50vw + 410px);
-        }
-        @media screen and (min-width: 1023.5px) {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        @media screen and (min-width: 1200px) {
             width: 1024px;
             margin-left: -102px;
         }
@@ -220,15 +209,11 @@ article {
             margin-left: -20px;
         }
         &.large {
-            @media screen and (min-width: 859.5px) {
-                width: 100vw;
-                margin-left: calc(-50vw + 410px);
-            }
-            @media screen and (min-width: 1023.5px) {
+            @media screen and (min-width: 1200px) {
                 width: 1024px;
                 margin-left: -102px;
             }
-            @media screen and (min-width: 1199.5px) {
+            @media screen and (min-width: 1366px) {
                 width: 1200px;
                 margin-left: -190px;
             }
