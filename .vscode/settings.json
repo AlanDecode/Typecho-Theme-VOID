@@ -11,4 +11,7 @@
     ],
     "liveSassCompile.settings.showOutputWindow": false,
     "liveSassCompile.settings.generateMap": false,
+    "files.associations": {
+        "*.json": "jsonc"
+    }
 }
