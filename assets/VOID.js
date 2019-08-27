@@ -299,13 +299,6 @@ var VOID = {
         }
     },
 
-    manageComment: function(item) {
-        if (window.confirm($(item).attr('data-lang'))) {
-            VOID_Ui.rememberPos();
-            window.location.href = $(item).attr('data-action');
-        }
-    },
-
     startSearch: function (item) {
         var c = $(item).val();
         $(item).val('');

@@ -129,15 +129,6 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <b><cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
                 $this->author();
                 $singleCommentOptions->afterAuthor(); ?></cite></b><span><?php echo $this->getParent(); ?></span>
-                <?php if($this->user->hasLogin()): ?>
-                    <span class="manage-comments">[ <a target="_self" onclick="VOID.manageComment(this);" no-pjax data-lang="确定删除此条评论？" href="javascript:void(0)" data-action="<?php $this->_security->index('/action/comments-edit?do=delete&coid=' . $this->coid); ?>">删除</a> | 
-                    <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" data-lang="确定标记此条评论为垃圾评论？" data-action="<?php $this->_security->index('/action/comments-edit?do=spam&coid=' . $this->coid); ?>">垃圾</a> | 
-                    <?php if ($this->status == 'approved'): ?>
-                        <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" data-lang="确定标记为待审评论？" data-action="<?php $this->_security->index('/action/comments-edit?do=waiting&coid=' . $this->coid); ?>">待审</a>
-                    <?php else: ?>
-                        <a target="_self" onclick="VOID.manageComment(this);" no-pjax href="javascript:void(0)" data-lang="确定标记为通过？" data-action="<?php $this->_security->index('/action/comments-edit?do=approved&coid=' . $this->coid); ?>">通过</a>
-                    <?php endif; ?>]</span>
-                <?php endif; ?>
             </div>
             <span>
                 <a href="<?php $this->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $this->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
