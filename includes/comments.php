@@ -8,6 +8,7 @@
  * @version     2019-01-15 0.1
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$setting = $GLOBALS['VOIDSetting'];
 ?>
 <div class="comments-container float-up">
     <section id="comments" class="container">
@@ -27,6 +28,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <?php $comments->cancelReply(); ?>
             </div>
             <h3 id="response" class="widget-title text-left">添加新评论</h3>
+            <?php if(!empty($setting['commentNotification'])): ?>
+                <p style="padding: 0.75rem 0.5rem" class="comment-notification notice"><?php echo $setting['commentNotification']; ?></p>
+            <?php endif; ?>
             <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form">
                 <?php if($this->user->hasLogin()): ?>
                 <p id="logged-in" data-name="<?php $this->user->screenName(); ?>" data-url="<?php $this->user->url(); ?>" data-email="<?php $this->user->mail(); ?>" ><?php _e('登录身份: '); ?><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>. <a no-pjax href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></p>

@@ -41,6 +41,8 @@
     // 例如设置为 [5, 1.5] 表示点踩者大于 5 人，且点踩者达到点赞者 1.5 倍时折叠评论
     "commentFoldThreshold": [5, 1.5],
 
+    "commentNotification": "请不要水评论",
+
     // 夜间模式时间段
     "darkModeTime" : {
         "start": 22.5,  // 晚 22 点 30 分开始

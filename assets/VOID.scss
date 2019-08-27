@@ -147,6 +147,46 @@ body{
     }
 }
 
+p.notice {
+    background: #f0f8e5;
+    padding: 0.5rem;
+    border: 1px dashed #86cc00;
+    .theme-dark & {
+        background: $td-bgColor-dark;
+        border-color: $td-bgColor-dark;
+    }
+    .theme-dark.with-bg & {
+        background: rgba(#fff, 0.075);
+    }
+    position: relative;
+    &::before {
+        content: "Notice";
+        position: absolute;
+        left: 0.5rem;
+        font-size: 0.8rem;
+        top: -0.5rem;
+        z-index: 1;
+        line-height: 1;
+        padding: 0 0.3rem;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 6.4px;
+        background: #f0f8e5;
+        .theme-dark & {
+            background: $td-bgColor-dark;
+        }
+        .theme-dark.with-bg & {
+            background: none;
+        }
+        left: 0.5rem;
+        top: -1px;
+        width: 54.1px;
+        z-index: 0;
+    }
+}
+
 #bg-mask {
     display: none;
     position: fixed;

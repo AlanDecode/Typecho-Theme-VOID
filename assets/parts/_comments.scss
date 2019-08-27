@@ -191,7 +191,7 @@
             }
             &.fold>.comment-content-wrap {
                 .comment-content {
-                    p {
+                    .comment-content-inner {
                         display: none;
                     }
                     span.fold {
