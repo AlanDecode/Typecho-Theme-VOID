@@ -274,6 +274,8 @@ var VOID = {
                 $(item).addClass('done');
             }
         });
+
+        VOID_Comment.handleLike();
     },
 
     like: function (sel) {
@@ -325,6 +327,74 @@ var VOID = {
         if (event.keyCode == 13) {
             VOID.startSearch(item);
         }
+    }
+};
+
+var VOID_Comment = {
+    donelike: null,
+    donedislike: null,
+
+    toggleFoldComment: function (coid) {
+        $('#comment-'+String(coid)).toggleClass('fold');
+    },
+
+    like: function (item) {
+        var coid = parseInt($(item).attr('data-coid'));
+        VOID_Comment.req(coid, 'like');
+    },
+
+    dislike: function (item) {
+        var coid = parseInt($(item).attr('data-coid'));
+        VOID_Comment.req(coid, 'dislike');
+    },
+
+    req: function (coid, type) {
+        // 首先检查该 coid 是否已经点过赞了
+        VOID_Comment.donelike = VOID_Util.getCookie('void_co_likes');
+        if (VOID_Comment.donelike == null) VOID_Comment.donelike = ',';
+        VOID_Comment.donedislike = VOID_Util.getCookie('void_co_dislikes');
+        if (VOID_Comment.donedislike == null) VOID_Comment.donedislike = ',';
+
+        if (VOID_Comment.donelike.indexOf(',' + String(coid) + ',') != -1
+            || VOID_Comment.donedislike.indexOf(',' + String(coid) + ',') != -1) {
+            VOID.alert('您已经投过票了~');
+        } else {
+            var api = VOIDConfig.commentVotePath.replace('$TYPE$', type);
+            $.post(api, {
+                coid: coid
+            }, function (data) {
+                VOID_Comment.postReq(coid, type);
+            }, 'json');
+        }
+    },
+
+    postReq: function (coid, type) {
+        var sel = 'a.comment-vote.'+type+'[data-coid='+String(coid)+']';
+        $(sel).addClass('done');
+        var num = $(sel).find('.co-like-num').text();
+        $(sel).find('.co-like-num').text(parseInt(num) + 1);
+        // 设置 cookie，一周有效
+        if (type == 'like') {
+            VOID_Comment.donelike = VOID_Comment.donelike + String(coid) + ',';
+            VOID_Util.setCookie('void_co_likes', VOID_Comment.donelike, 3600 * 24 * 7);
+        } else {
+            VOID_Comment.donedislike = VOID_Comment.donedislike + String(coid) + ',';
+            VOID_Util.setCookie('void_co_dislikes', VOID_Comment.donedislike, 3600 * 24 * 7);
+        }
+    },
+
+    handleLike: function () {
+        var check = function (cookiestr, type) {
+            if(cookiestr == null) return;
+            $.each($('a.comment-vote.'+type), function (i, item) {
+                var coid = $(item).attr('data-coid');
+                if (cookiestr.indexOf(',' + coid + ',') != -1) {
+                    $(item).addClass('done');
+                }
+            });
+        };
+        check(VOID_Util.getCookie('void_co_likes'), 'like');
+        check(VOID_Util.getCookie('void_co_dislikes'), 'dislike');
     }
 };
 

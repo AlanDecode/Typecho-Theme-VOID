@@ -35,7 +35,7 @@ function themeInit()
     Helper::options()->commentsOrder = 'DESC';
 }
 
-$GLOBALS['VOIDPluginREQ'] = 1.00;
+$GLOBALS['VOIDPluginREQ'] = 1.1;
 
 /**
  * 主题设置

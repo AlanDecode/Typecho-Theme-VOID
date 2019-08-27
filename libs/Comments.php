@@ -102,6 +102,9 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         if (function_exists('threadedComments')) {
             return threadedComments($this, $singleCommentOptions);
         }
+
+        $setting = $GLOBALS['VOIDSetting'];
+        $metaArr = $this->getLikesAndDislikes();
         
         $commentClass = '';
         if ($this->authorId) {
@@ -111,6 +114,10 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 $commentClass .= ' comment-by-user';
             }
         }
+        if ($metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
+            && ($metaArr['dislikes'] >= $metaArr['likes']*$setting['commentFoldThreshold'][1])) {
+                $commentClass .= ' fold';
+            }
 ?>
 <div itemscope itemtype="http://schema.org/UserComments" id="<?php $this->theId(); ?>" class="comment-body<?php
     if ($this->levels > 0) {
@@ -137,9 +144,15 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <?php if ('waiting' == $this->status) { ?>
                 <em class="comment-awaiting-moderation"><?php $singleCommentOptions->commentStatus(); ?></em>
                 <?php } ?>
+                <a style="margin: 0 5px" no-pjax target="_self" class="comment-vote like" data-coid="<?php echo $this->coid; ?>" href="javascript:void(0)" onclick="VOID_Comment.like(this)">
+                    <i class="voidicon-thumbs-up"></i> <span class="co-like-num"><?php echo $metaArr['likes']?></span></a>
+                <a no-pjax target="_self" class="comment-vote dislike" data-coid="<?php echo $this->coid; ?>" href="javascript:void(0)" onclick="VOID_Comment.dislike(this)">
+                    <i class="voidicon-thumbs-down"></i> <span class="co-like-num"><?php echo $metaArr['dislikes']?></span></a>
             </span>
         </div>
         <div class="comment-content yue" itemprop="commentText">
+            <span class="fold">[该评论已被自动折叠 | <a no-pjax target="_self" href="javascript:void(0)" 
+                onclick="VOID_Comment.toggleFoldComment(<?php echo $this->coid; ?>)">点击展开</a>]</span>
             <?php echo Contents::parseBiaoQing($this->content); ?>
         </div>
         <div class="comment-reply">
@@ -157,7 +170,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
   
     private function getParent(){
         $db = Typecho_Db::get();
-        $parentID = $db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $this->coid));
+        $parentID = $db->fetchRow($db->select('parent')->from('table.comments')->where('coid = ?', $this->coid));
         $parentID=$parentID['parent'];
         if($parentID=='0') return '';
         else {
@@ -167,6 +180,17 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             return ' <span style="font-size: 0.9rem">回复</span> <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
         }
     }  
+
+    /**
+     * 获取评论赞踩
+     */
+    private function getLikesAndDislikes() {
+        $db = Typecho_Db::get();
+        $row = $db->fetchRow($db->select('likes, dislikes')
+            ->from('table.comments')
+            ->where('coid = ?', $this->coid));
+        return array('likes' => $row['likes'], 'dislikes' => $row['dislikes']);
+    }
     
     /**
      * 获取当前评论链接

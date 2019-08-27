@@ -334,7 +334,8 @@ class Utils
                 'start' => 22.0,
                 'end' => 7.0
             ),
-            'link' => array()
+            'link' => array(),
+            'commentFoldThreshold' => array(5, 1.5)
         );
 
         if(!empty($options->advance)){

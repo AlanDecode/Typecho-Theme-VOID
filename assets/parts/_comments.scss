@@ -184,6 +184,20 @@
                     transform: translateX(-50%);
                     top: calc(52px + 0.5rem);
                 }
+                span.fold {
+                    display: none;
+                    opacity: 0.5;
+                }
+            }
+            &.fold>.comment-content-wrap {
+                .comment-content {
+                    p {
+                        display: none;
+                    }
+                    span.fold {
+                        display: inline;
+                    }
+                }
             }
             .comment-meta,.comment-content{
                 margin-left: calc(52px + 1rem);
@@ -213,6 +227,10 @@
                         color: $td-textColor-dark;
                     }
                     font-size: 0.9rem;
+                    &.comment-vote:hover,
+                    &.comment-vote.done {
+                        color: $highlightColor!important;
+                    }
                 }
             }
             .comment-content{

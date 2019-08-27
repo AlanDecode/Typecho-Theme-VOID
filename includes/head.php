@@ -72,7 +72,8 @@ if (isset($_POST['void_action'])) {
         headerMode: <?php echo $setting['headerMode']; ?>,
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
         VOIDPlugin: <?php echo $setting['VOIDPlugin'] ? 'true' : 'false'; ?>,
-        likePath: "<?php Utils::index('/action/void_like?up'); ?>",
+        likePath: "<?php Utils::index('/action/void_vote?post_up'); ?>",
+        commentVotePath: "<?php Utils::index('/action/void_vote?comment_$TYPE$'); ?>",
         lightBg: "",
         darkBg: "",
         lineNumbers: <?php if ($setting['lineNumbers']) {
