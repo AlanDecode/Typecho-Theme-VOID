@@ -144,15 +144,30 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <?php if ('waiting' == $this->status) { ?>
                 <em class="comment-awaiting-moderation"><?php $singleCommentOptions->commentStatus(); ?></em>
                 <?php } ?>
-                <a style="margin: 0 5px" no-pjax target="_self" class="comment-vote like" data-coid="<?php echo $this->coid; ?>" href="javascript:void(0)" onclick="VOID_Comment.like(this)">
-                    <i class="voidicon-thumbs-up"></i> <span class="co-like-num"><?php echo $metaArr['likes']?></span></a>
-                <a no-pjax target="_self" class="comment-vote dislike" data-coid="<?php echo $this->coid; ?>" href="javascript:void(0)" onclick="VOID_Comment.dislike(this)">
-                    <i class="voidicon-thumbs-down"></i> <span class="co-like-num"><?php echo $metaArr['dislikes']?></span></a>
+                <a style="margin: 0 5px" no-pjax target="_self" class="comment-vote vote-button" 
+                    href="javascript:void(0)" 
+                    onclick="VOID_Vote.vote(this)"
+                    data-item-id="<?php echo $this->coid;?>" 
+                    data-type="up"
+                    data-table="comment"
+                ><i class="voidicon-thumbs-up"></i> <span class="value"><?php echo $metaArr['likes']?></span>
+                </a>
+                <a no-pjax target="_self" class="comment-vote vote-button" 
+                    href="javascript:void(0)" 
+                    onclick="VOID_Vote.vote(this)"
+                    data-item-id="<?php echo $this->coid;?>" 
+                    data-type="down"
+                    data-table="comment"
+                ><i class="voidicon-thumbs-down"></i> <span class="value"><?php echo $metaArr['dislikes']?></span>
+                </a>
             </span>
         </div>
         <div class="comment-content yue" itemprop="commentText">
-            <span class="fold">[该评论已被自动折叠 | <a no-pjax target="_self" href="javascript:void(0)" 
-                onclick="VOID_Comment.toggleFoldComment(<?php echo $this->coid; ?>)">点击展开</a>]</span>
+            <?php if ($metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
+            && ($metaArr['dislikes'] >= $metaArr['likes']*$setting['commentFoldThreshold'][1])) { ?>
+                <span class="fold">[该评论已被自动折叠 | <a no-pjax target="_self" href="javascript:void(0)" 
+                onclick="VOID_Vote.toggleFoldComment(<?php echo $this->coid; ?>, this)">点击展开</a>]</span>
+            <?php }?>
             <div class="comment-content-inner"><?php echo Contents::parseBiaoQing($this->content); ?></div>
         </div>
         <div class="comment-reply">

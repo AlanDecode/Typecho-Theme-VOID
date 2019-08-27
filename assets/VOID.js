@@ -165,7 +165,7 @@ var VOID = {
         VOID_Content.math();
         VOID_Content.hyphenate();
         
-        VOID.handleLike();
+        VOID_Vote.reload();
         AjaxComment.init();
 
         $('body').on('click', function (e) {
@@ -217,7 +217,7 @@ var VOID = {
         VOID_Content.pangu();
         VOID_Content.bigfoot();
 
-        VOID.handleLike();
+        VOID_Vote.reload();
 
         // 重载表情
         if ($('.OwO').length > 0) {
@@ -263,44 +263,6 @@ var VOID = {
         }, t);
     },
 
-    // 点赞事件处理
-    handleLike: function () {
-        var liked = VOID_Util.getCookie('void_likes');
-        if (liked == null) return;
-        // 已点赞高亮
-        $.each($('.post-like'), function (i, item) {
-            var cid = String($(item).attr('data-cid'));
-            if (liked.indexOf(',' + String(cid) + ',') != -1) {
-                $(item).addClass('done');
-            }
-        });
-
-        VOID_Comment.handleLike();
-    },
-
-    like: function (sel) {
-        var cid = parseInt($(sel).attr('data-cid'));
-
-        // 首先检查该 cid 是否已经点过赞了
-        var liked = VOID_Util.getCookie('void_likes');
-        if (liked == null) liked = ',';
-
-        if (liked.indexOf(',' + String(cid) + ',') != -1) {
-            VOID.alert('您已经点过赞了~');
-        } else {
-            $.post(VOIDConfig.likePath, {
-                cid: cid
-            }, function (data) {
-                $(sel).addClass('done');
-                var num = $(sel).find('.like-num').text();
-                $(sel).find('.like-num').text(parseInt(num) + 1);
-                // 设置 cookie，一周有效
-                liked = liked + String(cid) + ',';
-                VOID_Util.setCookie('void_likes', liked, 3600 * 24 * 7);
-            }, 'json');
-        }
-    },
-
     startSearch: function (item) {
         var c = $(item).val();
         $(item).val('');
@@ -330,72 +292,99 @@ var VOID = {
     }
 };
 
-var VOID_Comment = {
-    donelike: null,
-    donedislike: null,
+var VOID_Vote = {
+    vote: function (item) {
+        var type = $(item).attr('data-type');
+        var id = $(item).attr('data-item-id');
+        var table = $(item).attr('data-table');
 
-    toggleFoldComment: function (coid) {
-        $('#comment-'+String(coid)).toggleClass('fold');
-    },
+        var cookieName = 'void_vote_' + table + '_' + type;
+        var voted = VOID_Util.getCookie(cookieName);
+        if (voted == null) voted = ',';
 
-    like: function (item) {
-        var coid = parseInt($(item).attr('data-coid'));
-        VOID_Comment.req(coid, 'like');
-    },
-
-    dislike: function (item) {
-        var coid = parseInt($(item).attr('data-coid'));
-        VOID_Comment.req(coid, 'dislike');
-    },
-
-    req: function (coid, type) {
-        // 首先检查该 coid 是否已经点过赞了
-        VOID_Comment.donelike = VOID_Util.getCookie('void_co_likes');
-        if (VOID_Comment.donelike == null) VOID_Comment.donelike = ',';
-        VOID_Comment.donedislike = VOID_Util.getCookie('void_co_dislikes');
-        if (VOID_Comment.donedislike == null) VOID_Comment.donedislike = ',';
-
-        if (VOID_Comment.donelike.indexOf(',' + String(coid) + ',') != -1
-            || VOID_Comment.donedislike.indexOf(',' + String(coid) + ',') != -1) {
+        // 首先检查本地 cookie
+        if (voted.indexOf(',' + id + ',') != -1) {
+            $(item).addClass('done');
             VOID.alert('您已经投过票了~');
-        } else {
-            var api = VOIDConfig.commentVotePath.replace('$TYPE$', type);
-            $.post(api, {
-                coid: coid
-            }, function (data) {
-                VOID_Comment.postReq(coid, type);
-            }, 'json');
+            return;
         }
-    },
 
-    postReq: function (coid, type) {
-        var sel = 'a.comment-vote.'+type+'[data-coid='+String(coid)+']';
-        $(sel).addClass('done');
-        var num = $(sel).find('.co-like-num').text();
-        $(sel).find('.co-like-num').text(parseInt(num) + 1);
-        // 设置 cookie，一周有效
-        if (type == 'like') {
-            VOID_Comment.donelike = VOID_Comment.donelike + String(coid) + ',';
-            VOID_Util.setCookie('void_co_likes', VOID_Comment.donelike, 3600 * 24 * 7);
-        } else {
-            VOID_Comment.donedislike = VOID_Comment.donedislike + String(coid) + ',';
-            VOID_Util.setCookie('void_co_dislikes', VOID_Comment.donedislike, 3600 * 24 * 7);
+        // 当是评论投票时检查是否已经投过另一个选项
+        if ($(item).hasClass('comment-vote')) {
+            var type_2 = '';
+            if (type == 'up') type_2 = 'down';
+            else type_2 = 'up';
+            if (VOID_Vote.checkVoted(type_2, id, table)) {
+                VOID.alert('暂不支持更改投票哦～');
+                return;
+            }
         }
-    },
 
-    handleLike: function () {
-        var check = function (cookiestr, type) {
-            if(cookiestr == null) return;
-            $.each($('a.comment-vote.'+type), function (i, item) {
-                var coid = $(item).attr('data-coid');
-                if (cookiestr.indexOf(',' + coid + ',') != -1) {
+        $.ajax({
+            url: VOIDConfig.votePath + table,
+            type: 'POST',
+            data: JSON.stringify({
+                'id': parseInt(id),
+                'type': type
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                if (data.code >= 200 && data.code < 400) {
                     $(item).addClass('done');
+                    voted += id + ',';
+                    VOID_Util.setCookie(cookieName, voted, 3600 * 24 * 90);
                 }
-            });
-        };
-        check(VOID_Util.getCookie('void_co_likes'), 'like');
-        check(VOID_Util.getCookie('void_co_dislikes'), 'dislike');
-    }
+                switch (data.code) {
+                case 200:
+                    var prev = parseInt($(item).find('.value').text());
+                    $(item).find('.value').text(prev + 1);
+                    break;
+                case 302:
+                    VOID.alert('您好像已经投过票了呢～');
+                    break;
+                case 403:
+                    VOID.alert('暂不支持更改投票哦～');
+                    break;
+                default:
+                    break;
+                }
+            },
+            error: function () {
+                VOID.alert('投票失败 o(╥﹏╥)o，请稍后重试');
+            }
+        });
+    },
+
+    checkVoted: function (type, id, table) {
+        var cookieName = 'void_vote_' + table + '_' + type;
+        var voted = VOID_Util.getCookie(cookieName);
+        if (voted == null) voted = ',';
+        return voted.indexOf(',' + id + ',') != -1;
+    },
+
+    reload: function () {
+        // 高亮已记录的
+        $.each($('.vote-button'), function (i, item) {
+            var type = $(item).attr('data-type');
+            var id = $(item).attr('data-item-id');
+            var table = $(item).attr('data-table');
+
+            if (VOID_Vote.checkVoted(type, id, table)) {
+                $(item).addClass('done');
+            }
+        });
+    },
+
+    toggleFoldComment: function (coid, item) {
+        var sel = '#comment-'+String(coid);
+        $(sel).toggleClass('fold');
+        if ($(sel).hasClass('fold')) {
+            $(item).text('点击展开');
+        } else {
+            $(item).text('还是叠上吧');
+        }
+    },
 };
 
 var Share = {

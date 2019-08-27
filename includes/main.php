@@ -82,7 +82,16 @@ if($this->fields->bannerStyle > 0) {
                             <div hidden id="reward"><img src="<?php echo $setting['reward']; ?>"></div>
                         <?php endif; ?>
                         <?php if($setting['VOIDPlugin']):?>
-                            <a role=button aria-label="点赞" id="social" href="javascript:void(0);" data-cid="<?php echo $this->cid;?>" onclick="VOID.like(this);" class="btn btn-normal post-like">ENJOY <span class="like-num"><?php echo $this->likes; ?></span></a>
+                            <a role=button 
+                                aria-label="为文章点赞" 
+                                id="social" 
+                                href="javascript:void(0);" onclick="VOID_Vote.vote(this);" 
+                                data-item-id="<?php echo $this->cid;?>" 
+                                data-type="up"
+                                data-table="content"
+                                class="btn btn-normal post-like vote-button"
+                            >ENJOY <span class="value"><?php echo $this->likes; ?></span>
+                            </a>
                         <?php endif; ?>
                         
                         <a aria-label="分享到微博" href="javascript:void(0);" onclick="Share.toWeibo(this);" class="social-button-icon"><i class="voidicon-weibo"></i></a>

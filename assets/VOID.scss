@@ -151,6 +151,7 @@ p.notice {
     background: #f0f8e5;
     padding: 0.5rem;
     border: 1px dashed #86cc00;
+    line-height: 1.75;
     .theme-dark & {
         background: $td-bgColor-dark;
         border-color: $td-bgColor-dark;

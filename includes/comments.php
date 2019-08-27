@@ -29,7 +29,7 @@ $setting = $GLOBALS['VOIDSetting'];
             </div>
             <h3 id="response" class="widget-title text-left">添加新评论</h3>
             <?php if(!empty($setting['commentNotification'])): ?>
-                <p style="padding: 0.75rem 0.5rem" class="comment-notification notice"><?php echo $setting['commentNotification']; ?></p>
+                <p class="comment-notification notice"><?php echo $setting['commentNotification']; ?></p>
             <?php endif; ?>
             <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form">
                 <?php if($this->user->hasLogin()): ?>
