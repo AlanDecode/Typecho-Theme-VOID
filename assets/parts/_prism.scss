@@ -38,6 +38,15 @@ pre[class*="language-"].line-numbers > code {
     }
 }
 
+@media screen and (max-width: 767.5px) {
+    pre[class*="language-"].line-numbers > code {
+        padding-left: 10px;
+    }
+    .line-numbers .line-numbers-rows {
+        display: none;
+    }
+}
+
 .line-numbers-rows > span {
     pointer-events: none;
     display: block;
