@@ -36,6 +36,9 @@ if($this->is('page')){
         if($setting['macStyleCodeBlock']) {
             echo ' macStyleCodeBlock';
         }
+        if ($setting['lineNumbers']) {
+            echo ' line-numbers';
+        }
         if(Utils::isSerif($setting)) {
             echo ' serif';
         }

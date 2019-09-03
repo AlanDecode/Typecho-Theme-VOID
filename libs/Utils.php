@@ -323,7 +323,6 @@ class Utils
             'largePhotoSet' => true,
             'macStyleCodeBlock' => true,
             'lineNumbers' => true,
-            'lineNumbersOnMobile' => true,
             'parseFigcaption' => true,
             'siteBg' => '',
             'showHeadlineInPost' => true,

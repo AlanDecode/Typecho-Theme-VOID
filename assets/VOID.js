@@ -105,19 +105,21 @@ var VOID_Content = {
     },
 
     highlight: function () {
-        $.each($('pre code'), function(i, item){
-            var lang = '';
-            if ($(item).attr('class') != undefined && $(item).attr('class') !== '') {
-                lang = $(item).attr('class').toLowerCase().replace('lang-', '').replace('language-', '');
+        $.each($('.yue pre code'), function (i, item) {
+            var classStr = $(item).attr('class');
+
+            if (typeof(classStr) == 'undefined') {
+                classStr = 'language-none';
             }
-            $(item).parent().attr('data-lang', lang);
-            hljs.highlightBlock(item);
-            if (VOIDConfig.lineNumbers) {
-                hljs.lineNumbersBlock(item, {
-                    singleLine: true
-                });   
+
+            if (classStr.indexOf('lang') == -1) {
+                classStr += ' language-none';
             }
+
+            $(item).attr('class', classStr);
         });
+        
+        Prism.highlightAll();
     },
 
     bigfoot: function () {
@@ -158,9 +160,9 @@ var VOID = {
         VOID_Content.countWords();
         VOID_Content.parseTOC();
         VOID_Content.parsePhotos();
+        VOID_Content.highlight();
         VOID_Content.parseUrl();
         VOID_Content.pangu();
-        VOID_Content.highlight();
         VOID_Content.bigfoot();
         VOID_Content.math();
         VOID_Content.hyphenate();
@@ -211,7 +213,7 @@ var VOID = {
         VOID_Content.parseTOC();
         VOID_Content.parsePhotos();
         VOID_Content.parseUrl();
-        VOID_Content.highlight();        
+        VOID_Content.highlight();
         VOID_Content.math();
         VOID_Content.hyphenate();
         VOID_Content.pangu();

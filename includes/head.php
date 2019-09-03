@@ -75,15 +75,7 @@ if (isset($_POST['void_action'])) {
         votePath: "<?php Utils::index('/action/void_vote?'); ?>",
         lightBg: "",
         darkBg: "",
-        lineNumbers: <?php if ($setting['lineNumbers']) {
-                if (!Utils::isMobile() || $setting['lineNumbersOnMobile']) {
-                    echo 'true';   
-                } else {
-                    echo 'false';
-                }
-            } else {
-                echo 'false';
-            } ?>,
+        lineNumbers: <?php echo $setting['lineNumbers'] ? 'true' : 'false'; ?>,
         darkModeTime: {
             'start': <?php echo $setting['darkModeTime']['start']; ?>,
             'end': <?php echo $setting['darkModeTime']['end']; ?>

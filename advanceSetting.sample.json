@@ -60,7 +60,6 @@
 
     // 代码块行号支持
     "lineNumbers": true,
-    "lineNumbersOnMobile": true,
 
     // 站点背景图，用于横向屏幕，例如电脑。可以填写随机 API，主题会自动为之加上遮罩。
     "siteBg": "",

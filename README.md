@@ -21,9 +21,9 @@
 * 优秀的可读性
 * 衬线、非衬线两种文字风格
 * 代码高亮（浅色暗色两种风格，随主题切换）
-* 站点样式设置面板（日夜转换、字体、字号）
 * Mac 风格代码块（可开启或关闭）
-* 代码行号（可分别针对桌面或移动端设置开启或关闭）
+* 代码行号
+* 站点样式设置面板（日夜转换、字体、字号）
 * MathJax 公式
 * 表情解析（文章、评论可用）
 * 图片排版（可用作相册）
@@ -228,7 +228,7 @@ gulp build
 
 ### 开源项目
 
-[JQuery](https://github.com/jquery/jquery) | [HighlightJS](https://highlightjs.org/) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [jquery.scrollTo](https://github.com/flesler/jquery.scrollTo) | [hypher](https://github.com/bramstein/hypher)
+[JQuery](https://github.com/jquery/jquery) | [PrismJS](https://prismjs.com/index.html) | [MathJax](https://www.mathjax.org/) | [fancyBox](http://fancyapps.com/fancybox/3/) | [bigfoot.js](http://www.bigfootjs.com/) | [OwO](https://github.com/DIYgod/OwO) | [pjax](https://github.com/defunkt/jquery-pjax) | [yue.css](https://github.com/lepture/yue.css) | [tocbot](https://tscanlin.github.io/tocbot/) | [pangu.js](https://github.com/vinta/pangu.js) | [social](https://github.com/lepture/social) | [Headroom.js](http://wicky.nillia.ms/headroom.js/) | [jquery.scrollTo](https://github.com/flesler/jquery.scrollTo) | [hypher](https://github.com/bramstein/hypher)
 
 ### 其他
 
