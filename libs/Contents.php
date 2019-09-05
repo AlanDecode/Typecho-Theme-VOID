@@ -136,9 +136,18 @@ Class Contents
     static public function parseHeader($content)
     {
         $reg='/\<h([2-6])(.*?)\>(.*?)\<\/h.*?\>/s';
-        $rp='<h${1}${2} id="${3}">${3}</h${1}>';
-        $new=preg_replace($reg,$rp,$content);
+        $new = preg_replace_callback($reg, array('Contents', 'parseHeaderCallback'), $content);
         return $new;
+    }
+
+    /**
+     * 解析 header 是去除 html 标签
+     */
+    static public function parseHeaderCallback($matchs)
+    {
+        $str = Typecho_Common::stripTags($matchs[3]);
+        $str = str_replace(array(':', '：', ' ', PHP_EOL, '/', '\\', '|'), '-', $str);
+        return '<h'.$matchs[1].$matchs[2].' id="'.$str.'">'.$matchs[3].'</h'.$matchs[1].'>';
     }
 
     /**
