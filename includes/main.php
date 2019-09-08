@@ -136,5 +136,5 @@ if($this->fields->bannerStyle > 0) {
         <?php endif;?>
     </div>
     <!--评论区，可选-->
-    <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
+    <?php $this->need('includes/comments.php'); ?>
 </main>

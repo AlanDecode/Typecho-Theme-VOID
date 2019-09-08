@@ -10,7 +10,8 @@
         border-color: rgba(#fff, 0.1)
     }
 }
-#comments{
+
+#comments {
     color: $textColor;
     .theme-dark &{
         color: $td-textColor;

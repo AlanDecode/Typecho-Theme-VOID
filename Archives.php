@@ -63,8 +63,6 @@ if(!Utils::isPjax()){
                 </section>
             <?php $index = $index + 1; endforeach; ?>
         </section>
-        <!--评论区，可选-->
-        <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
     </div>
 </main>
 

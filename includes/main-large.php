@@ -71,6 +71,6 @@ $setting = $GLOBALS['VOIDSetting'];
     </div>
     <!--评论区，可选-->
     <div class="theme-dark" style="width: 100%">
-        <?php if ($this->allow('comment')) $this->need('includes/comments.php'); ?>
+        <?php $this->need('includes/comments.php'); ?>
     </div>
 </main>
