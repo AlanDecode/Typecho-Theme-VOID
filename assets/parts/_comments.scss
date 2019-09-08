@@ -17,6 +17,9 @@
     }
     form,p{
         width: 100%;
+        &.notice {
+            line-height: 1.75
+        }
     }
     .respond{
         position: relative;
