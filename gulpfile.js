@@ -66,7 +66,8 @@ gulp.task('pack:js:main', function(){
     return  gulp.src([
         './assets/VOID.js',
         './assets/editor.js',
-        './assets/header.js'])
+        './assets/header.js',
+        './assets/check_update.js'])
         .pipe(uglify())
         .pipe(rev())
         .pipe(gulp.dest('./build/assets/'))

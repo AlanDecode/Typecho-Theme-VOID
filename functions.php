@@ -36,15 +36,30 @@ function themeInit()
 }
 
 $GLOBALS['VOIDPluginREQ'] = 1.1;
+$GLOBALS['VOIDVersion'] = 3.30;
 
 /**
  * 主题设置
  */
 function themeConfig($form)
 {
+    echo '<style>
+        p.notice {
+        line-height: 1.75;
+        padding: .5rem;
+        padding-left: .75rem;
+        border-left: solid 4px #fbbc05;
+        background: rgba(0,0,25,.025);
+    }</style>';
+
     if (!Utils::hasVOIDPlugin($GLOBALS['VOIDPluginREQ'])) {
-        echo '<p><mark>未检测到合适的 VOID 插件！主题部分功能依赖插件支持，推荐安装以获得最佳体验。VOID 插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。</mark></p>';
+        echo '<p class="notice">未检测到合适的 VOID 插件！主题部分功能依赖插件支持，推荐安装以获得最佳体验。VOID 插件一般会随主题包发布，开发版主题请前往 https://github.com/AlanDecode/VOID-Plugin 获取。</p>';
     }
+
+    echo '<p id="void-check-update" class="notice">正在检查更新……</p>';
+    echo '<script>var VOIDVersion='.$GLOBALS['VOIDVersion'].'</script>';
+    echo '<script src="'.Helper::options()->themeUrl.'/assets/check_update.js"></script>';
+
     $defaultBanner = new Typecho_Widget_Helper_Form_Element_Text('defaultBanner', null, '', '首页顶部大图', '可以填写随机图 API。');
     $form->addInput($defaultBanner);
     $indexBannerTitle = new Typecho_Widget_Helper_Form_Element_Text('indexBannerTitle', null, '', '首页顶部大标题', '不要太长');
