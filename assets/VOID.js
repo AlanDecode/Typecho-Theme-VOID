@@ -597,11 +597,6 @@ var AjaxComment = {
         }
     });
 
-    VOID_Ui.tuneBg();
-    $(window).resize(function () {
-        VOID_Ui.tuneBg();
-    });
-
     window.setInterval(function () {
         var times = new Date().getTime() - Date.parse(VOIDConfig.buildTime);
         times = Math.floor(times / 1000); // convert total milliseconds into total seconds

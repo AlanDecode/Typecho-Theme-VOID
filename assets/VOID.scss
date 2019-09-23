@@ -156,9 +156,6 @@ body{
 //         background: $td-bgColor-dark;
 //         border-color: $td-bgColor-dark;
 //     }
-//     .theme-dark.with-bg & {
-//         background: rgba(#fff, 0.075);
-//     }
 //     position: relative;
 //     &::before {
 //         content: "Notice";
@@ -178,9 +175,6 @@ body{
 //         .theme-dark & {
 //             background: $td-bgColor-dark;
 //         }
-//         .theme-dark.with-bg & {
-//             background: none;
-//         }
 //         left: 0.5rem;
 //         top: -1px;
 //         width: 54.1px;
@@ -195,23 +189,6 @@ p.notice {
     background: rgba(0, 0, 25, 0.025);
     .theme-dark & {
         background: rgba(230, 230, 255, 0.03);
-    }
-}
-
-#bg-mask {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(#fff, 0.925);
-    transition: $animationTime $animationTimingFunc background;
-    .theme-dark & {
-        background: rgba(#000, 0.925);
-    }
-    .with-bg & {
-        display: block;
     }
 }
 

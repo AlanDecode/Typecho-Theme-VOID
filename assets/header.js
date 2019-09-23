@@ -315,24 +315,6 @@ VOID_Ui = {
         document.scrollingElement.scrollTop = VOID_Ui.scrollTop;
     },
 
-    tuneBg: function () {
-        if (window.innerHeight < window.innerWidth) {
-            $('body').addClass('screen-horizontal');
-            $('body').removeClass('screen-vertical');
-            if (VOIDConfig.horizontalBg)
-                $('body').addClass('with-bg');
-            else
-                $('body').removeClass('with-bg');
-        } else {
-            $('body').addClass('screen-vertical');
-            $('body').removeClass('screen-horizontal');
-            if (VOIDConfig.verticalBg)
-                $('body').addClass('with-bg');
-            else
-                $('body').removeClass('with-bg');
-        }
-    },
-
     reset: function () {
         $('.toggle').removeClass('pushed');
         $('.mobile-search').removeClass('opened');

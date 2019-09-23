@@ -324,11 +324,7 @@ class Utils
             'macStyleCodeBlock' => true,
             'lineNumbers' => true,
             'parseFigcaption' => true,
-            'siteBg' => '',
             'showHeadlineInPost' => true,
-            'siteBgVertical' => '',
-            'bgMaskColor' => array(),
-            'grayscaleBg' => true,
             'darkModeTime' => array (
                 'start' => 22.0,
                 'end' => 7.0

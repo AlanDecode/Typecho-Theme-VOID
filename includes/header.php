@@ -55,16 +55,6 @@ if($this->is('page')){
             echo ' lazyload-img';
         }
     ?>">
-
-    <style>
-        .screen-horizontal main::before{background-image: url("<?php echo $setting['siteBg']; ?>")}
-        .screen-vertical main::before{background-image: url("<?php echo $setting['siteBgVertical']; ?>")}
-        <?php if(!empty($setting['siteBg']) || !empty($setting['siteBgVertical'])): ?>
-            <?php if(array_key_exists('light', $setting['bgMaskColor'])) echo "div#bg-mask{background: {$setting['bgMaskColor']['light']}}"; ?>
-            <?php if(array_key_exists('dark', $setting['bgMaskColor'])) echo ".theme-dark div#bg-mask{background: {$setting['bgMaskColor']['dark']}}"; ?>
-            <?php if($setting['grayscaleBg']) echo '.with-bg main::before{filter: grayscale(100%);}'; ?>
-        <?php endif; ?>
-    </style>
     
     <header class="header-mode-<?php echo $setting['headerMode']; ?> <?php if(empty($banner)) echo 'force-dark no-banner'; ?>">
         <div class="container wider">
@@ -132,4 +122,3 @@ if($this->is('page')){
         </section>
         <?php endforeach;} ?>
     </div>
-    <div id="bg-mask"></div>

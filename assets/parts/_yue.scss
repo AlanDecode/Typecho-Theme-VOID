@@ -235,12 +235,6 @@
     .theme-dark & {
         background-color: $td-bgColor-dark;
     }
-    .with-bg & {
-        background-color: rgba(#efefee, 0.4);
-    }
-    .theme-dark.with-bg & {
-        background-color: rgba($td-bgColor-dark, 0.4);
-    }
 }
 .yue th,
 .yue td {
@@ -258,12 +252,6 @@
     background-color: #efefee;
     .theme-dark & {
         background-color: $td-bgColor-dark;
-    }
-    .with-bg & {
-        background-color: rgba(#efefee, 0.4);
-    }
-    .theme-dark.with-bg & {
-        background-color: rgba($td-bgColor-dark, 0.4);
     }
 }
 
@@ -286,14 +274,8 @@
     background: #ebeded;
     padding: 0 3px;
     border-radius: 3px;
-    .with-bg & {
-        background: rgba(#ebeded, 0.4);
-    }
     .theme-dark & {
         background: $td-bgColor-dark;
-    }
-    .theme-dark.with-bg & {
-        background: rgba(#000, 0.4);
     }
 }
 
@@ -311,15 +293,9 @@
     border: 1px solid rgba(#000, 0.05);
     border-radius: 5px;
     background: #f1f3f3;
-    .with-bg & {
-        background: rgba(#f1f3f3, 0.1);
-    }
     .theme-dark & {
         border: none;
         background: #111;
-    }
-    .theme-dark.with-bg & {
-        background: rgba(#111, 0.1);
     }
     .theme-dark &::-webkit-scrollbar{
         background: $td-bgColor-dark;
@@ -360,12 +336,6 @@
     .theme-dark.macStyleCodeBlock &::after {
         background: #21252b;
         color: #eee;
-    }
-    .with-bg.macStyleCodeBlock &::after {
-        background: rgba(#ebeded, 0.75);
-    }
-    .theme-dark.macStyleCodeBlock.with-bg &::after {
-        background: rgba(#000, 0.2);
     }
     
     // code block

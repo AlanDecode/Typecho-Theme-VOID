@@ -6,23 +6,6 @@ main{
     .theme-dark & {
         background: $td-bgColor;
     }
-    /* 有背景图时使用伪元素实现 */
-    .with-bg & {
-        background: none;
-        &::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: $animationTime $animationTimingFunc all;
-        }
-    }
     .lazy-wrap{
         width: 100%;
         overflow: hidden;
@@ -133,10 +116,6 @@ main{
                         z-index: -1;
                         border-right: 2px solid #0ff;
                         border-bottom: 2px solid #0ff;
-                        .with-bg & {
-                            background-color: #f2f2f2;
-                            border-color: #f2f2f2;
-                        }
                     }
                     span {
                         transition: .3s;
