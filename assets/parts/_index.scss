@@ -242,6 +242,7 @@ section#index-list{
         padding: 0;
         margin: 0;
         >li{
+            overflow: hidden;
             line-height: 1.25;
             padding-bottom: 30px;
             border-bottom: 1px solid $borderColor;
@@ -257,15 +258,21 @@ section#index-list{
             @media screen and (min-width: 767.5px) {
                 padding-bottom: 0;
                 border: none;
+                border-radius: 6px;
+                box-shadow: 2px 2px 16px #cdcdcd;
+                .theme-dark &:not(.style-2) {
+                    box-shadow: none;
+                    border: solid 2px $td-borderColor;
+                }
                 &.masonry-ready {
                     width: calc(50% - 15px);
                 }
-                &:not(.style-2) {
-                    border: solid 2px $textColor;
-                    .theme-dark & {
-                        border-color: $td-borderColor;
-                    }
-                }
+                // &:not(.style-2) {
+                //     border: solid 2px $textColor;
+                //     .theme-dark & {
+                //         border-color: $td-borderColor;
+                //     }
+                // }
             }
             .single-col & {
                 width: 100%;
