@@ -144,6 +144,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <?php if ('waiting' == $this->status) { ?>
                 <em class="comment-awaiting-moderation"><?php $singleCommentOptions->commentStatus(); ?></em>
                 <?php } ?>
+                <?php if ($setting['VOIDPlugin']) { ?>
                 <a style="margin: 0 5px" no-pjax target="_self" class="comment-vote vote-button" 
                     href="javascript:void(0)" 
                     onclick="VOID_Vote.vote(this)"
@@ -160,6 +161,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                     data-table="comment"
                 ><i class="voidicon-thumbs-down"></i> <span class="value"><?php echo $metaArr['dislikes']?></span>
                 </a>
+                <?php } ?>
             </span>
         </div>
         <div class="comment-content yue" itemprop="commentText">
