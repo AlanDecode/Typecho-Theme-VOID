@@ -261,20 +261,41 @@ Class Contents
         $src = $src_ori;
         $classList = '';
 
+        // 这里，若图片已获取长宽基础信息，则直接计算后输出
+        $attrAddOnA = '';
+        $attrAddOnFigure = '';
+        $matches;
+        if (strpos($src_ori, 'vwid') != false) {
+            preg_match("/vwid=(\d{0,5})/i", $src_ori, $matches);
+            $width = floatval($matches[1]);
+            preg_match("/vhei=(\d{0,5})/i", $src_ori, $matches);
+            $height = floatval($matches[1]);
+
+            $ratio = $height / $width * 100;
+            $flex_grow = $width * 50 / $height;
+
+            $attrAddOnA = 'style="padding-top: '.$ratio.'%"';
+            $attrAddOnFigure = 'class="placeholder size-parsed" style="flex-grow: '.$flex_grow.'"';
+        }
+
         // 普通解析且开启懒加载
+        $img_onload = '';
         if(self::$photoMode == 0 && Helper::options()->lazyload == '1') {
             $src = self::getPlaceHolder();
             $classList = 'lazyload';
+        } else {
+            // 不开启懒加载，因此手动移除 figure class
+            $img_onload = 'onload="this.parentNode.parentNode.classList.remove(\'placeholder\')"';
         }
 
         $figcaption = '';
         if ($match[2] != '' && self::$parseFigcaption)
             $figcaption = '<figcaption>'.$match[2].'</figcaption>';
 
-        $img = '<img class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
+        $img = '<img '.$img_onload.' class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
 
         if (self::$photoMode == 0) {
-            return '<figure><a no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'">'.$img.'</a>'.$figcaption.'</figure>';
+            return '<figure '.$attrAddOnFigure.' ><a '.$attrAddOnA.' no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'">'.$img.'</a>'.$figcaption.'</figure>';
         } else {
             return '<figure>'.$img.$figcaption.'</figure>';
         }

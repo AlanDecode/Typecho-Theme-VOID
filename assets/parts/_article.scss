@@ -179,7 +179,7 @@ article {
         width: 100%;
         img {
             display: block;
-            margin: 0.2em auto;
+            margin: 0;
         }
     }
     div[itemprop=articleBody] {
@@ -200,34 +200,77 @@ article {
             padding: 0 20px;
         }
     }
-    .photos {
-        display: flex;
-        flex-wrap: wrap;
-        transition: $animationTime $animationTimingFunc all;
-        @media screen and (max-width: 860.5px) {
-            width: calc(100% + 40px);
-            margin-left: -20px;
-        }
-        &.large {
-            @media screen and (min-width: 1200px) {
-                width: 1024px;
-                margin-left: -102px;
-            }
-            @media screen and (min-width: 1366px) {
-                width: 1200px;
-                margin-left: -190px;
-            }
-        }
-        @media screen and (min-width: 1200px) and (max-width: 1599.5px) {
-            .sidebar-show & {
-                width: calc(100% + 40px)!important;
-                margin-left: -20px!important;
-            }
-        }
-        figure {
+
+    /* base style for stand-alone figure */
+    figure {
+        position: relative;
+        clear: both;
+        outline: 0;
+        margin: 15px 0;
+        padding: 0;
+        min-height: 100px;
+        a[data-fancybox="gallery"] {
+            display: block;
             position: relative;
+            max-width: 100%;
+            height: 100%;
+            padding: 0;
+            img {
+                max-width: 100%;
+                margin: 0 auto; // make it centralized
+                object-fit: cover;
+                box-sizing: border-box;
+                background: #eeeff1;
+                .theme-dark & {
+                    background: #2e2e2f;
+                }
+            }
+        }
+        figcaption {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            left: 0;
+            margin-top: 10px;
+            font-weight: 400;
+            font-size: 14px;
+            color: $fadeColor;
+            .theme-dark & {
+                color: $td-textColor-dark;
+            }
+            a {
+                text-decoration: none;
+                color: $fadeColor;
+                .theme-dark & {
+                    color: $td-textColor-dark;
+                }
+            }
+        }
+    }
+
+    /* style for photo set and figure displayed as placeholder */
+    .photos figure, figure.placeholder {
+        a[data-fancybox="gallery"] {
+            display: block;
+            position: relative;
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    /* stand alone figure with out placeholder */
+    div[itemprop=articleBody]>figure:not(.placeholder) a[data-fancybox="gallery"] {
+        padding: 0!important;
+    }
+
+    .photos {
+        figure {
             margin: 2.5px;
-            min-height: 100px;
             flex: 1;
             @media screen and (max-width: 767px) {
                 figcaption {
@@ -239,19 +282,6 @@ article {
             }
             &:last-child {
                 margin-right: 0;
-            }
-            a {
-                height: 0;
-                position: relative;
-                img {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    margin: 0;
-                    object-fit: cover;
-                }
             }
             figcaption {
                 position: absolute;
@@ -274,6 +304,29 @@ article {
             }
             &:hover figcaption {
                 opacity: 1;
+            }
+        }
+        display: flex;
+        flex-wrap: wrap;
+        transition: $animationTime $animationTimingFunc all;
+        @media screen and (max-width: 860.5px) {
+            width: calc(100% + 40px);
+            margin-left: -20px;
+        }
+        &.large {
+            @media screen and (min-width: 1200px) {
+                width: 1024px;
+                margin-left: -102px;
+            }
+            @media screen and (min-width: 1366px) {
+                width: 1200px;
+                margin-left: -190px;
+            }
+        }
+        @media screen and (min-width: 1200px) and (max-width: 1599.5px) {
+            .sidebar-show & {
+                width: calc(100% + 40px)!important;
+                margin-left: -20px!important;
             }
         }
     }

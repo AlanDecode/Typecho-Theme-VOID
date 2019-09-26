@@ -35,7 +35,7 @@ function themeInit()
     Helper::options()->commentsOrder = 'DESC';
 }
 
-$GLOBALS['VOIDPluginREQ'] = 1.1;
+$GLOBALS['VOIDPluginREQ'] = 1.2;
 $GLOBALS['VOIDVersion'] = 3.30;
 
 /**

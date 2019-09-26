@@ -119,6 +119,7 @@ VOID_Lazyload = {
                             $(item).attr('src', $(item).attr('data-src'));
                             $(item).addClass('loaded');
                             VOID_Lazyload.removeEventListener();
+                            $(item).parent().parent().removeClass('placeholder');
                         }, 550);
                     }
                 };

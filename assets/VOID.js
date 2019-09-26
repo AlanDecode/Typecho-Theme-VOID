@@ -53,19 +53,16 @@ var VOID_Content = {
 
     // 解析照片集
     parsePhotos: function () {
-        var base = 50;
-        $.each($('.photos'), function (i, photoSet) {
-            $.each($(photoSet).children(), function (j, item) {
-                var img = new Image();
-                img.src = $(item).find('img').attr('data-src');
-                img.onload = function () {
-                    var w = parseFloat(img.width);
-                    var h = parseFloat(img.height);
-                    $(item).css('width', w * base / h + 'px');
-                    $(item).css('flex-grow', w * base / h);
-                    $(item).find('a').css('padding-top', h / w * 100 + '%');
-                };
-            });
+        $.each($('div[itemprop=articleBody] figure:not(.size-parsed)'), function (i, item){
+            var img = new Image();
+            img.src = $(item).find('img').attr('data-src');
+            img.onload = function () {
+                var w = parseFloat(img.width);
+                var h = parseFloat(img.height);
+                $(item).addClass('size-parsed');
+                $(item).css('flex-grow', w * 50 / h);
+                $(item).find('a').css('padding-top', h / w * 100 + '%');
+            };
         });
     },
 
