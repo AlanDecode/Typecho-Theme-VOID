@@ -53,6 +53,10 @@ var VOID_Content = {
 
     // 解析照片集
     parsePhotos: function () {
+        $.each($('div[itemprop=articleBody] figure'), function (i, item){
+            if (!$(item).parent().hasClass('photos'))
+                $(item).addClass('stand-alone');
+        });
         $.each($('div[itemprop=articleBody] figure:not(.size-parsed)'), function (i, item){
             var img = new Image();
             img.src = $(item).find('img').attr('data-src');

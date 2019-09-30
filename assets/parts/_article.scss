@@ -264,7 +264,7 @@ article {
     }
 
     /* stand alone figure with out placeholder */
-    div[itemprop=articleBody]>figure:not(.placeholder) a[data-fancybox="gallery"] {
+    figure.stand-alone:not(.placeholder) a[data-fancybox="gallery"] {
         padding: 0!important;
     }
 
