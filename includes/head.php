@@ -72,7 +72,7 @@ if (isset($_POST['void_action'])) {
         headerMode: <?php echo $setting['headerMode']; ?>,
         followSystemColorScheme: <?php echo $setting['followSystemColorScheme'] ? 'true' : 'false'; ?>,
         VOIDPlugin: <?php echo $setting['VOIDPlugin'] ? 'true' : 'false'; ?>,
-        votePath: "<?php Utils::index('/action/void_vote?'); ?>",
+        votePath: "<?php Utils::index('/action/void?'); ?>",
         lightBg: "",
         darkBg: "",
         lineNumbers: <?php echo $setting['lineNumbers'] ? 'true' : 'false'; ?>,
