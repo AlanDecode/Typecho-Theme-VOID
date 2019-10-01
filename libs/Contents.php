@@ -319,13 +319,14 @@ Class Contents
         $reg = '/\[links.*?\](.*?)\[\/links\]/s';
         $text = preg_replace_callback($reg, array('Contents', 'parseBoardCallback2'), $text);
 
-        $text = str_replace("```objective-c", "```objectivec", $text);
-        $text = str_replace("```c++", "```cpp", $text);
-        $text = str_replace("```c#", "```csharp", $text);
-        $text = str_replace("```f#", "```fsharp", $text);
-        $text = str_replace("```F#", "```Fsharp", $text);
-
-        $text = Markdown::convert($text);
+        if (0 == strpos($text, '<!--markdown-->')) {
+            $text = str_replace("```objective-c", "```objectivec", $text);
+            $text = str_replace("```c++", "```cpp", $text);
+            $text = str_replace("```c#", "```csharp", $text);
+            $text = str_replace("```f#", "```fsharp", $text);
+            $text = str_replace("```F#", "```Fsharp", $text);
+            $text = Markdown::convert($text);
+        }
 
         return $text;
     }

@@ -220,10 +220,6 @@ article {
                 margin: 0 auto; // make it centralized
                 object-fit: cover;
                 box-sizing: border-box;
-                background: #eeeff1;
-                .theme-dark & {
-                    background: #2e2e2f;
-                }
             }
         }
         figcaption {
@@ -545,7 +541,6 @@ article {
         width: 100%;
         font-size: 20px;
         font-weight: 600;
-        font-family: $void-font-sans;
         text-transform: uppercase;
         text-align: center;
         color: $td-textColor;

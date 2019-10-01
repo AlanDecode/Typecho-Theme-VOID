@@ -36,8 +36,8 @@ $animationTime: 0.2s;
 $animationTime-fast: 0.1s;
 $animationTimingFunc: cubic-bezier(.25,.46,.45,.94);
 
-$void-font-default: sans-serif;
-$void-font-sans: sans-serif;
+$void-font-sans: system-ui, sans-serif;
+$void-font-default: 'Droid Serif', sans-serif;
 $void-font-serif: 'Noto Serif SC', sans-serif;
 
 @mixin bg {
