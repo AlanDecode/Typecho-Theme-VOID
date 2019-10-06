@@ -143,6 +143,31 @@ var VOID_Content = {
 
     hyphenate: function() {
         $('div[itemprop=articleBody] p, div[itemprop=articleBody] blockquote').hyphenate('en-us');
+    },
+
+    tuneBiliPlayer: function () {
+        $.each($('iframe'), function(i, item){
+            var src = $(item).attr('src');
+            if (src.indexOf('player.bilibili.com') > -1) {
+                $(item).addClass('bili-player');
+                if (src.indexOf('&high_quality') < 0) {
+                    src += '&high_quality=1'; // 启用高质量
+                    $(item).attr('src', src);
+                }
+                
+                // 默认比例 9:16
+                var height = $(item).width() * 0.5625;
+                // 若指定比例
+                if ($(item).attr('data-ratio') != undefined)
+                    height = parseFloat($(item).attr('data-ratio')) * $(item).width();
+
+                // 此时出现控制面板
+                if ($(window).width() >= 540)
+                    height += 120;
+
+                $(item).height(height);
+            }
+        });
     }
 };
 
@@ -158,6 +183,8 @@ var VOID = {
         VOID_Ui.lazyload();
         VOID_Ui.headroom();
 
+        VOID_Content.tuneBiliPlayer();
+        $(window).resize(VOID_Content.tuneBiliPlayer);
         VOID_Content.countWords();
         VOID_Content.parseTOC();
         VOID_Content.parsePhotos();
@@ -210,6 +237,7 @@ var VOID = {
         VOID_Ui.MasonryCtrler.init();
         VOID_Ui.checkScrollTop(false);
 
+        VOID_Content.tuneBiliPlayer();
         VOID_Content.countWords();
         VOID_Content.parseTOC();
         VOID_Content.parsePhotos();

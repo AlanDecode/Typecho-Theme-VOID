@@ -701,6 +701,13 @@ p.notice {
 #MathJax_Message {
     display: none!important;
 }
+.bili-player {
+    width: 100%;
+    border: 2px solid rgba(0,0,0,0.1);
+    .theme-dark &{
+        border-color: $td-borderColor;
+    }
+}
 
 @import "parts/header";
 @import "parts/index";
