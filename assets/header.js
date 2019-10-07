@@ -16,26 +16,27 @@ TOC = {
 };
 
 VOID_Util = {
-    // throttle: function (fun, delay, time) {
-    //     var timeout,
-    //         startTime = new Date();
-
-    //     return function () {
-    //         var context = this,
-    //             args = arguments,
-    //             curTime = new Date();
-
-    //         clearTimeout(timeout);
-    //         // 如果达到了规定的触发时间间隔，触发 handler
-    //         if (curTime - startTime >= time) {
-    //             fun.apply(context, args);
-    //             startTime = curTime;
-    //             // 没达到触发间隔，重新设定定时器
-    //         } else {
-    //             timeout = setTimeout(fun, delay);
-    //         }
-    //     };
-    // },
+    throttle: function (fn, delay, atleast) {
+        var timer = null;
+        var previous = null;
+    
+        return function () {
+            var now = +new Date();
+    
+            if ( !previous ) previous = now;
+    
+            if ( now - previous > atleast ) {
+                fn();
+                // 重置上一次开始时间为本次结束时间
+                previous = now;
+            } else {
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    fn();
+                }, delay);
+            }
+        };
+    },
 
     clickIn: function (e, el) {
         if (!$(el).length) return false;
@@ -81,18 +82,21 @@ VOID_Util = {
 };
 
 VOID_Lazyload = {
+    eventHandler: null,
+
     finish: function () {
         return $('img.lazyload.loaded').length + $('img.lazyload.error').length == $('img.lazyload').length;
     },
 
     addEventListener: function () {
-        if (!VOID_Lazyload.finish())
-            window.addEventListener('scroll', VOID_Lazyload.callback);
+        if (!VOID_Lazyload.finish()) {
+            window.addEventListener('scroll',VOID_Lazyload.eventHandler);
+        }
     },
 
     removeEventListener: function () {
         if (VOID_Lazyload.finish())
-            window.removeEventListener('scroll', VOID_Lazyload.callback);
+            window.removeEventListener('scroll', VOID_Lazyload.eventHandler);
     },
 
     inViewport: function (item) {
@@ -133,7 +137,9 @@ VOID_Lazyload = {
     },
 
     init: function () {
-        window.removeEventListener('scroll', VOID_Lazyload.callback);
+        window.removeEventListener('scroll', VOID_Lazyload.eventHandler);
+        if (VOID_Lazyload.eventHandler == null)
+            VOID_Lazyload.eventHandler = VOID_Util.throttle(VOID_Lazyload.callback, 200, 500);
         VOID_Lazyload.callback();
         VOID_Lazyload.addEventListener();
     }
