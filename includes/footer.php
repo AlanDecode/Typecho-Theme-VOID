@@ -26,7 +26,7 @@ $setting = $GLOBALS['VOIDSetting'];
         <!--侧边控制按钮-->
         <aside id="ctrler-panel">
             <div class="ctrler-item" id="go-top">
-                <a target="_self" aria-label="返回顶部" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="$.scrollTo(0, 300);"><i class="voidicon-up"></i></a>
+                <a target="_self" aria-label="返回顶部" href="javascript:void(0);" style="transform: translateX(-2px);" onclick="VOID_SmoothScroller.scrollTo(0);"><i class="voidicon-up"></i></a>
             </div>
 
             <?php if($this->user->hasLogin()): ?>

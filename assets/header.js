@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 
@@ -145,6 +146,80 @@ VOID_Lazyload = {
     }
 };
 
+VOID_SmoothScroller = {
+    target: null,
+    SMOOTH: 15,
+
+    move: function () {
+        var cur = document.documentElement.scrollTop;
+        var step = Math.ceil(Math.abs(VOID_SmoothScroller.target - cur) / VOID_SmoothScroller.SMOOTH);
+
+        if (Math.abs(VOID_SmoothScroller.target - cur) < 1) {
+            VOID_SmoothScroller.removeEventListener();
+            return;
+        }
+
+        cur >= VOID_SmoothScroller.target ? cur -= step : cur += step;
+        document.documentElement.scrollTop = cur;
+        requestAnimationFrame(VOID_SmoothScroller.move);
+    },
+
+    addEventListener: function () {
+        // 需要特别阻止滚轮事件
+        var passiveSupported = false;
+        try {
+            var options = Object.defineProperty({}, 'passive', {
+                get: function () {
+                    passiveSupported = true;
+                    return null;
+                }
+            });
+
+            window.addEventListener('test', null, options);
+        } catch (err) {
+            console.log(err);
+        }
+        window.addEventListener('wheel', VOID_SmoothScroller.stop, 
+            passiveSupported ? { passive: false } : false);
+        
+        window.addEventListener('mousedown', VOID_SmoothScroller.stop);
+        window.addEventListener('touchstart', VOID_SmoothScroller.stop);
+    },
+
+    removeEventListener: function () {
+        window.removeEventListener('wheel', VOID_SmoothScroller.stop);
+        window.removeEventListener('mousedown', VOID_SmoothScroller.stop);
+        window.removeEventListener('touchstart', VOID_SmoothScroller.stop);
+    },
+
+    scrollTo: function (target, offset) {
+        if (target === null) return;
+        if (typeof(target) == 'object') {
+            target = target.getBoundingClientRect().top + document.documentElement.scrollTop;
+        } else if (typeof(target) == 'string') {
+            target = document.querySelector(target).getBoundingClientRect().top 
+                + document.documentElement.scrollTop;
+        }
+        if (typeof(offset) == 'number') {
+            target += offset;
+        }
+        // 若超出顶部或无法到达
+        target = Math.max(target, 0);
+        target = Math.min(target, 
+            document.documentElement.getBoundingClientRect().height - document.documentElement.clientHeight);
+
+        VOID_SmoothScroller.addEventListener();
+        VOID_SmoothScroller.target = target;
+        VOID_SmoothScroller.move();
+    },
+
+    stop: function (event) {
+        if (typeof(event) != 'undefined')
+            event.preventDefault();
+        VOID_SmoothScroller.scrollTo(document.documentElement.scrollTop);
+    }
+};
+
 VOID_Ui = {
     checkGoTop: function () {
         if ($(document).scrollTop() > window.innerHeight) {
@@ -164,21 +239,12 @@ VOID_Ui = {
         }
     },
 
-    checkScrollTop: function (forceGotop) {
+    checkScrollTop: function () {
         if (VOID_Util.getCookie('void_pos') != null && parseFloat(VOID_Util.getCookie('void_pos')) != -1) {
-            $(document).scrollTop(parseFloat(VOID_Util.getCookie('void_pos')));
+            VOID_SmoothScroller.scrollTo(parseFloat(VOID_Util.getCookie('void_pos')), -60);
             VOID_Util.setCookie('void_pos', -1);
         } else {
-            if (forceGotop) {
-                // setTimeout(function () {
-                //     var hash = new URL(window.location.href).hash;
-                //     if (hash != '') {
-                //         $.scrollTo($(hash).offset().top - 80, 500);
-                //     } else {
-                //         $.scrollTo(0, 500);
-                //     }
-                // }, 50);
-            }
+            VOID_SmoothScroller.stop();
         }
     },
 

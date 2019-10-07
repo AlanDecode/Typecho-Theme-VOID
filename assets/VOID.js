@@ -35,9 +35,7 @@ var VOID_Content = {
             tocbot.init(toc_option);
             $.each($('.toc-link'), function(i, item){
                 $(item).click(function(){
-                    var target = $(document.getElementById($(this).attr('href').replace('#', '')));
-                    var posi = target.offset().top - 60;
-                    $.scrollTo(posi, 300);
+                    VOID_SmoothScroller.scrollTo($(this).attr('href'), -60);
                     if(window.innerWidth < 1200) {
                         TOC.close();
                     }
@@ -178,7 +176,7 @@ var VOID = {
         VOID_Ui.checkHeader();
         VOID_Ui.MasonryCtrler.init();
         VOID_Ui.DarkModeSwitcher.checkColorScheme();
-        VOID_Ui.checkScrollTop(false);
+        VOID_Ui.checkScrollTop();
         VOID_Content.parseBoardThumbs();
         VOID_Ui.lazyload();
         VOID_Ui.headroom();
@@ -235,7 +233,7 @@ var VOID = {
         }
 
         VOID_Ui.MasonryCtrler.init();
-        VOID_Ui.checkScrollTop(false);
+        VOID_Ui.checkScrollTop();
 
         VOID_Content.tuneBiliPlayer();
         VOID_Content.countWords();
@@ -485,7 +483,7 @@ var AjaxComment = {
         $(AjaxComment.textarea).val('');
         $(AjaxComment.submitBtn).attr('disabled', false);
         if ($('#comment-' + AjaxComment.newID).length > 0) {
-            $.scrollTo($('#comment-' + AjaxComment.newID).offset().top - 50, 500);
+            VOID_SmoothScroller.scrollTo($('#comment-' + AjaxComment.newID).offset().top, -60);
             $('#comment-' + AjaxComment.newID).fadeTo(500, 1);
         }
         $('.comment-num .num').html(parseInt($('.comment-num .num').html()) + 1);
