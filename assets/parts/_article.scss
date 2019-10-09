@@ -321,8 +321,8 @@ article {
         }
         @media screen and (min-width: 1200px) and (max-width: 1599.5px) {
             .sidebar-show & {
-                width: calc(100% + 40px)!important;
-                margin-left: -20px!important;
+                width: 100%!important;
+                margin-left: 0!important;
             }
         }
     }
