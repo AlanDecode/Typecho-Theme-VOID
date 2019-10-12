@@ -87,7 +87,10 @@ if($this->is('page')){
                         <input onkeydown="VOID.enterSearch(this);" type="text" name="search-content" id="search" required />
                     </span>
                 <?php endif; ?>
-                <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:block"'; ?> role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" href="javascript:void(0);" onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'VOID_Ui.toggleSearch(this);'; ?>">
+                <a <?php if(Utils::isPluginAvailable('ExSearch')) echo 'class="search-form-input" style="display:flex"'; ?> 
+                    role=button aria-label="展开搜索" id="toggle-mobile-search" target="_self" 
+                    href="javascript:void(0);" 
+                    onclick="<?php if(!Utils::isPluginAvailable('ExSearch')) echo 'VOID_Ui.toggleSearch(this);'; ?>">
                     <i class="voidicon-search"></i>
                 </a>
                 <a target="_self" href="javascript:void(0);" id="toggle-setting" onclick="VOID_Ui.toggleSettingPanel();"><i class="voidicon-cog"></i></a>

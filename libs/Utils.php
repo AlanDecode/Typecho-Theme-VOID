@@ -185,7 +185,6 @@ class Utils
      */
     public static function isOutdated($archive)
     {
-        date_default_timezone_set("Asia/Shanghai");
         $created = round((time()- $archive->created) / 3600 / 24);
         $updated = round((time()- $archive->modified) / 3600 / 24);
 
@@ -201,14 +200,16 @@ class Utils
      */
     public static function getBuildTime()
     {
-        date_default_timezone_set("Asia/Shanghai");
         $db = Typecho_Db::get();
         $content = $db->fetchRow($db->select()->from('table.contents')
-        ->where('table.contents.status = ?', 'publish')
-        ->where('table.contents.password IS NULL')
-        ->order('table.contents.created', Typecho_Db::SORT_ASC)
-        ->limit(1));
-        echo date('Y-m-d\TH:i', $content['created']);
+            ->where('table.contents.status = ?', 'publish')
+            ->where('table.contents.password IS NULL')
+            ->order('table.contents.created', Typecho_Db::SORT_ASC)
+            ->limit(1));
+        if (count($content))
+            echo date('Y-m-d\TH:i', $content['created']);
+        else
+            echo date('Y-m-d\TH:i');
     }
 
     /**

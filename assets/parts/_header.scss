@@ -45,6 +45,7 @@ header{
                 padding: 0.3rem 0.55rem;
                 transition: 0.3s $animationTimingFunc all;
                 color: $headerTextColor;
+                height: 100%;
                 @media screen and (min-width: 1024.5px) {
                     &:hover {
                         color: $headerTextColor-highlight;
@@ -93,7 +94,7 @@ header{
                         display: none;
                     }
                     &.toggle{
-                        display: block;
+                        display: flex;
                         position: absolute;
                         left: 1rem;
                         @media screen and (max-width: 767px) {
@@ -101,7 +102,7 @@ header{
                         }
                     }
                     &#toggle-setting {
-                        display: block;
+                        display: flex;
                         position: absolute;
                         right: 1.75rem;;
                         font-size: 1.4rem;
@@ -149,7 +150,6 @@ header{
                 transform: translateY(-50%);
                 label{
                     position: absolute;
-                    display: block;
                     height: 100%;
                     display: flex;
                     align-items: center;
@@ -186,7 +186,7 @@ header{
                 font-size: 1.4rem;
                 line-height: 1.7;
                 @media screen and (max-width: 767px) {
-                    display: block;
+                    display: flex;
                 }
             }
         }
@@ -206,7 +206,6 @@ header{
         border-top: 1px solid rgba(255,255,255,0.1);
         label{
             position: absolute;
-            display: block;
             height: 100%;
             display: flex;
             align-items: center;
