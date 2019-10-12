@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'void-icon';
-  src: url('../font/void-icon.eot?64352462');
-  src: url('../font/void-icon.eot?64352462#iefix') format('embedded-opentype'),
-       url('../font/void-icon.svg?64352462#void-icon') format('svg');
+  src: url('fonts/void-icon.eot?64352462');
+  src: url('fonts/void-icon.eot?64352462#iefix') format('embedded-opentype'),
+       url('fonts/void-icon.svg?64352462#void-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'void-icon';
-    src: url('../font/void-icon.svg?64352462#void-icon') format('svg');
+    src: url('fonts/void-icon.svg?64352462#void-icon') format('svg');
   }
 }
 */
