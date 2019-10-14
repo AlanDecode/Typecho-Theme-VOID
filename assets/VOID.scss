@@ -679,6 +679,22 @@ p.notice {
     background: rgba(#000, 0.925);
     .aplayer-info {
         border: none!important;
+        .aplayer-controller {
+            .aplayer-time .aplayer-icon:hover path {
+                fill: white;
+            }
+            .aplayer-bar-wrap {
+                .aplayer-bar {
+                    background: rgba(#fff, 0.1);
+                    .aplayer-loaded {
+                        background: rgba(#fff, 0.22);
+                    }
+                    .aplayer-played {
+                        background: rgba(240, 240, 255, 0.4)!important;
+                    }
+                }
+            }
+        }
     }
     .aplayer-lrc::after, .aplayer-lrc::before {
         display: none;
@@ -689,8 +705,11 @@ p.notice {
             background: $td-bgColor;
         }
     }
-    ol::-webkit-scrollbar-track{
-        background: $bgColor;
+    .aplayer-list ol::-webkit-scrollbar-track{
+        background-color: rgba(0,0,0,.925)!important;
+    }
+    .aplayer-list ol::-webkit-scrollbar-thumb{
+        background-color: #656565!important;
     }
 }
 #MathJax_Message {
