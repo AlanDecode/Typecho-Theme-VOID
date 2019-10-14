@@ -617,7 +617,6 @@ p.notice {
     border-radius: 4px;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
     transition: 0.5s $animationTimingFunc all;
-    opacity: 0;
     right: 0;
     line-height: 1.5;
     z-index: 20;
@@ -625,15 +624,13 @@ p.notice {
     overflow: hidden;
     word-break: break-all;
     &.show{
-        animation-fill-mode: forwards;
         animation: fade-in 0.5s;
-        animation-fill-mode: forwards;
+        animation-fill-mode: both;
         animation-delay: 0.3;
     }
     &.hide{
-        animation-fill-mode: forwards;
         animation: fade-out 0.5s;
-        animation-fill-mode: forwards;
+        animation-fill-mode: both;
         animation-delay: 0.3;
     }
 }
@@ -654,9 +651,7 @@ p.notice {
 }
 
 .float-up {
-    opacity: 0;
-    transform: translateY($floatDistance);
-    animation: float-up $animationTime-very-slow cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: float-up $animationTime-very-slow cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @media screen and (max-width: 767px){

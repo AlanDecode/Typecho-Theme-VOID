@@ -61,9 +61,7 @@ main{
                 padding: 50px 1rem;
             }
             /* animation */
-            transform: translateY(-$floatDistance);
-            opacity: 0;
-            animation: float-down $animationTime-very-slow $animationTimingFunc forwards;
+            animation: float-down $animationTime-very-slow $animationTimingFunc both;
             .post-title{
                 text-align: center;
                 font-weight: 700;

@@ -8,17 +8,13 @@ main {
             width: 100vw;
             height: 100vh;
             background-color: $td-bgColor-dark;
-            .mask {
-                opacity: 0;
-            }
             &.loaded .mask {
                 background-color: rgba($color: #000000, $alpha: 0.6);
-                animation: exp-fade-in 0.7s forwards;
+                animation: exp-fade-in 0.7s both;
             }
         }
         article {
-            opacity: 0;
-            animation: exp-fade-in 0.7s forwards;
+            animation: exp-fade-in 0.7s both;
             animation-delay: 0.3s;
             * {
                 color: white!important;
