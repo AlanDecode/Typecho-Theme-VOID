@@ -104,7 +104,6 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         }
 
         $setting = $GLOBALS['VOIDSetting'];
-        $metaArr = $this->getLikesAndDislikes();
         
         $commentClass = '';
         if ($this->authorId) {
@@ -114,10 +113,14 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 $commentClass .= ' comment-by-user';
             }
         }
-        if ($metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
+
+        if ($setting['VOIDPlugin']) {
+            $metaArr = $this->getLikesAndDislikes();
+            if ($metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
             && ($metaArr['dislikes'] >= $metaArr['likes']*$setting['commentFoldThreshold'][1])) {
                 $commentClass .= ' fold';
             }
+        }
 ?>
 <div itemscope itemtype="http://schema.org/UserComments" id="<?php $this->theId(); ?>" class="comment-body<?php
     if ($this->levels > 0) {
@@ -165,7 +168,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             </span>
         </div>
         <div class="comment-content yue" itemprop="commentText">
-            <?php if ($metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
+            <?php if ($setting['VOIDPlugin'] && $metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
             && ($metaArr['dislikes'] >= $metaArr['likes']*$setting['commentFoldThreshold'][1])) { ?>
                 <span class="fold">[该评论已被自动折叠 | <a no-pjax target="_self" href="javascript:void(0)" 
                 onclick="VOID_Vote.toggleFoldComment(<?php echo $this->coid; ?>, this)">点击展开</a>]</span>
