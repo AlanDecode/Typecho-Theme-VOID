@@ -226,13 +226,14 @@ var VOID = {
         NProgress.done();
 
         VOID_Content.parseBoardThumbs();
-        VOID_Ui.lazyload();
 
         if ($('#loggin-form').length) {
             $('#loggin-form').addClass('need-refresh');
         }
 
         VOID_Ui.MasonryCtrler.init();
+        VOID_Ui.lazyload();
+        
         VOID_Ui.checkScrollTop();
 
         VOID_Content.tuneBiliPlayer();
