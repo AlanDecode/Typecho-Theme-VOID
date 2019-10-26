@@ -74,58 +74,39 @@ Class Contents
         Helper::options()->title();
     }
 
-    // 是否将图题解析到 figcaption 中
-    static private $parseFigcaption = true;
-
     /**
      * 内容解析点钩子
      * 目录解析移至前端完成
      */
     static public function contentEx($data, $widget, $last)
     {
-        $setting = $GLOBALS['VOIDSetting'];
-        if (!$setting['parseFigcaption'])
-            self::$parseFigcaption = false;
-
         $text = empty($last)?$data:$last;
         if ($widget instanceof Widget_Archive) {
-            if($widget->parameter->__get('type') == 'feed') {
-                $text = self::parseAll($text, 1);
-            } else {
-                $text = self::parseAll($text, 0);
-            }
+            $text = self::parseRuby($text);
+            $text = self::parseFancyBox($text, $widget->parameter->__get('type') == 'feed');
+            $text = self::parseBiaoQing($text);
+            $text = self::parsePhotoSet($text);
+            $text = self::parseNotice($text);
+            $text = self::parseHeader($text);
         }
         return $text;
     }
 
     /**
      * 摘要解析点钩子
-     * 摘要中不应解析图题
      */
     static public function excerptEx($data, $widget, $last)
     {
-        self::$parseFigcaption = false;
-        $text = self::contentEx($data, $widget, $last);
-        self::$parseFigcaption = true; // 置回
-
+        $text = empty($last)?$data:$last;
+        if ($widget instanceof Widget_Archive) {
+            $text = self::parseRuby($text);
+            $text = self::parseBiaoQing($text);
+            $text = self::parseNotice($text);
+            // 去除照片集标记
+            $text = str_replace('[photos]', '', $text);
+            $text = str_replace('[/photos]', '', $text);
+        }
         return $text;
-    }
-
-    /**
-     * 解析器：文章内容
-     * 
-     * @return string
-     */
-    static public function parseAll($content, $photoMode = 0)
-    {
-        $content = self::parseRuby($content);
-        $content = self::parseFancyBox($content, $photoMode);
-        $content = self::parseBiaoQing($content);
-        $content = self::parsePhotoSet($content);
-        $content = self::parseNotice($content);
-        $content = self::parseHeader($content);
-
-        return $content;
     }
 
     /**
@@ -235,15 +216,14 @@ Class Contents
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
     }
 
-    static private $photoMode = 0;
-
     /**
      * 解析 fancybox
      * 
      * @return string
-     * @param photoMode 0:普通解析，1:RSS(不包裹 a 标签)
+     * @param photoMode false: 普通解析，true: RSS(不包裹 a 标签)
      */
-    static public function parseFancyBox($content, $photoMode = 0)
+    static private $photoMode = false;
+    static public function parseFancyBox($content, $photoMode = false)
     {
         $reg = '/<img.*?src="(.*?)".*?alt="(.*?)".*?>/s';
         self::$photoMode = $photoMode;
@@ -258,6 +238,7 @@ Class Contents
      */
     private static function parseFancyBoxCallback($match)
     {
+        $setting = $GLOBALS['VOIDSetting'];
         $src_ori = $match[1];
         $src = $src_ori;
         $classList = '';
@@ -281,7 +262,7 @@ Class Contents
 
         // 普通解析且开启懒加载
         $img_onload = '';
-        if(self::$photoMode == 0 && Helper::options()->lazyload == '1') {
+        if(!self::$photoMode && Helper::options()->lazyload == '1') {
             $src = self::getPlaceHolder();
             $classList = 'lazyload';
         } else {
@@ -290,12 +271,12 @@ Class Contents
         }
 
         $figcaption = '';
-        if ($match[2] != '' && self::$parseFigcaption)
+        if ($match[2] != '' && $setting['parseFigcaption'])
             $figcaption = '<figcaption>'.$match[2].'</figcaption>';
 
         $img = '<img '.$img_onload.' class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
 
-        if (self::$photoMode == 0) {
+        if (!self::$photoMode) {
             return '<figure '.$attrAddOnFigure.' ><a '.$attrAddOnA.' no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'">'.$img.'</a>'.$figcaption.'</figure>';
         } else {
             return '<figure>'.$img.$figcaption.'</figure>';
