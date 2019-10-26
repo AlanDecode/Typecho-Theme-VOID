@@ -141,13 +141,14 @@ Class Contents
     }
 
     /**
-     * 解析 header 是去除 html 标签
+     * 为内容中的 h2-h6 元素编号
      */
+    static private $CurrentTocID = 0;
     static public function parseHeaderCallback($matchs)
     {
-        $str = Typecho_Common::stripTags($matchs[3]);
-        $str = str_replace(array(':', '：', ' ', PHP_EOL, '/', '\\', '|'), '-', $str);
-        return '<h'.$matchs[1].$matchs[2].' id="'.$str.'">'.$matchs[3].'</h'.$matchs[1].'>';
+        // 增加单独标记，否则冲突
+        $id = 'toc_'.(self::$CurrentTocID++);
+        return '<h'.$matchs[1].$matchs[2].' id="'.$id.'">'.$matchs[3].'</h'.$matchs[1].'>';
     }
 
     /**
