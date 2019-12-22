@@ -449,6 +449,7 @@ var Share = {
 var AjaxComment = {
     noName: '必须填写用户名',
     noMail: '必须填写电子邮箱地址',
+    noUrl: '必须填写 URL',
     noContent: '必须填写评论内容',
     invalidMail: '邮箱地址不合法',
     commentsOrder: 'DESC',
@@ -505,15 +506,27 @@ var AjaxComment = {
                     return false;
                 }
 
-                if ($(AjaxComment.commentForm).find('#mail').val() == '') {
-                    VOID.alert(AjaxComment.noMail);
-                    AjaxComment.err();
-                    return false;
+                if (typeof $(AjaxComment.commentForm).find('#mail').attr('required') != 'undefined') {
+                    // 需要邮箱
+                    if ($(AjaxComment.commentForm).find('#mail').val() == '') {
+                        VOID.alert(AjaxComment.noMail);
+                        AjaxComment.err();
+                        return false;
+                    }
                 }
 
-                var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
-                if (!filter.test($(AjaxComment.commentForm).find('#mail').val())) {
-                    VOID.alert(AjaxComment.invalidMail);
+                if ($(AjaxComment.commentForm).find('#mail').val() != '') {
+                    var filter = /^[^@\s<&>]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+                    if (!filter.test($(AjaxComment.commentForm).find('#mail').val())) {
+                        VOID.alert(AjaxComment.invalidMail);
+                        AjaxComment.err();
+                        return false;
+                    }
+                }
+
+                if ($(AjaxComment.commentForm).find('#url').val() == '' 
+                    && typeof $(AjaxComment.commentForm).find('#url').attr('required') != 'undefined') {
+                    VOID.alert(AjaxComment.noUrl);
                     AjaxComment.err();
                     return false;
                 }

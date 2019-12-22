@@ -43,12 +43,14 @@ $this->widget('VOID_Widget_Comments_Archive', $parameter)->to($comments);
                     </p>
                     <?php else: ?>
                         <div class="comment-info-input">
-                        <input aria-label="称呼(必填)" type="text" name="author" id="author" placeholder="称呼(必填)" value="<?php $this->remember('author'); ?>" />
+                        <input aria-label="称呼(必填)" type="text" name="author" id="author" required placeholder="称呼(必填)" value="<?php $this->remember('author'); ?>" />
                         <input aria-label="电子邮件<?php echo Helper::options()->commentsRequireMail? '(必填，将保密)' : '(选填)' ?>" 
                             type="email" name="mail" id="mail" 
                             placeholder="电子邮件<?php echo Helper::options()->commentsRequireMail? '(必填，将保密)' : '(选填)' ?>" 
+                            <?php echo Helper::options()->commentsRequireMail? 'required' : '' ?>
                             value="<?php $this->remember('mail'); ?>" />
-                        <input aria-label="网站(选填)" type="url" name="url" id="url" 
+                        <input aria-label="网站<?php echo Helper::options()->commentsRequireURL? '(必填)' : '(选填)' ?>" type="url" name="url" id="url" 
+                            <?php echo Helper::options()->commentsRequireURL? 'required' : '' ?>
                             placeholder="网站<?php echo Helper::options()->commentsRequireURL? '(必填)' : '(选填)' ?>"  
                             value="<?php $this->remember('url'); ?>" />
                         </div>
