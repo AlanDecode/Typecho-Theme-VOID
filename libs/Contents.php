@@ -192,6 +192,8 @@ Class Contents
             array('Contents', 'parsePaopaoBiaoqingCallback'), $content);
         $content = preg_replace_callback('/\:\@\(\s*(高兴|小怒|脸红|内伤|装大款|赞一个|害羞|汗|吐血倒地|深思|不高兴|无语|亲亲|口水|尴尬|中指|想一想|哭泣|便便|献花|皱眉|傻笑|狂汗|吐|喷水|看不见|鼓掌|阴暗|长草|献黄瓜|邪恶|期待|得意|吐舌|喷血|无所谓|观察|暗地观察|肿包|中枪|大囧|呲牙|抠鼻|不说话|咽气|欢呼|锁眉|蜡烛|坐等|击掌|惊喜|喜极而泣|抽烟|不出所料|愤怒|无奈|黑线|投降|看热闹|扇耳光|小眼睛|中刀)\s*\)/is',
             array('Contents', 'parseAruBiaoqingCallback'), $content);
+        $content = preg_replace_callback('/\:\&\(\s*(.*?)\s*\)/is',
+            array('Contents', 'parseQuyinBiaoqingCallback'), $content);
 
         return $content;
     }
@@ -214,6 +216,16 @@ Class Contents
     private static function parseAruBiaoqingCallback($match)
     {
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/aru/'. str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+    }
+
+    /**
+     * 蛆音娘表情回调函数
+     * 
+     * @return string
+     */
+    private static function parseQuyinBiaoqingCallback($match)
+    {
+        return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
     }
 
     /**

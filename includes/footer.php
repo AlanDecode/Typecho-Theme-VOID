@@ -141,7 +141,7 @@ $setting = $GLOBALS['VOIDSetting'];
                 logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('input-area')[0],
-                api: '<?php Utils::indexTheme('/assets/libs/owo/OwO_01.json'); ?>',
+                api: '<?php Utils::indexTheme('/assets/libs/owo/OwO_02.json'); ?>',
                 position: 'down',
                 width: '400px',
                 maxHeight: '250px'
