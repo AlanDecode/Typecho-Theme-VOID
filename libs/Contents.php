@@ -330,7 +330,7 @@ Class Contents
      * 
      * @return string
      */
-    function parseBoardCallback1($matchs)
+    static function parseBoardCallback1($matchs)
     {
         $text =  str_replace(array("\r\n", "\r", "\n"), "", $matchs[1]);
         return '[links]'.$text.'[/links]';
@@ -341,7 +341,7 @@ Class Contents
      * 
      * @return string
      */
-    function parseBoardCallback2($matchs)
+    static function parseBoardCallback2($matchs)
     {
         $text = '<div class="board-list link-list">%boards%</div>';
 
