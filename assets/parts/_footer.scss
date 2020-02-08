@@ -5,10 +5,16 @@ footer{
     padding-bottom: 1.5rem;
     .container{
         display: flex;
+        .sidebar-show & {
+            width: $mainWidth;
+        }
         section{
             flex: 1;
             position: relative;
             margin: 1rem 0.5rem 0 0.5rem;
+            &:nth-child(2) {
+                text-align: right;
+            }
             &,& *{
                 color: #ddd;
                 .theme-dark &{
@@ -30,6 +36,7 @@ footer{
             flex-direction: column;
             section:nth-child(2) {
                 margin-top: 0.5rem;
+                text-align: left;
                 p:nth-child(1) {
                     margin-top: 0;
                 }

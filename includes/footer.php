@@ -11,10 +11,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
 ?>
         <footer>
-            <div class="container">
+            <div class="container wide">
                 <section>
-                    <p>感谢陪伴：<span id="uptime"></span></p>
                     <p>© <?php echo date('Y '); ?> <span class="brand"><?php echo $this->options->title; ?></span></p>
+                    <p>感谢陪伴：<span id="uptime"></span></p>
                 </section>
                 <section>
                     <p>Powered by <a href="http://typecho.org/">Typecho</a> • <a href="https://blog.imalan.cn/archives/247/">Theme VOID</a></p>
