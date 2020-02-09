@@ -183,7 +183,6 @@ article {
         }
     }
     div[itemprop=articleBody] {
-        text-align: justify;
         &.full {        
             margin-bottom: 2rem;
         }
@@ -259,7 +258,7 @@ article {
         }
     }
 
-    /* stand alone figure with out placeholder */
+    /* stand alone figure without placeholder */
     figure.stand-alone:not(.placeholder) a[data-fancybox="gallery"] {
         padding: 0!important;
     }

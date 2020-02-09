@@ -156,8 +156,10 @@
 .yue ul,
 .yue ol {
     margin: 0 0 24px 18px;
-    padding-left: 0;
-    word-break: break-all;
+    padding-left: 18px;
+}
+.yue .footnotes ol {
+    margin-left: 8px;
 }
 .yue ul {
     list-style-type: square;
