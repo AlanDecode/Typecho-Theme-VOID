@@ -36,8 +36,9 @@ $animationTime: 0.2s;
 $animationTime-fast: 0.1s;
 $animationTimingFunc: cubic-bezier(.25,.46,.45,.94);
 
-$void-font-sans: -apple-system, system-ui, sans-serif;
-$void-font-default: 'Droid Serif', $void-font-sans;
+$void-font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei',
+                    'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, -apple-system, system-ui, sans-serif;
+$void-font-default: 'Open Sans', $void-font-sans;
 $void-font-serif: 'Noto Serif SC', $void-font-sans;
 
 @mixin bg {

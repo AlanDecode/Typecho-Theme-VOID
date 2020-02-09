@@ -104,7 +104,6 @@ if (isset($_POST['void_action'])) {
         <?php endif; ?>
     </style>
 
-    <link id="stylesheet_droid_serif" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700&display=swap" rel="stylesheet">
     <?php if(Utils::isSerif($setting)): ?>
         <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700&display=swap&subset=chinese-simplified" rel="stylesheet">
     <?php endif; ?>
