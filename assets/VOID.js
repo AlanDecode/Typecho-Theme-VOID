@@ -51,16 +51,13 @@ var VOID_Content = {
 
     // 解析照片集
     parsePhotos: function () {
-        $.each($('div[itemprop=articleBody] figure'), function (i, item){
-            if (!$(item).parent().hasClass('photos'))
-                $(item).addClass('stand-alone');
-        });
         $.each($('div[itemprop=articleBody] figure:not(.size-parsed)'), function (i, item){
             var img = new Image();
             img.onload = function () {
                 var w = parseFloat(img.width);
                 var h = parseFloat(img.height);
                 $(item).addClass('size-parsed');
+                $(item).css('width', w + 'px');
                 $(item).css('flex-grow', w * 50 / h);
                 $(item).find('a').css('padding-top', h / w * 100 + '%');
             };
@@ -72,7 +69,7 @@ var VOID_Content = {
     parseBoardThumbs: function () {
         $.each($('.board-thumb'), function(i, item) {
             if (VOIDConfig.lazyload)
-                $(item).html('<img class="lazyload instant" data-src="' +$(item).attr('data-thumb')+ '">');
+                $(item).html('<img class="lazyload" data-src="' +$(item).attr('data-thumb')+ '">');
             else
                 $(item).html('<img src="' +$(item).attr('data-thumb')+ '">');
         });

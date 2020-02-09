@@ -269,24 +269,20 @@ Class Contents
             $flex_grow = $width * 50 / $height;
 
             $attrAddOnA = 'style="padding-top: '.$ratio.'%"';
-            $attrAddOnFigure = 'class="placeholder size-parsed" style="flex-grow: '.$flex_grow.'"';
+            $attrAddOnFigure = 'class="size-parsed" style="flex-grow: '.$flex_grow.'; width: '.$width.'px"';
         }
 
         // 普通解析且开启懒加载
-        $img_onload = '';
         if(!self::$photoMode && Helper::options()->lazyload == '1') {
-            $src = self::getPlaceHolder();
+            $src = '';
             $classList = 'lazyload';
-        } else {
-            // 不开启懒加载，因此手动移除 figure class
-            $img_onload = 'onload="this.parentNode.parentNode.classList.remove(\'placeholder\')"';
         }
 
         $figcaption = '';
         if ($match[2] != '' && $setting['parseFigcaption'])
             $figcaption = '<figcaption>'.$match[2].'</figcaption>';
 
-        $img = '<img '.$img_onload.' class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
+        $img = '<img class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
 
         if (!self::$photoMode) {
             return '<figure '.$attrAddOnFigure.' ><a '.$attrAddOnA.' no-pjax data-fancybox="gallery" data-caption="'.$match[2].'" href="'.$src_ori.'">'.$img.'</a>'.$figcaption.'</figure>';

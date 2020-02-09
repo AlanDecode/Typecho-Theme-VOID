@@ -38,7 +38,7 @@ if($this->fields->bannerStyle > 0) {
                                 <img class="lazyload" src="<?php echo Contents::getPlaceHolder(); ?>" data-src="<?php echo $this->fields->banner; ?>" />
                             <?php else: ?>
                                 <img src="<?php echo $this->fields->banner; ?>" />
-                            <?php endif; ?>                            
+                            <?php endif; ?>
                             </a>
                             <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                         </div>

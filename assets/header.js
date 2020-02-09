@@ -113,19 +113,9 @@ VOID_Lazyload = {
             if (VOID_Lazyload.inViewport(item)) {
                 var img = new Image();
                 img.onload = function () {
-                    if ($(item).hasClass('instant')) {
-                        $(item).attr('src', $(item).attr('data-src'));
-                        $(item).addClass('loaded');
-                        VOID_Lazyload.removeEventListener();
-                    } else {
-                        $(item).css('opacity', '0');
-                        setTimeout(function () {
-                            $(item).attr('src', $(item).attr('data-src'));
-                            $(item).addClass('loaded');
-                            VOID_Lazyload.removeEventListener();
-                            $(item).parent().parent().removeClass('placeholder');
-                        }, 550);
-                    }
+                    $(item).attr('src', $(item).attr('data-src'));
+                    $(item).addClass('loaded');
+                    VOID_Lazyload.removeEventListener();
                 };
                 img.onerror = function () {
                     $(item).addClass('error');

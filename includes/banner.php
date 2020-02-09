@@ -38,7 +38,7 @@ if($this->is('page')){
 
     <?php if(!empty($banner)): ?>
         <div id="banner" class="<?php if($blur) echo 'blur'; ?>">
-            <img class="lazyload instant" data-src="<?php echo $banner; ?>">
+            <img class="lazyload" data-src="<?php echo $banner; ?>">
         </div>
         <script>$('body>header').removeClass('force-dark').removeClass('no-banner');</script>
     <?php else: ?>
