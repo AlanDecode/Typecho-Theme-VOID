@@ -112,7 +112,6 @@ VOID_Lazyload = {
         $.each($('img.lazyload:not(.loaded):not(.error)'), function (i, item) {
             if (VOID_Lazyload.inViewport(item)) {
                 var img = new Image();
-                img.src = $(item).attr('data-src');
                 img.onload = function () {
                     if ($(item).hasClass('instant')) {
                         $(item).attr('src', $(item).attr('data-src'));
@@ -132,6 +131,7 @@ VOID_Lazyload = {
                     $(item).addClass('error');
                     VOID_Lazyload.removeEventListener();
                 };
+                img.src = $(item).attr('data-src');
             }
         });
         VOID_Lazyload.removeEventListener();

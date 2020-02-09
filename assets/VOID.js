@@ -57,7 +57,6 @@ var VOID_Content = {
         });
         $.each($('div[itemprop=articleBody] figure:not(.size-parsed)'), function (i, item){
             var img = new Image();
-            img.src = $(item).find('img').attr('data-src');
             img.onload = function () {
                 var w = parseFloat(img.width);
                 var h = parseFloat(img.height);
@@ -65,6 +64,7 @@ var VOID_Content = {
                 $(item).css('flex-grow', w * 50 / h);
                 $(item).find('a').css('padding-top', h / w * 100 + '%');
             };
+            img.src = $(item).find('img').attr('data-src');
         });
     },
 

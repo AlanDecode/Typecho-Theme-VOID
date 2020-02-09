@@ -57,14 +57,15 @@ $setting = $GLOBALS['VOIDSetting'];
                 }
                 var img_bg = new Image();
                 var img_bg_url = "<?php echo $this->fields->banner; ?>";
-                img_bg.src = img_bg_url;
-                if(img_bg.complete) {
-                    applyBg(img_bg_url);
-                }
-                else {
+                if(!img_bg.complete) {
                     img_bg.onload = function() {
                         applyBg(img_bg_url);
                     };
+                    img_bg.src = img_bg_url;
+                }
+                else {
+                    img_bg.src = img_bg_url;
+                    applyBg(img_bg_url);
                 }
             })();
         </script>
