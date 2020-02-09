@@ -122,7 +122,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
             }
         }
 ?>
-<div itemscope itemtype="http://schema.org/UserComments" id="<?php $this->theId(); ?>" class="comment-body<?php
+<div id="<?php $this->theId(); ?>" class="comment-body<?php
     if ($this->levels > 0) {
         echo ' comment-child';
         $this->levelsAlt(' comment-level-odd', ' comment-level-even');
@@ -134,14 +134,14 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
 ?>">
     <div class="comment-content-wrap">
         <div class="comment-meta">
-            <div class="comment-author" itemprop="creator" itemscope itemtype="http://schema.org/Person">
-                <span class="comment-avatar" itemprop="image"><?php $this->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
-                <b><cite class="fn" itemprop="name"><?php $singleCommentOptions->beforeAuthor();
+            <div class="comment-author">
+                <span class="comment-avatar"><?php $this->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
+                <b><cite class="fn"><?php $singleCommentOptions->beforeAuthor();
                 $this->author();
                 $singleCommentOptions->afterAuthor(); ?></cite></b><span><?php echo $this->getParent(); ?></span>
             </div>
             <span>
-                <a href="<?php $this->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $this->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
+                <a href="<?php $this->permalink(); ?>"><timedatetime="<?php $this->date('c'); ?>"><?php $singleCommentOptions->beforeDate();
                 echo date('Y-m-d H:i', $this->created);
                 $singleCommentOptions->afterDate(); ?></time></a>
                 <?php if ('waiting' == $this->status) { ?>
@@ -167,7 +167,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
                 <?php } ?>
             </span>
         </div>
-        <div class="comment-content yue" itemprop="commentText">
+        <div class="comment-content yue">
             <?php if ($setting['VOIDPlugin'] && $metaArr['dislikes'] >= $setting['commentFoldThreshold'][0]
             && ($metaArr['dislikes'] >= $metaArr['likes']*$setting['commentFoldThreshold'][1])) { ?>
                 <span class="fold">[该评论已被自动折叠 | <a no-pjax target="_self" href="javascript:void(0)" 
@@ -180,7 +180,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         </div>
     </div>
     <?php if ($this->children) { ?>
-    <div class="comment-children" itemprop="discusses">
+    <div class="comment-children">
         <?php $this->threadedComments(); ?>
     </div>
     <?php } ?>

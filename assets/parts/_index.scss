@@ -287,7 +287,7 @@ section#index-list{
                     .theme-dark &{
                         color: $td-textColor-dark;
                     }
-                    &[itemprop=headline] {
+                    &.headline {
                         margin: 0.6rem 0;
                         margin-bottom: 0;
                         color: #999;

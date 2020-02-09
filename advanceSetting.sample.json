@@ -29,9 +29,6 @@
 
     // 在图片下方显示图题
     "parseFigcaption": true,
-    
-    // 在文章顶部显示摘要
-    "showHeadlineInPost": true,
 
     // 社交 ID，用于生成分享链接
     "twitterId": "AlanDecode",

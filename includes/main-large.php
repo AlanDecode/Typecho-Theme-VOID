@@ -24,29 +24,10 @@ $setting = $GLOBALS['VOIDSetting'];
     <div class="app-landscape theme-dark">
         <div class="mask" id="bg"><div class="mask"></div></div>
         <div class="container" style="margin-bottom: 2rem">
-            <article class="yue"  itemscope itemtype="http://schema.org/Article">
-                <h1 hidden itemprop="name"><?php $this->title(); ?></h1>
-                <span hidden itemprop="author"><?php $this->author(); ?></span>
-                <time hidden datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('Y-m-d', $this->created); ?></time>
-                <p hidden itemprop="headline"><?php if($this->fields->excerpt!='') echo $this->fields->excerpt; else $this->excerpt(30); ?></p>
-                <div itemprop="articleBody">
-                <?php $this->content(); ?>
+            <article class="yue">
+                <div class="articleBody">
+                    <?php $this->content(); ?>
                 </div>
-                <?php if($this->fields->banner != ''): ?>
-                <div hidden itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                    <img src="<?php echo $this->fields->banner; ?>" />
-                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
-                </div>
-                <?php endif; ?>
-                <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                    <meta itemprop="name" content="<?php echo $this->options->title; ?>">
-                    <meta itemprop="url" content="<?php $this->options->siteUrl(); ?>">
-                    <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 256, ''); ?>">
-                    </div>
-                </div>
-                <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
             </article>
         </div>
         <script>

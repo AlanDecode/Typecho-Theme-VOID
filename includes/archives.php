@@ -31,44 +31,30 @@ $setting = $GLOBALS['VOIDSetting'];
                 <?php $bannerAsCover = $this->fields->bannerascover; if($this->fields->banner == '') $bannerAsCover='0'; ?>
                 <li id="p-<?php $this->cid(); ?>"  class="masonry-item style-<?php echo $bannerAsCover; ?>">
                     <a href="<?php $this->permalink(); ?>">    
-                        <article class="yue itemscope itemtype="http://schema.org/Article">
+                        <article class="yue">
                             <?php if($this->fields->banner != ''): ?>
-                                <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <div class="banner">
                                     <?php if (Helper::options()->lazyload == '1'): ?>
                                         <img class="lazyload" data-src="<?php echo $this->fields->banner;?>">
                                     <?php else: ?>
                                         <img src="<?php echo $this->fields->banner;?>">
                                     <?php endif; ?>
-                                    <meta itemprop="url" content="<?php echo $this->fields->banner; ?>">
                                 </div>
                             <?php endif; ?>
                             <div class="content-wrap">
                                 <div class="post-meta-index">
-                                    <span hidden itemprop="author"><?php $this->author(); ?></span>
-                                    <time datetime="<?php echo date('c', $this->created); ?>" itemprop="datePublished"><?php echo date('M d, Y', $this->created); ?></time>
+                                    <time datetime="<?php echo date('c', $this->created); ?>"><?php echo date('M d, Y', $this->created); ?></time>
                                     <?php if($setting['VOIDPlugin']): ?>
                                         <span class="word-count">+ <?php echo $this->wordCount; ?> 字</span>
                                     <?php endif; ?>
                                 </div>
 
-                                <h1 class="title" itemprop="name"><?php $this->title(); ?></h1>
+                                <h1 class="title"><?php $this->title(); ?></h1>
                                 <?php if($this->fields->excerpt != ''): ?> 
-                                    <p itemprop="headline" class="headline single"><?php echo $this->fields->excerpt; ?></p>
+                                    <p class="headline single"><?php echo $this->fields->excerpt; ?></p>
                                 <?php else: ?>
-                                    <p class="excerpt" <?php if($this->fields->excerpt == '') echo 'itemprop="headline"'; ?>><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
+                                    <p class="excerpt"><?php if(Utils::isMobile()) $this->excerpt(60); else $this->excerpt(100); ?><?php if($this->is('index')) echo " | <a class=\"full-link\" href=\"{$this->permalink}\">阅读全文</a>"; ?></p>
                                 <?php endif; ?>
-
-                                <meta itemprop="author" content="<?php $this->author(); ?>">
-                                <meta itemprop="datePublished" content="<?php echo date('c', $this->created); ?>">
-                                <meta itemprop="dateModified" content="<?php echo date('c', $this->modified); ?>">
-                                <meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="<?php $this->permalink(); ?>">
-                                <div hidden itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                                    <meta itemprop="name" content="<?php $this->options->title(); ?>">
-                                    <meta itemprop="url" content="<?php $this->options->siteUrl(); ?>">
-                                    <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                                        <meta itemprop="url" content="<?php Utils::gravatar($this->author->mail, 200);  ?>">
-                                    </div>
-                                </div>
                             </div>
                         </article>
                     </a>

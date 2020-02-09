@@ -26,7 +26,7 @@ var VOID_Content = {
                 // Where to render the table of contents.
                 tocSelector: '.TOC',
                 // Where to grab the headings to build the table of contents.
-                contentSelector: 'div[itemprop=articleBody]',
+                contentSelector: 'div.articleBody',
                 // Which headings to grab inside of the contentSelector element.
                 headingSelector: 'h2, h3, h4, h5',
                 // 收缩深度
@@ -51,7 +51,7 @@ var VOID_Content = {
 
     // 解析照片集
     parsePhotos: function () {
-        $.each($('div[itemprop=articleBody] figure:not(.size-parsed)'), function (i, item){
+        $.each($('div.articleBody figure:not(.size-parsed)'), function (i, item){
             var img = new Image();
             img.onload = function () {
                 var w = parseFloat(img.width);
@@ -137,7 +137,7 @@ var VOID_Content = {
     },
 
     hyphenate: function() {
-        $('div[itemprop=articleBody] p, div[itemprop=articleBody] blockquote').hyphenate('en-us');
+        $('div.articleBody p, div.articleBody blockquote').hyphenate('en-us');
     },
 
     tuneBiliPlayer: function () {
@@ -569,7 +569,7 @@ var AjaxComment = {
                             }
 
                             var newCommentType = AjaxComment.parentID == '' ? 'comment-parent' : 'comment-child';
-                            var newCommentData = '<div itemscope itemtype="http://schema.org/UserComments" id="comment-' + AjaxComment.newID + '" style="opacity:0" class="comment-body ' + newCommentType + '">' + $(data).find('#comment-' + AjaxComment.newID).html() + '</div>';
+                            var newCommentData = '<div id="comment-' + AjaxComment.newID + '" style="opacity:0" class="comment-body ' + newCommentType + '">' + $(data).find('#comment-' + AjaxComment.newID).html() + '</div>';
 
                             // 当页面无评论，先添加一个评论容器
                             if ($(AjaxComment.commentList).length <= 0) {
