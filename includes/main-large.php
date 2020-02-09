@@ -17,6 +17,8 @@ $setting = $GLOBALS['VOIDSetting'];
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
+    <?php $this->need('includes/ldjson.php'); ?>
+
     <style>
         body > footer { display: none; }
         main {display: flex; flex-direction: column; justify-content: center; padding: 17.5vh 0 50px 0;}

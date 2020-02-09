@@ -15,7 +15,8 @@ $setting = $GLOBALS['VOIDSetting'];
     <title hidden>
         <?php Contents::title($this); ?>
     </title>
-    
+
+    <?php $this->need('includes/ldjson.php'); ?>
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container <?php if($setting['indexStyle'] == 1) echo 'narrow'; else echo 'wide'; ?>">

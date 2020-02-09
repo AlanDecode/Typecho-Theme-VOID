@@ -19,6 +19,7 @@ if($this->fields->bannerStyle > 0) {
         <?php Contents::title($this); ?>
     </title>
 
+    <?php $this->need('includes/ldjson.php'); ?>
     <?php $this->need('includes/banner.php'); ?>
 
     <div class="wrapper container">
