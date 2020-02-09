@@ -332,7 +332,9 @@ class Utils
             ),
             'link' => array(),
             'commentFoldThreshold' => array(5, 1.5),
-            'commentNotification' => ''
+            'commentNotification' => '',
+            'bluredLazyload' => false,
+            'CDNType' => array()
         );
 
         if(!empty($options->advance)){

@@ -55,6 +55,13 @@
     // 大图集
     "largePhotoSet": true,
 
+    // 模糊懒加载。通过提供小缩略图，以实现渐变加载效果。目前支持又拍云与七牛云 CDN。
+    // 其中又拍云请把图片处理间隔符设置为 !
+    "bluredLazyload": false,
+    "CDNType": {
+        "static.imalan.cn": "UPYUN" // UPYUN, QINIU
+    },
+
     // Mac 风格代码块
     "macStyleCodeBlock": true,
 

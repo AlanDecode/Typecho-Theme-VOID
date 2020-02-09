@@ -35,7 +35,7 @@ if($this->fields->bannerStyle > 0) {
                         <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $setting['bannerStyle'] == 4 || $this->is('page')) echo 'hidden'; ?> class="post-banner" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
                             <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>">
                             <?php if(Helper::options()->lazyload == '1'): ?>
-                                <img class="lazyload" src="<?php echo Contents::getPlaceHolder(); ?>" data-src="<?php echo $this->fields->banner; ?>" />
+                                <img class="lazyload" data-src="<?php echo $this->fields->banner; ?>" />
                             <?php else: ?>
                                 <img src="<?php echo $this->fields->banner; ?>" />
                             <?php endif; ?>

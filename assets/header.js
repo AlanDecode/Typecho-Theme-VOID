@@ -115,6 +115,7 @@ VOID_Lazyload = {
                 img.onload = function () {
                     $(item).attr('src', $(item).attr('data-src'));
                     $(item).addClass('loaded');
+                    $(item).siblings('.blured-placeholder').addClass('loaded');
                     VOID_Lazyload.removeEventListener();
                 };
                 img.onerror = function () {

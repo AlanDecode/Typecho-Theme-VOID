@@ -51,6 +51,9 @@ if($this->is('page')){
         if ($setting['indexStyle'] == 1) { // 强制不显示
             echo ' single-col';
         }
+        if ($setting['bluredLazyload']) { // 强制不显示
+            echo ' bluredLazyload';
+        }
         if(Helper::options()->lazyload == '1') {
             echo ' lazyload-img';
         }

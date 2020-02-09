@@ -50,7 +50,10 @@ if(!Utils::isPjax()){
                             <?php endif; ?>
                                 <div class="banner" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                     <?php if (Helper::options()->lazyload == '1'): ?>
-                                        <img class="lazyload" src="<?php echo Contents::getPlaceHolder(); ?>" data-src="<?php echo $this->fields->banner;?>">
+                                        <?php if($setting['bluredLazyload']): ?>
+                                            <img src="<?php echo Contents::genBluredPlaceholderSrc($this->fields->banner); ?>" class="blured-placeholder">
+                                        <?php endif; ?>
+                                        <img class="lazyload" data-src="<?php echo $this->fields->banner;?>">
                                     <?php else: ?>
                                         <img src="<?php echo $this->fields->banner;?>">
                                     <?php endif; ?>
