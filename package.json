@@ -1,29 +1,4 @@
 {
-  "name": "void",
-  "version": "1.0.0",
-  "description": "A Typecho theme by AlanDecode.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
-    "add": "git add ."
-  },
-  "pre-commit": [],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlanDecode/Typecho-Theme-VOID.git"
-  },
-  "keywords": [
-    "typecho",
-    "theme",
-    "void"
-  ],
-  "author": "AlanDecode",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/AlanDecode/Typecho-Theme-VOID/issues"
-  },
-  "homepage": "https://github.com/AlanDecode/Typecho-Theme-VOID#readme",
   "devDependencies": {
     "del": "^3.0.0",
     "eslint": "^5.12.1",
