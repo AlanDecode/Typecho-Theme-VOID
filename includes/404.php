@@ -16,13 +16,9 @@ $setting = $GLOBALS['VOIDSetting'];
     </title>
 
     <?php $this->need('includes/banner.php'); ?>
-
-    <div class="wrapper container">
-        <section id="post-list" class="archive-list float-up" style="margin-top: 0">
-            <div class="not-found">
-                <h1>糟糕！这里什么也没有</h1>
-                <p><a href="<?php Utils::indexHome('/'); ?>">← 返回首页</a></p>
-            </div>
-        </section>
-    </div>
+    <style>
+        main {background: #000}
+        footer {display:none}
+        body {overflow: hidden}
+    </style>
 </main>

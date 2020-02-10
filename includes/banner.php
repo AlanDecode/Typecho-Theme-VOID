@@ -34,7 +34,8 @@ if($this->is('page')){
     <?php 
         if(empty($banner)) echo ' no-banner';
         else echo ' loading dark';
-        if($this->is('index')) echo ' index';?>">
+        if($this->is('index')) echo ' index';
+        if($this->is('archive') && !$this->have()) echo ' not-found'; ?>">
 
     <?php if(!empty($banner)): ?>
         <div id="banner" class="<?php if($blur) echo 'blur'; ?>">
@@ -59,12 +60,16 @@ if($this->is('page')){
                 <?php if(!$this->is('archive')): ?>
                     <?php $this->title(); ?>
                 <?php else: ?>
-                    <?php $this->archiveTitle(array(
+                    <?php if ($this->have()): ?>
+                        <?php $this->archiveTitle(array(
                             'category'  =>  _t('分类 "%s" 下的文章'),
                             'search'    =>  _t('包含关键字 "%s" 的文章'),
                             'tag'       =>  _t('包含标签 "%s" 的文章'),
                             'author'    =>  _t('"%s" 发布的文章')
                         ), '', '');  ?>
+                    <?php else: ?>
+                        <span class="glitch">0</span>
+                    <?php endif; ?>
                 <?php endif;?>
             </h1>
             <?php if(!$this->is('archive')): ?>
