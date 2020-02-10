@@ -173,6 +173,38 @@ main{
             }
         }
     }
+    .lazy-wrap.not-found {
+        .glitch {
+            font-size: 10rem!important;
+            @media screen and (max-width: $mainWidth-narrow) {
+                font-size: 8rem!important;
+            }
+            font-family: Monoton;
+            font-weight: normal!important;
+            letter-spacing: 0.05em;
+            user-select: none;
+            color: darkred!important;
+            &::after, &::before {
+                content: "4";
+                color: red;
+            }
+        }
+        #banner {
+            display: none;
+        }
+        .banner-title {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        padding: 0;
+        position: absolute;
+        height: 100vh;
+        @media screen and (max-width: $mainWidth-narrow) {
+            height: calc(100vh - 80px);
+        }
+        width: 100%;
+        background: #000;
+    }
 
     .wrapper{
         position: relative;
