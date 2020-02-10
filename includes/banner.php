@@ -39,7 +39,7 @@ if($this->is('page')){
     <?php if(!empty($banner)): ?>
         <div id="banner" class="<?php if($blur) echo 'blur'; ?>">
             <?php if($setting['bluredLazyload']): ?>
-                <img src="<?php echo Contents::genBluredPlaceholderSrc($banner); ?>" class="blured-placeholder">
+                <img src="<?php echo Contents::genBluredPlaceholderSrc($banner); ?>" class="blured-placeholder remove-after">
             <?php endif; ?>
             <img class="lazyload" data-src="<?php echo $banner; ?>">
         </div>

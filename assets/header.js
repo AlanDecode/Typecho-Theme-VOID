@@ -117,6 +117,9 @@ VOID_Lazyload = {
                     $(item).addClass('loaded');
                     $(item).siblings('.blured-placeholder').addClass('loaded');
                     VOID_Lazyload.removeEventListener();
+                    setTimeout(function () {
+                        $(item).siblings('.remove-after').remove();
+                    }, 1000);
                 };
                 img.onerror = function () {
                     $(item).addClass('error');

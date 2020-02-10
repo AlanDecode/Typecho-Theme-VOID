@@ -308,7 +308,7 @@ Class Contents
             $src = '';
             $classList = 'lazyload';
             if ($setting['bluredLazyload'])
-                $placeholder = '<img class="blured-placeholder" src="'.self::genBluredPlaceholderSrc($src_ori).'">';
+                $placeholder = '<img class="blured-placeholder remove-after" src="'.self::genBluredPlaceholderSrc($src_ori).'">';
         }
 
         $img = $placeholder.'<img class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';

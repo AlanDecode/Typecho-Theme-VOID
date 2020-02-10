@@ -184,13 +184,6 @@ article {
             padding: 0 20px;
         }
     }
-    div.articleBody > figure {
-        @media screen and (max-width: 860.5px) {
-            width: calc(100% + 40px);
-            margin-left: -20px;
-            max-width: calc(100% + 40px)!important;
-        }
-    }
 
     /* base style for figure */
     figure {
@@ -208,6 +201,7 @@ article {
             max-width: 100%;
             height: 0;
             padding: 0;
+            overflow: hidden;
             img {
                 position: absolute;
                 width: 100%;
@@ -262,7 +256,7 @@ article {
                 bottom: 0;
                 width: auto;
                 margin: 0;
-                padding: 60px 0 10px;
+                padding: 60px 0 10px!important;
                 color: #fff;
                 background-image: linear-gradient(
                     180deg,
