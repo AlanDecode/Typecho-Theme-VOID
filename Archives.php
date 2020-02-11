@@ -31,7 +31,7 @@ if(!Utils::isPjax()){
             <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=count&ignoreZeroCount=1&desc=1&limit=50')->to($tags); ?>
             <?php if($tags->have()): ?>
             <?php while ($tags->next()): ?>
-                <a href="<?php $tags->permalink(); ?>" rel="tag" class="tag-item btn btn-normal btn-narrow" title="<?php $tags->count(); ?> 个话题"><?php $tags->name(); ?></a>
+                <a href="<?php $tags->permalink(); ?>" rel="tag" class="tag-item" title="<?php $tags->count(); ?> 个话题"><?php $tags->name(); ?></a>
             <?php endwhile; ?>
             <?php else: ?>
                 <?php echo('还没有标签哦～'); ?>
