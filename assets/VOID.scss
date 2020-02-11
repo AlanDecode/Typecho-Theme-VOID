@@ -106,7 +106,7 @@ body{
     max-width: 10rem;
     max-width: max-content;
     text-align: center;
-    border-radius: 5rem;
+    border-radius: 4px;
     color: $fadeColor;
     background: none;
     .theme-dark &{
@@ -555,7 +555,7 @@ p.notice {
                         background: none;
                         border: solid 2px rgba(#000, 0.1);
                         margin-bottom: 6px;
-                        border-radius: 8px;
+                        border-radius: 4px;
                         color: inherit;
                         &::-webkit-input-placeholder{
                             color: $fadeColor;

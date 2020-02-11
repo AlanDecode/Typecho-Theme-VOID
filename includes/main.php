@@ -49,7 +49,7 @@ if($this->fields->bannerStyle > 0) {
                     <?php $tags = Contents::getTags($this->cid); if (count($tags) > 0) { 
                         echo '<section class="tags">';
                         foreach ($tags as $tag) {
-                            echo '<a href="'.$tag['permalink'].'" rel="tag" class="tag-item btn btn-normal btn-narrow">'.$tag['name'].'</a>';
+                            echo '<a href="'.$tag['permalink'].'" rel="tag" class="tag-item">'.$tag['name'].'</a>';
                         }
                         echo '</section>';
                     } ?>

@@ -208,6 +208,20 @@ main{
 
     .wrapper{
         position: relative;
+        .tag-item {
+            margin-right: 10px;
+            margin-bottom: 5px;
+            display: inline-block;
+            border: none!important;
+            opacity: 0.6;
+            &:hover {
+                opacity: 1;
+            }
+            &::before {
+                content: "#";
+                margin-right: 2px;
+            }
+        }
         section{
             position: relative;
             margin-bottom: 3rem;
@@ -219,15 +233,11 @@ main{
             }
             &.tags {
                 margin: 1rem 0;
-                margin-bottom: calc(1rem - 10px);
+                margin-bottom: calc(1rem - 5px);
                 padding-top: 1rem;
                 border-top: 1px solid $borderColor;
                 .theme-dark & {
                     border-color: $td-borderColor;
-                }
-                .tag-item {
-                    margin-right: 5px;
-                    margin-bottom: 10px;
                 }
             }
             .not-found{
