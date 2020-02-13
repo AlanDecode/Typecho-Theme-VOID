@@ -160,7 +160,7 @@
     }
     .comment-list{
         .comment-body{
-            &.comment-by-author span.comment-avatar::after{
+            span.comment-avatar.star::after{
                 content: "";
                 display: block;
                 position: absolute;
