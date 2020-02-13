@@ -83,7 +83,35 @@ if($this->fields->bannerStyle > 0) {
                         <a aria-label="分享到Twitter" href="javascript:void(0);" onclick="Share.toTwitter(this);" class="social-button-icon"><i class="voidicon-twitter"></i></a>
                     </div>
                 </article>
-                
+
+                <script>
+                (function () {
+                    $.each($('iframe'), function(i, item){
+                        var src = $(item).attr('src');
+                        if (typeof src === 'string' && src.indexOf('player.bilibili.com') > -1) {
+                            // $(item).addClass('bili-player');
+                            if (src.indexOf('&high_quality') < 0) {
+                                src += '&high_quality=1'; // 启用高质量
+                                $(item).attr('src', src);
+                            }
+                            
+                            // // 默认比例 9:16
+                            // var height = $(item).width() * 0.5625;
+                            // 若指定比例
+                            // if ($(item).attr('data-ratio') != undefined)
+                            //     height = parseFloat($(item).attr('data-ratio')) * $(item).width();
+
+                            // // 此时出现控制面板
+                            // if ($(window).width() >= 540)
+                            //     height += 120;
+
+                            // $(item).height(height);
+                        }
+                        $(item).wrap('<div class="bili-player"></div>');
+                    });
+                })();
+                </script>
+
                 <!--分页-->
                 <?php if(!$this->is('page')): ?>
                 <div class="post-pager"><?php $prev = Contents::thePrev($this); $next = Contents::theNext($this); ?>
