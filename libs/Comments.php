@@ -105,12 +105,10 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
 
         $setting = $GLOBALS['VOIDSetting'];
         
-        $commentClass = '';
+        $avatarClass = '';
         if ($this->authorId) {
             if ($this->authorId == $this->ownerId) {
-                $commentClass .= ' comment-by-author';
-            } else {
-                $commentClass .= ' comment-by-user';
+                $avatarClass .= ' star';
             }
         }
 
@@ -135,7 +133,7 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
     <div class="comment-content-wrap">
         <div class="comment-meta">
             <div class="comment-author">
-                <span class="comment-avatar"><?php $this->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
+                <span class="comment-avatar<?php echo $avatarClass; ?>"><?php $this->gravatar($singleCommentOptions->avatarSize, $singleCommentOptions->defaultAvatar); ?></span>
                 <b><cite class="fn"><?php $singleCommentOptions->beforeAuthor();
                 $this->author();
                 $singleCommentOptions->afterAuthor(); ?></cite></b><span><?php echo $this->getParent(); ?></span>
