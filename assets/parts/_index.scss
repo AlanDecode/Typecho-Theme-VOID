@@ -9,14 +9,10 @@ main{
     .lazy-wrap{
         width: 100%;
         overflow: hidden;
-        min-height: $bannerHeight;
         padding-top: 58px;
         display: flex;
         @media screen and (max-width:767px) {
             padding-top: 50px;
-        }
-        @media screen and (max-width:767px) {
-            min-height: $bannerHeight_mobile;
         }
         position: relative;
         &:not(.no-banner){
@@ -29,7 +25,7 @@ main{
             width: 100%;
             height: 100%;
             &.blur {
-                filter: brightness(0.5) blur(5px)!important;
+                filter: brightness(0.5) blur(15px)!important;
                 transform: scale(1.5)!important;
             }
             img {

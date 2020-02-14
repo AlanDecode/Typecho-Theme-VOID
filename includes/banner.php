@@ -11,22 +11,9 @@ $setting = $GLOBALS['VOIDSetting'];
 $banner = $setting['defaultBanner'];
 $blur = false;
 
-if($this->is('post')) {
-    if($this->fields->bannerStyle > 0) {
-        $setting['bannerStyle'] = $this->fields->bannerStyle-1;
-    }
-    if($setting['bannerStyle'] == 4) { // 强制不显示
-        $banner = '';
-        $blur = false;
-    } else {
-        $banner = $this->fields->banner;
-        if($setting['bannerStyle'] == 1)
-            $banner = ''; 
-        $blur = $setting['bannerStyle'] >= 2;
-    }
-}
-if($this->is('page')){
-    $banner = $this->fields->banner;
+if($this->is('post') || $this->is('page')) {
+    $banner = $this->fields->bannerStyle < 2 ? $this->fields->banner : '';
+    $blur = $this->fields->bannerStyle == 1;
 }
 ?>
 
@@ -47,10 +34,6 @@ if($this->is('page')){
         <script>$('body>header').removeClass('force-dark').removeClass('no-banner');</script>
     <?php else: ?>
         <script>$('body>header').addClass('force-dark').addClass('no-banner');</script>
-        <style>main>.lazy-wrap{min-height: 0;}</style>
-    <?php endif; ?>
-
-    <?php if($setting['bannerStyle']>=2 && $this->is('post')): ?>
         <style>main>.lazy-wrap{min-height: 0;}</style>
     <?php endif; ?>
 
