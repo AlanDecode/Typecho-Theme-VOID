@@ -283,7 +283,6 @@ class Utils
             'serifincontent' => false,
             'pjax' => false,
             'pjaxreload' => '',
-            'bannerStyle' => 0,
             'indexStyle' => 0,
             'lazyload' => false,
             'indexBannerTitle' => '',
@@ -306,7 +305,6 @@ class Utils
         $themeSetting['colorScheme'] = intval($themeSetting['colorScheme']);
         $themeSetting['pjax'] = boolval($themeSetting['pjax']);
         $themeSetting['serifincontent'] = boolval($themeSetting['serifincontent']);
-        $themeSetting['bannerStyle'] = intval($themeSetting['bannerStyle']);
         $themeSetting['indexStyle'] = intval($themeSetting['indexStyle']);
 
         // 高级设置

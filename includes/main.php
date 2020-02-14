@@ -9,9 +9,6 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $setting = $GLOBALS['VOIDSetting'];
-if($this->fields->bannerStyle > 0) {
-    $setting['bannerStyle'] = $this->fields->bannerStyle-1;
-}
 ?>
 
 <main id="pjax-container">
@@ -26,17 +23,6 @@ if($this->fields->bannerStyle > 0) {
         <div class="contents-wrap"> <!--start .contents-wrap-->
             <section id="post" class="float-up">
                 <article class="post yue">
-                    <?php if($this->fields->banner != ''): ?>
-                        <div <?php if($setting['bannerStyle'] == 0 || $setting['bannerStyle'] == 2 || $setting['bannerStyle'] == 4 || $this->is('page')) echo 'hidden'; ?> class="post-banner">
-                            <a no-pjax data-fancybox="gallery" href="<?php echo $this->fields->banner; ?>">
-                            <?php if(Helper::options()->lazyload == '1'): ?>
-                                <img class="lazyload" data-src="<?php echo $this->fields->banner; ?>" />
-                            <?php else: ?>
-                                <img src="<?php echo $this->fields->banner; ?>" />
-                            <?php endif; ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
 
                     <?php $postCheck = Utils::isOutdated($this); if($postCheck["is"] && $this->is('post')): ?>
                         <p class="notice">请注意，本文编写于 <?php echo $postCheck["created"]; ?> 天前，最后修改于 <?php echo $postCheck["updated"]; ?> 天前，其中某些信息可能已经过时。</p>
@@ -94,18 +80,6 @@ if($this->fields->bannerStyle > 0) {
                                 src += '&high_quality=1'; // 启用高质量
                                 $(item).attr('src', src);
                             }
-                            
-                            // // 默认比例 9:16
-                            // var height = $(item).width() * 0.5625;
-                            // 若指定比例
-                            // if ($(item).attr('data-ratio') != undefined)
-                            //     height = parseFloat($(item).attr('data-ratio')) * $(item).width();
-
-                            // // 此时出现控制面板
-                            // if ($(window).width() >= 540)
-                            //     height += 120;
-
-                            // $(item).height(height);
                         }
                         $(item).wrap('<div class="bili-player"></div>');
                     });

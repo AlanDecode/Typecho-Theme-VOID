@@ -66,13 +66,6 @@ function themeConfig($form)
     $form->addInput($indexBannerTitle);
     $indexBannerSubtitle = new Typecho_Widget_Helper_Form_Element_Text('indexBannerSubtitle', null, '', '首页顶部小标题', '');
     $form->addInput($indexBannerSubtitle);
-    
-    $bannerStyle = new Typecho_Widget_Helper_Form_Element_Radio('bannerStyle', array(
-        '0' => '显示在顶部',
-        '1' => '显示在文中',
-        '2' => '显示在顶部并添加模糊效果',
-        '3' => '显示在顶部并添加模糊效果，同时显示于正文中'), '0', '文章头图展示方式', '仅针对文章，独立页面头图始终显示在顶部。此字段可以在文章编辑页面自定义字段中单独设置以覆盖全局设置。');
-    $form->addInput($bannerStyle);
 
     $colorScheme = new Typecho_Widget_Helper_Form_Element_Radio('colorScheme', array('0' => '自动切换', '1' => '日间模式', '2' => '夜间模式'), '0', '主题颜色模式', '选择主题颜色模式。自动模式下每天 22:00 到次日 06:59 会显示为夜间模式。');
     $form->addInput($colorScheme);
@@ -117,12 +110,9 @@ function themeFields(Typecho_Widget_Helper_Layout $layout)
     $banner = new Typecho_Widget_Helper_Form_Element_Text('banner', null, null, '文章主图', '输入图片URL，该图片会用于主页文章列表的显示。');
     $layout->addItem($banner);
     $bannerStyle = new Typecho_Widget_Helper_Form_Element_Select('bannerStyle', array(
-        0 => '跟随主题设置',
-        1 => '显示在顶部',
-        2 => '显示在文中',
-        3 => '显示在顶部并添加模糊效果',
-        4 => '显示在顶部并添加模糊效果，同时显示于正文中',
-        5 => '不显示'), 0, '文章头图展示方式', '仅针对文章，独立页面头图始终显示在顶部。此字段可以覆盖主题的全局设置。');
+        0 => '显示在顶部',
+        1 => '显示在顶部并添加模糊效果',
+        2 => '不显示'), 0, '文章主图样式', '');
     $layout->addItem($bannerStyle);
     $bannerascover = new Typecho_Widget_Helper_Form_Element_Select('bannerascover', array('1' => '主图显示在标题上方', '2' => '主图作为标题背景', '0' => '不显示'), '1', '首页主图样式', '主图作为标题背景时会添加暗色遮罩，但仍然建议仅对暗色的主图采用该方式展示。否则请选择「主图显示在标题上方」。');
     $layout->addItem($bannerascover);
