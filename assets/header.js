@@ -116,6 +116,7 @@ VOID_Lazyload = {
                     $(item).attr('src', $(item).attr('data-src'));
                     $(item).addClass('loaded');
                     $(item).siblings('.blured-placeholder').addClass('loaded');
+                    $(item).parent().addClass('loaded');
                     VOID_Lazyload.removeEventListener();
                     setTimeout(function () {
                         $(item).siblings('.remove-after').remove();

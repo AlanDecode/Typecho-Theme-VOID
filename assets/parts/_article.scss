@@ -202,13 +202,18 @@ article {
             height: 0;
             padding: 0;
             overflow: hidden;
-            transition: background-color 0.3s $animationTimingFunc;;
-            body:not(.bluredLazyload) &:not(.no-bg) {
+
+            transition: 0.3s $animationTimingFunc background-color;
+            &.lazyload-container {
                 background-color: rgb(240, 240, 240);
                 .theme-dark & {
                     background-color: rgba(240, 240, 240, 0.05);
                 }
+                &.loaded {
+                    background-color: transparent;
+                }
             }
+
             img {
                 position: absolute;
                 width: 100%;
