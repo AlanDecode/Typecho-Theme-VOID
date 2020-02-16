@@ -104,6 +104,20 @@ if (isset($_POST['void_action'])) {
         <?php endif; ?>
     </style>
 
+    <?php if (array_key_exists('src', $setting['brandFont']) && !empty($setting['brandFont']['src'])): ?>
+    <style>
+    @font-face {
+        font-family: "BrandFont";
+        src: url("<?php echo $setting['brandFont']['src']; ?>");
+    }
+    .brand {
+        font-family: BrandFont, sans-serif;
+        font-style: <?php echo $setting['brandFont']['style']; ?>!important;
+        font-weight: <?php echo $setting['brandFont']['weight']; ?>!important;
+    }
+    </style>
+    <?php endif; ?>
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
     <?php if(Utils::isSerif($setting)): ?>
         <link id="stylesheet_noto" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,700&display=swap&subset=chinese-simplified" rel="stylesheet">

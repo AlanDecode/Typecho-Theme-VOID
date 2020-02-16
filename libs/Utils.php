@@ -311,6 +311,11 @@ class Utils
         $advanceSetting = array(
             'nav' => '',
             'name' => '',
+            'brandFont' => array(
+                'src' => '',
+                'style' => 'normal',
+                'weight' => 'normal'
+            ),
             'desktopBannerHeight' => '',
             'mobileBannerHeight' => '',
             'twitterId' => '',

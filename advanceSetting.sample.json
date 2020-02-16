@@ -7,6 +7,13 @@
     // 自定义左上角显示的站点名
     "name" : "A Panda.",
 
+    // 为站点标题设置自定义字体，
+    "brandFont": {
+        "src": " ",  //填写字体文件链接，例如 "https://my.com/font.ttf"
+        "style": "normal",  // 字体样式，例如 normal, italic...
+        "weight": "normal"  // 字重，例如 normal, bold, 300, 400...
+    },
+
     // 桌面端头图高度，数值为高度占屏幕高度的百分比
     "desktopBannerHeight" : 30,
 
