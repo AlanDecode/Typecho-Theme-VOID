@@ -198,6 +198,10 @@
     margin-bottom: 1.5em;
     font-size: 0.96em;
     box-sizing: border-box;
+    display: block;
+    word-break: normal;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .yue thead {
     background-color: #efefee;
