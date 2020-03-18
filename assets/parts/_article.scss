@@ -181,6 +181,7 @@ article {
     }
     div.articleBody figure {
         figcaption {
+            pointer-events: none;
             padding: 0 20px;
         }
     }
