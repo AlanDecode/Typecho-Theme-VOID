@@ -87,7 +87,7 @@ if (isset($_POST['void_action'])) {
         isDev: true
     }
     </script>
-    <script src="<?php Utils::indexTheme('/assets/header-407c0314fd.js'); ?>"></script>
+    <script src="<?php Utils::indexTheme('/assets/header-dba1d6f214.js'); ?>"></script>
     
     <?php echo $setting['head']; ?>
     <style>
