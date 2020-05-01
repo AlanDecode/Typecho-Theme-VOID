@@ -1,4 +1,4 @@
-# Typecho Theme VOID 3.4.0
+# Typecho Theme VOID 3.5.0
 
 > ✏ 一款简洁优雅的 Typecho 主题
 
@@ -207,27 +207,26 @@ gulp build
 
 ## 更新日志
 
-**🍰 2019-10-26 Version 3.4.0**
+**🍰 2020-05-01 Version 3.5.0**
 
 *该版本依赖 VOID 插件 1.20 及以上版本，请先禁用原插件，上传新插件后重新启用插件*
 
-* 新增：为图片获取基础信息，详见[关于 VOID 主题自动获取图片基础信息](https://blog.imalan.cn/archives/void-fetch-img-basic-info/)
-* 新增：新的平滑滚动效果
-* 优化：通过 iframe 嵌入 Bilibili 播放器时可自适应宽高
-* 优化：图片懒加载功能
-* 优化：夜间模式下 APlayer 播放器样式
-* 优化：内容解析性能
-* 调整：替换默认西文字体为 Droid Serif
-* 修复：PJAX 跳转后首页图片懒加载可能失效的问题
-* 修复：当文章中存在相同的标题时无法点击目录跳转的问题
-* 修复：修复一个可能导致插件启用失败的问题
-* 修复：不同时区导致建站时间计算不准确的问题
-* 修复：懒加载与 Google Ads 冲突的问题
-* 修复：不正确的头图高度
-* 修复：未启用插件时投票功能未被禁用的问题
-* 移除：站点背景图设置
+* 新增：[高级设置]图片懒加载渐变（需要 CDN 支持）
+* 新增：JSON-LD 结构化数据支持
+* 新增：重新设计的 404 页面
+* 优化：Bilibili 播放器自适应
+* 优化：图题不再影响灯箱展开
+* 调整：默认西文字体替换为 OpenSans
+* 调整：简化头图设置
+* 修复：某些情况下懒加载可能不触发的问题
+* 修复：懒加载导致归档页面错乱
+* 修复：Safari 平滑滚动无法打断, thank @Reedo0910
+* 修复：[#32](https://github.com/AlanDecode/Typecho-Theme-VOID/issues/32)
+* 修复：[#34](https://github.com/AlanDecode/Typecho-Theme-VOID/issues/34)
+* 移除：Microdata
+* 其它细节优化
 
-注意，3.4.0 版本主题依赖 1.20 及以上版本插件，请先禁用原插件，上传新版插件后重新启用。
+注意，3.5.0 版本主题依赖 1.20 及以上版本插件，请先禁用原插件，上传新版插件后重新启用。
 
 从 2.2 版本起，主题部分功能需要配套插件支持，例如文章点赞、浏览量统计、字数统计等。**请先卸载**原来的 Likes、TePostViews 插件，否则数据会出现错误！TePostViews 插件卸载前请设置为**卸载后保留数据**，以防丢失浏览数据。
 
@@ -241,7 +240,7 @@ gulp build
 
 ### 其他
 
-[RAW](https://github.com/AlanDecode/Typecho-Theme-RAW) | [Mirages](https://get233.com/archives/mirages-intro.html) | [handsome](https://www.ihewro.com/archives/489/) | [Card](https://blog.shuiba.co/bitcron-theme-card) | [Casper](https://github.com/TryGhost/Casper) | [Typlog](https://typlog.com/)
+[RAW](https://github.com/AlanDecode/Typecho-Theme-RAW) | [Mirages](https://get233.com/archives/mirages-intro.html) | [handsome](https://www.ihewro.com/archives/489/) | [Card](https://blog.shuiba.co/bitcron-theme-card) | [Casper](https://github.com/TryGhost/Casper) | [Typlog](https://typlog.com/) | [FORMA](https://justgoodthemes.com/ghost-themes/forma/)
 
 ## 捐助
 
