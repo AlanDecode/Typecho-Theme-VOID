@@ -144,6 +144,7 @@ VOID_Lazyload = {
 VOID_SmoothScroller = {
     target: null,
     SMOOTH: 15,
+    raf: null,
 
     move: function () {
         var cur = document.documentElement.scrollTop;
@@ -151,12 +152,13 @@ VOID_SmoothScroller = {
 
         if (Math.abs(VOID_SmoothScroller.target - cur) < 1) {
             VOID_SmoothScroller.removeEventListener();
+            cancelAnimationFrame(VOID_SmoothScroller.raf);
             return;
         }
 
         cur >= VOID_SmoothScroller.target ? cur -= step : cur += step;
         document.documentElement.scrollTop = cur;
-        requestAnimationFrame(VOID_SmoothScroller.move);
+        VOID_SmoothScroller.raf = requestAnimationFrame(VOID_SmoothScroller.move);
     },
 
     addEventListener: function () {
