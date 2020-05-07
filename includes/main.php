@@ -80,8 +80,8 @@ $setting = $GLOBALS['VOIDSetting'];
                                 src += '&high_quality=1'; // 启用高质量
                                 $(item).attr('src', src);
                             }
+                            $(item).wrap('<div class="bili-player"></div>');
                         }
-                        $(item).wrap('<div class="bili-player"></div>');
                     });
                 })();
                 </script>
