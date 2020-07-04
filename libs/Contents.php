@@ -473,8 +473,9 @@ Class Contents
                     ->from('table.contents')
                     ->order('table.contents.created', Typecho_Db::SORT_DESC)
                     ->where('table.contents.type = ?', 'post')
-                    ->where('table.contents.status = ?', 'publish'));
-        
+                    ->where('table.contents.status = ?', 'publish')
+                    ->where('table.contents.created < ?', time()));
+
         $stat = array();
         foreach ($rows as $row) {
             $row = $widget->filter($row);
