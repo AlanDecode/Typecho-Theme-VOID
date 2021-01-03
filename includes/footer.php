@@ -134,14 +134,14 @@ $setting = $GLOBALS['VOIDSetting'];
         <?php if($setting['enableMath']): ?>
         <script src='<?php Utils::indexTheme('/assets/libs/mathjax/2.7.4/MathJax.js'); ?>'></script>
         <?php endif; ?>
-        <script src="<?php Utils::indexTheme('/assets/VOID-2c818e2660.js'); ?>"></script>
+        <script src="<?php Utils::indexTheme('/assets/VOID-ed48094757.js'); ?>"></script>
         <script>
         if($(".OwO").length > 0){
             new OwO({
                 logo: 'OωO',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('input-area')[0],
-                api: '<?php Utils::indexTheme('/assets/libs/owo/OwO_02.json'); ?>',
+                api: '<?php Utils::indexTheme('/assets/libs/owo/OwO_03.json'); ?>',
                 position: 'down',
                 width: '400px',
                 maxHeight: '250px'
