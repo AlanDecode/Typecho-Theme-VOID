@@ -221,6 +221,85 @@
             }
         ]
     },
+    "2233娘": {
+        "type": "image",
+        "container": [{
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E7ACACE4B880.png\">",
+                "data": ":$(2233娘_第一)",
+                "text": "2233娘_第一"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E697A0E8AFAD.png\">",
+                "data": ":$(2233娘_无语)",
+                "text": "2233娘_无语"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E59090E9AD82.png\">",
+                "data": ":$(2233娘_吐魂)",
+                "text": "2233娘_吐魂"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E5A794E5B188.png\">",
+                "data": ":$(2233娘_委屈)",
+                "text": "2233娘_委屈"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E593ADE6B3A3.png\">",
+                "data": ":$(2233娘_哭泣)",
+                "text": "2233娘_哭泣"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E98381E997B7.png\">",
+                "data": ":$(2233娘_郁闷)",
+                "text": "2233娘_郁闷"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E59BB0E68391.png\">",
+                "data": ":$(2233娘_困惑)",
+                "text": "2233娘_困惑"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E7949FE6B094.png\">",
+                "data": ":$(2233娘_生气)",
+                "text": "2233娘_生气"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E59083E6838A.png\">",
+                "data": ":$(2233娘_吃惊)",
+                "text": "2233娘_吃惊"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E6B197.png\">",
+                "data": ":$(2233娘_汗)",
+                "text": "2233娘_汗"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E5A4A7E7AC91.png\">",
+                "data": ":$(2233娘_大笑)",
+                "text": "2233娘_大笑"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E5969DE6B0B4.png\">",
+                "data": ":$(2233娘_喝水)",
+                "text": "2233娘_喝水"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E880B6.png\">",
+                "data": ":$(2233娘_耶)",
+                "text": "2233娘_耶"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E58D96E8908C.png\">",
+                "data": ":$(2233娘_卖萌)",
+                "text": "2233娘_卖萌"
+            },
+            {
+                "icon": "<img class=\"biaoqing\" data-src=\"/usr/themes/VOID/assets/libs/owo/biaoqing/2233/2233E5A898_E79691E997AE.png\">",
+                "data": ":$(2233娘_疑问)",
+                "text": "2233娘_疑问"
+            }
+        ]
+    },
     "阿鲁": {
         "type": "image",
         "container": [

@@ -194,6 +194,8 @@ Class Contents
             array('Contents', 'parseAruBiaoqingCallback'), $content);
         $content = preg_replace_callback('/\:\&\(\s*(.*?)\s*\)/is',
             array('Contents', 'parseQuyinBiaoqingCallback'), $content);
+        $content = preg_replace_callback('/\:\$\(\s*(.*?)\s*\)/is',
+            array('Contents', 'parse2233BiaoqingCallback'), $content);
 
         return $content;
     }
@@ -226,6 +228,16 @@ Class Contents
     private static function parseQuyinBiaoqingCallback($match)
     {
         return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/quyin/'. str_replace('%', '', urlencode($match[1])) . '.png">';
+    }
+
+    /**
+     * 2233娘表情回调函数
+     *
+     * @return string
+     */
+    private static function parse2233BiaoqingCallback($match)
+    {
+        return '<img class="biaoqing" src="/usr/themes/VOID/assets/libs/owo/biaoqing/2233/'. str_replace('%', '', urlencode($match[1])) . '.png">';
     }
 
     /**
