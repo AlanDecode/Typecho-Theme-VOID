@@ -80,7 +80,7 @@ var VOID_Content = {
         var domain = document.domain;
         $('a:not(a[href^="#"]):not(".post-like")').each(function (i, item) {
             if ((!$(item).attr('target') || (!$(item).attr('target') == '' && !$(item).attr('target') == '_self'))) {
-                if (item.host != domain) {
+                if (item.hostname != domain) {
                     $(item).attr('target', '_blank');
                 }
             }
@@ -88,7 +88,7 @@ var VOID_Content = {
 
         if (VOIDConfig.PJAX) {
             $.each($('a:not(a[target="_blank"], a[no-pjax])'), function (i, item) {
-                if (item.host == domain) {
+                if (item.hostname == domain) {
                     $(item).addClass('pjax');
                 }
             });
