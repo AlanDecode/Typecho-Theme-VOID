@@ -86,7 +86,7 @@ VOID_Lazyload = {
     eventHandler: null,
 
     finish: function () {
-        return $('img.lazyload.loaded').length + $('img.lazyload.error').length == $('img.lazyload').length;
+        return $('img.lazyload.loaded:not(.browser)').length + $('img.lazyload.error:not(.browser)').length == $('img.lazyload:not(.browser)').length;
     },
 
     addEventListener: function () {
@@ -109,7 +109,7 @@ VOID_Lazyload = {
     },
 
     callback: function () {
-        $.each($('img.lazyload:not(.loaded):not(.error)'), function (i, item) {
+        $.each($('img.lazyload:not(.browser):not(.loaded):not(.error)'), function (i, item) {
             if (VOID_Lazyload.inViewport(item)) {
                 var img = new Image();
                 img.onload = function () {
@@ -138,6 +138,31 @@ VOID_Lazyload = {
             VOID_Lazyload.eventHandler = VOID_Util.throttle(VOID_Lazyload.callback, 200, 500);
         VOID_Lazyload.callback();
         VOID_Lazyload.addEventListener();
+    }
+};
+
+VOID_BrowserLoadingLazy = {
+    loadedCallback: function (item) {
+        $(item).addClass('loaded');
+        $(item).parent().addClass('loaded');
+        setTimeout(function() {
+            $(item).siblings('.remove-after').remove();
+        }, 1000);
+    },
+
+    init: function () {
+        $.each($('img.lazyload.browser:not(.loaded):not(.error)'), function (i, item) {
+            if (item.complete && item.naturalWidth !== 0) {
+                VOID_BrowserLoadingLazy.loadedCallback(item);
+            } else {
+                item.onload = function () {
+                    VOID_BrowserLoadingLazy.loadedCallback(item);
+                };
+                item.onerror = function () {
+                    $(item).addClass('error');
+                };
+            }
+        });
     }
 };
 
@@ -341,6 +366,7 @@ VOID_Ui = {
 
     lazyload: function () {
         VOID_Lazyload.init();
+        VOID_BrowserLoadingLazy.init();
     },
 
     headroom: function () {

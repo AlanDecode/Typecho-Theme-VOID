@@ -66,6 +66,10 @@
         "static.imalan.cn": "UPYUN" // UPYUN, QINIU
     },
 
+    // 浏览器原生懒加载（使用img标签新增的loading属性实现）。有更好的SEO支持，但只适配较新版本的浏览器。
+    // 注意：开启后会使得文章正文部分的模糊懒加载功能失效
+    "browserLevelLoadingLazy": false,
+
     // Mac 风格代码块
     "macStyleCodeBlock": true,
 

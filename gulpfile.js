@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('node-sass'));
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-clean-css');
 var rev = require('gulp-rev');
@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify');
 var del = require('del');
 
 var prefixerOptions = {
-    browsers: ['last 2 versions']
+    Browserslist: ['last 2 versions']
 };
 
 // 删除旧版与临时文件
