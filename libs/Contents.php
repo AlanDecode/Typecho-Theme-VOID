@@ -325,7 +325,7 @@ Class Contents
             $attrAddOnA .= ' class="lazyload-container" ';
         }
 
-        if ($setting['browserLevelLoadingLazy']) {
+        if (!self::$photoMode && Helper::options()->lazyload == '1' && $setting['browserLevelLoadingLazy']) {
             $classList .= ' browser';
             $img = '<img class="'.$classList.'" alt="'.$match[2].'" src="'.$src_ori.'" loading="lazy">';
         } else {
