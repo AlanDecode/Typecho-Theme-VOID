@@ -86,7 +86,7 @@ VOID_Lazyload = {
     eventHandler: null,
 
     finish: function () {
-        return $('img.lazyload.loaded:not(.browser)').length + $('img.lazyload.error:not(.browser)').length == $('img.lazyload:not(.browser)').length;
+        return $('img.lazyload.loaded:not(.browserlevel-lazy)').length + $('img.lazyload.error:not(.browserlevel-lazy)').length == $('img.lazyload:not(.browserlevel-lazy)').length;
     },
 
     addEventListener: function () {
@@ -109,7 +109,7 @@ VOID_Lazyload = {
     },
 
     callback: function () {
-        $.each($('img.lazyload:not(.browser):not(.loaded):not(.error)'), function (i, item) {
+        $.each($('img.lazyload:not(.browserlevel-lazy):not(.loaded):not(.error)'), function (i, item) {
             if (VOID_Lazyload.inViewport(item)) {
                 var img = new Image();
                 img.onload = function () {
@@ -151,7 +151,7 @@ VOID_BrowserLoadingLazy = {
     },
 
     init: function () {
-        $.each($('img.lazyload.browser:not(.loaded):not(.error)'), function (i, item) {
+        $.each($('img.lazyload.browserlevel-lazy:not(.loaded):not(.error)'), function (i, item) {
             if (item.complete && item.naturalWidth !== 0) {
                 VOID_BrowserLoadingLazy.loadedCallback(item);
             } else {

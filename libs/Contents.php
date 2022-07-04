@@ -339,7 +339,7 @@ Class Contents
 
         // 使用浏览器原生的懒加载方法
         if (!self::$photoMode && Helper::options()->lazyload == '1' && $setting['browserLevelLoadingLazy']) {
-            $classList .= ' browser';
+            $classList .= ' browserlevel-lazy';
             $img = '<img class="'.$classList.'" alt="'.$match[2].'" src="'.$src_ori.'" loading="lazy">';
         } else {
             $img = $placeholder.'<img class="'.$classList.'" alt="'.$match[2].'" data-src="'.$src_ori.'" src="'.$src.'">';
