@@ -76,10 +76,10 @@ $setting = $GLOBALS['VOIDSetting'];
                         var src = $(item).attr('src');
                         if (typeof src === 'string' && src.indexOf('player.bilibili.com') > -1) {
                             // $(item).addClass('bili-player');
-                            if (src.indexOf('&high_quality') < 0) {
-                                src += '&high_quality=1'; // 启用高质量
-                                $(item).attr('src', src);
-                            }
+                            // if (src.indexOf('&high_quality') < 0) {
+                            //     src += '&high_quality=1'; // 启用高质量
+                            //     $(item).attr('src', src);
+                            // }
                             $(item).wrap('<div class="bili-player"></div>');
                         }
                     });
