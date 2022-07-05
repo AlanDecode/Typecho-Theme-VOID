@@ -68,10 +68,15 @@ var VOID_Content = {
     // 处理友链列表
     parseBoardThumbs: function () {
         $.each($('.board-thumb'), function(i, item) {
-            if (VOIDConfig.lazyload)
-                $(item).html('<img class="lazyload" data-src="' +$(item).attr('data-thumb')+ '">');
-            else
+            if (VOIDConfig.lazyload) {
+                if (VOIDConfig.browserLevelLoadingLazy) {
+                    $(item).html('<img class="lazyload browserlevel-lazy" src="' +$(item).attr('data-thumb')+ '" loading="lazy">');
+                } else {
+                    $(item).html('<img class="lazyload" data-src="' +$(item).attr('data-thumb')+ '">');
+                }
+            } else {
                 $(item).html('<img src="' +$(item).attr('data-thumb')+ '">');
+            }
         });
     },
 
