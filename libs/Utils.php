@@ -336,6 +336,7 @@ class Utils
             'commentFoldThreshold' => array(5, 1.5),
             'commentNotification' => '',
             'bluredLazyload' => false,
+            'browserLevelLoadingLazy' => false,
             'CDNType' => array()
         );
 
