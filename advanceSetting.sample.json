@@ -66,6 +66,12 @@
         "static.imalan.cn": "UPYUN" // UPYUN, QINIU
     },
 
+    // 浏览器原生懒加载（使用img标签新增的loading="lazy"属性实现）
+    // 为图片提供更好的SEO支持。只适配较新版本的浏览器，不支持的浏览器将自动加载当前页面下的所有图片
+    // 浏览器具体适配情况请参考：https://caniuse.com/loading-lazy-attr
+    // 注意：开启后将使得模糊懒加载功能失效
+    "browserLevelLoadingLazy": false,
+
     // Mac 风格代码块
     "macStyleCodeBlock": true,
 

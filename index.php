@@ -51,10 +51,14 @@ if(!Utils::isPjax()){
                             <?php endif; ?>
                                 <div class="banner">
                                     <?php if (Helper::options()->lazyload == '1'): ?>
-                                        <?php if($setting['bluredLazyload']): ?>
-                                            <img src="<?php echo Contents::genBluredPlaceholderSrc($this->fields->banner); ?>" class="blured-placeholder">
+                                        <?php if($setting['browserLevelLoadingLazy']): ?>
+                                            <img class="lazyload browserlevel-lazy" src="<?php echo $this->fields->banner;?>" loading="lazy">
+                                        <?php else: ?>
+                                            <?php if($setting['bluredLazyload']): ?>
+                                                <img src="<?php echo Contents::genBluredPlaceholderSrc($this->fields->banner); ?>" class="blured-placeholder">
+                                            <?php endif; ?>
+                                            <img class="lazyload" data-src="<?php echo $this->fields->banner;?>">
                                         <?php endif; ?>
-                                        <img class="lazyload" data-src="<?php echo $this->fields->banner;?>">
                                     <?php else: ?>
                                         <img src="<?php echo $this->fields->banner;?>">
                                     <?php endif; ?>
