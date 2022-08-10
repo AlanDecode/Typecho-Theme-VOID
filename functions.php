@@ -96,7 +96,7 @@ function themeConfig($form)
     $form->addInput($serviceworker);
 
     // 超高级设置
-    $advance = new Typecho_Widget_Helper_Form_Element_Textarea('advance', null, null, 超高级设置, '主题中包含一份 advanceSetting.sample.json，自己仿照着写吧。');
+    $advance = new Typecho_Widget_Helper_Form_Element_Textarea('advance', null, null, '超高级设置', '主题中包含一份 advanceSetting.sample.json，自己仿照着写吧。');
     $form->addInput($advance);
 }
 
