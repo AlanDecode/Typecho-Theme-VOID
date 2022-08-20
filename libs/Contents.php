@@ -18,7 +18,7 @@ Class Contents
     public static function getPost($cid)
     {
         $db = Typecho_Db::get();
-        $post = new Widget_Abstract_Contents(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $post = Widget_Abstract_Contents::alloc();
         $db->fetchRow($post->select()
             ->where("cid = ?", $cid)
             ->limit(1),
@@ -34,7 +34,7 @@ Class Contents
     public static function getComment($coid)
     {
         $db = Typecho_Db::get();
-        $comment = new Widget_Abstract_Comments(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $comment = Widget_Abstract_Comments::alloc();
         $db->fetchRow($comment->select()
             ->where("coid = ?", $coid)
             ->limit(1),
@@ -50,7 +50,7 @@ Class Contents
     public static function getMeta($mid)
     {
         $db = Typecho_Db::get();
-        $meta = new Widget_Abstract_Metas(Typecho_Request::getInstance(), Typecho_Widget_Helper_Empty::getInstance());
+        $meta = Widget_Abstract_Metas::alloc();
         $db->fetchRow($meta->select()
             ->where("mid = ?", $mid)
             ->limit(1),
