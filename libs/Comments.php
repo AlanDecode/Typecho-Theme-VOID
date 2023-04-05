@@ -192,10 +192,14 @@ class VOID_Widget_Comments_Archive extends Widget_Abstract_Comments
         $parentID=$parentID['parent'];
         if($parentID=='0') return '';
         else {
-            $author=$db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $parentID));
-            if (!array_key_exists('author', $author) || empty($author['author']))
+            $author = $db->fetchRow($db->select()->from('table.comments')->where('coid = ?', $parentID));
+            if ($author === null) {
+                $author = array();
+            }
+            if (!array_key_exists('author', $author) || empty($author['author'])) {
                 $author['author'] = '已删除的评论';
-            return ' <span style="font-size: 0.9rem">回复</span> <b style="font-size:0.9rem;margin-right: 0.3em">@'.$author['author'].'</b> ';
+            }
+            return ' <span style="font-size: 0.9rem">回复</span> <b style="font-size:0.9rem;margin-right: 0.3em">@' . $author['author'] . '</b> ';
         }
     }  
 
