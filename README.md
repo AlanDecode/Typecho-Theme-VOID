@@ -1,3 +1,7 @@
+**[2023.04.07] 如果大家配合 Typecho 1.2 版本使用 VOID 时遇到问题，请到 GitHub 集中留言反馈：https://github.com/AlanDecode/Typecho-Theme-VOID/issues/87**
+
+---
+
 # Typecho Theme VOID 3.5.1
 
 > ✏ 一款简洁优雅的 Typecho 主题
