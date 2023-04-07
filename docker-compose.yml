@@ -1,0 +1,39 @@
+# This docker compose file is for development purpose only. It starts a nightly
+# version of Typecho server with PHP 8.0 and MySQL 5.7.
+
+version: '3.7'
+
+services:
+  typecho:
+    image: joyqi/typecho:nightly-php8.0-apache
+    container_name: typecho-server
+    restart: unless-stopped
+    environment:
+      - TIMEZONE=Asia/Shanghai
+      - TYPECHO_SITE_URL=http://localhost:8080
+      - TYPECHO_DB_ADAPTER=Pdo_Mysql
+      - TYPECHO_DB_HOST=mysql
+      - TYPECHO_DB_PORT=3306
+      - TYPECHO_DB_USER=root
+      - TYPECHO_DB_PASSWORD=password
+      - TYPECHO_DB_DATABASE=typecho
+      - TYPECHO_DB_CHARSET=utf8mb4
+      - TYPECHO_USER_NAME=alan
+      - TYPECHO_USER_PASSWORD=password
+      - TYPECHO_USER_MAIL=hi@imalan.cn
+      - TYPECHO_INSTALL=1
+    ports:
+      - 8080:80
+    links:
+      - mysql:mysql
+    volumes:
+      - ./build:/app/usr/themes/VOID
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: typecho
+    ports:
+      - 3306:3306
