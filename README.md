@@ -1,3 +1,5 @@
+# This is dev branch for VOID 4.x, which is supposed to be compatible with Typecho 1.2
+
 # Typecho Theme VOID 3.5.1
 
 > ✏ 一款简洁优雅的 Typecho 主题
