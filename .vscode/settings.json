@@ -9,7 +9,7 @@
             "savePath": null
         }
     ],
-    "liveSassCompile.settings.showOutputWindow": false,
+    "liveSassCompile.settings.showOutputWindowOn":"None",
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
         "*.json": "jsonc"
